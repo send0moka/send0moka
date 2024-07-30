@@ -8,7 +8,3 @@ Undergraduate Informatics Student at Jenderal Soedirman University. I'm passiona
     - This is my new account (the old one was suspended)
     - Sometimes play hsr & valo
     - Trying to be more disciplined
-  
-### My Statistics
-
-<img src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=send0moka&layout=compact&langs_count=6"/>
