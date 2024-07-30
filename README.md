@@ -8,3 +8,5 @@ Undergraduate Informatics Student at Jenderal Soedirman University. I'm passiona
     - This is my new account (the old one was suspended)
     - Sometimes play hsr & valo
     - Trying to be more disciplined
+
+![IndoGitHubers-badge](https://indogithubers-badge.vercel.app/badge?username=send0moka&style=social)
