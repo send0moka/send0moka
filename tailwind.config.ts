@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
 export default {
   content: [
@@ -8,11 +8,19 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        "instrument-sans": ["var(--font-instrument)"],
+        "inter-thin": ["var(--font-inter)"],
+        "yellow-tail": ["var(--font-yellowtail)"],
+      },
       colors: {
+        primary: "var(--primary-color)",
+        secondary: "var(--secondary-color)",
+        accent: "var(--accent-color)",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
     },
   },
   plugins: [],
-} satisfies Config;
+} satisfies Config
