@@ -38,7 +38,7 @@ const ProjectCard = ({ title, category, image, link }: ProjectCardProps) => {
   return (
     <div
       ref={cardRef}
-      className="relative rounded-xl md:rounded-3xl overflow-hidden bg-secondary/30 p-4 md:p-6 group opacity-0"
+      className="project-card relative rounded-xl md:rounded-3xl overflow-hidden bg-secondary/30 p-4 md:p-6 group opacity-0"
     >
       <div className="absolute top-2 right-2 w-full h-full flex justify-end md:hidden">
         <div className="bg-white size-8 rounded-full text-black grid place-items-center">
