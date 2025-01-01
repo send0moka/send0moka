@@ -7,6 +7,18 @@ import { useState, useRef } from "react"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 import { motion } from "framer-motion"
 
+const titleVariants = {
+  hidden: { y: 100, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      ease: [0.33, 1, 0.68, 1]
+    }
+  }
+}
+
 interface ProjectCardProps {
   title: string
   category: string
@@ -123,11 +135,25 @@ export default function Projects() {
   return (
     <section className="md:px-10 px-4 relative my-20" id="projects">
       <h3 className="text-4xl md:text-6xl lg:text-7xl uppercase font-instrument-sans font-bold md:px-4 px-2 pb-10 mx-auto md:pl-16">
-        <span className="inline-block overflow-hidden text-white/40">
+        <motion.span 
+          className="inline-block overflow-hidden text-white/40"
+          variants={titleVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+        >
           Selected
-        </span>
+        </motion.span>
         <br />
-        <span className="inline-block overflow-hidden">works</span>
+        <motion.span 
+          className="inline-block overflow-hidden"
+          variants={titleVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+        >
+          works
+        </motion.span>
       </h3>
 
       <div className="flex items-center gap-4 py-8 justify-center max-md:flex-wrap">
