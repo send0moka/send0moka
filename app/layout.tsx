@@ -23,7 +23,7 @@ const yellowtail = Yellowtail({
 })
 
 export const metadata: Metadata = {
-  title: "sendomoka.dev",
+  title: "Sendomoka ~ Front-end Developer and UI Designer",
   description: "Jehian's personal website",
 }
 
