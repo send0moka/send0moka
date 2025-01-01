@@ -24,7 +24,7 @@ const yellowtail = Yellowtail({
 
 export const metadata: Metadata = {
   title: "sendomoka.dev",
-  description: "Your portfolio description here",
+  description: "Jehian's personal website",
 }
 
 export default function RootLayout({
