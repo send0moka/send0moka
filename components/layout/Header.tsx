@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import RollingText from "@/components/ui/RollingText"
 import Menu from "@/components/ui/Menu"
@@ -21,11 +21,28 @@ const headerVariants = {
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [visitorCount, setVisitorCount] = useState<number | null>(null)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    const getVisitorCount = async () => {
+      try {
+        const response = await fetch('/api/visitors')
+        const data = await response.json()
+        if (data.count) setVisitorCount(data.count)
+      } catch (error) {
+        setError(true)
+        console.error('Failed to fetch visitor count:', error)
+      }
+    }
+
+    getVisitorCount()
+  }, [])
 
   return (
     <>
       <motion.div
-        className="fixed md:top-10 top-6 md:left-8 left-6 z-50 hover:text-white/80 text-white/40"
+        className="fixed md:top-10 top-6 md:left-8 left-6 z-50 hover:text-white/80 text-white/40 flex items-center gap-4"
         variants={headerVariants}
         initial="hidden"
         animate="visible"
@@ -33,6 +50,14 @@ export default function Header() {
         <Link href="/">
           <RollingText text="SENDOMOKA" weight="medium" />
         </Link>
+        {!error && (
+          <>
+            <span className="text-sm opacity-50">•</span>
+            <span className="text-sm font-medium">
+              {visitorCount?.toLocaleString() ?? '...'} visits
+            </span>
+          </>
+        )}
       </motion.div>
 
       <motion.div 
