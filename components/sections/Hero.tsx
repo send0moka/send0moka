@@ -102,7 +102,7 @@ export default function Hero() {
             BASED IN PURWOKERTO<span className="text-white/40">, INDONESIA</span>
           </p>
           <p className="text-lg font-medium">
-            SOFTWARE ENGINEER{" "}
+            FRONT-END DEVELOPER{" "}
             <span className="text-white/40">+ UI DESIGNER</span>
           </p>
         </motion.div>
