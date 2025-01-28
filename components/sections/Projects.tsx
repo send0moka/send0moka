@@ -24,7 +24,7 @@ interface ProjectCardProps {
   category: string
   image: string
   link: string
-  type: "Flutter" | "Remix" | "All"
+  type: "Flutter" | "Remix" | "Astro" | "Next JS" | "All"
 }
 
 const projects: ProjectCardProps[] = [
@@ -42,6 +42,20 @@ const projects: ProjectCardProps[] = [
     link: "https://petirbercerita.life",
     type: "Remix",
   },
+  {
+    title: "Soedirman Digital School",
+    category: "Web Development",
+    image: "/sds.png",
+    link: "https://soedirmandigitalschool.vercel.app",
+    type: "Astro",
+  },
+  {
+    title: "Hospital Kiosk Queue Print System",
+    category: "Web Development",
+    image: "/rsu.png",
+    link: "https://github.com/send0moka/hospital-kiosk-queue-print-system",
+    type: "Next JS",
+  }
 ]
 
 const ProjectCard = ({ title, category, image, link }: ProjectCardProps) => {
@@ -121,11 +135,13 @@ const FilterButton = ({ active, onClick, children, buttonRef }: ButtonProps) => 
 )
 
 export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState<"All" | "Flutter" | "Remix">("All")
+  const [activeFilter, setActiveFilter] = useState<"All" | "Flutter" | "Remix" | "Astro" | "Next JS">("All")
   const buttonRefs = {
     All: useRef<HTMLButtonElement>(null),
     Flutter: useRef<HTMLButtonElement>(null),
     Remix: useRef<HTMLButtonElement>(null),
+    Astro: useRef<HTMLButtonElement>(null),
+    "Next JS": useRef<HTMLButtonElement>(null),
   }
 
   const filteredProjects = projects.filter((project) =>
@@ -179,6 +195,22 @@ export default function Projects() {
           buttonRef={buttonRefs.Remix}
         >
           <RollingText text="Remix" />
+        </FilterButton>
+
+        <FilterButton
+          active={activeFilter === "Astro"}
+          onClick={() => setActiveFilter("Astro")}
+          buttonRef={buttonRefs.Astro}
+        >
+          <RollingText text="Astro" />
+        </FilterButton>
+
+        <FilterButton
+          active={activeFilter === "Next JS"}
+          onClick={() => setActiveFilter("Next JS")}
+          buttonRef={buttonRefs["Next JS"]}
+        >
+          <RollingText text="Next JS" />
         </FilterButton>
       </div>
 
