@@ -31,62 +31,70 @@ export default function Header() {
           JH
         </Link>
         
-        <ul className="text-text-secondary hidden gap-6 text-sm sm:flex">
-          <li className="group relative">
+        <ul className="text-text-secondary hidden gap-6 text-sm sm:flex">          <li className="group relative">
             <Link 
               className={pathname === '/' ? 'active-link' : ''} 
               href="/"
             >
-              <span className="relative inline-flex overflow-hidden">
+              <span className="relative inline-flex items-center overflow-hidden">
+                {pathname === '/' && (
+                  <div className="w-2 h-2 rounded-full bg-highlight-primary !mr-2 animate-pulse"></div>
+                )}
                 <div className="translate-y-0 skew-y-0 transform-gpu transition-transform duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12">
                   Home
                 </div>
-                <div className="text-text-primary absolute translate-y-[110%] skew-y-12 transform-gpu transition-transform duration-500 group-hover:translate-y-0 group-hover:skew-y-0">
+                <div className="text-text-primary absolute translate-y-[110%] skew-y-12 transform-gpu transition-transform duration-500 group-hover:translate-y-0 group-hover:skew-y-0 ml-6">
                   Home
                 </div>
               </span>
             </Link>
-          </li>
-          <li className="group relative">
+          </li>          <li className="group relative">
             <Link 
               className={pathname === '/about' ? 'active-link' : ''} 
               href="/about"
             >
-              <span className="relative inline-flex overflow-hidden">
+              <span className="relative inline-flex items-center overflow-hidden">
+                {pathname === '/about' && (
+                  <div className="w-2 h-2 rounded-full bg-highlight-primary !mr-2 animate-pulse"></div>
+                )}
                 <div className="translate-y-0 skew-y-0 transform-gpu transition-transform duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12">
                   About
                 </div>
-                <div className="text-text-primary absolute translate-y-[110%] skew-y-12 transform-gpu transition-transform duration-500 group-hover:translate-y-0 group-hover:skew-y-0">
+                <div className="text-text-primary absolute translate-y-[110%] skew-y-12 transform-gpu transition-transform duration-500 group-hover:translate-y-0 group-hover:skew-y-0 ml-6">
                   About
                 </div>
               </span>
             </Link>
-          </li>
-          <li className="group relative">
+          </li>          <li className="group relative">
             <Link 
               className={pathname === '/projects' ? 'active-link' : ''} 
               href="/projects"
             >
-              <span className="relative inline-flex overflow-hidden">
+              <span className="relative inline-flex items-center overflow-hidden">
+                {pathname === '/projects' && (
+                  <div className="w-2 h-2 rounded-full bg-highlight-primary !mr-2 animate-pulse"></div>
+                )}
                 <div className="translate-y-0 skew-y-0 transform-gpu transition-transform duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12">
                   Projects
                 </div>
-                <div className="text-text-primary absolute translate-y-[110%] skew-y-12 transform-gpu transition-transform duration-500 group-hover:translate-y-0 group-hover:skew-y-0">
+                <div className="text-text-primary absolute translate-y-[110%] skew-y-12 transform-gpu transition-transform duration-500 group-hover:translate-y-0 group-hover:skew-y-0 ml-6">
                   Projects
                 </div>
               </span>
             </Link>
-          </li>
-          <li className="group relative">
+          </li>          <li className="group relative">
             <Link 
               className={pathname === '/contact' ? 'active-link' : ''} 
               href="/contact"
             >
-              <span className="relative inline-flex overflow-hidden">
+              <span className="relative inline-flex items-center overflow-hidden">
+                {pathname === '/contact' && (
+                  <div className="w-2 h-2 rounded-full bg-highlight-primary !mr-2 animate-pulse"></div>
+                )}
                 <div className="translate-y-0 skew-y-0 transform-gpu transition-transform duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12">
                   Contact
                 </div>
-                <div className="text-text-primary absolute translate-y-[110%] skew-y-12 transform-gpu transition-transform duration-500 group-hover:translate-y-0 group-hover:skew-y-0">
+                <div className="text-text-primary absolute translate-y-[110%] skew-y-12 transform-gpu transition-transform duration-500 group-hover:translate-y-0 group-hover:skew-y-0 ml-6">
                   Contact
                 </div>
               </span>
