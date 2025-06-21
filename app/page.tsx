@@ -1,19 +1,31 @@
-import About from "@/components/sections/About"
-import Hero from "@/components/sections/Hero"
-import Marquee from "@/components/sections/Marquee"
-import Projects from "@/components/sections/Projects"
-import Services from "@/components/sections/Services"
-import Skills from "@/components/sections/Skills"
+import Header from '@/components/header'
+import HeroSection from '@/components/hero-section'
+import MarqueeSection from '@/components/marquee-section'
+import AboutSection from '@/components/about-section'
+import ProjectsSection from '@/components/projects-section'
+import ExpertiseSection from '@/components/expertise-section'
+import TestimonialsSection from '@/components/testimonials-section'
+import CTASection from '@/components/cta-section'
+import Footer from '@/components/footer'
+import MobileNav from '@/components/mobile-nav'
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <Marquee />
-      <Projects />
-      <About />
-      <Skills />
-      <Services />
-    </main>
+    <>
+      <Header />
+      <MobileNav />
+      <main className="grow">
+        <div className="revealFx relative flex w-full flex-col justify-center hideRevealFx" style={{transitionDuration:'1.5s',transform:'translateY(0rem)'}}>
+          <HeroSection />
+          <MarqueeSection />
+          <AboutSection />
+          <ProjectsSection />
+          <ExpertiseSection />
+          <TestimonialsSection />
+          <CTASection />
+        </div>
+      </main>
+      <Footer />
+    </>
   )
 }

@@ -1,47 +1,72 @@
 import type { Metadata } from "next"
-import { Inter, Instrument_Sans, Yellowtail } from "next/font/google"
+import localFont from "next/font/local"
 import "./globals.css"
-import SmoothScroll from "@/components/layout/SmoothScroll"
-import Cursor from "@/components/ui/Cursor"
-import Header from "@/components/layout/Header"
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: "100",
-  variable: "--font-inter",
+const satoshi = localFont({
+  src: "../public/fonts/satoshi/Satoshi-Variable.woff2",
+  variable: "--font-satoshi",
+  weight: "300 900",
 })
 
-const instrumentSans = Instrument_Sans({
-  subsets: ["latin"],
-  variable: "--font-instrument",
-})
-
-const yellowtail = Yellowtail({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-yellowtail",
+const clashDisplay = localFont({
+  src: "../public/fonts/clashdisplay/ClashDisplay-Variable.woff2",
+  variable: "--font-clash",
+  weight: "200 700",
 })
 
 export const metadata: Metadata = {
-  title: "Sendomoka ~ Front-end Developer and UI Designer",
-  description: "Jehian's personal website",
+  title: "Jehian — Software Engineer | UI/UX Designer",
+  description: "Discover a skilled Software Engineer and UI/UX Designer, renowned for creating impactful software that achieves exceptional results.",
+  keywords: "Jehian,Designer,Developer,Software Engineer,Web Development,Frontend Developer,Next.js Developer,UI/UX Designer,React Developer",
+  authors: [{ name: "Jehian" }],
+  creator: "Jehian",
+  publisher: "Jehian",
+  robots: "index, follow, nocache",
+  openGraph: {
+    title: "Jehian — Software Engineer | UI/UX Designer",
+    description: "Discover a skilled Software Engineer and UI/UX Designer, renowned for creating impactful software that achieves exceptional results.",
+    url: "https://jehian.me",
+    siteName: "Jehian",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "https://jehian.me",
+    creator: "@jehian",
+    title: "Jehian — Software Engineer | UI/UX Designer",
+    description: "Discover a skilled Software Engineer and UI/UX Designer, renowned for creating impactful software that achieves exceptional results.",
+  },
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${instrumentSans.variable} ${yellowtail.variable}`}
-    >
-      <body>
-        <Header />
-        <Cursor />
-        <SmoothScroll />
-        {children}
+    <html lang="en" className={`${satoshi.variable} ${clashDisplay.variable} dark`} suppressHydrationWarning>
+      <head>
+        <meta name="theme-color" content="#0a0a0a" />
+        <meta name="color-scheme" content="dark light" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+                  document.documentElement.className = document.documentElement.className.replace('dark', 'light')
+                } else {
+                  document.documentElement.className = document.documentElement.className.replace('light', 'dark')
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+      </head>
+      <body className="relative flex h-full min-h-dvh flex-col bg-bg-900 text-text-primary">
+        <div id="scroll-wrapper" className="flex grow flex-col">
+          {children}
+        </div>
       </body>
     </html>
   )
