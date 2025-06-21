@@ -38,7 +38,7 @@ export default function Header() {
             >
               <span className="relative inline-flex items-center overflow-hidden">
                 {pathname === '/' && (
-                  <div className="w-2 h-2 rounded-full bg-highlight-primary !mr-2 animate-pulse"></div>
+                  <div className="size-[6px] rounded-full bg-highlight-primary !mr-2 animate-pulse"></div>
                 )}
                 <div className="translate-y-0 skew-y-0 transform-gpu transition-transform duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12">
                   Home
@@ -55,7 +55,7 @@ export default function Header() {
             >
               <span className="relative inline-flex items-center overflow-hidden">
                 {pathname === '/about' && (
-                  <div className="w-2 h-2 rounded-full bg-highlight-primary !mr-2 animate-pulse"></div>
+                  <div className="size-[6px] rounded-full bg-highlight-primary !mr-2 animate-pulse"></div>
                 )}
                 <div className="translate-y-0 skew-y-0 transform-gpu transition-transform duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12">
                   About
@@ -72,7 +72,7 @@ export default function Header() {
             >
               <span className="relative inline-flex items-center overflow-hidden">
                 {pathname === '/projects' && (
-                  <div className="w-2 h-2 rounded-full bg-highlight-primary !mr-2 animate-pulse"></div>
+                  <div className="size-[6px] rounded-full bg-highlight-primary !mr-2 animate-pulse"></div>
                 )}
                 <div className="translate-y-0 skew-y-0 transform-gpu transition-transform duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12">
                   Projects
@@ -89,7 +89,7 @@ export default function Header() {
             >
               <span className="relative inline-flex items-center overflow-hidden">
                 {pathname === '/contact' && (
-                  <div className="w-2 h-2 rounded-full bg-highlight-primary !mr-2 animate-pulse"></div>
+                  <div className="size-[6px] rounded-full bg-highlight-primary !mr-2 animate-pulse"></div>
                 )}
                 <div className="translate-y-0 skew-y-0 transform-gpu transition-transform duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12">
                   Contact
