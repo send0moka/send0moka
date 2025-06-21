@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import "./globals.css"
+import DynamicFavicon from "@/components/dynamic-favicon"
 
 const satoshi = localFont({
   src: "../public/fonts/satoshi/Satoshi-Variable.woff2",
@@ -25,10 +26,21 @@ export const metadata: Metadata = {
   authors: [{ name: "Jehian" }],
   creator: "Jehian",
   publisher: "Jehian",
-  robots: "index, follow, nocache",
-  icons: {
-    icon: "/favicon.ico", // This will use our dynamic API route
-    apple: "/api/avatar",
+  robots: "index, follow, nocache",  icons: {
+    icon: [
+      {
+        url: "/favicon.ico",
+        sizes: "32x32",
+        type: "image/png",
+      },
+    ],
+    apple: [
+      {
+        url: "/api/avatar?s=180",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
   },
   openGraph: {
     title: "Jehian — Software Engineer | UI/UX Designer",
@@ -89,6 +101,7 @@ export default function RootLayout({
         />
       </head>
       <body className="relative flex h-full min-h-dvh flex-col bg-bg-900 text-text-primary">
+        <DynamicFavicon />
         <div id="scroll-wrapper" className="flex grow flex-col">
           {children}
         </div>

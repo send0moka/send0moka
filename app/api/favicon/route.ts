@@ -45,7 +45,7 @@ export async function GET() {
 
     return new NextResponse(roundedBuffer, {
       headers: {
-        "Content-Type": "image/png", // Use PNG instead of ICO for better quality
+        "Content-Type": "image/png",
         "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
       },
     })
