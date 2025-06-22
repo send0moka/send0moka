@@ -86,9 +86,21 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         marquee: "marquee 20s linear infinite",
       },
-    },
-  },
-  plugins: [],
+    },  },
+  plugins: [
+    function({ addBase }) {
+      addBase({
+        '::selection': {
+          backgroundColor: 'var(--highlight-primary)',
+          color: 'var(--background)',
+        },
+        '::-moz-selection': {
+          backgroundColor: 'var(--highlight-primary)',
+          color: 'var(--background)',
+        },
+      })
+    }
+  ],
 }
 
 export default config

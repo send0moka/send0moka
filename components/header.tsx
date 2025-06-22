@@ -25,7 +25,7 @@ function NavItem({ href, label, isActive }: NavItemProps) {
         className={isActive ? 'active-link' : ''} 
         href={href}
       >
-        <span className="relative inline-flex items-center overflow-hidden">
+        <span className={`relative inline-flex items-center overflow-hidden ${isActive ? '-translate-y-[1px]' : ''}`}>
           {isActive && (
             <div className="size-[6px] rounded-full bg-highlight-primary !mr-2 animate-pulse" />
           )}          <div className="translate-y-0 skew-y-0 transform-gpu transition-transform duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12">
@@ -70,7 +70,7 @@ export default function Header() {
           JH
         </Link>
         
-        <ul className="text-text-secondary hidden gap-6 text-sm sm:flex">
+        <ul className="text-text-secondary hidden gap-6 text-sm sm:flex items-center">
           {NAV_ITEMS.map((item) => (
             <NavItem
               key={item.href}

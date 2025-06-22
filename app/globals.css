@@ -1,12 +1,34 @@
 @import "tailwindcss";
 @import "tailwindcss/preflight";
 
+/* Text Selection Styling - Applied early to prevent override */
+*,
+*::before,
+*::after {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+::selection {
+  background: var(--highlight-primary) !important;
+  color: var(--background) !important;
+  text-shadow: none !important;
+}
+
+::-moz-selection {
+  background: var(--highlight-primary) !important;
+  color: var(--background) !important;
+  text-shadow: none !important;
+}
+
 :root {
   --radius: 0.625rem;
   --background: #0b0b0d;
-  --foreground: #eaebf3;
-  --text-primary: #eaebf3;
-  --text-secondary: #a1a1aa;
+  --foreground: #f7f8fa;
+  --text-primary: #f7f8fa;
+  --text-secondary: #a9a9bd;
   --bg-900: #0b0b0d;
   --bg-800: #111111;
   --bg-700: #262626;
@@ -19,9 +41,9 @@
 
 .dark {
   --background: #0b0b0d;
-  --foreground: #eaebf3;
-  --text-primary: #eaebf3;
-  --text-secondary: #a1a1aa;
+  --foreground: #f7f8fa;
+  --text-primary: #f7f8fa;
+  --text-secondary: #a9a9bd;
   --bg-900: #0b0b0d;
   --bg-800: #111111;
   --bg-700: #262626;
@@ -31,15 +53,15 @@
 }
 
 .light {
-  --background: #eaebf3;
+  --background: #f7f8fa;
   --foreground: #0b0b0d;
   --text-primary: #0b0b0d;
   --text-secondary: #525252;
-  --bg-900: #eaebf3;
+  --bg-900: #f7f8fa;
   --bg-800: #f4f4f5;
   --bg-700: #e4e4e7;
   --bg-600: #d4d4d8;
-  --highlight-primary: #b5ff6d;
+  --highlight-primary: #30af5b;
   --border-bg-700: #e4e4e7;
 }
 
