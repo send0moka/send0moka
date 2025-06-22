@@ -43,24 +43,72 @@ function NavItem({ href, label, isActive }: NavItemProps) {
 export default function Header() {
   const pathname = usePathname()
   const [isVisible, setIsVisible] = useState(false)
-
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [lastScrollY, setLastScrollY] = useState(0)
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300)
     return () => clearTimeout(timer)
   }, [])
+  // Only use native scroll for maxWidth responsiveness
+  useEffect(() => {
+    const handleNativeScroll = () => {
+      const scrollY = window.scrollY
+      const isScrollingUp = scrollY < lastScrollY
+      
+      // Three-level scroll system
+      let progress
+      if (isScrollingUp && scrollY < 25) {
+        progress = 0 // Immediate snap to full width when near top (1280px)
+      } else if (scrollY >= 25 && scrollY < 100) {
+        progress = 1 // First scroll level (940px)
+      } else if (scrollY >= 100) {
+        progress = 2 // Second scroll level (600px)
+      } else {
+        progress = 0 // Default to 1280px
+      }
+      
+      setScrollProgress(progress)
+      setLastScrollY(scrollY)
+    }
 
-  const navClasses = `max-screen pointer-events-auto flex w-full items-center justify-between gap-6 rounded-full px-4 !py-3 transition-all duration-600 sm:px-6 sm:py-3 ${
+    // Direct scroll event without RAF for maximum speed
+    window.addEventListener('scroll', handleNativeScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleNativeScroll)
+  }, [lastScrollY])
+  // Calculate maxWidth and styles based on scroll progress
+  const getNavStyles = () => {
+    if (scrollProgress === 0) {
+      return {
+        maxWidth: '1280px',
+        className: '',
+        backgroundColor: 'transparent'
+      }
+    } else if (scrollProgress === 1) {
+      return {
+        maxWidth: '940px',
+        className: '',
+        backgroundColor: 'transparent'
+      }
+    } else {
+      return {
+        maxWidth: '600px',
+        className: '!ring !ring-[#191920] rounded-full backdrop-blur-lg',
+        backgroundColor: 'rgba(11, 11, 13, 0.8)' // Dark background with transparency
+      }
+    }
+  }
+
+  const navStyles = getNavStyles()
+  const navClasses = `max-screen pointer-events-auto flex w-full items-center justify-between gap-6 px-4 !py-3 transition-all duration-600 sm:px-6 sm:py-3 ${navStyles.className} ${
     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5'
   }`
 
   return (
-    <header className="pointer-events-none sticky left-0 right-0 top-0 z-50 w-full px-0 !py-3">
-      <nav 
-        className={navClasses}
-        style={{
+    <header className="pointer-events-none sticky left-0 right-0 top-0 z-50 w-full px-0 !py-3">      <nav 
+        className={navClasses}        style={{
           width: '100%',
-          maxWidth: '1280px',
-          backgroundColor: 'transparent',
+          maxWidth: navStyles.maxWidth,
+          backgroundColor: navStyles.backgroundColor,
         }}
       >
         <Link 
