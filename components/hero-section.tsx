@@ -32,7 +32,7 @@ export default function HeroSection() {
       
       {/* Main Heading */}
       <div data-aos={AOSConfig.fade} data-aos-offset={AOSConfig.offset} data-aos-duration={AOSConfig.duration} data-aos-easing={AOSConfig.easing} data-aos-delay="200">
-        <h1 className="font-clash-display font-medium !text-7xl leading-none text-pretty md:text-6xl lg:w-3/4 lg:text-7xl">
+        <h1 className="font-clash-display !font-medium !text-7xl leading-none text-pretty md:text-6xl lg:w-3/4 lg:text-7xl">
           Crafting{' '}
           <span className="text-highlight-primary">purpose driven experiences</span>{' '}
           that inspire &amp; engage.
