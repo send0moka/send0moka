@@ -56,7 +56,7 @@ export default function HeroSection() {
               <li key={link.name} className="opacity-container-child h-fit">
                 <Link 
                   target="_blank" 
-                  className="flex-center text-text-secondary gap-2 text-sm uppercase transition-all duration-300 group-hover:opacity-50 hover:!opacity-100" 
+                  className="flex-center text-text-secondary gap-2 text-sm uppercase transition-all duration-500 group-hover:opacity-50 hover:!opacity-100" 
                   href={link.href}
                 >
                   {link.name}
@@ -65,16 +65,25 @@ export default function HeroSection() {
               </li>
             ))}
           </ul>
-          
-          <Link href="/about">
+            <Link href="/about">
             <button 
-              className="cursor-pointer btn ring-offset-background focus-visible:ring-highlight-primary whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 btn__outline" 
+              className="group cursor-pointer btn ring-offset-background focus-visible:ring-highlight-primary whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 btn__outline relative overflow-hidden" 
               type="button" 
               aria-disabled="false"
             >
-              <span className="btn__ripple" />
-              <span className="block overflow-hidden">
-                <span className="btn__text" data-attr="About me">Know me better</span>
+              <span className="btn__ripple" />              {/* Background yang muncul dari bawah */}
+              <span className="absolute inset-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" style={{backgroundColor: 'var(--foreground)'}} />
+              
+              {/* Text container */}
+              <span className="block overflow-hidden relative z-10">
+                {/* Text asli */}
+                <span className="btn__text block transform group-hover:-translate-y-full transition-transform duration-500 ease-out">
+                  Know me better
+                </span>
+                {/* Text hover yang muncul dari bawah */}
+                <span className="btn__text absolute inset-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" style={{color: 'var(--background)'}}>
+                  About me
+                </span>
               </span>
             </button>
           </Link>
