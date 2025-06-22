@@ -190,18 +190,35 @@ html, body {
 }
 
 .shimmer {
-  background: linear-gradient(45deg, var(--highlight-primary) 25%, transparent 25%);
-  background-size: 16px 16px;
-  animation: shimmer 1s linear infinite;
+  font-weight: 500;
+  color: transparent;
+  background: linear-gradient(
+    120deg,
+    var(--highlight-primary) 35%,
+    var(--highlight-primary) 35%,
+    rgba(255, 255, 255, 1) 40%,
+    rgba(255, 255, 255, 1) 60%,
+    var(--highlight-primary) 65%,
+    var(--highlight-primary) 65%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+  animation: shimmer 3s linear infinite;
 }
 
 @keyframes shimmer {
   0% {
-    background-position: 0px 0px;
+    background-position: 100%;
   }
   100% {
-    background-position: 16px 0px;
+    background-position: -100%;
   }
+}
+
+.shimmer.disabled {
+  animation: none;
 }
 
 .word-spacing {
