@@ -425,14 +425,7 @@ html, body {
 }
 
 .marquee-container .marquee-content {
-  animation: marqueeMove 20s linear infinite;
-}
-
-/* Make sure h2 and h5 have proper sizing */
-h2 {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  font-weight: 600;
+  animation: marqueeMove 70s linear infinite;
 }
 
 h5 {
@@ -451,4 +444,28 @@ h5 {
   h2 {
     font-size: 3.5rem;
   }
+}
+
+/* Gradient border for marquee section */
+.border-gradient {
+  position: relative;
+}
+
+.border-gradient::before,
+.border-gradient::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #2c2c35 25%, #2c2c35 75%, transparent 100%);
+  z-index: 1;
+}
+
+.border-gradient::before {
+  top: 0;
+}
+
+.border-gradient::after {
+  bottom: 0;
 }
