@@ -19,7 +19,7 @@ const AOSConfig = {
 
 export default function HeroSection() {
   return (
-    <section className="max-screen !py-24 flex flex-col gap-10">
+    <section className="max-screen !pt-24 flex flex-col gap-10">
       {/* Greeting */}
       <div data-aos={AOSConfig.fade} data-aos-offset={AOSConfig.offset} data-aos-duration={AOSConfig.duration} data-aos-easing={AOSConfig.easing} data-aos-delay="0">
         <p className="text-text-primary mb-8 flex items-center gap-2">

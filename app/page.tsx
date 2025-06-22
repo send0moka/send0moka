@@ -15,7 +15,7 @@ export default function Home() {
       <Header />
       <MobileNav />
       <main className="grow">
-        <div className="revealFx relative flex w-full flex-col justify-center hideRevealFx" style={{transitionDuration:'1.5s',transform:'translateY(0rem)'}}>
+        <div className="revealFx relative flex w-full flex-col gap-24 justify-center hideRevealFx" style={{transitionDuration:'1.5s',transform:'translateY(0rem)'}}>
           <HeroSection />
           <MarqueeSection />
           <AboutSection />
