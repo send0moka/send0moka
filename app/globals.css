@@ -209,13 +209,17 @@ html, body {
 }
 
 .wave {
-  animation: wave 1s ease-in-out infinite;
+  animation: wave 2s ease-in-out infinite;
+  transform-origin: 70% 70%;
 }
 
 @keyframes wave {
   0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(14deg); }
-  75% { transform: rotate(-14deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-3deg); }
+  30% { transform: rotate(17deg); }
+  40% { transform: rotate(-2deg); }
+  50%, 90% { transform: rotate(0deg); }
 }
 
 .opacity-container .opacity-container-child {
