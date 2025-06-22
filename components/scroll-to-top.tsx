@@ -1,11 +1,13 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useLenis } from "lenis/react"
 import { Button } from "@/components/ui/button"
 import { ArrowUp } from "lucide-react"
 
 export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false)
+  const lenis = useLenis()
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -21,10 +23,7 @@ export default function ScrollToTopButton() {
   }, [])
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    })
+    lenis?.scrollTo(0, { duration: 1.5 })
   }
 
   return (
