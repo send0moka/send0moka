@@ -34,10 +34,10 @@ export default function ThemeToggle() {
     )
   }return (
     <button
-      onClick={toggleTheme}      className={`cursor-pointer group flex h-9 w-9 items-center justify-center !rounded-full !border transition-all duration-300 hover:scale-105 ${
+      onClick={toggleTheme}      className={`cursor-pointer group flex h-9 w-9 items-center justify-center !rounded-full transition-all duration-300 hover:scale-105 ${
         isDark 
-          ? "!border-neutral-600 !bg-transparent hover:!border-neutral-400 hover:!bg-neutral-800" 
-          : "!border-neutral-300 !bg-transparent hover:border-highlight-primary hover:!bg-neutral-200"
+          ? "!bg-transparent hover:!bg-neutral-800" 
+          : "!bg-transparent hover:!bg-neutral-200"
       }`}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
