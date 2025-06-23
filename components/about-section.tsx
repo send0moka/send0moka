@@ -34,7 +34,7 @@ export default function AboutSection() {
           baseRotation={5}
           blurStrength={10}
         >
-          I&apos;m Jehian, with over 5+ years of experience in design & development with strong focus on producing high quality & impactful digital experiences. I have worked with some of the most innovative industry leaders to help build their top-notch products.
+          I&apos;m Jehian, with over 2+ years of experience in development & design with a strong focus on producing high quality and impactful digital experiences. I have worked with some innovative industry leaders to help build their best products.
         </ScrollReveal>
       </span>
     </section>

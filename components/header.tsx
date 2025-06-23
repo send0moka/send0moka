@@ -74,8 +74,7 @@ export default function Header() {
     // Direct scroll event without RAF for maximum speed
     window.addEventListener('scroll', handleNativeScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleNativeScroll)
-  }, [lastScrollY])
-  // Calculate maxWidth and styles based on scroll progress
+  }, [lastScrollY])  // Calculate maxWidth and styles based on scroll progress
   const getNavStyles = () => {
     if (scrollProgress === 0) {
       return {
@@ -92,8 +91,8 @@ export default function Header() {
     } else {
       return {
         maxWidth: '600px',
-        className: '!ring !ring-[#191920] rounded-full backdrop-blur-lg',
-        backgroundColor: 'rgba(11, 11, 13, 0.8)' // Dark background with transparency
+        className: 'rounded-full backdrop-blur-lg border border-bg-700',
+        backgroundColor: 'var(--bg-800)' // Uses CSS variable for both dark and light mode
       }
     }
   }

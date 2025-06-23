@@ -4,10 +4,10 @@ import Link from 'next/link'
 import { Hand, ArrowUpRight } from 'lucide-react'
 
 const SOCIAL_LINKS = [
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/jehian/' },
-  { name: 'GitHub', href: 'https://github.com/jehian' },
-  { name: 'Instagram', href: 'https://www.instagram.com/jehian/' },
-  { name: 'Gmail', href: 'mailto:hello@jehian.me' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/jehianth' },
+  { name: 'GitHub', href: 'https://github.com/send0moka' },
+  { name: 'Instagram', href: 'https://www.instagram.com/jehianth' },
+  { name: 'Gmail', href: 'mailto:jehianathayata@gmail.com' },
 ]
 
 const AOSConfig = {

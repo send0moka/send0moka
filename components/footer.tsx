@@ -5,11 +5,11 @@ import Link from "next/link"
 function Footer() {
   const currentYear = new Date().getFullYear()
   const socialLinks = [
-    { href: "https://www.linkedin.com/in/jehian/", label: "LinkedIn" },
-    { href: "https://github.com/jehian", label: "GitHub" },
-    { href: "https://www.instagram.com/jehian/", label: "Instagram" },
-    { href: "mailto:hello@jehian.me", label: "Gmail" },
-    { href: "https://twitter.com/jehian", label: "Twitter" },
+    { href: "https://www.linkedin.com/in/jehianth", label: "LinkedIn" },
+    { href: "https://github.com/send0moka", label: "GitHub" },
+    { href: "https://www.instagram.com/jehianth", label: "Instagram" },
+    { href: "mailto:jehianathayata@gmail.com", label: "Gmail" },
+    { href: "https://twitter.com/sendomoka", label: "Twitter" },
   ]
 
   return (
