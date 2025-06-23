@@ -91,7 +91,7 @@ export default function Header() {
     } else {
       return {
         maxWidth: '600px',
-        className: 'rounded-full backdrop-blur-lg border border-bg-700',
+        className: 'rounded-full backdrop-blur-lg !border !border-bg-700',
         backgroundColor: 'var(--bg-800)' // Uses CSS variable for both dark and light mode
       }
     }
