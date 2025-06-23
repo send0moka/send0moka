@@ -40,27 +40,6 @@ const projects = [
 ]
 
 export default function ProjectsSection() {
-  const renderAnimatedTitle = (title: string) => {
-    const words = title.split(' ')
-    return (
-      <h2 role="heading" className="mb-sm" style={{ opacity: 0 }}>
-        {words.map((word, wordIndex) => (
-          <span key={wordIndex} className="mr-[0.25em] inline-block overflow-y-hidden whitespace-nowrap">
-            {word.split('').map((char, charIndex) => (
-              <span 
-                key={charIndex} 
-                className="inline-block" 
-                style={{ opacity: 0, transform: 'translateY(10px)' }}
-              >
-                {char}
-              </span>
-            ))}
-          </span>
-        ))}
-      </h2>
-    )
-  }
-
   return (
     <section className="max-screen">
       <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="0">
@@ -73,11 +52,13 @@ export default function ProjectsSection() {
       </span>
       
       <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="200">
-        {renderAnimatedTitle('Selected Projects')}
+        <h2 className="!my-4 font-clash-display !text-5xl !font-medium text-text-primary">
+          Selected Projects
+        </h2>
       </span>
       
       <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="400">
-        <p data-aos-delay="3000" className="text-balance">
+        <p data-aos-delay="3000" className="text-text-secondary">
           Here&apos;s a curated selection showcasing my expertise and the achieved results.
         </p>
       </span>

@@ -27,7 +27,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Jehian" }],
   creator: "Jehian",
   publisher: "Jehian",
-  robots: "index, follow, nocache",  icons: {
+  robots: "index, follow, nocache",
+  icons: {
     icon: [
       {
         url: "/favicon.ico",

@@ -36,7 +36,8 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
       if (word.match(/^\s+$/)) return word
       return (
         <span className="inline-block word" key={index}>
-          {word}        </span>
+          {word}{" "}
+        </span>
       )
     })
   }, [children])
@@ -60,20 +61,20 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
 
     // Set element visible immediately
     gsap.set(el, { visibility: "visible" })
-    
+
     const wordElements = el.querySelectorAll<HTMLElement>(".word")
     console.log("ScrollReveal: Found", wordElements.length, "word elements")
-    
+
     if (wordElements.length === 0) {
       console.warn("ScrollReveal: No .word elements found")
       return
     }
 
     // Set initial states
-    gsap.set(wordElements, { 
+    gsap.set(wordElements, {
       opacity: baseOpacity,
       filter: enableBlur ? `blur(${blurStrength}px)` : "none",
-      willChange: "opacity, filter"
+      willChange: "opacity, filter",
     })
 
     // Container rotation animation
@@ -91,10 +92,10 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
           scrub: true,
           onUpdate: (self) => {
             console.log("Rotation progress:", self.progress)
-          }
+          },
         },
       }
-    )    // Opacity animation
+    ) // Opacity animation
     gsap.to(wordElements, {
       ease: "none",
       opacity: 1,
@@ -107,7 +108,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
         scrub: 1, // Added scrub delay for smoother animation
         onUpdate: (self) => {
           console.log("Opacity progress:", self.progress)
-        }
+        },
       },
     })
 
@@ -142,7 +143,11 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     blurStrength,
   ])
   return (
-    <h2 ref={containerRef} className={`!my-5 ${containerClassName}`} style={{ visibility: "hidden" }}>
+    <h2
+      ref={containerRef}
+      className={`!mt-5 !mb-20 ${containerClassName}`}
+      style={{ visibility: "hidden" }}
+    >
       <p
         className={`text-[clamp(1.6rem,4vw,2.4rem)] text-center leading-[1.5] font-medium ${textClassName}`}
       >
