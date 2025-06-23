@@ -2,6 +2,7 @@
 
 import { Sparkle } from 'lucide-react'
 import { useState } from 'react'
+import AnimateOnScroll from './animate-on-scroll'
 
 function TestimonialsSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -66,28 +67,27 @@ function TestimonialsSection() {
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length)
   }
-
   return (
     <section className="max-screen py-16 px-4">
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="0">
+      <AnimateOnScroll delay={0}>
         <div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
           <Sparkle size={18} />
           <p className="shimmer word-spacing font-clash-display text-sm uppercase leading-none text-highlight-primary">
             Testimonials
           </p>
         </div>
-      </span>
-      
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="200">
+      </AnimateOnScroll>
+        
+      <AnimateOnScroll delay={0.2}>
         {renderAnimatedTitle('What others say')}
-      </span>
+      </AnimateOnScroll>
 
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="400">        <p className="text-text-secondary mb-12 max-w-2xl">
+      <AnimateOnScroll delay={0.4}>
+        <p className="text-text-secondary mb-12 max-w-2xl">
           I&apos;ve worked with some amazing people over the years, here is what they have to say about me.
         </p>
-      </span>
-      
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="600">
+      </AnimateOnScroll>      
+      <AnimateOnScroll delay={0.6}>
         <div className="relative">
           <div className="flex overflow-hidden">
             <div 
@@ -146,25 +146,23 @@ function TestimonialsSection() {
               aria-label="Next slide"
             >
               <svg className="w-5 h-5 text-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />              </svg>
             </button>
           </div>
         </div>
-      </span>
+      </AnimateOnScroll>
 
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="800">
+      <AnimateOnScroll delay={0.8}>
         <div className="text-center mt-12">
           <a 
             href="https://www.linkedin.com/in/jehian/details/recommendations/"
-            target="_blank"
-            rel="noopener noreferrer"
+            target="_blank"            rel="noopener noreferrer"
             className="text-highlight-primary hover:underline font-satoshi"
           >
             Check it out on Linkedin
           </a>
         </div>
-      </span>
+      </AnimateOnScroll>
     </section>
   )
 }

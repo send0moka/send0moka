@@ -2,6 +2,7 @@
 
 import { Sparkle, CodeXml, PenTool, SwatchBook, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
+import AnimateOnScroll from './animate-on-scroll'
 
 function ExpertiseSection() {
   const [activeAccordion, setActiveAccordion] = useState<string | null>('development')
@@ -36,22 +37,20 @@ function ExpertiseSection() {
     setActiveAccordion(activeAccordion === id ? null : id)
   }
 
-  return (
-    <section className="max-screen py-16 px-4">
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="0">
+  return (    <section className="max-screen py-16 px-4">
+      <AnimateOnScroll delay={0} duration={0.6}>
         <div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
           <Sparkle size={18} />
           <p className="shimmer word-spacing font-clash-display text-sm uppercase leading-none text-highlight-primary">
             Speciality
           </p>
         </div>
-      </span>
-      
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="200">
+      </AnimateOnScroll>
+        <AnimateOnScroll delay={0.2} duration={0.6}>
         {renderAnimatedTitle('Areas of Expertise')}
-      </span>
+      </AnimateOnScroll>
       
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="400">
+      <AnimateOnScroll delay={0.4} duration={0.6}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
           <div className="w-full space-y-4">            {/* Development Accordion */}
             <div className="border border-bg-700 bg-bg-800 mb-4 rounded-2xl overflow-hidden">
@@ -132,8 +131,7 @@ function ExpertiseSection() {
             </div>
           </div>
           
-          {/* Image placeholder */}
-          <div className="group relative aspect-square lg:aspect-video h-full w-full overflow-hidden rounded-3xl bg-bg-800">
+          {/* Image placeholder */}          <div className="group relative aspect-square lg:aspect-video h-full w-full overflow-hidden rounded-3xl bg-bg-800">
             <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-br from-highlight-primary/20 to-transparent flex items-center justify-center">
               <div className="text-center">
                 {activeAccordion === 'development' && <CodeXml size={64} className="text-highlight-primary mx-auto mb-4" />}
@@ -150,10 +148,10 @@ function ExpertiseSection() {
             </div>
           </div>
         </div>
-      </span>
+      </AnimateOnScroll>
       
       {/* Skills Grid */}
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="600">
+      <AnimateOnScroll delay={0.6} duration={0.6}>
         <div className="relative mt-16 overflow-hidden">
           <div className="overflow-hidden py-8">
             <div className="flex animate-marquee gap-4 w-max">
@@ -178,13 +176,12 @@ function ExpertiseSection() {
                 </div>
               ))}
             </div>
-            
-            {/* Gradient overlays */}
+              {/* Gradient overlays */}
             <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-bg-900 to-transparent"></div>
             <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-bg-900 to-transparent"></div>
           </div>
         </div>
-      </span>
+      </AnimateOnScroll>
     </section>
   )
 }

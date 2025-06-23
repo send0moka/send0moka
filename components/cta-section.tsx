@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link"
+import AnimateOnScroll from "./animate-on-scroll"
 
 function CTASection() {
   const renderAnimatedTitle = (title: string) => {
@@ -25,17 +26,16 @@ function CTASection() {
 
   return (
     <section className="max-screen py-20 px-4 text-center">
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="0">
+      <AnimateOnScroll delay={0} duration={0.6}>
         <div className="inline-block px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-8 font-satoshi">
           Available for work
         </div>
-      </span>
-      
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="200">
+      </AnimateOnScroll>
+        <AnimateOnScroll delay={0.2} duration={0.6}>
         {renderAnimatedTitle("Let's create your next big idea.")}
-      </span>
+      </AnimateOnScroll>
       
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="400">
+      <AnimateOnScroll delay={0.4} duration={0.6}>
         <div className="pt-8">
           <Link 
             href="/contact"
@@ -47,7 +47,7 @@ function CTASection() {
             </span>
           </Link>
         </div>
-      </span>
+      </AnimateOnScroll>
     </section>
   )
 }

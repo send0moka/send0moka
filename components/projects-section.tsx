@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Sparkle } from 'lucide-react'
+import AnimateOnScroll from './animate-on-scroll'
 
 const projects = [
   {
@@ -42,32 +43,32 @@ const projects = [
 export default function ProjectsSection() {
   return (
     <section className="max-screen">
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="0">
+      <AnimateOnScroll delay={0} duration={0.6}>
         <div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
           <Sparkle size={18} />
           <p className="shimmer word-spacing font-clash-display text-sm uppercase leading-none text-highlight-primary">
             My Work
           </p>
         </div>
-      </span>
+      </AnimateOnScroll>
       
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="200">
+      <AnimateOnScroll delay={0.2} duration={0.6}>
         <h2 className="!my-4 font-clash-display !text-5xl !font-medium text-text-primary">
           Selected Projects
         </h2>
-      </span>
+      </AnimateOnScroll>
       
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="400">
-        <p data-aos-delay="3000" className="text-text-secondary">
+      <AnimateOnScroll delay={0.4} duration={0.6}>
+        <p className="text-text-secondary">
           Here&apos;s a curated selection showcasing my expertise and the achieved results.
         </p>
-      </span>
+      </AnimateOnScroll>
       
       <div className="opacity-container py-md grid grid-cols-1 grid-rows-[masonry] gap-y-10 sm:grid-cols-2 sm:gap-x-16 sm:gap-y-0">
         {projects.map((project, index) => (
-          <div key={index} className="opacity-container-child group h-fit w-full cursor-pointer sm:even:mt-14">
-            <Link className="h-fit w-full" href={project.href}>
-              <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="0">
+          <AnimateOnScroll key={index} delay={0.6 + (index * 0.1)} duration={0.6}>
+            <div className="opacity-container-child group h-fit w-full cursor-pointer sm:even:mt-14">
+              <Link className="h-fit w-full" href={project.href}>
                 <div 
                   style={{ backgroundColor: project.bgColor }} 
                   className="aspect-3/2 w-full overflow-hidden rounded-3xl"
@@ -80,9 +81,7 @@ export default function ProjectsSection() {
                     src={project.image}
                   />
                 </div>
-              </span>
-              
-              <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="200">
+                
                 <div className="mt-4 space-y-2">
                   <h5>{project.title}</h5>
                   <div className="flex justify-between">
@@ -92,13 +91,13 @@ export default function ProjectsSection() {
                     <p className="text-sm text-text-secondary">{project.year}</p>
                   </div>
                 </div>
-              </span>
-            </Link>
-          </div>
+              </Link>
+            </div>
+          </AnimateOnScroll>
         ))}
       </div>
       
-      <span data-aos="fade" data-aos-offset="0" data-aos-duration="300" data-aos-easing="ease-in-out-sine" data-aos-delay="0">
+      <AnimateOnScroll delay={1.0} duration={0.6}>
         <Link href="/projects">
           <button 
             className="btn ring-offset-background focus-visible:ring-highlight-primary whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 btn__outline m-auto block" 
@@ -111,7 +110,7 @@ export default function ProjectsSection() {
             </span>
           </button>
         </Link>
-      </span>
+      </AnimateOnScroll>
     </section>
   )
 }

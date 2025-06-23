@@ -23,8 +23,7 @@ export default function Home() {
           <ExpertiseSection />
           <TestimonialsSection />
           <CTASection />
-        </div>
-      </main>
+        </div>      </main>
       <Footer />
     </>
   )

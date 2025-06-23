@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { Hand, ArrowUpRight } from "lucide-react"
+import AnimateOnScroll from "./animate-on-scroll"
 
 const SOCIAL_LINKS = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/jehianth" },
@@ -10,40 +11,21 @@ const SOCIAL_LINKS = [
   { name: "Gmail", href: "mailto:jehianathayata@gmail.com" },
 ]
 
-const AOSConfig = {
-  fade: "fade",
-  offset: "0",
-  duration: "300",
-  easing: "ease-in-out-sine",
-}
-
 export default function HeroSection() {
   return (
     <section className="max-screen !pt-24 flex flex-col gap-10">
       {/* Greeting */}
-      <div
-        data-aos={AOSConfig.fade}
-        data-aos-offset={AOSConfig.offset}
-        data-aos-duration={AOSConfig.duration}
-        data-aos-easing={AOSConfig.easing}
-        data-aos-delay="0"
-      >
+      <AnimateOnScroll delay={0} duration={0.6}>
         <p className="text-text-primary mb-8 flex items-center gap-2">
           <span className="wave">
             <Hand className="text-highlight-primary" size={24} />
           </span>
           Hey! It&apos;s me Jehian,
         </p>
-      </div>
+      </AnimateOnScroll>
 
       {/* Main Heading */}
-      <div
-        data-aos={AOSConfig.fade}
-        data-aos-offset={AOSConfig.offset}
-        data-aos-duration={AOSConfig.duration}
-        data-aos-easing={AOSConfig.easing}
-        data-aos-delay="200"
-      >
+      <AnimateOnScroll delay={0.2} duration={0.6}>
         <h1 className="font-clash-display !font-medium !text-7xl leading-none text-pretty md:text-6xl lg:w-3/4 lg:text-7xl">
           Crafting{" "}
           <span className="text-highlight-primary">
@@ -51,16 +33,10 @@ export default function HeroSection() {
           </span>{" "}
           that inspire &amp; engage.
         </h1>
-      </div>
+      </AnimateOnScroll>
 
       {/* Description */}
-      <div
-        data-aos={AOSConfig.fade}
-        data-aos-offset={AOSConfig.offset}
-        data-aos-duration={AOSConfig.duration}
-        data-aos-easing={AOSConfig.easing}
-        data-aos-delay="400"
-      >
+      <AnimateOnScroll delay={0.4} duration={0.6}>
         <div className="md:flex-center mt-8 flex flex-col items-center gap-4 md:flex-row">
           <div className="bg-bg-700 h-px w-full" />
           <p className="w-full text-pretty text-text-secondary">
@@ -69,16 +45,8 @@ export default function HeroSection() {
             business goals.
           </p>
         </div>
-      </div>
-
-      {/* Social Links & CTA */}
-      <div
-        data-aos={AOSConfig.fade}
-        data-aos-offset={AOSConfig.offset}
-        data-aos-duration={AOSConfig.duration}
-        data-aos-easing={AOSConfig.easing}
-        data-aos-delay="600"
-      >
+      </AnimateOnScroll>      {/* Social Links & CTA */}
+      <AnimateOnScroll delay={0.6} duration={0.6}>
         <div className="mt-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
           {" "}
           <ul className="opacity-container hidden h-fit gap-4 md:flex group">
@@ -124,7 +92,7 @@ export default function HeroSection() {
             </button>
           </Link>
         </div>
-      </div>
+      </AnimateOnScroll>
     </section>
   )
 }

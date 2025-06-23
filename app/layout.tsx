@@ -90,15 +90,7 @@ export default function RootLayout({
         <meta name="color-scheme" content="dark light" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                if (localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
-                  document.documentElement.className = document.documentElement.className.replace('dark', 'light')
-                } else {
-                  document.documentElement.className = document.documentElement.className.replace('light', 'dark')
-                }
-              } catch (_) {}
-            `,
+            __html: `try{if(localStorage.theme==='light'||(!('theme' in localStorage)&&window.matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.className=document.documentElement.className.replace('dark','light')}else{document.documentElement.className=document.documentElement.className.replace('light','dark')}}catch(_){}`,
           }}
         />
       </head>

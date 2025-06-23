@@ -2,32 +2,21 @@
 
 import { Sparkle } from "lucide-react"
 import ScrollReveal from "./ui/scroll-reveal"
+import AnimateOnScroll from "./animate-on-scroll"
 
 export default function AboutSection() {
   return (
     <section className="max-screen flex-center flex-col">
-      <span
-        data-aos="fade"
-        data-aos-offset="0"
-        data-aos-duration="300"
-        data-aos-easing="ease-in-out-sine"
-        data-aos-delay="0"
-      >
+      <AnimateOnScroll delay={0} duration={0.6}>
         <div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
           <Sparkle size={18} />
           <p className="shimmer word-spacing font-clash-display text-sm uppercase leading-none text-highlight-primary">
             About Me
           </p>
         </div>
-      </span>
+      </AnimateOnScroll>
 
-      <span
-        data-aos="fade"
-        data-aos-offset="0"
-        data-aos-duration="300"
-        data-aos-easing="ease-in-out-sine"
-        data-aos-delay="200"
-      >
+      <AnimateOnScroll delay={0.2} duration={0.6}>
         <ScrollReveal
           baseOpacity={0}
           enableBlur={true}
@@ -39,7 +28,7 @@ export default function AboutSection() {
           digital experiences. I have worked with some innovative industry
           leaders to help build their best products.
         </ScrollReveal>
-      </span>
+      </AnimateOnScroll>
     </section>
   )
 }
