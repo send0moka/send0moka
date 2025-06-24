@@ -98,13 +98,13 @@ export default function Header() {
       return {
         maxWidth: "600px",
         className: "rounded-full backdrop-blur-lg !border !border-bg-700",
-        backgroundColor: "var(--bg-800)", // Uses CSS variable for both dark and light mode
+        backgroundColor: "var(--bg-900)", // Uses CSS variable for both dark and light mode
       }
     }
   }
 
   const navStyles = getNavStyles()
-  const navClasses = `max-screen pointer-events-auto flex w-full items-center justify-between gap-6 px-4 !py-3 transition-all duration-600 sm:px-6 sm:py-3 ${
+  const navClasses = `max-screen pointer-events-auto flex w-full items-center justify-between gap-6 px-4 !py-[6px] transition-all duration-600 sm:px-6 ${
     navStyles.className
   } ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"}`
 
