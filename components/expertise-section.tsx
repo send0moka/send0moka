@@ -37,7 +37,7 @@ function ExpertiseSection() {
     setActiveAccordion(activeAccordion === id ? null : id)
   }
 
-  return (    <section className="max-screen py-16 px-4">
+  return (    <section className="max-screen py-16 px-4 !mt-28">
       <AnimateOnScroll delay={0} duration={0.6}>
         <div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
           <Sparkle size={18} />
