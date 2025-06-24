@@ -2,8 +2,8 @@
 
 Undergraduate Informatics Student at Jenderal Soedirman University. I'm passionate about creating things whether websites, applications or side projects. I enjoy tinkering with backend development and am currently focused on grinding my JavaScript/TypeScript skills. In the future, I aim to learn Zig or Go. I consider myself a lifelong learner - constantly keeping up with new technologies and looking for opportunities to continue growing.
 
-- 📫 How to reach me: ![jehianathayata@gmail.com](mailto:jehianathayata@gmail.com)
-- 🎨 My personal website : ![jehian.me](https://jehian.me)
+- 📫 How to reach me: [jehianathayata@gmail.com](mailto:jehianathayata@gmail.com)
+- 🎨 My personal website : [jehian.me](https://jehian.me)
 - ⚡ Fun fact: 
     - send0moka stands for "sending zero moka (coffee)"
     - Sometimes play hsr & valo
