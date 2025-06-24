@@ -527,3 +527,16 @@ svg {
     display: none;
   }
 }
+
+/* Projects hover effect */
+.projects-hover-container .project-card {
+  transition: opacity 0.3s ease;
+}
+
+.projects-hover-container:hover .project-card {
+  opacity: 0.5;
+}
+
+.projects-hover-container .project-card:hover {
+  opacity: 1 !important;
+}
