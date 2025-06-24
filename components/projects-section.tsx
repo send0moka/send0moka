@@ -1,43 +1,168 @@
-'use client'
+"use client"
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { Sparkle } from 'lucide-react'
-import AnimateOnScroll from './animate-on-scroll'
+import Link from "next/link"
+import Image from "next/image"
+import { Sparkle } from "lucide-react"
+import AnimateOnScroll from "./animate-on-scroll"
 
 const projects = [
+  // 2025 Projects
   {
-    title: 'Aora',
-    category: 'Development',
-    year: '2024',
-    image: '/projects/aora.svg',
-    bgColor: 'rgba(254, 243, 199)',
-    href: '/projects/aora'
+    title: "Hiota",
+    category: "Design",
+    year: "2025",
+    image: "/projects/hiota.svg",
+    href: "/projects/hiota",
   },
   {
-    title: 'Code Screenshot',
-    category: 'Development & Design',
-    year: '2024',
-    image: '/projects/codescreenshot.svg',
-    bgColor: 'rgba(251, 207, 232)',
-    href: '/projects/code-screenshot'
+    title: "Ga Cemas Lagi!",
+    category: "Development",
+    year: "2025",
+    image: "/projects/gacemaslagi.svg",
+    href: "/projects/gacemaslagi",
   },
   {
-    title: 'iPhone 15 Pro',
-    category: 'Development & Design',
-    year: '2024',
-    image: '/projects/iphone15.svg',
-    bgColor: 'rgba(231, 229, 228)',
-    href: '/projects/iphone'
+    title: "ATM Lestari",
+    category: "Design",
+    year: "2025",
+    image: "/projects/atm-lestari.svg",
+    href: "/projects/atm-lestari",
   },
   {
-    title: 'Ochi Design',
-    category: 'Development & Design',
-    year: '2024',
-    image: '/projects/ochidesign.svg',
-    bgColor: 'rgba(187, 247, 208)',
-    href: '/projects/ochi-design'
-  }
+    title: "Siklus",
+    category: "Design",
+    year: "2025",
+    image: "/projects/siklus.svg",
+    href: "/projects/siklus",
+  },
+  {
+    title: "Nucifero",
+    category: "Design",
+    year: "2025",
+    image: "/projects/nucifero.svg",
+    href: "/projects/nucifero",
+  },
+  {
+    title: "Petir Desa ID",
+    category: "Development",
+    year: "2025",
+    image: "/projects/petir-desaid.svg",
+    href: "/projects/petir-desaid",
+  },
+  {
+    title: "Petir Bercerita",
+    category: "Development",
+    year: "2025",
+    image: "/projects/petir-bercerita.svg",
+    href: "/projects/petir-bercerita",
+  },
+  // 2024 Projects
+  {
+    title: "Kiosk Queue RS Elisabeth",
+    category: "Development & Design",
+    year: "2024",
+    image: "/projects/kiosk-rse.svg",
+    href: "/projects/kiosk-rse",
+  },
+  {
+    title: "Temulik",
+    category: "Development & Design",
+    year: "2024",
+    image: "/projects/temulik.svg",
+    href: "/projects/temulik",
+  },
+  {
+    title: "Wedding Invitation",
+    category: "Development",
+    year: "2024",
+    image: "/projects/wedding-invitation.svg",
+    href: "/projects/wedding-invitation",
+  },
+  {
+    title: "Soeara",
+    category: "Development & Design",
+    year: "2024",
+    image: "/projects/soeara.svg",
+    href: "/projects/soeara",
+  },
+  {
+    title: "Flobamora",
+    category: "Development & Design",
+    year: "2024",
+    image: "/projects/flobamora.svg",
+    href: "/projects/flobamora",
+  },
+  {
+    title: "Coinversity",
+    category: "Design",
+    year: "2024",
+    image: "/projects/coinversity.svg",
+    href: "/projects/coinversity",
+  },
+  {
+    title: "Soedirman Digital School 2024",
+    category: "Development",
+    year: "2024",
+    image: "/projects/sds-2024.svg",
+    href: "/projects/sds-2024",
+  },
+  {
+    title: "Analista101",
+    category: "Development",
+    year: "2024",
+    image: "/projects/analista101.svg",
+    href: "/projects/analista101",
+  },
+  {
+    title: "DBMS Creative",
+    category: "Development",
+    year: "2024",
+    image: "/projects/dbms-creative.svg",
+    href: "/projects/dbms-creative",
+  },
+  {
+    title: "AOT Rumbling Simulation",
+    category: "Development & Design",
+    year: "2024",
+    image: "/projects/aot-rumbling.svg",
+    href: "/projects/aot-rumbling",
+  },
+  // 2023 Projects
+  {
+    title: "EduEval",
+    category: "Design",
+    year: "2023",
+    image: "/projects/edueval.svg",
+    href: "/projects/edueval",
+  },
+  {
+    title: "Soedirman Digital School 2023",
+    category: "Development",
+    year: "2023",
+    image: "/projects/sds-2023.svg",
+    href: "/projects/sds-2023",
+  },
+  {
+    title: "Riseru Hobbyshop",
+    category: "Development",
+    year: "2023",
+    image: "/projects/riseru.svg",
+    href: "/projects/riseru",
+  },
+  {
+    title: "JBKons Architecture",
+    category: "Development",
+    year: "2023",
+    image: "/projects/jbkons.svg",
+    href: "/projects/jbkons",
+  },
+  {
+    title: "Zeta Voicepack",
+    category: "Development",
+    year: "2023",
+    image: "/projects/zeta-voicepack.svg",
+    href: "/projects/zeta-voicepack",
+  },
 ]
 
 export default function ProjectsSection() {
@@ -51,44 +176,53 @@ export default function ProjectsSection() {
           </p>
         </div>
       </AnimateOnScroll>
-      
+
       <AnimateOnScroll delay={0.2} duration={0.6}>
         <h2 className="!my-4 font-clash-display !text-5xl !font-medium text-text-primary">
           Selected Projects
         </h2>
       </AnimateOnScroll>
-      
+
       <AnimateOnScroll delay={0.4} duration={0.6}>
         <p className="text-text-secondary">
-          Here&apos;s a curated selection showcasing my expertise and the achieved results.
+          Here&apos;s a curated selection showcasing my expertise and the
+          achieved results.
         </p>
       </AnimateOnScroll>
-      
+
       <div className="opacity-container py-md grid grid-cols-1 grid-rows-[masonry] gap-y-10 sm:grid-cols-2 sm:gap-x-16 sm:gap-y-0">
         {projects.map((project, index) => (
-          <AnimateOnScroll key={index} delay={0.6 + (index * 0.1)} duration={0.6}>
+          <AnimateOnScroll key={index} delay={0.6 + index * 0.1} duration={0.6}>
             <div className="opacity-container-child group h-fit w-full cursor-pointer sm:even:mt-14">
               <Link className="h-fit w-full" href={project.href}>
-                <div 
-                  style={{ backgroundColor: project.bgColor }} 
+                <div
                   className="aspect-3/2 w-full overflow-hidden rounded-3xl"
-                >
-                  <Image
+                >                  <Image
                     alt={project.title}
-                    width={600}
-                    height={400}
-                    className="aspect-3/2 w-full object-cover transition duration-300 group-hover:scale-[1.015]"
+                    width={1896}
+                    height={1269}
+                    className={`aspect-3/2 w-full object-cover transition duration-300 group-hover:scale-[1.015] ${
+                      project.image.endsWith('.svg') ? 'svg-crisp' : ''
+                    }`}
                     src={project.image}
+                    style={{
+                      imageRendering: project.image.endsWith('.svg') ? 'crisp-edges' : 'auto',
+                    }}
+                    priority={index < 2}
                   />
                 </div>
-                
+
                 <div className="mt-4 space-y-2">
                   <h5>{project.title}</h5>
                   <div className="flex justify-between">
                     <div className="flex flex-wrap gap-2">
-                      <p className="text-sm text-text-secondary">{project.category}</p>
+                      <p className="text-sm text-text-secondary">
+                        {project.category}
+                      </p>
                     </div>
-                    <p className="text-sm text-text-secondary">{project.year}</p>
+                    <p className="text-sm text-text-secondary">
+                      {project.year}
+                    </p>
                   </div>
                 </div>
               </Link>
@@ -96,17 +230,19 @@ export default function ProjectsSection() {
           </AnimateOnScroll>
         ))}
       </div>
-      
+
       <AnimateOnScroll delay={1.0} duration={0.6}>
         <Link href="/projects">
-          <button 
-            className="btn ring-offset-background focus-visible:ring-highlight-primary whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 btn__outline m-auto block" 
-            type="button" 
+          <button
+            className="btn ring-offset-background focus-visible:ring-highlight-primary whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 btn__outline m-auto block"
+            type="button"
             aria-disabled="false"
           >
             <span className="btn__ripple"></span>
             <span className="block overflow-hidden">
-              <span className="btn__text" data-attr="View All Projects">View All Projects</span>
+              <span className="btn__text" data-attr="View All Projects">
+                View All Projects
+              </span>
             </span>
           </button>
         </Link>
