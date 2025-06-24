@@ -3,6 +3,7 @@ import localFont from "next/font/local"
 import "./globals.css"
 import DynamicFavicon from "@/components/dynamic-favicon"
 import SmoothScroll from "@/components/smooth-scroll"
+import VignetteOverlay from "@/components/vignette-overlay"
 
 const satoshi = localFont({
   src: "../public/fonts/satoshi/Satoshi-Variable.woff2",
@@ -96,6 +97,7 @@ export default function RootLayout({
       </head>
       <body className="relative flex h-full min-h-dvh flex-col bg-bg-900 text-text-primary">
         <DynamicFavicon />
+        <VignetteOverlay />
         <SmoothScroll>
           <div id="scroll-wrapper" className="flex grow flex-col">
             {children}

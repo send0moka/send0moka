@@ -30,6 +30,7 @@
   --text-primary: #f7f8fa;
   --text-secondary: #a9a9bd;
   --bg-900: #0b0b0d;
+  --bg-900-rgb: 11, 11, 13;
   --bg-800: #111111;
   --bg-700: #262626;
   --bg-600: #525252;
@@ -45,6 +46,7 @@
   --text-primary: #f7f8fa;
   --text-secondary: #a9a9bd;
   --bg-900: #0b0b0d;
+  --bg-900-rgb: 11, 11, 13;
   --bg-800: #111111;
   --bg-700: #262626;
   --bg-600: #525252;
@@ -58,6 +60,7 @@
   --text-primary: #0b0b0d;
   --text-secondary: #525252;
   --bg-900: #f7f8fa;
+  --bg-900-rgb: 247, 248, 250;
   --bg-800: #f4f4f5;
   --bg-700: #e4e4e7;
   --bg-600: #d4d4d8;
@@ -471,4 +474,56 @@ svg {
   shape-rendering: geometricPrecision;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+}
+
+/* Vignette overlay styles */
+.vignette-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+}
+
+.vignette-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--bg-900) 0%, var(--bg-900) 15%, rgba(var(--bg-900-rgb), 0.8) 35%, rgba(var(--bg-900-rgb), 0.4) 65%, transparent 100%);
+}
+
+.vignette-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, var(--bg-900) 0%, var(--bg-900) 15%, rgba(var(--bg-900-rgb), 0.8) 35%, rgba(var(--bg-900-rgb), 0.4) 65%, transparent 100%);
+}
+
+.vignette-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  background: linear-gradient(to right, var(--bg-900) 0%, var(--bg-900) 15%, rgba(var(--bg-900-rgb), 0.8) 35%, rgba(var(--bg-900-rgb), 0.4) 65%, transparent 100%);
+}
+
+.vignette-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  background: linear-gradient(to left, var(--bg-900) 0%, var(--bg-900) 15%, rgba(var(--bg-900-rgb), 0.8) 35%, rgba(var(--bg-900-rgb), 0.4) 65%, transparent 100%);
+}
+
+/* Mobile responsive - hide left/right vignettes on mobile */
+@media (max-width: 639px) {
+  .vignette-left,
+  .vignette-right {
+    display: none;
+  }
 }
