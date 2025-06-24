@@ -176,35 +176,35 @@ export default function ProjectsSection() {
           </p>
         </div>
       </AnimateOnScroll>
-
       <AnimateOnScroll delay={0.2} duration={0.6}>
         <h2 className="!my-4 font-clash-display !text-5xl !font-medium text-text-primary">
           Selected Projects
         </h2>
       </AnimateOnScroll>
-
       <AnimateOnScroll delay={0.4} duration={0.6}>
         <p className="text-text-secondary">
           Here&apos;s a curated selection showcasing my expertise and the
           achieved results.
         </p>
-      </AnimateOnScroll>      <div className="opacity-container py-md grid grid-cols-1 grid-rows-[masonry] gap-y-10 sm:grid-cols-2 sm:gap-x-16 sm:gap-y-0 projects-hover-container">
+      </AnimateOnScroll>
+      <div className="opacity-container py-md grid grid-cols-1 grid-rows-[masonry] gap-y-10 sm:grid-cols-2 sm:gap-x-16 sm:gap-y-0 projects-hover-container">
         {projects.map((project, index) => (
           <AnimateOnScroll key={index} delay={0.6 + index * 0.1} duration={0.6}>
             <div className="opacity-container-child group project-card h-fit w-full cursor-pointer sm:even:mt-14">
               <Link className="h-fit w-full" href={project.href}>
-                <div
-                  className="aspect-3/2 w-full overflow-hidden rounded-3xl"
-                >                  <Image
+                <div className="aspect-3/2 w-full overflow-hidden rounded-3xl">
+                  <Image
                     alt={project.title}
                     width={1896}
                     height={1269}
                     className={`aspect-3/2 w-full object-cover transition duration-300 group-hover:scale-[1.015] ${
-                      project.image.endsWith('.svg') ? 'svg-crisp' : ''
+                      project.image.endsWith(".svg") ? "svg-crisp" : ""
                     }`}
                     src={project.image}
                     style={{
-                      imageRendering: project.image.endsWith('.svg') ? 'crisp-edges' : 'auto',
+                      imageRendering: project.image.endsWith(".svg")
+                        ? "crisp-edges"
+                        : "auto",
                     }}
                     priority={index < 2}
                   />
@@ -227,7 +227,8 @@ export default function ProjectsSection() {
             </div>
           </AnimateOnScroll>
         ))}
-      </div>      <AnimateOnScroll delay={1.0} duration={0.6}>
+      </div>
+      <AnimateOnScroll delay={1.0} duration={0.6}>
         <div className="flex justify-center items-center">
           <Link href="/projects">
             <button
