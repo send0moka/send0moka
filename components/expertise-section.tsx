@@ -86,31 +86,31 @@ function ExpertiseSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 !mt-12">
           <div className="w-full !space-y-4">
             {/* Development Accordion */}
-            <div className="!border !border-[#191920] !bg-[#111116] !p-4 rounded-2xl overflow-hidden">
-              <button
-                type="button"
-                className="w-full font-satoshi text-text-primary flex items-center justify-between gap-2 p-6 text-left text-lg font-medium transition-all duration-300 hover:bg-bg-700"
-                onClick={() => toggleAccordion("development")}
-              >
+            <div 
+              className="!border !border-[#191920] !bg-[#111116] !p-4 rounded-2xl overflow-hidden cursor-pointer"
+              onClick={() => toggleAccordion("development")}
+            >
+              <div className="w-full font-satoshi text-text-primary flex items-center justify-between gap-2 p-6 text-left text-lg font-medium transition-all duration-300 hover:bg-bg-700">
                 <div className="flex items-center gap-3 font-medium">
                   <CodeXml size={20} />
                   Development
                 </div>
                 <ChevronDown
-                  className={`h-5 w-5 shrink-0 transition-transform duration-500 ease-out ${
+                  className={`h-5 w-5 shrink-0 transition-transform duration-300 ease-in-out ${
                     activeAccordion === "development" ? "rotate-180" : ""
                   }`}
                 />
-              </button>
+              </div>
               <div 
-                className={`overflow-hidden transition-all duration-500 ease-out ${
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
                   activeAccordion === "development" 
-                    ? "max-h-40 opacity-100" 
-                    : "max-h-0 opacity-0"
+                    ? "max-h-32 opacity-100 py-0" 
+                    : "max-h-0 opacity-0 py-0"
                 }`}
+                onClick={(e) => e.stopPropagation()}
               >
-                <div className="px-6 pb-6 border-t border-bg-700">
-                  <p className="text-text-secondary !mt-4">
+                <div className="px-6 pb-6 border-t border-bg-700 transition-all duration-300">
+                  <p className="text-text-secondary !mt-4 transition-all duration-300">
                     Building responsive websites. Providing the users an
                     enriching experience that responds to any device and screen
                     size.
@@ -119,31 +119,31 @@ function ExpertiseSection() {
               </div>
             </div>
             {/* UI/UX Design Accordion */}
-            <div className="!border !border-[#191920] !bg-[#111116] !p-4 rounded-2xl overflow-hidden">
-              <button
-                type="button"
-                className="w-full font-satoshi text-text-primary flex items-center justify-between gap-2 p-6 text-left text-lg font-medium transition-all duration-300 hover:bg-bg-700"
-                onClick={() => toggleAccordion("design")}
-              >
+            <div 
+              className="!border !border-[#191920] !bg-[#111116] !p-4 rounded-2xl overflow-hidden cursor-pointer"
+              onClick={() => toggleAccordion("design")}
+            >
+              <div className="w-full font-satoshi text-text-primary flex items-center justify-between gap-2 p-6 text-left text-lg font-medium transition-all duration-300 hover:bg-bg-700">
                 <div className="flex items-center gap-3 font-medium">
                   <PenTool size={20} />
                   UI/UX Design
                 </div>
                 <ChevronDown
-                  className={`h-5 w-5 shrink-0 transition-transform duration-500 ease-out ${
+                  className={`h-5 w-5 shrink-0 transition-transform duration-300 ease-in-out ${
                     activeAccordion === "design" ? "rotate-180" : ""
                   }`}
                 />
-              </button>
+              </div>
               <div 
-                className={`overflow-hidden transition-all duration-500 ease-out ${
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
                   activeAccordion === "design" 
-                    ? "max-h-40 opacity-100" 
-                    : "max-h-0 opacity-0"
+                    ? "max-h-32 opacity-100 py-0" 
+                    : "max-h-0 opacity-0 py-0"
                 }`}
+                onClick={(e) => e.stopPropagation()}
               >
-                <div className="px-6 pb-6 border-t border-bg-700">
-                  <p className="text-text-secondary !mt-4">
+                <div className="px-6 pb-6 border-t border-bg-700 transition-all duration-300">
+                  <p className="text-text-secondary !mt-4 transition-all duration-300">
                     Designing user-centric, modern interfaces that shapes how
                     the audience interacts with the product.
                   </p>
@@ -151,31 +151,31 @@ function ExpertiseSection() {
               </div>
             </div>
             {/* Branding Accordion */}
-            <div className="!border !border-[#191920] !bg-[#111116] !p-4 rounded-2xl overflow-hidden">
-              <button
-                type="button"
-                className="w-full font-satoshi text-text-primary flex items-center justify-between gap-2 p-6 text-left text-lg font-medium transition-all duration-300 hover:bg-bg-700"
-                onClick={() => toggleAccordion("branding")}
-              >
+            <div 
+              className="!border !border-[#191920] !bg-[#111116] !p-4 rounded-2xl overflow-hidden cursor-pointer"
+              onClick={() => toggleAccordion("branding")}
+            >
+              <div className="w-full font-satoshi text-text-primary flex items-center justify-between gap-2 p-6 text-left text-lg font-medium transition-all duration-300 hover:bg-bg-700">
                 <div className="flex items-center gap-3 font-medium">
                   <SwatchBook size={20} />
                   Branding
                 </div>
                 <ChevronDown
-                  className={`h-5 w-5 shrink-0 transition-transform duration-500 ease-out ${
+                  className={`h-5 w-5 shrink-0 transition-transform duration-300 ease-in-out ${
                     activeAccordion === "branding" ? "rotate-180" : ""
                   }`}
                 />
-              </button>
+              </div>
               <div 
-                className={`overflow-hidden transition-all duration-500 ease-out ${
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
                   activeAccordion === "branding" 
-                    ? "max-h-40 opacity-100" 
-                    : "max-h-0 opacity-0"
+                    ? "max-h-40 opacity-100 py-0" 
+                    : "max-h-0 opacity-0 py-0"
                 }`}
+                onClick={(e) => e.stopPropagation()}
               >
-                <div className="px-6 pb-6 border-t border-bg-700">
-                  <p className="text-text-secondary !mt-4">
+                <div className="px-6 pb-6 border-t border-bg-700 transition-all duration-300">
+                  <p className="text-text-secondary !mt-4 transition-all duration-300">
                     Building brand identities including working on logo,
                     typography, iconography, colour palette, visual language,
                     and brand personality.
