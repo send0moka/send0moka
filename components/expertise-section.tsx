@@ -138,9 +138,9 @@ function ExpertiseSection() {
   ]
 
   const getSkillIconPath = (iconName: string) => {
-    // For dark mode, use light icons (better contrast)
-    // For light mode, use dark icons (better contrast)
-    const themeFolder = currentTheme === 'dark' ? 'light' : 'dark'
+    // For dark mode, use dark icons
+    // For light mode, use light icons
+    const themeFolder = currentTheme === 'dark' ? 'dark' : 'light'
     return `/skills/${themeFolder}/${iconName}.svg`
   }
 

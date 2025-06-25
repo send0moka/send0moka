@@ -40,26 +40,6 @@ function TestimonialsSection() {
     }
   ]
 
-  const renderAnimatedTitle = (title: string) => {
-    const words = title.split(' ')
-    return (
-      <h2 role="heading" className="mb-8 text-4xl md:text-5xl lg:text-6xl font-clash-display font-semibold text-text-primary">
-        {words.map((word, wordIndex) => (
-          <span key={wordIndex} className="mr-[0.25em] inline-block">
-            {word.split('').map((char, charIndex) => (
-              <span 
-                key={charIndex} 
-                className="inline-block"
-              >
-                {char}
-              </span>
-            ))}
-          </span>
-        ))}
-      </h2>
-    )
-  }
-
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % testimonials.length)
   }
@@ -68,7 +48,7 @@ function TestimonialsSection() {
     setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length)
   }
   return (
-    <section className="max-screen py-16 px-4">
+    <section className="max-screen !mt-20 py-16 px-4">
       <AnimateOnScroll delay={0}>
         <div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
           <Sparkle size={18} />
@@ -79,7 +59,9 @@ function TestimonialsSection() {
       </AnimateOnScroll>
         
       <AnimateOnScroll delay={0.2}>
-        {renderAnimatedTitle('What others say')}
+        <h2 className="!my-4 font-clash-display !text-5xl !font-medium text-text-primary">
+          What others say
+        </h2>
       </AnimateOnScroll>
 
       <AnimateOnScroll delay={0.4}>
