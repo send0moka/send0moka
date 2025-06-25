@@ -151,29 +151,6 @@ function ExpertiseSection() {
       : '!border-[#e2e8f0] !bg-white'
   }
 
-  const renderAnimatedTitle = (title: string) => {
-    const words = title.split(" ")
-    return (
-      <h2
-        role="heading"
-        className="mb-sm text-4xl md:text-5xl lg:text-6xl font-clash-display font-semibold text-text-primary"
-      >
-        {words.map((word, wordIndex) => (
-          <span
-            key={wordIndex}
-            className="mr-[0.25em] inline-block overflow-y-hidden whitespace-nowrap"
-          >
-            {word.split("").map((char, charIndex) => (
-              <span key={charIndex} className="inline-block">
-                {char}
-              </span>
-            ))}
-          </span>
-        ))}
-      </h2>
-    )
-  }
-
   const toggleAccordion = (id: string) => {
     setActiveAccordion(activeAccordion === id ? null : id)
   }
@@ -189,7 +166,9 @@ function ExpertiseSection() {
         </div>
       </AnimateOnScroll>
       <AnimateOnScroll delay={0.2} duration={0.6}>
-        {renderAnimatedTitle("Areas of Expertise")}
+        <h2 className="!my-4 font-clash-display !text-5xl !font-medium text-text-primary">
+          Areas of Expertise
+        </h2>
       </AnimateOnScroll>
 
       <AnimateOnScroll delay={0.4} duration={0.6}>
