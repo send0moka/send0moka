@@ -9,6 +9,7 @@ import {
 } from "lucide-react"
 import { useState } from "react"
 import AnimateOnScroll from "./animate-on-scroll"
+import Image from "next/image"
 
 function ExpertiseSection() {
   const [activeAccordion, setActiveAccordion] = useState<string | null>(
@@ -82,16 +83,16 @@ function ExpertiseSection() {
       </AnimateOnScroll>
 
       <AnimateOnScroll delay={0.4} duration={0.6}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
-          <div className="w-full space-y-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 !mt-12">
+          <div className="w-full !space-y-4">
             {/* Development Accordion */}
-            <div className="border border-bg-700 bg-bg-800 mb-4 rounded-2xl overflow-hidden">
+            <div className="!border !border-[#191920] !bg-[#111116] !p-4 rounded-2xl overflow-hidden">
               <button
                 type="button"
                 className="w-full font-satoshi text-text-primary flex items-center justify-between gap-2 p-6 text-left text-lg font-medium transition-all hover:bg-bg-700"
                 onClick={() => toggleAccordion("development")}
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 font-medium">
                   <CodeXml size={20} />
                   Development
                 </div>
@@ -103,21 +104,22 @@ function ExpertiseSection() {
               </button>
               {activeAccordion === "development" && (
                 <div className="px-6 pb-6 border-t border-bg-700">
-                  <p className="text-text-secondary mt-4">
-                    Building scalable web applications with modern technologies
-                    and best practices.
+                  <p className="text-text-secondary !mt-4">
+                    Building responsive websites. Providing the users an
+                    enriching experience that responds to any device and screen
+                    size.
                   </p>
                 </div>
               )}
             </div>
             {/* UI/UX Design Accordion */}
-            <div className="border border-bg-700 bg-bg-800 mb-4 rounded-2xl overflow-hidden">
+            <div className="!border !border-[#191920] !bg-[#111116] !p-4 rounded-2xl overflow-hidden">
               <button
                 type="button"
                 className="w-full font-satoshi text-text-primary flex items-center justify-between gap-2 p-6 text-left text-lg font-medium transition-all hover:bg-bg-700"
                 onClick={() => toggleAccordion("design")}
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 font-medium">
                   <PenTool size={20} />
                   UI/UX Design
                 </div>
@@ -129,21 +131,21 @@ function ExpertiseSection() {
               </button>
               {activeAccordion === "design" && (
                 <div className="px-6 pb-6 border-t border-bg-700">
-                  <p className="text-text-secondary mt-4">
-                    Creating intuitive and engaging user experiences through
-                    thoughtful design.
+                  <p className="text-text-secondary !mt-4">
+                    Designing user-centric, modern interfaces that shapes how
+                    the audience interacts with the product.
                   </p>
                 </div>
               )}
             </div>
             {/* Branding Accordion */}
-            <div className="border border-bg-700 bg-bg-800 mb-4 rounded-2xl overflow-hidden">
+            <div className="!border !border-[#191920] !bg-[#111116] !p-4 rounded-2xl overflow-hidden">
               <button
                 type="button"
                 className="w-full font-satoshi text-text-primary flex items-center justify-between gap-2 p-6 text-left text-lg font-medium transition-all hover:bg-bg-700"
                 onClick={() => toggleAccordion("branding")}
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 font-medium">
                   <SwatchBook size={20} />
                   Branding
                 </div>
@@ -155,9 +157,10 @@ function ExpertiseSection() {
               </button>
               {activeAccordion === "branding" && (
                 <div className="px-6 pb-6 border-t border-bg-700">
-                  <p className="text-text-secondary mt-4">
-                    Developing compelling brand identities that resonate with
-                    target audiences.
+                  <p className="text-text-secondary !mt-4">
+                    Building brand identities including working on logo,
+                    typography, iconography, colour palette, visual language,
+                    and brand personality.
                   </p>
                 </div>
               )}
@@ -166,38 +169,42 @@ function ExpertiseSection() {
           {/* Image placeholder */}
           <div className="group relative aspect-square lg:aspect-video h-full w-full overflow-hidden rounded-3xl bg-bg-800">
             <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-br from-highlight-primary/20 to-transparent flex items-center justify-center">
-              <div className="text-center">
-                {activeAccordion === "development" && (
-                  <CodeXml
-                    size={64}
-                    className="text-highlight-primary mx-auto mb-4"
-                  />
-                )}
-                {activeAccordion === "design" && (
-                  <PenTool
-                    size={64}
-                    className="text-highlight-primary mx-auto mb-4"
-                  />
-                )}
-                {activeAccordion === "branding" && (
-                  <SwatchBook
-                    size={64}
-                    className="text-highlight-primary mx-auto mb-4"
-                  />
-                )}
-                {!activeAccordion && (
-                  <CodeXml
-                    size={64}
-                    className="text-highlight-primary mx-auto mb-4"
-                  />
-                )}
-                <p className="text-text-secondary text-lg">
-                  {activeAccordion === "development" && "Development"}
-                  {activeAccordion === "design" && "UI/UX Design"}
-                  {activeAccordion === "branding" && "Branding"}
-                  {!activeAccordion && "Development"}
-                </p>
-              </div>
+              {activeAccordion === "development" && (
+                <Image
+                  src="/expertise/development.webp"
+                  alt="Development Illustration"
+                  width={300}
+                  height={300}
+                  className="max-w-full max-h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              )}
+              {activeAccordion === "design" && (
+                <Image
+                  src="/expertise/designing.avif"
+                  alt="Design Illustration"
+                  width={300}
+                  height={300}
+                  className="max-w-full max-h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              )}
+              {activeAccordion === "branding" && (
+                <Image
+                  src="/expertise/branding.avif"
+                  alt="Branding Illustration"
+                  width={300}
+                  height={300}
+                  className="max-w-full max-h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              )}
+              {!activeAccordion && (
+                <Image
+                  src="/expertise/development.webp"
+                  alt="Development Illustration"
+                  width={300}
+                  height={300}
+                  className="max-w-full max-h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              )}
             </div>
           </div>
         </div>
