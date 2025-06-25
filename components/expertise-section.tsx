@@ -184,45 +184,42 @@ function ExpertiseSection() {
               </div>
             </div>
           </div>
-          {/* Image placeholder */}
+          {/* Image */}
           <div className="group relative aspect-square lg:aspect-video h-full w-full overflow-hidden rounded-3xl bg-bg-800">
-            <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-br from-highlight-primary/20 to-transparent flex items-center justify-center">
-              {activeAccordion === "development" && (
-                <Image
-                  src="/expertise/development.webp"
-                  alt="Development Illustration"
-                  width={300}
-                  height={300}
-                  className="max-w-full max-h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              )}
-              {activeAccordion === "design" && (
-                <Image
-                  src="/expertise/designing.avif"
-                  alt="Design Illustration"
-                  width={300}
-                  height={300}
-                  className="max-w-full max-h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              )}
-              {activeAccordion === "branding" && (
-                <Image
-                  src="/expertise/branding.avif"
-                  alt="Branding Illustration"
-                  width={300}
-                  height={300}
-                  className="max-w-full max-h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              )}
-              {!activeAccordion && (
-                <Image
-                  src="/expertise/development.webp"
-                  alt="Development Illustration"
-                  width={300}
-                  height={300}
-                  className="max-w-full max-h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              )}
+            <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-br from-highlight-primary/20 to-transparent">
+              <Image
+                src="/expertise/development.webp"
+                alt="Development Illustration"
+                fill
+                className={`object-cover transition-all duration-500 group-hover:scale-105 ${
+                  activeAccordion === "development" ? "opacity-100" : "opacity-0"
+                }`}
+              />
+              <Image
+                src="/expertise/designing.avif"
+                alt="Design Illustration"
+                fill
+                className={`object-cover transition-all duration-500 group-hover:scale-105 ${
+                  activeAccordion === "design" ? "opacity-100" : "opacity-0"
+                }`}
+              />
+              <Image
+                src="/expertise/branding.avif"
+                alt="Branding Illustration"
+                fill
+                className={`object-cover transition-all duration-500 group-hover:scale-105 ${
+                  activeAccordion === "branding" ? "opacity-100" : "opacity-0"
+                }`}
+              />
+              {/* Default image when no accordion is active */}
+              <Image
+                src="/expertise/development.webp"
+                alt="Development Illustration"
+                fill
+                className={`object-cover transition-all duration-500 group-hover:scale-105 ${
+                  !activeAccordion ? "opacity-100" : "opacity-0"
+                }`}
+              />
             </div>
           </div>
         </div>
