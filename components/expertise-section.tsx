@@ -7,8 +7,7 @@ import {
   SwatchBook,
   ChevronDown,
 } from "lucide-react"
-import { useState } from "react"
-import { useTheme } from "next-themes"
+import { useState, useEffect } from "react"
 import AnimateOnScroll from "./animate-on-scroll"
 import Image from "next/image"
 
@@ -16,7 +15,52 @@ function ExpertiseSection() {
   const [activeAccordion, setActiveAccordion] = useState<string | null>(
     "development"
   )
-  const { theme } = useTheme()
+  const [isDark, setIsDark] = useState(true)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    const theme = localStorage.getItem("theme")
+    if (theme) {
+      setIsDark(theme === "dark")
+    } else {
+      // Default to dark theme
+      setIsDark(true)
+    }
+    
+    // Listen for theme changes
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === "theme") {
+        setIsDark(e.newValue === "dark")
+      }
+    }
+    
+    // Listen for theme changes in other tabs/windows
+    window.addEventListener("storage", handleStorageChange)
+    
+    // Also check for manual class changes on documentElement
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "attributes" && mutation.attributeName === "class") {
+          const currentClass = document.documentElement.className
+          setIsDark(currentClass.includes("dark"))
+        }
+      })
+    })
+    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"]
+    })
+    
+    return () => {
+      window.removeEventListener("storage", handleStorageChange)
+      observer.disconnect()
+    }
+  }, [])
+
+  // Prevent hydration mismatch by not rendering theme-dependent styles until mounted
+  const currentTheme = mounted ? (isDark ? 'dark' : 'light') : 'dark'
 
   // Skills data with icon mapping
   const skills = [
@@ -96,8 +140,15 @@ function ExpertiseSection() {
   const getSkillIconPath = (iconName: string) => {
     // For dark mode, use light icons (better contrast)
     // For light mode, use dark icons (better contrast)
-    const themeFolder = theme === 'dark' ? 'light' : 'dark'
+    const themeFolder = currentTheme === 'dark' ? 'light' : 'dark'
     return `/skills/${themeFolder}/${iconName}.svg`
+  }
+
+  // Get theme-based styling
+  const getThemeStyles = () => {
+    return currentTheme === 'dark' 
+      ? '!border-[#191920] !bg-[#111116]' 
+      : '!border-[#e2e8f0] !bg-white'
   }
 
   const renderAnimatedTitle = (title: string) => {
@@ -146,7 +197,7 @@ function ExpertiseSection() {
           <div className="w-full !space-y-4">
             {/* Development Accordion */}
             <div 
-              className="!border !border-[#191920] !bg-[#111116] !p-4 rounded-2xl overflow-hidden cursor-pointer"
+              className={`!border !p-4 rounded-2xl overflow-hidden cursor-pointer ${getThemeStyles()}`}
               onClick={() => toggleAccordion("development")}
             >
               <div className="w-full font-satoshi text-text-primary flex items-center justify-between gap-2 p-6 text-left text-lg font-medium transition-all duration-300 hover:bg-bg-700">
@@ -179,7 +230,7 @@ function ExpertiseSection() {
             </div>
             {/* UI/UX Design Accordion */}
             <div 
-              className="!border !border-[#191920] !bg-[#111116] !p-4 rounded-2xl overflow-hidden cursor-pointer"
+              className={`!border !p-4 rounded-2xl overflow-hidden cursor-pointer ${getThemeStyles()}`}
               onClick={() => toggleAccordion("design")}
             >
               <div className="w-full font-satoshi text-text-primary flex items-center justify-between gap-2 p-6 text-left text-lg font-medium transition-all duration-300 hover:bg-bg-700">
@@ -211,7 +262,7 @@ function ExpertiseSection() {
             </div>
             {/* Branding Accordion */}
             <div 
-              className="!border !border-[#191920] !bg-[#111116] !p-4 rounded-2xl overflow-hidden cursor-pointer"
+              className={`!border !p-4 rounded-2xl overflow-hidden cursor-pointer ${getThemeStyles()}`}
               onClick={() => toggleAccordion("branding")}
             >
               <div className="w-full font-satoshi text-text-primary flex items-center justify-between gap-2 p-6 text-left text-lg font-medium transition-all duration-300 hover:bg-bg-700">
@@ -293,7 +344,7 @@ function ExpertiseSection() {
               {skills.map((skill, index) => (
                 <div
                   key={`first-${index}`}
-                  className="inline-flex w-fit min-w-fit items-center gap-2 rounded-full !border !border-bg-700 bg-white dark:bg-[#191920] !px-4 !py-2 !text-sm !font-medium transition-colors hover:border-highlight-primary/50 hover:bg-bg-700"
+                  className={`inline-flex w-fit min-w-fit items-center gap-2 rounded-full !border !px-4 !py-2 text-sm font-medium transition-colors hover:border-highlight-primary/50 hover:bg-bg-700 ${getThemeStyles()}`}
                 >
                   <Image
                     src={getSkillIconPath(skill.icon)}
@@ -309,7 +360,7 @@ function ExpertiseSection() {
               {skills.map((skill, index) => (
                 <div
                   key={`second-${index}`}
-                  className="inline-flex w-fit min-w-fit items-center gap-2 rounded-full !border !border-bg-700 bg-white dark:bg-[#191920] !px-4 !py-2 !text-sm !font-medium transition-colors hover:border-highlight-primary/50 hover:bg-bg-700"
+                  className={`inline-flex w-fit min-w-fit items-center gap-2 rounded-full !border !px-4 !py-2 text-sm font-medium transition-colors hover:border-highlight-primary/50 hover:bg-bg-700 ${getThemeStyles()}`}
                 >
                   <Image
                     src={getSkillIconPath(skill.icon)}
