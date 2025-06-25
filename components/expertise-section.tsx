@@ -8,6 +8,7 @@ import {
   ChevronDown,
 } from "lucide-react"
 import { useState } from "react"
+import { useTheme } from "next-themes"
 import AnimateOnScroll from "./animate-on-scroll"
 import Image from "next/image"
 
@@ -15,6 +16,88 @@ function ExpertiseSection() {
   const [activeAccordion, setActiveAccordion] = useState<string | null>(
     "development"
   )
+  const { theme } = useTheme()
+
+  // Skills data with icon mapping
+  const skills = [
+    // FE
+    { name: "Angular", icon: "angular17" },
+    { name: "Astro", icon: "astro" },
+    { name: "Chakra UI", icon: "chakraui" },
+    { name: "Framer", icon: "framer" },
+    { name: "i18next", icon: "i18next" },
+    { name: "Next JS", icon: "nextjs2" },
+    { name: "Nuxt JS", icon: "nuxtjs" },
+    { name: "PWA", icon: "pwa" },
+    { name: "Qwik", icon: "qwik" },
+    { name: "Radix UI", icon: "radixui" },
+    { name: "Remix", icon: "remix" },
+    { name: "Shadcn UI", icon: "shadcnui" },
+    { name: "Solid JS", icon: "solidjs" },
+    { name: "Tailwind CSS", icon: "tailwindcss" },
+    // BE
+    { name: "Appwrite", icon: "appwrite" },
+    { name: "CodeIgniter", icon: "codeigniter" },
+    { name: "Django", icon: "django" },
+    { name: "Go", icon: "go" },
+    { name: "Laravel", icon: "laravel" },
+    { name: "Prisma", icon: "prisma" },
+    { name: "Spring Boot", icon: "spring" },
+    { name: "tRPC", icon: "tRPC" },
+    // DB
+    { name: "MongoDB", icon: "mongodb" },
+    { name: "Supabase", icon: "supabase" },
+    // Cloud Infra
+    { name: "Alibaba Cloud", icon: "alibabacloud" },
+    { name: "AWS", icon: "aws" },
+    { name: "Cloudflare", icon: "cloudflare" },
+    { name: "Google Cloud", icon: "gcloud" },
+    { name: "Netlify", icon: "netlify2" },
+    { name: "Vercel", icon: "vercel" },
+    // Programming Languages
+    { name: "C++", icon: "c++" },
+    { name: "Kotlin", icon: "kotlin" },
+    { name: "Python", icon: "python" },
+    { name: "Rust", icon: "rust" },
+    { name: "TypeScript", icon: "typescript" },
+    // DevOps Version Control
+    { name: "Bash", icon: "bash" },
+    { name: "Docker", icon: "docker" },
+    { name: "Git", icon: "git" },
+    { name: "GitHub", icon: "github" },
+    // Design 
+    { name: "Canva", icon: "canva" },
+    { name: "Figma", icon: "figma" },
+    { name: "Lightroom", icon: "lightroom" },
+    { name: "Illustrator", icon: "ai" },
+    // Animation
+    { name: "GSAP", icon: "gsap" },
+    // Mobile
+    { name: "Android", icon: "android" },
+    { name: "Flutter", icon: "flutter" },
+    { name: "Ionic", icon: "ionic" },
+    // Data AI
+    { name: "Analytics", icon: "analytics" },
+    { name: "Hugging Face", icon: "huggingface" },
+    { name: "PyTorch", icon: "pytorch" },
+    { name: "Streamlit", icon: "streamlit" },
+    // Productivity
+    { name: "N8n", icon: "n8n" },
+    { name: "Notion", icon: "notion" },
+    { name: "VsCode", icon: "vscode" },
+    // CMS
+    { name: "WordPress", icon: "wordpress" },
+    // Others
+    { name: "Brave Browser", icon: "brave" },
+    { name: "Bun JS", icon: "bun" },
+    { name: "Firebase", icon: "firebase" },
+    { name: "Zod", icon: "zod" },
+  ]
+
+  const getSkillIconPath = (iconName: string) => {
+    const themeFolder = theme === 'dark' ? 'dark' : 'light'
+    return `/skills/${themeFolder}/${iconName}.svg`
+  }
 
   const renderAnimatedTitle = (title: string) => {
     const words = title.split(" ")
@@ -38,37 +121,6 @@ function ExpertiseSection() {
       </h2>
     )
   }
-
-  const skills = [
-    // FE
-    "Angular",
-    "Astro",
-    "Chakra UI",
-    "Framer",
-    "i18next",
-    "Next JS",
-    "Nuxt JS",
-    "PWA",
-    "Qwik",
-    "Radix UI",
-    "Remix",
-    "Shadcn UI",
-    "Solid JS",
-    "Tailwind CSS",
-    "Lines",
-    "Figma",
-    // BE
-    "Appwrite",
-    "CodeIgniter",
-    "Django",
-    "Go",
-    "Laravel",
-    "Prisma",
-    "Spring Boot",
-    "tRPC",
-    // DB
-    
-  ]
 
   const toggleAccordion = (id: string) => {
     setActiveAccordion(activeAccordion === id ? null : id)
@@ -233,27 +285,39 @@ function ExpertiseSection() {
 
       {/* Skills Grid */}
       <AnimateOnScroll delay={0.6} duration={0.6}>
-        <div className="relative mt-16 overflow-hidden">
-          <div className="overflow-hidden py-8">
+        <div className="relative overflow-hidden">
+          <div className="overflow-hidden !py-8">
             <div className="flex animate-marquee gap-4 w-max">
               {/* First set of skills */}
               {skills.map((skill, index) => (
                 <div
                   key={`first-${index}`}
-                  className="inline-flex w-fit min-w-fit items-center gap-3 rounded-full border border-bg-700 bg-bg-800 px-6 py-3 text-sm font-medium transition-colors hover:border-highlight-primary/50 hover:bg-bg-700"
+                  className="inline-flex w-fit min-w-fit items-center gap-2 rounded-full !border !border-bg-700 bg-[#191920] !px-4 !py-2 !text-sm !font-medium transition-colors hover:border-highlight-primary/50 hover:bg-bg-700"
                 >
-                  <div className="relative h-3 w-3 bg-highlight-primary rounded-full"></div>
-                  <span className="text-text-primary">{skill}</span>
+                  <Image
+                    src={getSkillIconPath(skill.icon)}
+                    alt={`${skill.name} icon`}
+                    width={12}
+                    height={12}
+                    className="size-4 object-contain"
+                  />
+                  <span className="text-text-primary">{skill.name}</span>
                 </div>
               ))}
               {/* Duplicate set for seamless scroll */}
               {skills.map((skill, index) => (
                 <div
                   key={`second-${index}`}
-                  className="inline-flex w-fit min-w-fit items-center gap-3 rounded-full border border-bg-700 bg-bg-800 px-6 py-3 text-sm font-medium transition-colors hover:border-highlight-primary/50 hover:bg-bg-700"
+                  className="inline-flex w-fit min-w-fit items-center gap-2 rounded-full !border !border-bg-700 bg-[#191920] !px-4 !py-2 !text-sm !font-medium transition-colors hover:border-highlight-primary/50 hover:bg-bg-700"
                 >
-                  <div className="relative h-3 w-3 bg-highlight-primary rounded-full"></div>
-                  <span className="text-text-primary">{skill}</span>
+                  <Image
+                    src={getSkillIconPath(skill.icon)}
+                    alt={`${skill.name} icon`}
+                    width={12}
+                    height={12}
+                    className="size-4 object-contain"
+                  />
+                  <span className="text-text-primary">{skill.name}</span>
                 </div>
               ))}
             </div>
