@@ -406,6 +406,19 @@ html, body {
 }
 
 /* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 105s linear infinite;
+}
+
 @keyframes marqueeMove {
   0% {
     transform: translateX(0%);

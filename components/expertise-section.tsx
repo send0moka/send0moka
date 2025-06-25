@@ -56,7 +56,6 @@ function ExpertiseSection() {
     { name: "Vercel", icon: "vercel" },
     // Programming Languages
     { name: "C++", icon: "c++" },
-    { name: "Kotlin", icon: "kotlin" },
     { name: "Python", icon: "python" },
     { name: "Rust", icon: "rust" },
     { name: "TypeScript", icon: "typescript" },
@@ -89,13 +88,15 @@ function ExpertiseSection() {
     { name: "WordPress", icon: "wordpress" },
     // Others
     { name: "Brave Browser", icon: "brave" },
-    { name: "Bun JS", icon: "bun" },
+    { name: "Bun JS", icon: "bunjs" },
     { name: "Firebase", icon: "firebase" },
     { name: "Zod", icon: "zod" },
   ]
 
   const getSkillIconPath = (iconName: string) => {
-    const themeFolder = theme === 'dark' ? 'dark' : 'light'
+    // For dark mode, use light icons (better contrast)
+    // For light mode, use dark icons (better contrast)
+    const themeFolder = theme === 'dark' ? 'light' : 'dark'
     return `/skills/${themeFolder}/${iconName}.svg`
   }
 
@@ -292,13 +293,13 @@ function ExpertiseSection() {
               {skills.map((skill, index) => (
                 <div
                   key={`first-${index}`}
-                  className="inline-flex w-fit min-w-fit items-center gap-2 rounded-full !border !border-bg-700 bg-[#191920] !px-4 !py-2 !text-sm !font-medium transition-colors hover:border-highlight-primary/50 hover:bg-bg-700"
+                  className="inline-flex w-fit min-w-fit items-center gap-2 rounded-full !border !border-bg-700 bg-white dark:bg-[#191920] !px-4 !py-2 !text-sm !font-medium transition-colors hover:border-highlight-primary/50 hover:bg-bg-700"
                 >
                   <Image
                     src={getSkillIconPath(skill.icon)}
                     alt={`${skill.name} icon`}
-                    width={12}
-                    height={12}
+                    width={16}
+                    height={16}
                     className="size-4 object-contain"
                   />
                   <span className="text-text-primary">{skill.name}</span>
@@ -308,16 +309,16 @@ function ExpertiseSection() {
               {skills.map((skill, index) => (
                 <div
                   key={`second-${index}`}
-                  className="inline-flex w-fit min-w-fit items-center gap-2 rounded-full !border !border-bg-700 bg-[#191920] !px-4 !py-2 !text-sm !font-medium transition-colors hover:border-highlight-primary/50 hover:bg-bg-700"
+                  className="inline-flex w-fit min-w-fit items-center gap-2 rounded-full !border !border-bg-700 bg-white dark:bg-[#191920] !px-4 !py-2 !text-sm !font-medium transition-colors hover:border-highlight-primary/50 hover:bg-bg-700"
                 >
                   <Image
                     src={getSkillIconPath(skill.icon)}
                     alt={`${skill.name} icon`}
-                    width={12}
-                    height={12}
+                    width={16}
+                    height={16}
                     className="size-4 object-contain"
                   />
-                  <span className="text-text-primary">{skill.name}</span>
+                  <span className="text-text-primary whitespace-nowrap">{skill.name}</span>
                 </div>
               ))}
             </div>
