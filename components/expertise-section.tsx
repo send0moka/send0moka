@@ -40,28 +40,34 @@ function ExpertiseSection() {
   }
 
   const skills = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "TypeScript",
-    "React.js",
-    "Next.js",
+    // FE
     "Angular",
-    "Redux",
-    "Node.js",
-    "Express.js",
-    "MySQL",
-    "MongoDB",
-    "PostgreSQL",
-    "Cypress",
-    "Docker",
-    "Firebase",
-    "AWS",
-    "GSAP",
-    "Framer Motion",
-    "Figma",
+    "Astro",
+    "Chakra UI",
+    "Framer",
+    "i18next",
+    "Next JS",
+    "Nuxt JS",
+    "PWA",
+    "Qwik",
+    "Radix UI",
+    "Remix",
+    "Shadcn UI",
+    "Solid JS",
     "Tailwind CSS",
-    "GIT",
+    "Lines",
+    "Figma",
+    // BE
+    "Appwrite",
+    "CodeIgniter",
+    "Django",
+    "Go",
+    "Laravel",
+    "Prisma",
+    "Spring Boot",
+    "tRPC",
+    // DB
+    
   ]
 
   const toggleAccordion = (id: string) => {
