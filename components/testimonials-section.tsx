@@ -56,7 +56,7 @@ function TestimonialsSection() {
   }
   return (
     <section className="max-screen flex !mt-20 py-16 px-4">
-      <div className="">
+      <div className="w-1/3">
         <AnimateOnScroll delay={0}>
           <div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
             <Sparkle size={18} />
@@ -66,7 +66,7 @@ function TestimonialsSection() {
           </div>
         </AnimateOnScroll>
         <AnimateOnScroll delay={0.2}>
-          <h2 className="!my-4 font-clash-display !text-5xl !font-medium text-text-primary">
+          <h2 className="my-4 font-clash-display text-5xl font-medium text-text-primary">
             What others say
           </h2>
         </AnimateOnScroll>
@@ -77,7 +77,7 @@ function TestimonialsSection() {
           </p>
         </AnimateOnScroll>
       </div>
-      <div className="">
+      <div className="w-2/3">
         <AnimateOnScroll delay={0.6}>
           <div className="relative">
             <div className="flex overflow-hidden">
@@ -87,32 +87,39 @@ function TestimonialsSection() {
               >
                 {testimonials.map((testimonial, index) => (
                   <div key={index} className="w-full flex-shrink-0 px-4">
-                    <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl p-8 max-w-4xl mx-auto">
-                      <div className="flex items-start space-x-6">
-                        <div className="w-16 h-16 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0">
-                          <div className="w-12 h-12 bg-highlight-primary/20 rounded-full flex items-center justify-center">
-                            <span className="text-highlight-primary font-semibold text-lg">
-                              {testimonial.name
-                                .split(" ")
-                                .map((n) => n[0])
-                                .join("")}
-                            </span>
+                    <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl !p-8 max-w-3xl mx-auto">
+                      <div className="flex flex-col gap-4">
+                        <div className="flex gap-4 items-center">
+                          {/* avatar */}
+                          <div className="size-16 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0">
+                            <div className="size-12 bg-highlight-primary/20 rounded-full flex items-center justify-center">
+                              <span className="text-highlight-primary font-semibold text-lg">
+                                {testimonial.name
+                                  .split(" ")
+                                  .map((n) => n[0])
+                                  .join("")}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* name role */}
+                          <div className="flex-1">
+                            <h4 className="!font-clash-display !font-semibold text-text-primary !text-xl !mb-1">
+                              {testimonial.name}
+                            </h4>
+                            <p className="text-text-secondary text-sm mb-4 font-satoshi">
+                              {testimonial.role}
+                            </p>
                           </div>
                         </div>
-                        <div className="flex-1">
-                          <h4 className="font-clash-display font-semibold text-text-primary text-xl mb-1">
-                            {testimonial.name}
-                          </h4>
-                          <p className="text-text-secondary text-sm mb-4 font-satoshi">
-                            {testimonial.role}
-                          </p>
-                          <p className="text-text-primary leading-relaxed font-satoshi">
-                            {testimonial.content}
-                            <button className="text-highlight-primary hover:underline ml-1">
-                              see more
-                            </button>
-                          </p>
-                        </div>
+
+                        {/* content */}
+                        <p className="text-text-secondary leading-relaxed font-satoshi">
+                          {testimonial.content}
+                          <button className="!text-white hover:underline ml-1">
+                            see more
+                          </button>
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -120,63 +127,62 @@ function TestimonialsSection() {
               </div>
             </div>
 
-            {/* Navigation */}
-            <div className="flex justify-center mt-8 space-x-4">
-              <button
-                onClick={prevSlide}
-                className="bg-bg-800 border border-bg-700 rounded-full p-3 hover:bg-bg-700 transition-colors"
-                aria-label="Previous slide"
-              >
-                <svg
-                  className="w-5 h-5 text-text-primary"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+            <div className="flex justify-between !mt-20">
+              {/* Navigation */}
+              <div className="flex justify-center mt-8 space-x-4">
+                <button
+                  onClick={prevSlide}
+                  className="bg-bg-800 border border-bg-700 rounded-full p-3 hover:bg-bg-700 transition-colors"
+                  aria-label="Previous slide"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-              </button>
-              <span className="text-text-secondary self-center text-sm">
-                {currentSlide + 1} / {testimonials.length}
-              </span>
-              <button
-                onClick={nextSlide}
-                className="bg-bg-800 border border-bg-700 rounded-full p-3 hover:bg-bg-700 transition-colors"
-                aria-label="Next slide"
-              >
-                <svg
-                  className="w-5 h-5 text-text-primary"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                  <svg
+                    className="w-5 h-5 text-text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+                <span className="text-text-secondary self-center text-sm">
+                  {currentSlide + 1} / {testimonials.length}
+                </span>
+                <button
+                  onClick={nextSlide}
+                  className="bg-bg-800 border border-bg-700 rounded-full p-3 hover:bg-bg-700 transition-colors"
+                  aria-label="Next slide"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    className="w-5 h-5 text-text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div className="text-center mt-12">
+                <a
+                  href="https://www.linkedin.com/in/jehian/details/recommendations/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-highlight-primary hover:underline font-satoshi"
+                >
+                  Check it out on Linkedin
+                </a>
+              </div>
             </div>
-          </div>
-        </AnimateOnScroll>
-
-        <AnimateOnScroll delay={0.8}>
-          <div className="text-center mt-12">
-            <a
-              href="https://www.linkedin.com/in/jehian/details/recommendations/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-highlight-primary hover:underline font-satoshi"
-            >
-              Check it out on Linkedin
-            </a>
           </div>
         </AnimateOnScroll>
       </div>
