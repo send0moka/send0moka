@@ -353,8 +353,16 @@ function ExpertiseSection() {
               ))}
             </div>
             {/* Gradient overlays */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-bg-900 to-transparent"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-bg-900 to-transparent"></div>
+            <div className={`pointer-events-none absolute inset-y-0 left-0 w-32 z-10 ${
+              currentTheme === 'dark' 
+                ? 'bg-gradient-to-r from-[#0a0a0f] via-[#0a0a0f]/80 to-transparent' 
+                : 'bg-gradient-to-r from-[#f7f8fa] via-[#f7f8fa]/80 to-transparent'
+            }`}></div>
+            <div className={`pointer-events-none absolute inset-y-0 -right-8 w-48 z-10 ${
+              currentTheme === 'dark' 
+                ? 'bg-gradient-to-l from-[#0a0a0f] via-[#0a0a0f]/80 to-transparent' 
+                : 'bg-gradient-to-l from-[#f7f8fa] via-[#f7f8fa]/80 to-transparent'
+            }`}></div>
           </div>
         </div>
       </AnimateOnScroll>
