@@ -206,7 +206,10 @@ export default function ProjectsSection() {
                         ? "crisp-edges"
                         : "auto",
                     }}
+                    quality={100}
                     priority={index < 2}
+                    unoptimized={project.image.endsWith(".svg")}
+                    sizes="(max-width: 640px) 100vw, 50vw"
                   />
                 </div>
 
