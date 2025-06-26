@@ -87,7 +87,7 @@ function TestimonialsSection() {
               >
                 {testimonials.map((testimonial, index) => (
                   <div key={index} className="w-full flex-shrink-0 px-4">
-                    <div className="bg-bg-800 border border-bg-700 rounded-2xl p-8 max-w-4xl mx-auto">
+                    <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl p-8 max-w-4xl mx-auto">
                       <div className="flex items-start space-x-6">
                         <div className="w-16 h-16 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0">
                           <div className="w-12 h-12 bg-highlight-primary/20 rounded-full flex items-center justify-center">
