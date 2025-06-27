@@ -346,12 +346,15 @@ function TestimonialsCarousel() {
             href="https://www.linkedin.com/in/jehian/details/recommendations/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 !border-b !border-bg-700 relative overflow-hidden group"
+            className="flex items-center gap-2 pb-2 relative overflow-hidden group"
+            style={{ 
+              borderBottom: '2px solid var(--border-bg-700)',
+            }}
           >
             {/* Animated border effect */}
             <div className="absolute bottom-0 left-0 h-0.5 w-full bg-highlight-primary transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></div>
 
-            <span className="text-sm !text-white font-medium font-satoshi">
+            <span className="text-sm text-text-primary font-medium font-satoshi">
               Check it out on Linkedin
             </span>
             <svg
@@ -364,7 +367,7 @@ function TestimonialsCarousel() {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="lucide lucide-arrow-up-right"
+              className="lucide lucide-arrow-up-right text-text-primary"
               aria-hidden="true"
             >
               <path d="M7 7h10v10"></path>
