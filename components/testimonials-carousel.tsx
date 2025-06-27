@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import Image from "next/image"
 
 function TestimonialsCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -15,39 +16,40 @@ function TestimonialsCarousel() {
 
   const testimonials = [
     {
-      name: "Vritika Naik",
-      role: "Regional Head @GirlScript",
+      name: "Brian Cahya",
+      role: "Software Engineer (Intern) @Elisabeth Hospital Purwokerto",
       content:
-        "I am amazed at Jehian's ability to create intriguing designs. At GirlScript, Jehian not only worked with graphic designing but also designed the UI and contributed to the front end of the website. His work ethics are immaculate. His deliveries were always very well executed before time. His energy t...",
-      image: "/testimonials/vritika-naik.webp",
+        "I’m impressed by Jehian’s skill in developing efficient software solutions. During his internship at St. Elisabeth Purwokerto General Hospital, he built a seamless Online Registration System. His clean code and timely delivery exceeded expectations. Jehian’s dedication and problem-solving skills make him a valuable asset to any team.",
+      image: "https://avatars.githubusercontent.com/u/148684209?v=4",
     },
     {
-      name: "Amrit Raj",
-      role: "Senior Developer @Ignite Solutions",
+      name: "Dzakwan Irfan",
+      role: "Software Engineer (Intern) @CV General Digital Solutions",
       content:
-        "I had the pleasure of collaborating with Jehian on a project where his exceptional UI/UX skills truly shone. Jehian's design proficiency is remarkable, consistently delivering top-notch work that elevates user experiences. His creativity and keen eye for detail make him an admirable asset when it co...",
-      image: "/testimonials/amrit-raj.webp",
+        "Jehian’s contribution to our 'Hiota' app at DTI Creative Clash 2025 was remarkable. His problem-solving skills and ability to meet deadlines with quality work made him an invaluable team member. His expertise in Angular and CSS3 significantly enhanced our project. I highly recommend Jehian for any software development role.",
+      image:
+        "https://framerusercontent.com/images/8SB77DXTMcncETjHhTfNi0zdbNg.png?scale-down-to=512",
     },
     {
-      name: "Divya Walia",
-      role: "Senior Java Developer @Nagarro",
+      name: "Amarramitha Poodja",
+      role: "Informatics Student @Soedirman University",
       content:
-        "I am writing to highly recommend Jehian for any Java fullstack role. I have had the pleasure of working with Jehian for the past two years at Oneshield, where he has consistently demonstrated strong technical skills and a collaborative attitude. Jehian played a pivotal role in building the applicatio...",
-      image: "/testimonials/divya-walia.webp",
+        "Jehian’s UI/UX work on our university project was outstanding. His intuitive design for the 'Daily Green Finance Report' app was both user-friendly and visually appealing. He’s a proactive team player! His attention to detail and ability to deliver high-quality work on time were impressive. I highly recommend Jehian for any UI/UX design role.",
+      image: "https://gacemaslagi.site/team/amarra.webp",
     },
     {
-      name: "Elavarasan Muthuvalavan",
-      role: "Technical Lead @Ignite Solutions",
+      name: "Hamas Izzuddin",
+      role: "Informatics Student @Soedirman University",
       content:
-        "I had the pleasure of working alongside Jehian, who is an exceptional professional with an impressive command of Angular Templates, and CSS3. Beyond his technical prowess, what truly sets Jehian apart is his keen observational skills and ability to ask relevant questions that elevate the entire team...",
-      image: "/testimonials/elavarasan-muthuvalavan.webp",
+        "Jehian’s ability to design intuitive interfaces shone in our university’s ‘EcoTrack’ project. His thoughtful approach to user needs and timely execution made the app highly effective. His expertise in Angular and CSS3 significantly enhanced our project. I highly recommend Jehian for any UI/UX design role.",
+      image: "https://gacemaslagi.site/team/hamas.webp",
     },
     {
-      name: "Gaurav Kerkar",
-      role: "Software Engineer @OneShield",
+      name: "Eka Bintang",
+      role: "Informatics Student @Soedirman University",
       content:
-        "I highly recommend Jehian for anyone seeking a talented software engineer with a strong expertise in Angular. His profound understanding of UI development has consistently elevated our projects. Diligent, collaborative, and always delivering top-notch solutions, Jehian is an asset to any t...",
-      image: "/testimonials/gaurav-kerkar.webp",
+        "In the DTI CodeFest 2025, Jehian’s contributions to our ‘SafePath’ app were impressive. His technical expertise and collaborative spirit ensured a polished product delivered on time. His attention to detail and ability to deliver high-quality work on time were impressive. I highly recommend Jehian for any software development role.",
+      image: "https://gacemaslagi.site/team/eka.webp",
     },
   ]
 
@@ -56,11 +58,11 @@ function TestimonialsCarousel() {
     if (isDragging) return
 
     const startTime = Date.now()
-    
+
     const updateProgress = () => {
       const elapsed = Date.now() - startTime
       const progressPercent = (elapsed / SLIDE_DURATION) * 100
-      
+
       if (progressPercent >= 100) {
         setProgress(0)
         setCurrentSlide((prev) => (prev + 1) % testimonials.length)
@@ -82,7 +84,7 @@ function TestimonialsCarousel() {
   const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault()
     setIsDragging(true)
-    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX
     setDragStart(clientX)
     setDragOffset(0)
   }
@@ -90,29 +92,31 @@ function TestimonialsCarousel() {
   const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDragging) return
     e.preventDefault()
-    
-    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+
+    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX
     const offset = clientX - dragStart
     setDragOffset(offset)
   }
 
   const handleDragEnd = () => {
     if (!isDragging) return
-    
+
     setIsDragging(false)
-    
+
     const threshold = 50 // minimum drag distance
-    
+
     if (Math.abs(dragOffset) > threshold) {
       if (dragOffset > 0) {
         // Swipe right - go to previous
-        setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+        setCurrentSlide(
+          (prev) => (prev - 1 + testimonials.length) % testimonials.length
+        )
       } else {
         // Swipe left - go to next
         setCurrentSlide((prev) => (prev + 1) % testimonials.length)
       }
     }
-    
+
     setDragOffset(0)
     setProgress(0)
   }
@@ -130,7 +134,13 @@ function TestimonialsCarousel() {
   }
 
   // Progress ring component
-  const ProgressRing = ({ size = 64, strokeWidth = 3 }: { size?: number; strokeWidth?: number }) => {
+  const ProgressRing = ({
+    size = 64,
+    strokeWidth = 3,
+  }: {
+    size?: number
+    strokeWidth?: number
+  }) => {
     const radius = (size - strokeWidth) / 2
     const circumference = radius * 2 * Math.PI
     const strokeDasharray = circumference
@@ -171,7 +181,7 @@ function TestimonialsCarousel() {
     <div className="w-2/3">
       <div className="relative">
         {/* Carousel container dengan preview */}
-        <div 
+        <div
           className="flex items-center select-none"
           onMouseDown={handleDragStart}
           onMouseMove={handleDragMove}
@@ -181,11 +191,15 @@ function TestimonialsCarousel() {
           onTouchMove={handleDragMove}
           onTouchEnd={handleDragEnd}
           style={{
-            transform: `translateX(${Math.max(-50, Math.min(50, dragOffset))}px)`,
-            transition: isDragging ? 'none' : 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+            transform: `translateX(${Math.max(
+              -50,
+              Math.min(50, dragOffset)
+            )}px)`,
+            transition: isDragging
+              ? "none"
+              : "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
           }}
         >
-          
           {/* Previous card preview - 20px visible */}
           <div className="w-5 overflow-hidden flex-shrink-0 relative">
             {/* Left gradient fade */}
@@ -193,49 +207,72 @@ function TestimonialsCarousel() {
             <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl !p-6 w-72 opacity-60 transition-opacity duration-300">
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3 items-center">
-                  <div className="size-12 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0 relative">
-                    <div className="size-8 bg-highlight-primary/20 rounded-full flex items-center justify-center">
-                      <span className="text-highlight-primary font-semibold text-sm">
-                        {testimonials[(currentSlide - 1 + testimonials.length) % testimonials.length].name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </span>
-                    </div>
+                  <div className="size-12 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0 relative overflow-hidden">
+                    <Image
+                      src={
+                        testimonials[
+                          (currentSlide - 1 + testimonials.length) %
+                            testimonials.length
+                        ].image
+                      }
+                      alt={
+                        testimonials[
+                          (currentSlide - 1 + testimonials.length) %
+                            testimonials.length
+                        ].name
+                      }
+                      fill
+                      className="rounded-full object-cover"
+                    />
                   </div>
                   <div className="flex-1">
                     <h4 className="!font-clash-display !font-semibold text-text-primary !text-base !mb-1">
-                      {testimonials[(currentSlide - 1 + testimonials.length) % testimonials.length].name}
+                      {
+                        testimonials[
+                          (currentSlide - 1 + testimonials.length) %
+                            testimonials.length
+                        ].name
+                      }
                     </h4>
                     <p className="text-text-secondary text-xs font-satoshi">
-                      {testimonials[(currentSlide - 1 + testimonials.length) % testimonials.length].role}
+                      {
+                        testimonials[
+                          (currentSlide - 1 + testimonials.length) %
+                            testimonials.length
+                        ].role
+                      }
                     </p>
                   </div>
                 </div>
                 <p className="text-text-secondary text-sm leading-relaxed font-satoshi line-clamp-3">
-                  {testimonials[(currentSlide - 1 + testimonials.length) % testimonials.length].content}
+                  {
+                    testimonials[
+                      (currentSlide - 1 + testimonials.length) %
+                        testimonials.length
+                    ].content
+                  }
                 </p>
               </div>
             </div>
           </div>
 
           {/* Current testimonial - main content */}
-          <div 
+          <div
             className="flex-1 px-5 cursor-grab active:cursor-grabbing"
             ref={cardRef}
           >
             <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl !p-8 max-w-3xl mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="flex flex-col gap-4">
                 <div className="flex gap-4 items-center">
-                  <div className="size-16 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0 relative">
+                  <div className="size-16 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0 relative overflow-hidden">
                     <ProgressRing size={64} strokeWidth={3} />
-                    <div className="size-12 bg-highlight-primary/20 rounded-full flex items-center justify-center relative z-10">
-                      <span className="text-highlight-primary font-semibold text-lg">
-                        {testimonials[currentSlide].name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </span>
+                    <div className="size-12 rounded-full overflow-hidden relative z-10">
+                      <Image
+                        src={testimonials[currentSlide].image}
+                        alt={testimonials[currentSlide].name}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                   </div>
                   <div className="flex-1">
@@ -249,7 +286,9 @@ function TestimonialsCarousel() {
                 </div>
                 <p className="text-text-secondary leading-relaxed font-satoshi">
                   {testimonials[currentSlide].content}
-                  <button className="!text-white hover:underline ml-1 transition-all duration-200">see more</button>
+                  <button className="!text-white hover:underline ml-1 transition-all duration-200">
+                    see more
+                  </button>
                 </p>
               </div>
             </div>
@@ -262,27 +301,40 @@ function TestimonialsCarousel() {
             <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl !p-6 w-72 -ml-64 opacity-60 transition-opacity duration-300">
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3 items-center">
-                  <div className="size-12 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0 relative">
-                    <div className="size-8 bg-highlight-primary/20 rounded-full flex items-center justify-center">
-                      <span className="text-highlight-primary font-semibold text-sm">
-                        {testimonials[(currentSlide + 1) % testimonials.length].name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </span>
-                    </div>
+                  <div className="size-12 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0 relative overflow-hidden">
+                    <Image
+                      src={
+                        testimonials[(currentSlide + 1) % testimonials.length]
+                          .image
+                      }
+                      alt={
+                        testimonials[(currentSlide + 1) % testimonials.length]
+                          .name
+                      }
+                      fill
+                      className="rounded-full object-cover"
+                    />
                   </div>
                   <div className="flex-1">
                     <h4 className="!font-clash-display !font-semibold text-text-primary !text-base !mb-1">
-                      {testimonials[(currentSlide + 1) % testimonials.length].name}
+                      {
+                        testimonials[(currentSlide + 1) % testimonials.length]
+                          .name
+                      }
                     </h4>
                     <p className="text-text-secondary text-xs font-satoshi">
-                      {testimonials[(currentSlide + 1) % testimonials.length].role}
+                      {
+                        testimonials[(currentSlide + 1) % testimonials.length]
+                          .role
+                      }
                     </p>
                   </div>
                 </div>
                 <p className="text-text-secondary text-sm leading-relaxed font-satoshi line-clamp-3">
-                  {testimonials[(currentSlide + 1) % testimonials.length].content}
+                  {
+                    testimonials[(currentSlide + 1) % testimonials.length]
+                      .content
+                  }
                 </p>
               </div>
             </div>
