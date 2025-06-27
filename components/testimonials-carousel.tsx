@@ -350,7 +350,7 @@ function TestimonialsCarousel() {
           >
             {/* Animated border effect */}
             <div className="absolute bottom-0 left-0 h-0.5 w-full bg-highlight-primary transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></div>
-            
+
             <span className="text-sm !text-white font-medium font-satoshi">
               Check it out on Linkedin
             </span>
@@ -374,21 +374,24 @@ function TestimonialsCarousel() {
           <div className="flex justify-center mt-8 space-x-4">
             <button
               onClick={prevSlide}
-              className="bg-bg-800 border border-bg-700 rounded-full p-3 hover:bg-bg-700 transition-colors"
+              className="cursor-pointer !mr-4 !bg-bg-800 !border !border-bg-700 !rounded-full !p-3 hover:!bg-bg-700 transition-colors"
               aria-label="Previous slide"
             >
               <svg
-                className="w-5 h-5 text-text-primary"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                viewBox="0 0 24 24"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-arrow-left h-4 w-4"
+                aria-hidden="true"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
+                <path d="m12 19-7-7 7-7"></path>
+                <path d="M19 12H5"></path>
               </svg>
             </button>
             <span className="text-text-secondary self-center text-sm">
@@ -396,21 +399,24 @@ function TestimonialsCarousel() {
             </span>
             <button
               onClick={nextSlide}
-              className="bg-bg-800 border border-bg-700 rounded-full p-3 hover:bg-bg-700 transition-colors"
+              className="cursor-pointer rotate-180 !ml-4 !bg-bg-800 !border !border-bg-700 !rounded-full !p-3 hover:!bg-bg-700 transition-colors"
               aria-label="Next slide"
             >
               <svg
-                className="w-5 h-5 text-text-primary"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                viewBox="0 0 24 24"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-arrow-left h-4 w-4"
+                aria-hidden="true"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
+                <path d="m12 19-7-7 7-7"></path>
+                <path d="M19 12H5"></path>
               </svg>
             </button>
           </div>
