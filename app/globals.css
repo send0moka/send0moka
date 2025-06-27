@@ -554,3 +554,11 @@ svg {
 .projects-hover-container .project-card:hover {
   opacity: 1 !important;
 }
+
+/* Line clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
