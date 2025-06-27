@@ -286,9 +286,6 @@ function TestimonialsCarousel() {
                 </div>
                 <p className="text-text-secondary leading-relaxed font-satoshi">
                   {testimonials[currentSlide].content}
-                  <button className="!text-white hover:underline ml-1 transition-all duration-200">
-                    see more
-                  </button>
                 </p>
               </div>
             </div>
