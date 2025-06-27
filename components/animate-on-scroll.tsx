@@ -25,7 +25,7 @@ export default function AnimateOnScroll({
         delay,
         ease: [0.25, 0.46, 0.45, 0.94] // ease-in-out-sine equivalent
       }}
-      viewport={{ once: false, margin: "0px 0px -100px 0px" }}
+      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
       className={className}
     >
       {children}
