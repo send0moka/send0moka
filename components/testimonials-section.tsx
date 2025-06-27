@@ -65,13 +65,13 @@ function TestimonialsSection() {
             </p>
           </div>
         </AnimateOnScroll>
-        <AnimateOnScroll delay={0.2}>
-          <h2 className="my-4 font-clash-display text-5xl font-medium text-text-primary">
+        <AnimateOnScroll delay={0.2} duration={0.6}>
+          <h2 className="!my-4 font-clash-display !text-5xl !font-medium text-text-primary">
             What others say
           </h2>
         </AnimateOnScroll>
         <AnimateOnScroll delay={0.4}>
-          <p className="text-text-secondary mb-12 max-w-2xl">
+          <p className="text-text-secondary mb-12 text-balance">
             I&apos;ve worked with some amazing people over the years, here is
             what they have to say about me.
           </p>
