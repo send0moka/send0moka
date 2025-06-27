@@ -1,19 +1,25 @@
 "use client"
 
 import Link from "next/link"
+import AnimateOnScroll from "./animate-on-scroll"
 
 function CTASection() {
   return (
     <section className="max-screen rounded-3xl w-full bg-[#111116] !py-14 text-center">
+      <AnimateOnScroll delay={0} duration={0.6}>
         <div className="inline-flex items-center !px-4 !py-2 bg-[#21291f] text-white rounded-full text-sm font-medium !mb-8 font-satoshi">
           <div className="size-[6px] rounded-full bg-highlight-primary !mr-2 animate-pulse" />
           Available for work
         </div>
+      </AnimateOnScroll>
 
+      <AnimateOnScroll delay={0.2} duration={0.6}>
         <h2 className="!text-6xl !font-medium text-balance !px-80 font-clash-display text-text-primary mb-4">
-          Let’s create your next big idea.
+          Let&apos;s create your next big idea.
         </h2>
+      </AnimateOnScroll>
 
+      <AnimateOnScroll delay={0.4} duration={0.6}>
         <div className="!pt-8">
           <Link href="/contact">
             <button
@@ -44,6 +50,7 @@ function CTASection() {
             </button>
           </Link>
         </div>
+      </AnimateOnScroll>
     </section>
   )
 }

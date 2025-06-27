@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { Linkedin, Github, Instagram, Mail, Twitter } from "lucide-react"
+import AnimateOnScroll from "./animate-on-scroll"
 
 function Footer() {
   const socialLinks = [
@@ -13,7 +14,8 @@ function Footer() {
   ]
 
   return (
-      <footer className="max-screen w-full flex justify-between items-center !py-10">
+    <AnimateOnScroll delay={0} duration={0.6}>
+      <footer className="max-screen w-full flex justify-between items-center !py-10 !mb-24">
         <p className="text-text-secondary text-sm font-satoshi">
           © {new Date().getFullYear()} Jehian. All rights reserved.
         </p>
@@ -35,6 +37,7 @@ function Footer() {
           })}
         </div>
       </footer>
+    </AnimateOnScroll>
   )
 }
 
