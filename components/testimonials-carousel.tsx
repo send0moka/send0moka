@@ -201,7 +201,7 @@ function TestimonialsCarousel() {
           }}
         >
           {/* Previous card preview - 20px visible */}
-          <div className="w-5 overflow-hidden flex-shrink-0 relative">
+          <div className="rotate-180 !mr-5 w-5 overflow-hidden flex-shrink-0 relative">
             {/* Left gradient fade */}
             <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-bg-900 via-bg-900/50 to-transparent z-10 pointer-events-none" />
             <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl !p-6 w-72 opacity-60 transition-opacity duration-300">
@@ -295,7 +295,7 @@ function TestimonialsCarousel() {
           </div>
 
           {/* Next card preview - 20px visible */}
-          <div className="w-5 overflow-hidden flex-shrink-0 relative">
+          <div className="w-5 !ml-5 overflow-hidden flex-shrink-0 relative">
             {/* Right gradient fade */}
             <div className="absolute inset-y-0 right-0 w-full bg-gradient-to-l from-bg-900 via-bg-900/50 to-transparent z-10 pointer-events-none" />
             <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl !p-6 w-72 -ml-64 opacity-60 transition-opacity duration-300">
