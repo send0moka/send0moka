@@ -346,7 +346,7 @@ function TestimonialsCarousel() {
             href="https://www.linkedin.com/in/jehian/details/recommendations/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 !border-b !border-bg-700 !pb-2 relative overflow-hidden group"
+            className="flex items-center gap-2 !border-b !border-bg-700 relative overflow-hidden group"
           >
             {/* Animated border effect */}
             <div className="absolute bottom-0 left-0 h-0.5 w-full bg-highlight-primary transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></div>
