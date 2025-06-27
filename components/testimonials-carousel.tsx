@@ -342,16 +342,35 @@ function TestimonialsCarousel() {
         </div>
 
         <div className="flex justify-between !mt-20">
-          <div className="text-center mt-12">
-            <a
-              href="https://www.linkedin.com/in/jehian/details/recommendations/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm !text-white font-medium hover:underline font-satoshi"
-            >
+          <a
+            href="https://www.linkedin.com/in/jehian/details/recommendations/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 !border-b !border-bg-700 !pb-2 relative overflow-hidden group"
+          >
+            {/* Animated border effect */}
+            <div className="absolute bottom-0 left-0 h-0.5 w-full bg-highlight-primary transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></div>
+            
+            <span className="text-sm !text-white font-medium font-satoshi">
               Check it out on Linkedin
-            </a>
-          </div>
+            </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-arrow-up-right"
+              aria-hidden="true"
+            >
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+          </a>
           <div className="flex justify-center mt-8 space-x-4">
             <button
               onClick={prevSlide}
