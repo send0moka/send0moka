@@ -1,11 +1,16 @@
 "use client"
 
 import { Sparkle } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import AnimateOnScroll from "./animate-on-scroll"
 
 function TestimonialsSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const testimonials = [
     {
@@ -80,50 +85,105 @@ function TestimonialsSection() {
       <div className="w-2/3">
         <AnimateOnScroll delay={0.6}>
           <div className="relative">
-            <div className="flex overflow-hidden">
-              <div
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="w-full flex-shrink-0 px-4">
-                    <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl !p-8 max-w-3xl mx-auto">
-                      <div className="flex flex-col gap-4">
-                        <div className="flex gap-4 items-center">
-                          {/* avatar */}
-                          <div className="size-16 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0">
-                            <div className="size-12 bg-highlight-primary/20 rounded-full flex items-center justify-center">
-                              <span className="text-highlight-primary font-semibold text-lg">
-                                {testimonial.name
-                                  .split(" ")
-                                  .map((n) => n[0])
-                                  .join("")}
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* name role */}
-                          <div className="flex-1">
-                            <h4 className="!font-clash-display !font-semibold text-text-primary !text-xl !mb-1">
-                              {testimonial.name}
-                            </h4>
-                            <p className="text-text-secondary text-sm mb-4 font-satoshi">
-                              {testimonial.role}
-                            </p>
+            {/* Carousel container dengan preview */}
+            <div className="flex items-center">
+              
+              {/* Previous card preview - 20px visible */}
+              <div className="w-5 overflow-hidden flex-shrink-0">
+                {isClient && (
+                  <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl !p-6 w-72">
+                    <div className="flex flex-col gap-3">
+                      <div className="flex gap-3 items-center">
+                        <div className="size-12 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0">
+                          <div className="size-8 bg-highlight-primary/20 rounded-full flex items-center justify-center">
+                            <span className="text-highlight-primary font-semibold text-sm">
+                              {testimonials[(currentSlide - 1 + testimonials.length) % testimonials.length].name
+                                .split(" ")
+                                .map((n) => n[0])
+                                .join("")}
+                            </span>
                           </div>
                         </div>
+                        <div className="flex-1">
+                          <h4 className="!font-clash-display !font-semibold text-text-primary !text-base !mb-1">
+                            {testimonials[(currentSlide - 1 + testimonials.length) % testimonials.length].name}
+                          </h4>
+                          <p className="text-text-secondary text-xs font-satoshi">
+                            {testimonials[(currentSlide - 1 + testimonials.length) % testimonials.length].role}
+                          </p>
+                        </div>
+                      </div>
+                      <p className="text-text-secondary text-sm leading-relaxed font-satoshi line-clamp-3">
+                        {testimonials[(currentSlide - 1 + testimonials.length) % testimonials.length].content}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
 
-                        {/* content */}
-                        <p className="text-text-secondary leading-relaxed font-satoshi">
-                          {testimonial.content}
-                          <button className="!text-white hover:underline ml-1">
-                            see more
-                          </button>
+              {/* Current testimonial - main content */}
+              <div className="flex-1 px-5">
+                <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl !p-8 max-w-3xl mx-auto">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex gap-4 items-center">
+                      <div className="size-16 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="size-12 bg-highlight-primary/20 rounded-full flex items-center justify-center">
+                          <span className="text-highlight-primary font-semibold text-lg">
+                            {testimonials[currentSlide].name
+                              .split(" ")
+                              .map((n) => n[0])
+                              .join("")}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="!font-clash-display !font-semibold text-text-primary !text-xl !mb-1">
+                          {testimonials[currentSlide].name}
+                        </h4>
+                        <p className="text-text-secondary text-sm mb-4 font-satoshi">
+                          {testimonials[currentSlide].role}
                         </p>
                       </div>
                     </div>
+                    <p className="text-text-secondary leading-relaxed font-satoshi">
+                      {testimonials[currentSlide].content}
+                      <button className="!text-white hover:underline ml-1">see more</button>
+                    </p>
                   </div>
-                ))}
+                </div>
+              </div>
+
+              {/* Next card preview - 20px visible */}
+              <div className="w-5 overflow-hidden flex-shrink-0">
+                {isClient && (
+                  <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl !p-6 w-72 -ml-64">
+                    <div className="flex flex-col gap-3">
+                      <div className="flex gap-3 items-center">
+                        <div className="size-12 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0">
+                          <div className="size-8 bg-highlight-primary/20 rounded-full flex items-center justify-center">
+                            <span className="text-highlight-primary font-semibold text-sm">
+                              {testimonials[(currentSlide + 1) % testimonials.length].name
+                                .split(" ")
+                                .map((n) => n[0])
+                                .join("")}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="!font-clash-display !font-semibold text-text-primary !text-base !mb-1">
+                            {testimonials[(currentSlide + 1) % testimonials.length].name}
+                          </h4>
+                          <p className="text-text-secondary text-xs font-satoshi">
+                            {testimonials[(currentSlide + 1) % testimonials.length].role}
+                          </p>
+                        </div>
+                      </div>
+                      <p className="text-text-secondary text-sm leading-relaxed font-satoshi line-clamp-3">
+                        {testimonials[(currentSlide + 1) % testimonials.length].content}
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
