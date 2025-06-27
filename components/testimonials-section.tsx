@@ -128,7 +128,16 @@ function TestimonialsSection() {
             </div>
 
             <div className="flex justify-between !mt-20">
-              {/* Navigation */}
+              <div className="text-center mt-12">
+                <a
+                  href="https://www.linkedin.com/in/jehian/details/recommendations/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm !text-white font-medium hover:underline font-satoshi"
+                >
+                  Check it out on Linkedin
+                </a>
+              </div>
               <div className="flex justify-center mt-8 space-x-4">
                 <button
                   onClick={prevSlide}
@@ -171,16 +180,6 @@ function TestimonialsSection() {
                     />
                   </svg>
                 </button>
-              </div>
-              <div className="text-center mt-12">
-                <a
-                  href="https://www.linkedin.com/in/jehian/details/recommendations/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-highlight-primary hover:underline font-satoshi"
-                >
-                  Check it out on Linkedin
-                </a>
               </div>
             </div>
           </div>
