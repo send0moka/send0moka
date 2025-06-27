@@ -1,53 +1,49 @@
-'use client'
+"use client"
 
 import Link from "next/link"
-import AnimateOnScroll from "./animate-on-scroll"
 
 function CTASection() {
-  const renderAnimatedTitle = (title: string) => {
-    const words = title.split(' ')
-    return (
-      <h2 role="heading" className="mb-8 text-4xl md:text-5xl lg:text-6xl font-clash-display font-semibold text-text-primary">
-        {words.map((word, wordIndex) => (
-          <span key={wordIndex} className="mr-[0.25em] inline-block">
-            {word.split('').map((char, charIndex) => (
-              <span 
-                key={charIndex} 
-                className="inline-block"
-              >
-                {char}
-              </span>
-            ))}
-          </span>
-        ))}
-      </h2>
-    )
-  }
-
   return (
-    <section className="max-screen py-20 px-4 text-center">
-      <AnimateOnScroll delay={0} duration={0.6}>
-        <div className="inline-block px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-8 font-satoshi">
+    <section className="max-screen rounded-3xl w-full bg-[#111116] !py-14 text-center">
+        <div className="inline-flex items-center !px-4 !py-2 bg-[#21291f] text-white rounded-full text-sm font-medium !mb-8 font-satoshi">
+          <div className="size-[6px] rounded-full bg-highlight-primary !mr-2 animate-pulse" />
           Available for work
         </div>
-      </AnimateOnScroll>
-        <AnimateOnScroll delay={0.2} duration={0.6}>
-        {renderAnimatedTitle("Let's create your next big idea.")}
-      </AnimateOnScroll>
-      
-      <AnimateOnScroll delay={0.4} duration={0.6}>
-        <div className="pt-8">
-          <Link 
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-highlight-primary text-white px-8 py-4 rounded-full font-satoshi font-medium text-lg hover:bg-highlight-primary/90 transition-colors skew-hover-effect"
-          >
-            Contact Me
-            <span className="inline-block transition-transform group-hover:translate-x-1">
-              Contact Me
-            </span>
+
+        <h2 className="!text-6xl !font-medium text-balance !px-80 font-clash-display text-text-primary mb-4">
+          Let’s create your next big idea.
+        </h2>
+
+        <div className="!pt-8">
+          <Link href="/contact">
+            <button
+              className="group cursor-pointer btn ring-offset-background focus-visible:ring-highlight-primary whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 btn__outline relative overflow-hidden"
+              type="button"
+              aria-disabled="false"
+            >
+              <span className="btn__ripple" />
+              {/* Background yang muncul dari bawah */}
+              <span
+                className="absolute inset-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
+                style={{ backgroundColor: "var(--foreground)" }}
+              />
+              {/* Text container */}
+              <span className="block overflow-hidden relative z-10">
+                {/* Text asli */}
+                <span className="btn__text block transform group-hover:-translate-y-full transition-transform duration-500 ease-out">
+                  Contact Me
+                </span>
+                {/* Text hover yang muncul dari bawah */}
+                <span
+                  className="btn__text absolute inset-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
+                  style={{ color: "var(--background)" }}
+                >
+                  Let&apos;s Talk
+                </span>
+              </span>
+            </button>
           </Link>
         </div>
-      </AnimateOnScroll>
     </section>
   )
 }

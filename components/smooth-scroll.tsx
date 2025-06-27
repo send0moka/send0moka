@@ -19,6 +19,8 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
         smoothWheel: true,
         wheelMultiplier: 1,
         touchMultiplier: 2,
+        infinite: false,
+        autoResize: true,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       }}
     >
