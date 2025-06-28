@@ -1,6 +1,6 @@
 ## Hi Folks! <img src="https://github.com/send0moka/send0moka/blob/8a9b4e961ff50da431e0dd49c27746fd02e81fcf/wave.gif?raw=true" width="22"> I'm Jehian.
 
-I'm a 3rd-year undergraduate student at [Universitas Jenderal Soedirman (Unsoed)](https://unsoed.ac.id) passionate about becoming a skilled software engineer. My focus is on developing applications, data solutions, and infrastructure to simplify workflows and explore the possibilities of design and code.
+I'm a 3rd-year undergraduate informatics student at [Universitas Jenderal Soedirman (Unsoed)](https://unsoed.ac.id) passionate about becoming a skilled software engineer. My focus is on developing applications, data solutions, and infrastructure to simplify workflows and explore the possibilities of design and code.
 
 ### What I Do
 - 🛠️ **Freelancing**: Building custom solutions for clients in my spare time.
