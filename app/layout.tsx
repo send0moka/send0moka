@@ -4,6 +4,10 @@ import "./globals.css"
 import DynamicFavicon from "@/components/dynamic-favicon"
 import SmoothScroll from "@/components/smooth-scroll"
 import VignetteOverlay from "@/components/vignette-overlay"
+import Header from "@/components/header"
+import MobileNav from "@/components/mobile-nav"
+import Footer from "@/components/footer"
+import CTASection from "@/components/cta-section"
 
 const satoshi = localFont({
   src: "../public/fonts/satoshi/Satoshi-Variable.woff2",
@@ -100,7 +104,21 @@ export default function RootLayout({
         <VignetteOverlay />
         <SmoothScroll>
           <div id="scroll-wrapper" className="flex grow flex-col">
-            {children}
+            <Header />
+            <MobileNav />
+            <main className="grow">
+              <div
+                className="revealFx relative flex w-full flex-col gap-24 justify-center hideRevealFx"
+                style={{
+                  transitionDuration: "1.5s",
+                  transform: "translateY(0rem)",
+                }}
+              >
+                {children}
+                <CTASection />
+              </div>
+            </main>
+            <Footer />
           </div>
         </SmoothScroll>
       </body>
