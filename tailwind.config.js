@@ -20,7 +20,7 @@ const config = {
       fontFamily: {
         'satoshi': ['Satoshi', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         'clash-display': ['Clash Display', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-      },      colors: {
+      }, colors: {
         'text-primary': '#ffffff',
         'text-secondary': '#a1a1aa',
         'bg-900': '#0a0a0a',
@@ -86,9 +86,10 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         marquee: "marquee 20s linear infinite",
       },
-    },  },
+    },
+  },
   plugins: [
-    function({ addBase }) {
+    function ({ addBase }) {
       addBase({
         '::selection': {
           backgroundColor: 'var(--highlight-primary)',
