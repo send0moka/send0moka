@@ -23,18 +23,16 @@ export default function HeroSection() {
           Hey! It&apos;s me Jehian,
         </p>
       </AnimateOnScroll>
-
       {/* Main Heading */}
       <AnimateOnScroll delay={0.2} duration={0.6}>
         <h1 className="font-clash-display !font-medium !text-7xl leading-none text-pretty md:text-6xl lg:w-3/4 lg:text-7xl">
-          Crafting{" "}
+          Crafting
           <span className="text-highlight-primary">
             purpose driven experiences
-          </span>{" "}
+          </span>
           that inspire &amp; engage.
         </h1>
       </AnimateOnScroll>
-
       {/* Description */}
       <AnimateOnScroll delay={0.4} duration={0.6}>
         <div className="md:flex-center mt-8 flex flex-col items-center gap-4 md:flex-row">
@@ -45,10 +43,11 @@ export default function HeroSection() {
             business goals.
           </p>
         </div>
-      </AnimateOnScroll>      {/* Social Links & CTA */}
+      </AnimateOnScroll>
+      {/* Social Links & CTA */}
       <AnimateOnScroll delay={0.6} duration={0.6}>
         <div className="mt-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
-          {" "}
+          
           <ul className="opacity-container hidden h-fit gap-4 md:flex group">
             {SOCIAL_LINKS.map((link) => (
               <li key={link.name} className="opacity-container-child h-fit">
@@ -69,7 +68,7 @@ export default function HeroSection() {
               type="button"
               aria-disabled="false"
             >
-              <span className="btn__ripple" />{" "}
+              <span className="btn__ripple" />
               {/* Background yang muncul dari bawah */}
               <span
                 className="absolute inset-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"

@@ -1,5 +1,7 @@
 export default function HeroSection() {
   return (
-    <section></section>
+    <section className="bg-red-50">
+      
+    </section>
   )
 }
