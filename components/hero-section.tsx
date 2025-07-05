@@ -26,11 +26,11 @@ export default function HeroSection() {
       {/* Main Heading */}
       <AnimateOnScroll delay={0.2} duration={0.6}>
         <h1 className="font-clash-display !font-medium !text-7xl leading-none text-pretty md:text-6xl lg:w-3/4 lg:text-7xl">
-          Crafting
+          Crafting{" "}
           <span className="text-highlight-primary">
             purpose driven experiences
           </span>
-          that inspire &amp; engage.
+          {" "}that inspire &amp; engage.
         </h1>
       </AnimateOnScroll>
       {/* Description */}
