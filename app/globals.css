@@ -608,6 +608,47 @@ svg {
   opacity: 1 !important;
 }
 
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2c2c35;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a45;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Hide scrollbar arrow buttons */
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+  display: none;
+}
+
+/* Firefox scrollbar styles */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #2c2c35 transparent;
+}
+
 /* Line clamp utility */
 .line-clamp-3 {
   display: -webkit-box;
