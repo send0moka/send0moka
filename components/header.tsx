@@ -9,16 +9,36 @@ const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
+  { href: "/til", label: "T.I.L", disabled: true },
 ]
 
 interface NavItemProps {
   href: string
   label: string
   isActive: boolean
+  disabled?: boolean
 }
 
-function NavItem({ href, label, isActive }: NavItemProps) {
+function NavItem({ href, label, isActive, disabled }: NavItemProps) {
+  if (disabled) {
+    return (
+      <li className="group relative">
+        <div className="relative cursor-not-allowed">
+          <span
+            className={`relative inline-flex items-center overflow-hidden opacity-50`}
+          >
+            <div className="translate-y-0 skew-y-0 transform-gpu transition-transform duration-500">
+              {label}
+              <span className="text-xs bg-neutral-800 !px-2 !py-1 rounded-full !ml-1">
+                soon!
+              </span>
+            </div>
+          </span>
+        </div>
+      </li>
+    )
+  }
+
   return (
     <li className="group relative">
       <Link className={isActive ? "active-link" : ""} href={href}>
@@ -133,6 +153,7 @@ export default function Header() {
               href={item.href}
               label={item.label}
               isActive={pathname === item.href}
+              disabled={item.disabled}
             />
           ))}
         </ul>

@@ -62,7 +62,9 @@ export default function ProjectsSection() {
       <div className="opacity-container py-md grid grid-cols-1 grid-rows-[masonry] gap-y-10 sm:grid-cols-2 sm:gap-x-16 sm:gap-y-0 projects-hover-container">
         {projects.map((project, index) => (
           <AnimateOnScroll key={index} delay={0.6 + index * 0.1} duration={0.6}>
-            <div className="opacity-container-child group project-card h-fit w-full cursor-pointer sm:even:mt-14">
+            <div className={`opacity-container-child group project-card h-fit w-full cursor-pointer ${
+                index % 2 === 1 ? "!mt-10 sm:!mt-14" : "sm:even:mt-14"
+              }`}>
               <Link className="h-fit w-full" href={project.href}>
                 <div className="aspect-3/2 w-full overflow-hidden rounded-3xl">
                   <Image
@@ -85,7 +87,7 @@ export default function ProjectsSection() {
                   />
                 </div>
 
-                <div className="mt-4 space-y-2">
+                <div className="!mt-4">
                   <h5>{project.title}</h5>
                   <div className="flex justify-between">
                     <div className="flex flex-wrap gap-2">
