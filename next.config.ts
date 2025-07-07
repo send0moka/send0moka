@@ -25,8 +25,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "media.licdn.com",
         port: "",
-        pathname: "/dms/image/v2/**",
+        pathname: "/dms/image/**",
       },
+      {
+        protocol: "https",
+        hostname: "media-exp1.licdn.com",
+        port: "",
+        pathname: "/dms/image/C560BAQGGO60lRZpEtpQ/company-logo_100_100/company-logo_100_100/**",
+      }
     ],
   },
 }
