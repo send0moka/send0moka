@@ -184,10 +184,22 @@ export default function Projects() {
     },
   ]
 
+  // Filter function
+  const filteredProjects = projects.filter((project) => {
+    if (activeTab === "All") return true
+    if (activeTab === "Development") {
+      return project.category.includes("Development")
+    }
+    if (activeTab === "Design") {
+      return project.category.includes("Design")
+    }
+    return false
+  })
+
   return (
     <AnimateOnScroll delay={0.6} duration={0.6}>
       <section className="container max-screen py-16 flex flex-col gap-10">
-        <aside className="!mt-28">
+        <aside className="!mt-28 !-mb-10">
           <AnimateOnScroll delay={0} duration={0.6}>
             <div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
               <Sparkle size={18} />
@@ -203,34 +215,32 @@ export default function Projects() {
             </h2>
           </AnimateOnScroll>
         </aside>
-        <AnimateOnScroll delay={0.4} duration={0.6}>
-          <aside className="flex justify-end">
-            <div className="relative flex bg-transparent rounded-full">
-              {/* Background slider */}
-              <div
-                className="absolute top-0 bg-[#27272a] rounded-full transition-all duration-300 ease-in-out"
-                style={{
-                  left: getSliderPosition(activeTab).left,
-                  width: getSliderPosition(activeTab).width,
-                  height: "100%",
-                }}
-              />
+        <aside className="flex justify-end">
+          <div className="relative flex bg-transparent rounded-full">
+            {/* Background slider */}
+            <div
+              className="absolute top-0 bg-[#27272a] rounded-full transition-all duration-300 ease-in-out"
+              style={{
+                left: getSliderPosition(activeTab).left,
+                width: getSliderPosition(activeTab).width,
+                height: "100%",
+              }}
+            />
 
-              {/* Buttons */}
-              {tabs.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className="relative z-10 text-text-primary !px-6 !py-2 rounded-full cursor-pointer transition-colors duration-300"
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-          </aside>
-        </AnimateOnScroll>
+            {/* Buttons */}
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className="relative z-10 text-text-primary !px-6 !py-2 rounded-full cursor-pointer transition-colors duration-300"
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+        </aside>
         <div className="opacity-container grid grid-cols-1 grid-rows-[masonry] gap-y-10 sm:grid-cols-2 sm:gap-x-16 sm:gap-y-0 projects-hover-container">
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <div
               key={index}
               className="!mb-10 opacity-container-child group project-card h-fit w-full cursor-pointer sm:even:mt-14"
