@@ -199,7 +199,7 @@ export default function Projects() {
   return (
     <AnimateOnScroll delay={0.6} duration={0.6}>
       <section className="container max-screen py-16 flex flex-col gap-10">
-        <aside className="!mt-28 !-mb-10">
+        <aside className="!mt-24 !-mb-10">
           <AnimateOnScroll delay={0} duration={0.6}>
             <div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
               <Sparkle size={18} />
@@ -243,7 +243,9 @@ export default function Projects() {
           {filteredProjects.map((project, index) => (
             <div
               key={index}
-              className="!mb-10 opacity-container-child group project-card h-fit w-full cursor-pointer sm:even:mt-14"
+              className={`opacity-container-child group project-card h-fit w-full cursor-pointer ${
+                index % 2 === 1 ? "!mt-10 sm:!mt-14" : "sm:even:mt-14"
+              }`}
             >
               <Link className="h-fit w-full" href={project.href}>
                 <div className="aspect-3/2 w-full overflow-hidden rounded-3xl">
@@ -267,7 +269,7 @@ export default function Projects() {
                   />
                 </div>
 
-                <div className="mt-4 space-y-2">
+                <div className="!mt-4">
                   <h5>{project.title}</h5>
                   <div className="flex justify-between">
                     <div className="flex flex-wrap gap-2">
