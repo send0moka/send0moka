@@ -165,7 +165,7 @@ export default function HeroSection() {
               <CircularText />
             </Link>
           </figure>
-          <figure className="flex flex-col gap-4">
+          <figure className="flex flex-col gap-4 !-mt-52">
             <h1 className="font-clash-display !font-medium !text-7xl text-balance">
               A{" "}
               <span className="text-highlight-primary">creative developer</span>{" "}
