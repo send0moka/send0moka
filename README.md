@@ -8,7 +8,7 @@ I'm a 3rd-year undergraduate informatics student at [Universitas Jenderal Soedir
 - 💻 **Open Source**: Sharing my side projects on [GitHub](https://github.com/send0moka). Check out some of my work below! 👇
 
 ### Featured Projects
-- [**SEF Unsoed**](https://sefunsoed.site]): A company profile website for an internal campus organization, built in English. Its purpose is to showcase the organization's activities and mission to a global audience.
+- [**SEF Unsoed**](https://sefunsoed.site): A company profile website for an internal campus organization, built in English. Its purpose is to showcase the organization's activities and mission to a global audience.
 - **BarTani** (still in development): A GEMASTIK competition project focused on user experience in agriculture. Its purpose is to enable farmers to monitor crop pests effectively.
 
 ### Let's Connect!
