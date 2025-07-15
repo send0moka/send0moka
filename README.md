@@ -5,7 +5,7 @@ I'm a 3rd-year undergraduate informatics student at [Universitas Jenderal Soedir
 ### What I Do
 - 🛠️ **Freelancing**: Building custom solutions for clients in my spare time.
 - 🌐 **Personal Website**: Constantly updating and improving my portfolio at [jehian.me](https://jehian.me).
-- 💻 **Open Source**: Sharing my side projects on [GitHub](https://github.com/send0moka]). Check out some of my work below! 👇
+- 💻 **Open Source**: Sharing my side projects on [GitHub](https://github.com/send0moka). Check out some of my work below! 👇
 
 ### Featured Projects
 - [**SEF Unsoed**](https://sefunsoed.site]): A company profile website for an internal campus organization, built in English. Its purpose is to showcase the organization's activities and mission to a global audience.
