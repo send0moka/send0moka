@@ -14,6 +14,6 @@ I'm a 3rd-year undergraduate informatics student at [Universitas Jenderal Soedir
 ### Let's Connect!
 ☕ Want to chat about tech, projects, or ideas? Reach out to me on [Twitter](https://twitter.com/sendomoka) or visit [jehian.me](https://jehian.me)!
 
-![profile](https://pixel-profile.vercel.app/api/github-stats?username=send0moka&screen_effect=true)
+![profile](https://pixel-profile.vercel.app/api/github-stats?username=send0moka)
 ![](https://komarev.com/ghpvc/?username=send0moka)
 ![IndoGitHubers-badge](https://indogithubers-badge.vercel.app/badge?username=send0moka&style=social)
