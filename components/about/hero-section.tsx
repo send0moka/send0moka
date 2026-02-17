@@ -177,7 +177,7 @@ export default function HeroSection() {
               goals.
             </p>
             <Link
-              href="https://resmume.com/resume/amVoaWFuYXRoYXlhdGFAZ21haWwuY29tOjczODM0"
+              href="https://drive.google.com/file/d/1zpwpAsztKjGWDdjuYKh-KgskrhUpN1K5/view?usp=sharing"
               target="_blank"
             >
               <button
