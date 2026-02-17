@@ -90,17 +90,27 @@ export default function ExperienceSection() {
           </AnimateOnScroll>
         </aside>
         <aside className="w-full">
-          {/* Upcoming Internship */}
+          {/* KPw Bank Indonesia Purwokerto */}
           <ExperienceItem
-            logo={<div className="size-11 mb-4 rounded-lg bg-neutral-800"></div>}
-            title="Stay Tuned for Intern"
-            company="Place"
-            period="Aug 2025 — Dec 2025"
+            logo="https://media.licdn.com/dms/image/v2/D4D0BAQEYRvlXhNPv0Q/company-logo_100_100/B4DZazetx1HsAQ-/0/1746767896896?e=1772668800&v=beta&t=j24CyuJPo2CSev3hFRJ2d9zawgX_-3r3yH7fg6ihQ50"
+            title="Software Engineer Intern"
+            company="KPw Bank Indonesia Purwokerto"
+            period="Dec 2025"
+            alt="KPw Bank Indonesia Purwokerto"
+          />
+
+          {/* Kementan RI */}
+          <ExperienceItem
+            logo="https://media.licdn.com/dms/image/v2/C510BAQFMo8Yhuuy6fg/company-logo_100_100/company-logo_100_100/0/1630608455755?e=1772668800&v=beta&t=dUI3fyRbZrucRyekW0t7yCBcU9hNryp7pU5iy2RL5xQ"
+            title="Machine Learning Engineer Intern"
+            company="Kementan RI"
+            period="Aug 2025 — Nov 2025"
+            alt="Kementan RI"
           />
 
           {/* SEF Unsoed */}
           <ExperienceItem
-            logo="https://media.licdn.com/dms/image/v2/C560BAQGO60lRZpEtpQ/company-logo_100_100/company-logo_100_100/0/1630658801395?e=1757548800&v=beta&t=J162rdczhrGzHc_R-ymohrRAZPve-MjnDclL4st7O9Q"
+            logo="https://media.licdn.com/dms/image/v2/C560BAQGO60lRZpEtpQ/company-logo_100_100/company-logo_100_100/0/1630658801395?e=1772668800&v=beta&t=-D6Tqvs7_onzi7KCD0UFsa9-pR_lvsujX7BZ6PD5kGM"
             title="Freelance Web Developer"
             company="SEF Unsoed"
             period="May 2025 — Jul 2025"
@@ -112,7 +122,7 @@ export default function ExperienceSection() {
             <div className="flex justify-between items-center !mb-2">
               <article className="flex items-center gap-4">
                 <Image
-                  src="https://media.licdn.com/dms/image/v2/D560BAQHQtH_ytlLNoA/company-logo_100_100/company-logo_100_100/0/1720374835331?e=1757548800&v=beta&t=zY0Jl3D5U-uDABFUHMkirNYlkqtYid450yM4TyNXs5k"
+                  src="https://media.licdn.com/dms/image/v2/D560BAQHQtH_ytlLNoA/company-logo_100_100/company-logo_100_100/0/1720374835331?e=1772668800&v=beta&t=7eyNd5MQD-XVbOJlZGpZfBAdYAyDfr8m3Yy8cYL8J00"
                   alt="Informatics Laboratory Assistant"
                   className="size-11 mb-4 rounded-lg"
                   width={96}
@@ -150,7 +160,7 @@ export default function ExperienceSection() {
 
           {/* BEM Unsoed */}
           <ExperienceItem
-            logo="https://media.licdn.com/dms/image/v2/C510BAQE_TuzwrshLJw/company-logo_100_100/company-logo_100_100/0/1630624077878?e=1757548800&v=beta&t=j4f8pT32rOt8ZlDPPrr978wQqCYY6XwX1bUVuEr57cM"
+            logo="https://media.licdn.com/dms/image/v2/C510BAQE_TuzwrshLJw/company-logo_100_100/company-logo_100_100/0/1630624077878?e=1772668800&v=beta&t=YXSUK2NCXZP4USGkuKHyFZcDn_htuPNIev-El6wGIGM"
             title="Lead Director General of Data Analytics - Ministry of Research and Data"
             company="BEM Unsoed"
             period="Feb 2024 — Nov 2024"
@@ -159,7 +169,7 @@ export default function ExperienceSection() {
 
           {/* RSU St. Elisabeth */}
           <ExperienceItem
-            logo="https://media.licdn.com/dms/image/v2/D560BAQGFGtyHmRVHoQ/company-logo_100_100/company-logo_100_100/0/1720694688183/prm_pasir_wetan_logo?e=1757548800&v=beta&t=ADQLba5cjcwBMyoChd9kWff9LgQ_WudMndURdgGeHec"
+            logo="https://media.licdn.com/dms/image/v2/D560BAQGFGtyHmRVHoQ/company-logo_100_100/company-logo_100_100/0/1720694688183/prm_pasir_wetan_logo?e=1772668800&v=beta&t=fQMAcJd6Vq8jEWrYx9zvgw1lQVGwyb_X9_30sgp6ca4"
             title="Software Engineer Intern"
             company="RSU St. Elisabeth Purwokerto"
             period="Jul 2024 — Aug 2024"
