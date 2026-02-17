@@ -41,7 +41,7 @@ function NavItem({ href, label, isActive, disabled }: NavItemProps) {
 
   return (
     <li className="group relative">
-      <Link className={isActive ? "active-link" : ""} href={href}>
+      <Link className={isActive ? "active-link" : ""} href={href} data-lenis-prevent>
         <span
           className={`relative inline-flex items-center overflow-hidden ${
             isActive ? "-translate-y-[1px]" : ""
@@ -142,6 +142,7 @@ export default function Header() {
         <Link
           className="font-clash-display text-2xl font-medium sm:text-xl flex items-center"
           href="/"
+          data-lenis-prevent
         >
           JH
         </Link>

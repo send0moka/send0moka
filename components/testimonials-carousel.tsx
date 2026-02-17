@@ -31,13 +31,6 @@ function TestimonialsCarousel() {
         "https://framerusercontent.com/images/8SB77DXTMcncETjHhTfNi0zdbNg.png?scale-down-to=512",
     },
     {
-      name: "Amarramitha Poodja",
-      role: "Informatics Student @Soedirman University",
-      content:
-        "Jehian’s UI/UX work on our university project was outstanding. His intuitive design for the 'Daily Green Finance Report' app was both user-friendly and visually appealing. He’s a proactive team player! His attention to detail and ability to deliver high-quality work on time were impressive. I highly recommend Jehian for any UI/UX design role.",
-      image: "https://gacemaslagi.site/team/amarra.webp",
-    },
-    {
       name: "Hamas Izzuddin",
       role: "Informatics Student @Soedirman University",
       content:
@@ -178,11 +171,11 @@ function TestimonialsCarousel() {
   }
 
   return (
-    <div className="w-2/3">
+    <div className="w-full lg:w-2/3 min-w-0">
       <div className="relative">
-        {/* Carousel container dengan preview */}
+        {/* Carousel container - side previews hidden on mobile */}
         <div
-          className="flex items-center select-none"
+          className="flex items-center select-none justify-center lg:justify-start"
           onMouseDown={handleDragStart}
           onMouseMove={handleDragMove}
           onMouseUp={handleDragEnd}
@@ -200,8 +193,8 @@ function TestimonialsCarousel() {
               : "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
           }}
         >
-          {/* Previous card preview - 20px visible */}
-          <div className="rotate-180 !mr-5 w-5 overflow-hidden flex-shrink-0 relative">
+          {/* Previous card preview - hidden on mobile */}
+          <div className="hidden lg:block rotate-180 !mr-5 w-5 overflow-hidden flex-shrink-0 relative">
             {/* Left gradient fade */}
             <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-bg-900 via-bg-900/50 to-transparent z-10 pointer-events-none" />
             <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl !p-6 w-72 opacity-60 transition-opacity duration-300">
@@ -258,12 +251,12 @@ function TestimonialsCarousel() {
 
           {/* Current testimonial - main content */}
           <div
-            className="flex-1 px-5 cursor-grab active:cursor-grabbing"
+            className="flex-1 w-full min-w-0 px-0 sm:px-2 lg:px-5 cursor-grab active:cursor-grabbing"
             ref={cardRef}
           >
-            <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl !p-8 max-w-3xl mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex flex-col gap-4">
-                <div className="flex gap-4 items-center">
+            <div className="!bg-bg-800 !border !border-bg-700 rounded-xl sm:rounded-2xl !p-4 sm:!p-6 md:!p-8 w-full max-w-3xl mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="flex flex-col gap-3 sm:gap-4">
+                <div className="flex gap-3 sm:gap-4 items-center">
                   <div className="size-16 bg-bg-700 rounded-full flex items-center justify-center flex-shrink-0 relative overflow-hidden">
                     <ProgressRing size={64} strokeWidth={3} />
                     <div className="size-12 rounded-full overflow-hidden relative z-10">
@@ -275,24 +268,24 @@ function TestimonialsCarousel() {
                       />
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <h4 className="!font-clash-display !font-semibold text-text-primary !text-xl !mb-1">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="!font-clash-display !font-semibold text-text-primary !text-base sm:!text-lg md:!text-xl !mb-0.5 sm:!mb-1 truncate">
                       {testimonials[currentSlide].name}
                     </h4>
-                    <p className="text-text-secondary text-sm mb-4 font-satoshi">
+                    <p className="text-text-secondary text-xs sm:text-sm mb-0 sm:mb-4 font-satoshi line-clamp-2 sm:line-clamp-none">
                       {testimonials[currentSlide].role}
                     </p>
                   </div>
                 </div>
-                <p className="text-text-secondary leading-relaxed font-satoshi">
+                <p className="text-text-secondary text-sm sm:text-base leading-relaxed font-satoshi">
                   {testimonials[currentSlide].content}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Next card preview - 20px visible */}
-          <div className="w-5 !ml-5 overflow-hidden flex-shrink-0 relative">
+          {/* Next card preview - hidden on mobile */}
+          <div className="hidden lg:block w-5 !ml-5 overflow-hidden flex-shrink-0 relative">
             {/* Right gradient fade */}
             <div className="absolute inset-y-0 right-0 w-full bg-gradient-to-l from-bg-900 via-bg-900/50 to-transparent z-10 pointer-events-none" />
             <div className="!bg-bg-800 !border !border-bg-700 rounded-2xl !p-6 w-72 -ml-64 opacity-60 transition-opacity duration-300">
@@ -338,12 +331,12 @@ function TestimonialsCarousel() {
           </div>
         </div>
 
-        <div className="flex justify-between !mt-20">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0 !mt-6 sm:!mt-10 lg:!mt-20">
           <a
             href="https://www.linkedin.com/in/jehian/details/recommendations/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 pb-2 relative overflow-hidden group"
+            className="flex items-center gap-2 pb-2 relative overflow-hidden group w-fit"
             style={{ 
               borderBottom: '2px solid var(--border-bg-700)',
             }}
@@ -351,7 +344,7 @@ function TestimonialsCarousel() {
             {/* Animated border effect */}
             <div className="absolute bottom-0 left-0 h-0.5 w-full bg-highlight-primary transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></div>
 
-            <span className="text-sm text-text-primary font-medium font-satoshi">
+            <span className="text-xs sm:text-sm text-text-primary font-medium font-satoshi">
               Check it out on Linkedin
             </span>
             <svg
@@ -371,10 +364,10 @@ function TestimonialsCarousel() {
               <path d="M7 17 17 7"></path>
             </svg>
           </a>
-          <div className="flex justify-center mt-8 space-x-4">
+          <div className="flex justify-center sm:justify-end items-center gap-2 sm:gap-4">
             <button
               onClick={prevSlide}
-              className="cursor-pointer !mr-4 !bg-bg-800 !border !border-bg-700 !rounded-full !p-3 hover:!bg-bg-700 transition-colors"
+              className="cursor-pointer !bg-bg-800 !border !border-bg-700 !rounded-full !p-2.5 sm:!p-3 hover:!bg-bg-700 transition-colors"
               aria-label="Previous slide"
             >
               <svg
@@ -394,12 +387,12 @@ function TestimonialsCarousel() {
                 <path d="M19 12H5"></path>
               </svg>
             </button>
-            <span className="text-text-secondary self-center text-sm">
+            <span className="text-text-secondary self-center text-xs sm:text-sm">
               {currentSlide + 1} / {testimonials.length}
             </span>
             <button
               onClick={nextSlide}
-              className="cursor-pointer rotate-180 !ml-4 !bg-bg-800 !border !border-bg-700 !rounded-full !p-3 hover:!bg-bg-700 transition-colors"
+              className="cursor-pointer rotate-180 !bg-bg-800 !border !border-bg-700 !rounded-full !p-2.5 sm:!p-3 hover:!bg-bg-700 transition-colors"
               aria-label="Next slide"
             >
               <svg

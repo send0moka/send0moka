@@ -3,15 +3,35 @@
 import AnimateOnScroll from "@/components/animate-on-scroll"
 import { Sparkle } from "lucide-react"
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("All")
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(typeof window !== "undefined" && window.innerWidth < 640)
+    check()
+    window.addEventListener("resize", check)
+    return () => window.removeEventListener("resize", check)
+  }, [])
 
   const tabs = ["All", "Development", "Design"]
 
   const getSliderPosition = (tab: string) => {
+    if (isMobile) {
+      switch (tab) {
+        case "All":
+          return { left: "0%", width: "33.33%" }
+        case "Development":
+          return { left: "33.33%", width: "33.33%" }
+        case "Design":
+          return { left: "66.66%", width: "33.33%" }
+        default:
+          return { left: "0%", width: "33.33%" }
+      }
+    }
     switch (tab) {
       case "All":
         return { left: "0%", width: "22%" }
@@ -197,10 +217,10 @@ export default function Projects() {
   })
 
   return (
-    <AnimateOnScroll delay={0.6} duration={0.6}>
-      <section className="container max-screen py-16 flex flex-col gap-10">
+    <AnimateOnScroll delay={0.2} duration={0.6} triggerOnMount>
+      <section className="container max-screen py-16 flex flex-col gap-10 px-4 sm:px-6">
         <aside className="!mt-24 !-mb-10">
-          <AnimateOnScroll delay={0} duration={0.6}>
+          <AnimateOnScroll delay={0} duration={0.6} triggerOnMount>
             <div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
               <Sparkle size={18} />
               <p className="shimmer word-spacing font-clash-display text-sm uppercase leading-none text-highlight-primary">
@@ -209,21 +229,22 @@ export default function Projects() {
             </div>
           </AnimateOnScroll>
 
-          <AnimateOnScroll delay={0.2} duration={0.6}>
-            <h2 className="!my-4 w-1/2 leading-14 font-clash-display !text-5xl !font-medium text-text-primary">
+          <AnimateOnScroll delay={0.1} duration={0.6} triggerOnMount>
+            <h2 className="!my-4 w-full md:w-1/2 leading-tight font-clash-display !text-3xl sm:!text-4xl md:!text-5xl !font-medium text-text-primary">
               Creating next level digital products
             </h2>
           </AnimateOnScroll>
         </aside>
-        <aside className="flex justify-end">
-          <div className="relative flex bg-transparent rounded-full">
+        <aside className="flex justify-center sm:justify-end">
+          <div className="relative flex bg-transparent rounded-full border border-bg-700 p-1 w-full sm:w-auto">
             {/* Background slider */}
             <div
-              className="absolute top-0 bg-[#27272a] rounded-full transition-all duration-300 ease-in-out"
+              className="absolute top-0 bg-bg-700 rounded-full transition-all duration-300 ease-in-out"
               style={{
                 left: getSliderPosition(activeTab).left,
                 width: getSliderPosition(activeTab).width,
-                height: "100%",
+                height: "calc(100% - 8px)",
+                top: "4px",
               }}
             />
 
@@ -232,7 +253,7 @@ export default function Projects() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className="relative z-10 text-text-primary !px-6 !py-2 rounded-full cursor-pointer transition-colors duration-300"
+                className="relative z-10 text-text-primary !px-4 sm:!px-6 !py-2 rounded-full cursor-pointer transition-colors duration-300 text-sm sm:text-base flex-1 sm:flex-initial"
               >
                 {tab}
               </button>

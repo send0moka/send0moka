@@ -21,16 +21,16 @@ export default function MarqueeSection() {
             <div className="flex w-max gap-4 marquee-content">
               {/* First set of items */}
               {marqueeItems.map((item, index) => (
-                <div key={`first-${index}`} className="flex-center gap-4">
-                  <h2 className="text-[#2c2c35] !text-5xl">{item}</h2>
-                  <Sparkle className="text-[#2c2c35]" size={24} />
+                <div key={`first-${index}`} className="flex-center gap-2 sm:gap-4">
+                  <h2 className="text-[#2c2c35] !text-2xl sm:!text-4xl md:!text-5xl">{item}</h2>
+                  <Sparkle className="text-[#2c2c35] shrink-0" size={20} />
                 </div>
               ))}
               {/* Duplicate set for seamless loop */}
               {marqueeItems.map((item, index) => (
-                <div key={`second-${index}`} className="flex-center gap-4">
-                  <h2 className="text-[#2c2c35] !text-5xl">{item}</h2>
-                  <Sparkle className="text-[#2c2c35]" size={24} />
+                <div key={`second-${index}`} className="flex-center gap-2 sm:gap-4">
+                  <h2 className="text-[#2c2c35] !text-2xl sm:!text-4xl md:!text-5xl">{item}</h2>
+                  <Sparkle className="text-[#2c2c35] shrink-0" size={20} />
                 </div>
               ))}
             </div>

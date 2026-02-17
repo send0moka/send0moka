@@ -28,6 +28,7 @@ export default function MobileNav() {
                   isActive ? 'text-highlight-primary' : 'text-text-primary'
                 }`} 
                 href={item.href}
+                data-lenis-prevent
               >
                 <Icon size={18} />
                 <span className="text-xs">{item.label}</span>

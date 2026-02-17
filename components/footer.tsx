@@ -15,8 +15,8 @@ function Footer() {
 
   return (
     <AnimateOnScroll delay={0} duration={0.6}>
-      <footer className="max-screen w-full flex justify-between items-center !py-10 !mb-24">
-        <p className="text-text-secondary text-sm font-satoshi">
+      <footer className="max-screen w-full flex flex-col sm:flex-row justify-between items-center gap-4 !py-10 !mb-24 px-4 sm:px-6">
+        <p className="text-text-secondary text-sm font-satoshi text-center sm:text-left">
           © {new Date().getFullYear()} Jehian. All rights reserved.
         </p>
         <div className="flex !space-x-6">

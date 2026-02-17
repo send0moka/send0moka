@@ -49,7 +49,7 @@ export default function ProjectsSection() {
         </div>
       </AnimateOnScroll>
       <AnimateOnScroll delay={0.2} duration={0.6}>
-        <h2 className="!my-4 font-clash-display !text-5xl !font-medium text-text-primary">
+        <h2 className="!my-4 font-clash-display !text-3xl sm:!text-4xl md:!text-5xl !font-medium text-text-primary">
           Selected Projects
         </h2>
       </AnimateOnScroll>
