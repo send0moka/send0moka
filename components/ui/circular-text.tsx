@@ -26,7 +26,7 @@ const CircularText = () => {
             />
           </defs>
           <text
-            className="text-lg fill-[#f6f7ff] font-normal"
+            className="text-lg font-normal circular-text-fill"
             style={{ fontSize: "14px" }}
           >
             <textPath href="#circle-path" startOffset="0%">
@@ -36,11 +36,11 @@ const CircularText = () => {
         </svg>
       </div>
 
-      {/* Center Circle with Arrow */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="size-12 sm:size-14 md:size-16 lg:size-[4.5rem] rounded-full !border !border-[#2c2c35] flex items-center justify-center bg-transparent">
+      {/* Center Circle with Arrow - z-10 agar di atas teks putar */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
+        <div className="size-12 sm:size-14 md:size-16 lg:size-[4.5rem] rounded-full border-2 circular-text-border flex items-center justify-center bg-transparent">
           {/* Single arrow that rotates from up-right to right */}
-          <ArrowUpRight className="size-4 sm:size-5 text-[#f6f7ff] transition-transform duration-300 ease-in-out group-hover:rotate-45" />
+          <ArrowUpRight className="size-4 sm:size-5 circular-text-icon transition-transform duration-300 ease-in-out group-hover:rotate-45" />
         </div>
       </div>
     </div>

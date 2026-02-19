@@ -159,7 +159,7 @@ export default function HeroSection() {
               priority
             />
             <Link
-              className="relative rounded-full bg-[#111116] !p-3 sm:!p-4 bottom-18 sm:bottom-32 lg:bottom-40"
+              className="circular-text-wrapper relative rounded-full bg-[var(--bg-800)] !p-3 sm:!p-4 bottom-18 sm:bottom-32 lg:bottom-40"
               href="https://cal.com/jehian/discuss"
             >
               <CircularText />

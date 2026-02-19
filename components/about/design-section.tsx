@@ -20,7 +20,7 @@ const ProcessStep = ({ icon: Icon, stepNumber, title, description }: ProcessStep
     <div className="flex flex-col gap-3 sm:gap-4 !border !border-text-secondary/50 !p-4 sm:!p-5 md:!p-6 rounded-2xl sm:rounded-3xl w-full min-w-0 sm:w-80">
       <Icon
         size={44}
-        className="text-highlight-primary bg-[#191920] !p-3 sm:!p-4 rounded-full !border !border-[#2c2c35] sm:w-[52px] sm:h-[52px] w-11 h-11"
+        className="text-highlight-primary design-step-icon-bg !p-3 sm:!p-4 rounded-full border-2 design-step-icon-border sm:w-[52px] sm:h-[52px] w-11 h-11"
       />
       <p className="text-text-primary text-lg sm:text-xl md:text-2xl font-medium tracking-tight">
         {stepNumber}. {title}
