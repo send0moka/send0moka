@@ -9,7 +9,7 @@ const CircularText = () => {
   const center = size / 2 // center point = 56px
 
   return (
-    <div className="relative size-28 group cursor-pointer">
+    <div className="relative size-20 sm:size-24 md:size-28 group cursor-pointer">
       {/* Circular Text */}
       <div
         className="absolute inset-0 animate-spin"
@@ -38,9 +38,9 @@ const CircularText = () => {
 
       {/* Center Circle with Arrow */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="size-18 rounded-full !border !border-[#2c2c35] flex items-center justify-center bg-transparent">
+        <div className="size-12 sm:size-14 md:size-16 lg:size-[4.5rem] rounded-full !border !border-[#2c2c35] flex items-center justify-center bg-transparent">
           {/* Single arrow that rotates from up-right to right */}
-          <ArrowUpRight className="size-5 text-[#f6f7ff] transition-transform duration-300 ease-in-out group-hover:rotate-45" />
+          <ArrowUpRight className="size-4 sm:size-5 text-[#f6f7ff] transition-transform duration-300 ease-in-out group-hover:rotate-45" />
         </div>
       </div>
     </div>

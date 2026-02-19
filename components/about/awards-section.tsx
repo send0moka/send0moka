@@ -3,17 +3,17 @@ import Image from "next/image"
 import AnimateOnScroll from "../animate-on-scroll"
 
 const AWARD_IMAGES = [
-  "https://media.licdn.com/dms/image/sync/v2/D5622AQGqCh7UjLr0WA/feedshare-shrink_800/feedshare-shrink_800/0/1695617340515?e=1754524800&v=beta&t=LZsTdge17Mvf_3pHQLyQT8-aRKFyiPeXMeRCET02JSc",
-  "https://media.licdn.com/dms/image/v2/D562DAQFteqraSTZZQA/profile-treasury-document-images_800/profile-treasury-document-images_800/1/1706480660653?e=1752710400&v=beta&t=pVDO5Znmm4TxJIhJ1rjiif0R5p8Mpwpf1SxE-wOG0yw",
-  "https://media.licdn.com/dms/image/v2/D562DAQFo1L9wEt3APg/profile-treasury-image-shrink_800_800/B56ZfD8gHvH8Ag-/0/1751339107887?e=1752465600&v=beta&t=qul4uYxMDFztOJpbYSqvu0NgJ6ICroQxVpk8-dET0d0",
+  "https://media.licdn.com/dms/image/v2/D562DAQFteqraSTZZQA/profile-treasury-document-cover-images_800/profile-treasury-document-cover-images_800/0/1706480660699?e=1772067600&v=beta&t=Nwd_Ry5NFTMhlAq7th9OyzjcWDEYsJ8mP9_HMeBnkSk",
   "/pkm.jpg",
-  "https://media.licdn.com/dms/image/v2/D562DAQFNw-ysuqNuLA/profile-treasury-image-shrink_8192_8192/profile-treasury-image-shrink_8192_8192/0/1702109522609?e=1752465600&v=beta&t=jVr7BD9WAELR--IkxyMHAlq_8IbP3hworhcHlqIymzE",
-  "https://media.licdn.com/dms/image/v2/D562DAQFf6FqbuWUQpg/profile-treasury-document-images_800/profile-treasury-document-images_800/1/1706480443432?e=1752710400&v=beta&t=Hru7MI8P9NudI7qhLRZ7ZHBS1tndbuJ7PBkNwMAN2G8",
+  "https://media.licdn.com/dms/image/v2/D562DAQEJj8U-yYqaew/profile-treasury-image-shrink_800_800/B56ZfD58B7HQAk-/0/1751338438662?e=1772067600&v=beta&t=bdaYFEqwCqHxobHN9E2YSPIACBDLBTGo-aU1ZaFwSvU",
+  "https://media.licdn.com/dms/image/v2/D562DAQEqSzymxFM_rw/profile-treasury-image-shrink_800_800/B56ZfC2FuPG0AY-/0/1751320651009?e=1772067600&v=beta&t=ShvtwODo6SpshnLsElGPvHdfWCjiEAkGKWfSbMAjiSc",
+  "https://media.licdn.com/dms/image/v2/D562DAQEkgIjDvqxutA/profile-treasury-image-shrink_800_800/B56ZfDQgY3GoAY-/0/1751327575405?e=1772067600&v=beta&t=q8Ro5rcOROkFtBm4fTjCNGUzvgv8UwbirXTxBO0CJA8",
+  "https://media.licdn.com/dms/image/v2/D562DAQGcFem3QcUB_A/profile-treasury-image-shrink_800_800/B56ZfCvkmzGQAY-/0/1751318941994?e=1772067600&v=beta&t=wXFyzb4WKK8wfqGh_KRrRX80mro0dCEM3GqmD6lRqJo",
 ]
 
 const COMMON_IMAGE_PROPS = {
   className:
-    "w-full !h-48 !object-cover rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl",
+    "w-full !h-54 sm:!h-44 lg:!h-48 !object-cover rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl",
   width: 800,
   height: 450,
 } as const
@@ -21,25 +21,25 @@ const COMMON_IMAGE_PROPS = {
 export default function AwardsSection() {
   return (
     <AnimateOnScroll delay={0.6} duration={0.6}>
-      <section className="container max-screen py-16 flex gap-10">
-        <aside>
+      <section className="container max-screen py-10 sm:py-14 lg:py-16 px-4 sm:px-6 flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-10">
+        <aside className="lg:min-w-[280px]">
           <AnimateOnScroll delay={0} duration={0.6}>
-            <div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
-              <Sparkle size={18} />
-              <p className="shimmer word-spacing font-clash-display text-sm uppercase leading-none text-highlight-primary">
+            <div className="mb-3 sm:mb-4 flex w-fit items-center gap-1.5 sm:gap-2 text-highlight-primary">
+              <Sparkle size={16} className="sm:size-[18px]" />
+              <p className="shimmer word-spacing font-clash-display text-xs sm:text-sm uppercase leading-none text-highlight-primary">
                 Awards
               </p>
             </div>
           </AnimateOnScroll>
 
           <AnimateOnScroll delay={0.2} duration={0.6}>
-            <h2 className="!my-4 font-clash-display !text-5xl !font-medium text-text-primary">
+            <h2 className="!my-3 sm:!my-4 font-clash-display !text-3xl sm:!text-4xl lg:!text-5xl !font-medium text-text-primary">
               Awards & Recognition
             </h2>
           </AnimateOnScroll>
         </aside>
 
-        <aside className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+        <aside className="w-full min-w-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {AWARD_IMAGES.map((image, index) => (
             <Image
               key={index}

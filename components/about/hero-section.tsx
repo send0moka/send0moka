@@ -147,31 +147,31 @@ export default function HeroSection() {
 
   return (
     <AnimateOnScroll delay={0} duration={0.6}>
-      <section className="!pt-24 flex flex-col">
-        <aside className="container max-screen flex gap-15 items-center">
-          <figure className="max-w-sm flex flex-col items-end">
+      <section className="!pt-6 sm:!pt-20 md:!pt-24 flex flex-col">
+        <aside className="container max-screen flex flex-col lg:flex-row gap-8 sm:gap-10 lg:gap-15 items-center px-4 sm:px-6">
+          <figure className="w-full max-w-[240px] md:max-w-sm flex flex-col items-center lg:items-end">
             <Image
               src="/about/me.png"
               alt="Jehianth's profile picture"
               width={3024}
               height={4032}
-              className="rounded-b-full"
+              className="rounded-b-full w-full h-auto"
               priority
             />
             <Link
-              className="relative rounded-full bg-[#111116] !p-4 bottom-40"
-              href="/contact"
+              className="relative rounded-full bg-[#111116] !p-3 sm:!p-4 bottom-18 sm:bottom-32 lg:bottom-40"
+              href="https://cal.com/jehian/discuss"
             >
               <CircularText />
             </Link>
           </figure>
-          <figure className="flex flex-col gap-4 !-mt-52">
-            <h1 className="font-clash-display !font-medium !text-7xl text-balance">
+          <figure className="flex flex-col gap-3 sm:gap-4 !-mt-28 lg:!-mt-52 text-center lg:text-left w-full max-w-2xl">
+            <h1 className="font-clash-display !font-medium !text-3xl sm:!text-4xl md:!text-5xl lg:!text-6xl xl:!text-7xl text-balance">
               A{" "}
               <span className="text-highlight-primary">creative developer</span>{" "}
               & digital designer
             </h1>
-            <p className="text-text-secondary text-balance">
+            <p className="text-text-secondary text-balance text-sm sm:text-base">
               I collaborate with brands globally to design impactful,
               mission-focused websites that drive results and achieve business
               goals.
@@ -179,6 +179,7 @@ export default function HeroSection() {
             <Link
               href="https://drive.google.com/file/d/1zpwpAsztKjGWDdjuYKh-KgskrhUpN1K5/view?usp=sharing"
               target="_blank"
+              className="inline-block"
             >
               <button
                 className="group cursor-pointer btn ring-offset-background focus-visible:ring-highlight-primary whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 btn__outline relative overflow-hidden"
@@ -209,10 +210,10 @@ export default function HeroSection() {
             </Link>
           </figure>
         </aside>
-        <aside className="!-mt-20 py-sm relative flex-col overflow-hidden border-gradient">
+        <aside className="!mt-10 sm:!-mt-14 lg:!-mt-20 py-6 relative flex-col overflow-hidden border-gradient">
           <div className="overflow-hidden">
             <div className="relative overflow-hidden">
-              <div className="overflow-hidden !py-2">
+              <div className="overflow-hidden !py-2 !px-2 sm:!px-0">
                 <div className="flex animate-marquee gap-4 w-max">
                   {/* First set of skills */}
                   {skills.map((skill, index) => (
@@ -251,14 +252,14 @@ export default function HeroSection() {
                 </div>
                 {/* Gradient overlays */}
                 <div
-                  className={`pointer-events-none absolute inset-y-0 left-0 w-96 z-10 ${
+                  className={`pointer-events-none absolute inset-y-0 left-0 w-32 sm:w-48 md:w-96 z-10 ${
                     currentTheme === "dark"
                       ? "bg-gradient-to-r from-[#0a0a0f] via-[#0a0a0f]/80 to-transparent"
                       : "bg-gradient-to-r from-[#f7f8fa] via-[#f7f8fa]/80 to-transparent"
                   }`}
                 ></div>
                 <div
-                  className={`pointer-events-none absolute inset-y-0 -right-8 w-96 z-10 ${
+                  className={`pointer-events-none absolute inset-y-0 -right-8 w-32 sm:w-48 md:w-96 z-10 ${
                     currentTheme === "dark"
                       ? "bg-gradient-to-l from-[#0a0a0f] via-[#0a0a0f]/80 to-transparent"
                       : "bg-gradient-to-l from-[#f7f8fa] via-[#f7f8fa]/80 to-transparent"

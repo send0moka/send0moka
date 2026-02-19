@@ -17,15 +17,15 @@ interface ProcessStepProps {
 
 const ProcessStep = ({ icon: Icon, stepNumber, title, description }: ProcessStepProps) => (
   <AnimateOnScroll delay={0.6} duration={0.6}>
-    <div className="flex flex-col gap-4 !border !border-text-secondary/50 !p-6 rounded-3xl w-80">
+    <div className="flex flex-col gap-3 sm:gap-4 !border !border-text-secondary/50 !p-4 sm:!p-5 md:!p-6 rounded-2xl sm:rounded-3xl w-full min-w-0 sm:w-80">
       <Icon
-        size={52}
-        className="text-highlight-primary bg-[#191920] !p-4 rounded-full !border !border-[#2c2c35]"
+        size={44}
+        className="text-highlight-primary bg-[#191920] !p-3 sm:!p-4 rounded-full !border !border-[#2c2c35] sm:w-[52px] sm:h-[52px] w-11 h-11"
       />
-      <p className="text-text-primary text-2xl font-medium tracking-tight">
+      <p className="text-text-primary text-lg sm:text-xl md:text-2xl font-medium tracking-tight">
         {stepNumber}. {title}
       </p>
-      <p className="text-text-secondary leading-relaxed">
+      <p className="text-text-secondary text-sm sm:text-base leading-relaxed">
         {description}
       </p>
     </div>
@@ -68,29 +68,29 @@ const DESIGN_PROCESS_STEPS = [
 export default function DesignSection() {
   return (
     <AnimateOnScroll delay={0.4} duration={0.6}>
-      <section className="py-16 flex flex-col gap-10">
+      <section className="py-10 sm:py-14 lg:py-16 flex flex-col gap-6 sm:gap-8 lg:gap-10 px-4 sm:px-6">
         <aside className="container max-screen">
           <AnimateOnScroll delay={0} duration={0.6}>
-            <div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
-              <Sparkle size={18} />
-              <p className="shimmer word-spacing font-clash-display text-sm uppercase leading-none text-highlight-primary">
+            <div className="mb-3 sm:mb-4 flex w-fit items-center gap-1.5 sm:gap-2 text-highlight-primary">
+              <Sparkle size={16} className="sm:size-[18px]" />
+              <p className="shimmer word-spacing font-clash-display text-xs sm:text-sm uppercase leading-none text-highlight-primary">
                 Steps I follow
               </p>
             </div>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.2} duration={0.6}>
-            <h2 className="!my-4 font-clash-display !text-5xl !font-medium text-text-primary">
+            <h2 className="!my-3 sm:!my-4 font-clash-display !text-3xl sm:!text-4xl lg:!text-5xl !font-medium text-text-primary">
               My Design Process
             </h2>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.4} duration={0.6}>
-            <p className="mb-8 max-w-2xl text-sm leading-relaxed text-text-secondary">
+            <p className="mb-6 sm:mb-8 max-w-2xl text-xs sm:text-sm leading-relaxed text-text-secondary">
               I have worked with some of the most innovative industry leaders to
               help build their top-notch products.
             </p>
           </AnimateOnScroll>
         </aside>
-        <aside className="flex flex-wrap justify-center gap-6 px-4">
+        <aside className="container max-screen grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 max-w-5xl w-full">
           {DESIGN_PROCESS_STEPS.map((step) => (
             <ProcessStep
               key={`${step.stepNumber}-${step.title}`}

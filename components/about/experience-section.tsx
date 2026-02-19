@@ -17,48 +17,48 @@ interface SubExperienceItemProps {
 }
 
 const ExperienceItem = ({ logo, title, company, period, alt }: ExperienceItemProps) => (
-  <div className="flex justify-between items-center !mb-4 !pb-4 !border-b !border-border-secondary">
-    <article className="flex items-center gap-4">
+  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0 !mb-4 !pb-4 !border-b !border-border-secondary">
+    <article className="flex items-center gap-3 sm:gap-4 min-w-0">
       {typeof logo === "string" ? (
         <Image
           src={logo}
           alt={alt || company}
-          className="size-11 mb-4 rounded-lg"
+          className="size-9 sm:size-11 mb-0 sm:mb-4 rounded-lg shrink-0"
           width={96}
           height={96}
         />
       ) : (
         logo
       )}
-      <figure>
-        <p className="mb-2 text-sm font-medium text-text-primary tracking-tight">
+      <figure className="min-w-0">
+        <p className="mb-1 sm:mb-2 text-xs sm:text-sm font-medium text-text-primary tracking-tight line-clamp-2 sm:line-clamp-none">
           {title}
         </p>
-        <p className="mb-4 text-sm font-medium text-text-secondary tracking-tight">
+        <p className="mb-0 sm:mb-4 text-xs sm:text-sm font-medium text-text-secondary tracking-tight truncate">
           @{company}
         </p>
       </figure>
     </article>
-    <p className="text-xs font-medium text-text-secondary opacity-80 tracking-tight">
+    <p className="text-[11px] sm:text-xs font-medium text-text-secondary opacity-80 tracking-tight shrink-0 sm:pl-2">
       {period}
     </p>
   </div>
 )
 
 const SubExperienceItem = ({ title, company, period }: SubExperienceItemProps) => (
-  <div className="flex justify-between items-center !mb-2">
-    <article className="flex items-center gap-4">
-      <div className="size-2 bg-neutral-500 rounded-full !mx-[17.5px]"></div>
-      <figure>
-        <p className="mb-2 text-[13px] opacity-80 font-medium text-text-primary tracking-tight">
+  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1.5 sm:gap-0 !mb-2 sm:!mb-2 !pb-2 last:!pb-0">
+    <article className="flex items-start sm:items-center gap-2 sm:gap-4 min-w-0 flex-1">
+      <div className="size-2 bg-neutral-500 rounded-full shrink-0 !mt-1.5 sm:!mt-0 !mx-3 sm:!mx-[17.5px]"></div>
+      <figure className="min-w-0 flex-1">
+        <p className="mb-0.5 sm:mb-2 text-[11px] sm:text-[13px] opacity-80 font-medium text-text-primary tracking-tight line-clamp-2 sm:line-clamp-none">
           {title}
         </p>
-        <p className="mb-4 text-[13px] opacity-80 font-medium text-text-secondary tracking-tight">
+        <p className="mb-0 sm:mb-4 text-[11px] sm:text-[13px] opacity-80 font-medium text-text-secondary tracking-tight line-clamp-2 sm:line-clamp-none sm:truncate">
           @{company}
         </p>
       </figure>
     </article>
-    <p className="text-[11px] font-medium text-text-secondary opacity-60 tracking-tight">
+    <p className="text-[10px] sm:text-[11px] font-medium text-text-secondary opacity-60 tracking-tight shrink-0 !pl-10 sm:!pl-2">
       {period}
     </p>
   </div>
@@ -67,29 +67,29 @@ const SubExperienceItem = ({ title, company, period }: SubExperienceItemProps) =
 export default function ExperienceSection() {
   return (
     <AnimateOnScroll delay={0.2} duration={0.6}>
-      <section className="container max-screen py-16 flex gap-10">
-        <aside>
+      <section className="container max-screen py-10 sm:py-14 lg:py-16 px-4 sm:px-6 flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-10">
+        <aside className="lg:min-w-[280px] xl:min-w-[320px]">
           <AnimateOnScroll delay={0} duration={0.6}>
-            <div className="mb-4 flex w-fit items-center gap-2 text-highlight-primary">
-              <Sparkle size={18} />
-              <p className="shimmer word-spacing font-clash-display text-sm uppercase leading-none text-highlight-primary">
+            <div className="mb-3 sm:mb-4 flex w-fit items-center gap-1.5 sm:gap-2 text-highlight-primary">
+              <Sparkle size={16} className="sm:size-[18px]" />
+              <p className="shimmer word-spacing font-clash-display text-xs sm:text-sm uppercase leading-none text-highlight-primary">
                 Work History
               </p>
             </div>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.2} duration={0.6}>
-            <h2 className="!my-4 font-clash-display !text-5xl !font-medium text-text-primary">
+            <h2 className="!my-3 sm:!my-4 font-clash-display !text-3xl sm:!text-4xl lg:!text-5xl !font-medium text-text-primary">
               Experience
             </h2>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.4} duration={0.6}>
-            <p className="mb-8 max-w-2xl text-sm leading-relaxed text-text-secondary">
+            <p className="mb-6 sm:mb-8 max-w-2xl text-xs sm:text-sm leading-relaxed text-text-secondary">
               I have worked with some of the most innovative industry leaders to
               help build their top-notch products.
             </p>
           </AnimateOnScroll>
         </aside>
-        <aside className="w-full">
+        <aside className="w-full min-w-0">
           {/* KPw Bank Indonesia Purwokerto */}
           <ExperienceItem
             logo="https://media.licdn.com/dms/image/v2/D4D0BAQEYRvlXhNPv0Q/company-logo_100_100/B4DZazetx1HsAQ-/0/1746767896896?e=1772668800&v=beta&t=j24CyuJPo2CSev3hFRJ2d9zawgX_-3r3yH7fg6ihQ50"
@@ -119,30 +119,30 @@ export default function ExperienceSection() {
 
           {/* Informatics Laboratory - with sub-positions */}
           <div className="!mb-4 !pb-4 !border-b !border-border-secondary">
-            <div className="flex justify-between items-center !mb-2">
-              <article className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0 !mb-2">
+              <article className="flex items-center gap-3 sm:gap-4 min-w-0">
                 <Image
                   src="https://media.licdn.com/dms/image/v2/D560BAQHQtH_ytlLNoA/company-logo_100_100/company-logo_100_100/0/1720374835331?e=1772668800&v=beta&t=7eyNd5MQD-XVbOJlZGpZfBAdYAyDfr8m3Yy8cYL8J00"
                   alt="Informatics Laboratory Assistant"
-                  className="size-11 mb-4 rounded-lg"
+                  className="size-9 sm:size-11 mb-0 sm:mb-4 rounded-lg shrink-0"
                   width={96}
                   height={96}
                 />
-                <figure>
-                  <p className="mb-2 text-sm font-medium text-text-primary tracking-tight">
+                <figure className="min-w-0">
+                  <p className="mb-0 sm:mb-2 text-xs sm:text-sm font-medium text-text-primary tracking-tight">
                     Informatics Laboratory
                   </p>
-                  <p className="mb-4 text-sm font-medium text-text-secondary tracking-tight">
+                  <p className="mb-0 sm:mb-4 text-xs sm:text-sm font-medium text-text-secondary tracking-tight truncate">
                     @Jenderal Soedirman University
                   </p>
                 </figure>
               </article>
-              <p className="text-xs font-medium text-text-secondary opacity-80 tracking-tight">
+              <p className="text-[11px] sm:text-xs font-medium text-text-secondary opacity-80 tracking-tight shrink-0">
                 2 times
               </p>
             </div>
-            <div className="flex">
-              <div className="relative h-11 w-[2px] bg-neutral-700 left-[22.4] top-5 -z-10"></div>
+            <div className="flex min-w-0">
+              <div className="relative h-18 sm:h-14 w-[2px] bg-neutral-700 left-[17px] sm:left-[22.3px] top-3 sm:top-5 -z-10 shrink-0"></div>
               <div className="w-full">
                 <SubExperienceItem
                   title="Coordinator"
