@@ -122,6 +122,21 @@
         align-items: center;
         gap: 1rem;
       }
+      .lang-wrap {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+      }
+      .lang-wrap::after {
+        content: "";
+        position: absolute;
+        right: 14px;
+        width: 10px;
+        height: 6px;
+        background: var(--ink3);
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        pointer-events: none;
+      }
       .lang-dropdown {
         font-family: var(--mono);
         font-size: 9px;
@@ -132,22 +147,15 @@
         background: var(--paper);
         border: 1px solid var(--line);
         height: var(--nav-control-height);
-        padding: 0 2rem 0 0.7rem;
+        padding: 0 2.1rem 0 0.7rem;
         min-width: 90px;
         cursor: none;
         appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
-        background-image:
-          linear-gradient(45deg, transparent 50%, var(--ink3) 50%),
-          linear-gradient(135deg, var(--ink3) 50%, transparent 50%);
-        background-position:
-          calc(100% - 14px) calc(50% - 1px),
-          calc(100% - 9px) calc(50% - 1px);
-        background-size:
-          5px 5px,
-          5px 5px;
-        background-repeat: no-repeat;
+      }
+      .lang-dropdown::-ms-expand {
+        display: none;
       }
       .lang-dropdown:focus {
         outline: none;
@@ -1134,7 +1142,7 @@
         .lang-dropdown {
           font-size: 8px;
           min-width: 82px;
-          padding: 0 1.8rem 0 0.5rem;
+          padding: 0 2rem 0 0.5rem;
         }
         .nav-talk {
           padding: 0.45rem 0.9rem;
@@ -1392,17 +1400,19 @@
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
       <div class="nav-controls">
-        <select
-          id="langSelect"
-          class="lang-dropdown"
-          aria-label="Language selector"
-        >
-          <option value="en">ENGLISH</option>
-          <option value="id">INDONESIA</option>
-          <option value="es">ESPANOL</option>
-          <option value="zh">CHINESE</option>
-          <option value="hi">HINDI</option>
-        </select>
+        <div class="lang-wrap">
+          <select
+            id="langSelect"
+            class="lang-dropdown"
+            aria-label="Language selector"
+          >
+            <option value="en">ENGLISH</option>
+            <option value="id">INDONESIA</option>
+            <option value="es">ESPANOL</option>
+            <option value="zh">CHINESE</option>
+            <option value="hi">HINDI</option>
+          </select>
+        </div>
         <a
           class="nav-talk"
           href="https://cal.com/jehian/discuss"
