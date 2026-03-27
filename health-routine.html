@@ -16,9 +16,20 @@
         --ink3: #888882;
         --ink4: #bdbdb7;
         --paper: #f5f4ef;
+        --paper2: #edece7;
         --line: rgba(0, 0, 0, 0.1);
         --serif: "Cormorant Garamond", Georgia, serif;
         --mono: "Azeret Mono", "Courier New", monospace;
+      }
+      html[data-theme="dark"] {
+        --ink: #f1f0ea;
+        --ink2: #d3d0c7;
+        --ink3: #a9a59b;
+        --ink4: #7e786f;
+        --paper: #141413;
+        --paper2: #1d1d1b;
+        --line: rgba(255, 255, 255, 0.12);
+        color-scheme: dark;
       }
       * {
         box-sizing: border-box;
@@ -29,6 +40,9 @@
         font-family: var(--mono);
         background: var(--paper);
         color: var(--ink);
+        transition:
+          background-color 0.25s ease,
+          color 0.25s ease;
       }
       .wrap {
         max-width: 1220px;
@@ -62,6 +76,48 @@
         letter-spacing: 0.12em;
         text-transform: uppercase;
         padding: 0.45rem 0.6rem;
+      }
+      .top-controls {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .theme-toggle {
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink3);
+        width: 31px;
+        height: 31px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .theme-toggle:hover {
+        border-color: var(--ink);
+        color: var(--ink);
+      }
+      .theme-toggle:focus {
+        outline: none;
+        border-color: var(--ink3);
+      }
+      .theme-toggle-icon {
+        width: 14px;
+        height: 14px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .theme-toggle .icon-sun {
+        display: none;
+      }
+      html[data-theme="dark"] .theme-toggle .icon-sun {
+        display: block;
+      }
+      html[data-theme="dark"] .theme-toggle .icon-moon {
+        display: none;
       }
       h1 {
         font-family: var(--serif);
@@ -210,6 +266,9 @@
         .notes-grid {
           grid-template-columns: 1fr;
         }
+        .top {
+          align-items: flex-start;
+        }
       }
     </style>
   </head>
@@ -219,13 +278,46 @@
         <a class="back" href="index.html" data-i18n="nav.back"
           >Back to Portfolio</a
         >
-        <select id="langSelect" class="lang" aria-label="Language selector">
-          <option value="en">English</option>
-          <option value="id">Indonesia</option>
-          <option value="zh">中文</option>
-          <option value="hi">हिंदी</option>
-          <option value="es">Español</option>
-        </select>
+        <div class="top-controls">
+          <button
+            id="themeToggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+            aria-pressed="false"
+            title="Switch to dark theme"
+          >
+            <svg
+              class="theme-toggle-icon icon-moon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 1 0 9.8 9.8z" />
+            </svg>
+            <svg
+              class="theme-toggle-icon icon-sun"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="M4.93 4.93l1.41 1.41" />
+              <path d="M17.66 17.66l1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="M4.93 19.07l1.41-1.41" />
+              <path d="M17.66 6.34l1.41-1.41" />
+            </svg>
+          </button>
+          <select id="langSelect" class="lang" aria-label="Language selector">
+            <option value="en">English</option>
+            <option value="id">Indonesia</option>
+            <option value="zh">中文</option>
+            <option value="hi">हिंदी</option>
+            <option value="es">Español</option>
+          </select>
+        </div>
       </div>
 
       <h1 data-i18n="page.title">Weekly Lean Body Routine</h1>
@@ -395,6 +487,47 @@
             "Esta pagina se separa del index del portafolio para mantener el enfoque principal en trabajo de producto e ingenieria.",
         },
       }
+
+      const THEME_STORAGE_KEY = "preferred-theme"
+      const themeToggle = document.getElementById("themeToggle")
+
+      function updateThemeToggleState(theme) {
+        if (!themeToggle) return
+        const isDark = theme === "dark"
+        const nextTitle = isDark
+          ? "Switch to light theme"
+          : "Switch to dark theme"
+        themeToggle.setAttribute("aria-pressed", String(isDark))
+        themeToggle.setAttribute("aria-label", nextTitle)
+        themeToggle.title = nextTitle
+      }
+
+      function setTheme(theme) {
+        const selected = theme === "dark" ? "dark" : "light"
+        document.documentElement.setAttribute("data-theme", selected)
+        localStorage.setItem(THEME_STORAGE_KEY, selected)
+        updateThemeToggleState(selected)
+      }
+
+      function getDefaultTheme() {
+        const savedTheme = localStorage.getItem(THEME_STORAGE_KEY)
+        if (savedTheme === "dark" || savedTheme === "light") return savedTheme
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+      }
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const currentTheme =
+            document.documentElement.getAttribute("data-theme") === "dark"
+              ? "dark"
+              : "light"
+          setTheme(currentTheme === "dark" ? "light" : "dark")
+        })
+      }
+
+      setTheme(getDefaultTheme())
 
       function setLanguage(lang) {
         const selected = translations[lang] ? lang : "en"
