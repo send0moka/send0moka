@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Routine - Jehian Athaya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Azeret+Mono:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #111110;
+        --ink2: #3a3a38;
+        --ink3: #888882;
+        --ink4: #bdbdb7;
+        --paper: #f5f4ef;
+        --line: rgba(0, 0, 0, 0.1);
+        --serif: "Cormorant Garamond", Georgia, serif;
+        --mono: "Azeret Mono", "Courier New", monospace;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: var(--mono);
+        background: var(--paper);
+        color: var(--ink);
+      }
+      .wrap {
+        max-width: 1220px;
+        margin: 0 auto;
+        padding: 1.25rem 1.5rem 3rem;
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+      }
+      .back {
+        text-decoration: none;
+        color: var(--ink3);
+        border: 1px solid var(--line);
+        padding: 0.5rem 0.8rem;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .lang {
+        font-family: var(--mono);
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink3);
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.45rem 0.6rem;
+      }
+      h1 {
+        font-family: var(--serif);
+        font-size: clamp(2.1rem, 4.3vw, 3.4rem);
+        font-weight: 300;
+      }
+      .sub {
+        margin-top: 0.75rem;
+        color: var(--ink3);
+        font-size: 11px;
+        line-height: 1.8;
+      }
+      h2 {
+        font-family: var(--serif);
+        font-size: 1.55rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+      }
+      .section {
+        margin-top: 2.2rem;
+      }
+      .summary-grid,
+      .workout-grid,
+      .shop-grid,
+      .notes-grid {
+        display: grid;
+        gap: 1px;
+        background: var(--line);
+      }
+      .summary-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+      .workout-grid {
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+      }
+      .shop-grid,
+      .notes-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .card {
+        background: var(--paper);
+        padding: 1rem;
+      }
+      .stat {
+        font-family: var(--serif);
+        font-size: 1.45rem;
+        line-height: 1;
+      }
+      .stat-l {
+        margin-top: 0.35rem;
+        font-size: 9px;
+        color: var(--ink4);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .day {
+        font-size: 9px;
+        color: var(--ink4);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .title {
+        margin-top: 0.35rem;
+        margin-bottom: 0.55rem;
+        font-family: var(--serif);
+        font-size: 1.05rem;
+      }
+      ul {
+        list-style: none;
+      }
+      li {
+        font-size: 11px;
+        line-height: 1.62;
+        color: var(--ink2);
+        margin-bottom: 0.1rem;
+      }
+      .note {
+        margin-top: 0.5rem;
+        font-size: 10px;
+        color: var(--ink4);
+      }
+      .table-wrap {
+        border: 1px solid var(--line);
+        background: var(--paper);
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        min-width: 760px;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 0.7rem;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--ink3);
+      }
+      td {
+        font-size: 11px;
+        line-height: 1.65;
+        color: var(--ink2);
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+      .shop-title,
+      .note-title {
+        font-family: var(--serif);
+        font-size: 1.05rem;
+        margin-bottom: 0.6rem;
+      }
+      .budget {
+        margin-top: 0.8rem;
+        border: 1px solid var(--line);
+        padding: 0.75rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+      }
+      .budget strong {
+        font-family: var(--serif);
+        font-size: 1.15rem;
+      }
+      .foot {
+        margin-top: 1.7rem;
+        border-top: 1px solid var(--line);
+        padding-top: 0.9rem;
+        color: var(--ink4);
+        font-size: 10px;
+      }
+      @media (max-width: 1100px) {
+        .workout-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 900px) {
+        .summary-grid,
+        .shop-grid,
+        .notes-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="top">
+        <a class="back" href="index.html" data-i18n="nav.back"
+          >Back to Portfolio</a
+        >
+        <select id="langSelect" class="lang" aria-label="Language selector">
+          <option value="en">English</option>
+          <option value="id">Indonesia</option>
+          <option value="zh">中文</option>
+          <option value="hi">हिंदी</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
+
+      <h1 data-i18n="page.title">Weekly Lean Body Routine</h1>
+      <p class="sub" data-i18n="page.subtitle">
+        Dedicated weekly schedule for training, meal rhythm, shopping, and
+        recovery notes.
+      </p>
+
+      <section class="section">
+        <div class="summary-grid" data-i18n-html="summary.cards"></div>
+      </section>
+
+      <section class="section">
+        <h2 data-i18n="workout.title">Weekly Workout Plan</h2>
+        <div class="workout-grid" data-i18n-html="workout.cards"></div>
+      </section>
+
+      <section class="section">
+        <h2 data-i18n="meal.title">Daily Meal Plan</h2>
+        <div class="table-wrap" data-i18n-html="meal.table"></div>
+      </section>
+
+      <section class="section">
+        <h2 data-i18n="shopping.title">Weekly Shopping List</h2>
+        <div class="shop-grid" data-i18n-html="shopping.cards"></div>
+        <div class="budget">
+          <span data-i18n="shopping.totalLabel">Weekly shopping total</span>
+          <strong data-i18n="shopping.totalValue">Rp 202.000 - 265.000</strong>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 data-i18n="notes.title">Notes</h2>
+        <div class="notes-grid" data-i18n-html="notes.cards"></div>
+      </section>
+
+      <p class="foot" data-i18n="footer.note">
+        This page is intentionally separate from the portfolio index to keep the
+        main portfolio focused on product and engineering work.
+      </p>
+    </main>
+
+    <script>
+      const translations = {
+        en: {
+          "meta.title": "Health Routine - Jehian Athaya",
+          "nav.back": "Back to Portfolio",
+          "page.title": "Weekly Lean Body Routine",
+          "page.subtitle":
+            "Dedicated weekly schedule for training, meal rhythm, shopping, and recovery notes.",
+          "summary.cards":
+            "<article class='card'><div class='stat'>~1,950</div><div class='stat-l'>Calories/day</div></article><article class='card'><div class='stat'>112-140g</div><div class='stat-l'>Protein/day</div></article><article class='card'><div class='stat'>4x</div><div class='stat-l'>Strength/week</div></article><article class='card'><div class='stat'>3x</div><div class='stat-l'>Cardio/week</div></article><article class='card'><div class='stat'>~5kg</div><div class='stat-l'>Fat-loss target</div></article>",
+          "workout.title": "Weekly Workout Plan",
+          "workout.cards":
+            "<article class='card'><div class='day'>Monday</div><div class='title'>Push Day (Chest & Shoulders)</div><ul><li>Dumbbell chest press - 4x12</li><li>Dumbbell shoulder press - 3x12</li><li>Dumbbell lateral raise - 3x15</li><li>Dumbbell tricep kickback - 3x12</li><li>Push-up - 3xmax</li></ul><p class='note'>Rest 60-90 seconds between sets, around 40 minutes total.</p></article><article class='card'><div class='day'>Tuesday</div><div class='title'>Cardio + Core</div><ul><li>Jogging 5K at an easy pace</li><li>20-minute aerobics</li><li>Plank - 3x45 sec</li><li>Crunch - 3x20</li></ul><p class='note'>Keep heart rate around 120-140 bpm.</p></article><article class='card'><div class='day'>Wednesday</div><div class='title'>Pull Day (Back & Biceps)</div><ul><li>Pull-up - 4xmax</li><li>Dumbbell bent-over row - 4x12</li><li>Dumbbell bicep curl - 3x12</li><li>Dumbbell hammer curl - 3x12</li><li>Dead hang 30 sec - 3 sets</li></ul><p class='note'>Prioritize pull-up performance today.</p></article><article class='card'><div class='day'>Thursday</div><div class='title'>Active Recovery</div><ul><li>20-30 minute walk</li><li>15-minute stretching</li><li>Light aerobics</li></ul><p class='note'>Recovery is essential for growth and consistency.</p></article><article class='card'><div class='day'>Friday</div><div class='title'>Leg Day (Legs & Glutes)</div><ul><li>Goblet squat - 4x15</li><li>Dumbbell lunges - 3x12 each leg</li><li>Dumbbell Romanian deadlift - 4x12</li><li>Calf raise - 3x20</li><li>Glute bridge - 3x15</li></ul><p class='note'>Leg day boosts total metabolism.</p></article><article class='card'><div class='day'>Saturday</div><div class='title'>Long Cardio</div><ul><li>Jogging 10K at easy pace</li><li>15-minute aerobics (optional)</li></ul><p class='note'>Before jogging, have banana and eggs for stable energy.</p></article><article class='card'><div class='day'>Sunday</div><div class='title'>Light Full Body</div><ul><li>Pull-up - 3xmax</li><li>Dumbbell squat - 3x12</li><li>Dumbbell chest press - 3x10</li><li>Dumbbell row - 3x10</li><li>Push-up + plank finisher</li></ul><p class='note'>Use lighter load and focus on form.</p></article>",
+          "meal.title": "Daily Meal Plan",
+          "meal.table":
+            "<table><thead><tr><th>Time</th><th>Menu</th><th>Main ingredients</th><th>Calories</th><th>Protein</th></tr></thead><tbody><tr><td><strong>06.00</strong></td><td>Scrambled eggs + tempeh + clear vegetables</td><td>3 eggs, 80g tempeh</td><td>~390</td><td>~37g</td></tr><tr><td><strong>09.00</strong></td><td>Banana snack</td><td>1-2 bananas</td><td>~180</td><td>~2g</td></tr><tr><td><strong>12.00</strong></td><td>Chicken breast + tofu + clear vegetables</td><td>150g chicken, 100g tofu</td><td>~420</td><td>~55g</td></tr><tr><td><strong>15.00</strong></td><td>Plain UHT milk + banana/sweet potato</td><td>200ml + 1 portion</td><td>~260</td><td>~8g</td></tr><tr><td><strong>18.30</strong></td><td>Fish + tempeh + sauteed/clear vegetables</td><td>150g fish, 80g tempeh</td><td>~420</td><td>~43g</td></tr><tr><td><strong>20.00</strong></td><td>Optional: UHT milk or boiled eggs</td><td>1 portion</td><td>~120</td><td>~8-12g</td></tr><tr><td><strong>Total</strong></td><td>Complete daily menu</td><td>-</td><td><strong>~1,790</strong></td><td><strong>~145g</strong></td></tr></tbody></table>",
+          "shopping.title": "Weekly Shopping List",
+          "shopping.cards":
+            "<article class='card'><h3 class='shop-title'>Animal Protein</h3><ul><li>Eggs 1kg (16 eggs) - Rp 28-32k</li><li>Chicken breast 500g - Rp 28-35k</li><li>Tuna/mackerel 500g - Rp 20-30k</li><li>Plain UHT milk 6 packs - Rp 25-35k</li></ul></article><article class='card'><h3 class='shop-title'>Plant Protein & Carbs</h3><ul><li>Tempeh 500g - Rp 10-15k</li><li>Tofu 500g - Rp 8-12k</li><li>Banana (1 bunch) - Rp 15-20k</li><li>Sweet potato 500g - Rp 8-12k</li><li>Baby corn 3-4 pieces - Rp 8-12k</li></ul></article><article class='card'><h3 class='shop-title'>Vegetables & Seasoning</h3><ul><li>Spinach, carrot, water spinach - Rp 17-24k</li><li>Beans/long beans - Rp 5-8k</li><li>Shallot + garlic - Rp 10-15k</li><li>Cooking oil (small) - Rp 10-14k</li><li>Salt, sugar, candlenut, sweet soy sauce - Rp 10-15k</li></ul></article>",
+          "shopping.totalLabel": "Weekly shopping total",
+          "shopping.totalValue": "Rp 202.000 - 265.000",
+          "notes.title": "Notes",
+          "notes.cards":
+            "<article class='card'><h3 class='note-title'>Eat before training</h3><p class='note'>Eat 1-2 hours before exercise. At minimum, have banana and milk.</p></article><article class='card'><h3 class='note-title'>Hydration target</h3><p class='note'>Target 2-2.5 liters/day and add around 500ml for each training session.</p></article><article class='card'><h3 class='note-title'>Sleep 7-8 hours</h3><p class='note'>Muscle recovery happens during sleep. Poor sleep slows fat-loss progress.</p></article><article class='card'><h3 class='note-title'>Progressive overload</h3><p class='note'>Every 1-2 weeks, increase load or reps to keep improving.</p></article><article class='card'><h3 class='note-title'>Choose better snacks</h3><p class='note'>Replace high-sugar snacks with banana, boiled sweet potato, corn, or eggs.</p></article><article class='card'><h3 class='note-title'>Track weekly progress</h3><p class='note'>Weigh once per week at the same time and focus on monthly trend.</p></article>",
+          "footer.note":
+            "This page is intentionally separate from the portfolio index to keep the main portfolio focused on product and engineering work.",
+        },
+        id: {
+          "meta.title": "Rutinitas Kesehatan - Jehian Athaya",
+          "nav.back": "Kembali ke Portfolio",
+          "page.title": "Rutinitas Lean Body Mingguan",
+          "page.subtitle":
+            "Jadwal khusus mingguan untuk latihan, pola makan, belanja, dan catatan pemulihan.",
+          "summary.cards":
+            "<article class='card'><div class='stat'>~1,950</div><div class='stat-l'>Kalori/hari</div></article><article class='card'><div class='stat'>112-140g</div><div class='stat-l'>Protein/hari</div></article><article class='card'><div class='stat'>4x</div><div class='stat-l'>Latihan beban/minggu</div></article><article class='card'><div class='stat'>3x</div><div class='stat-l'>Cardio/minggu</div></article><article class='card'><div class='stat'>~5kg</div><div class='stat-l'>Target turun lemak</div></article>",
+          "workout.title": "Jadwal Olahraga Mingguan",
+          "workout.cards":
+            "<article class='card'><div class='day'>Senin</div><div class='title'>Push Day (Dada & Bahu)</div><ul><li>Dumbbell chest press - 4x12</li><li>Dumbbell shoulder press - 3x12</li><li>Dumbbell lateral raise - 3x15</li><li>Dumbbell tricep kickback - 3x12</li><li>Push-up - 3xmax</li></ul><p class='note'>Istirahat 60-90 detik antar set, durasi sekitar 40 menit.</p></article><article class='card'><div class='day'>Selasa</div><div class='title'>Cardio + Core</div><ul><li>Jogging 5K pace santai</li><li>Senam aerobik 20 menit</li><li>Plank - 3x45 detik</li><li>Crunch - 3x20</li></ul><p class='note'>Jaga heart rate di kisaran 120-140 bpm.</p></article><article class='card'><div class='day'>Rabu</div><div class='title'>Pull Day (Punggung & Bisep)</div><ul><li>Pull-up - 4xmax</li><li>Dumbbell bent-over row - 4x12</li><li>Dumbbell bicep curl - 3x12</li><li>Dumbbell hammer curl - 3x12</li><li>Dead hang 30 detik - 3 set</li></ul><p class='note'>Prioritas latihan hari ini adalah pull-up.</p></article><article class='card'><div class='day'>Kamis</div><div class='title'>Istirahat Aktif</div><ul><li>Jalan kaki 20-30 menit</li><li>Stretching 15 menit</li><li>Senam ringan</li></ul><p class='note'>Recovery penting untuk pertumbuhan otot dan konsistensi.</p></article><article class='card'><div class='day'>Jumat</div><div class='title'>Leg Day (Kaki & Bokong)</div><ul><li>Goblet squat - 4x15</li><li>Dumbbell lunges - 3x12 per kaki</li><li>Dumbbell Romanian deadlift - 4x12</li><li>Calf raise - 3x20</li><li>Glute bridge - 3x15</li></ul><p class='note'>Leg day membantu metabolisme total.</p></article><article class='card'><div class='day'>Sabtu</div><div class='title'>Cardio Panjang</div><ul><li>Jogging 10K pace santai</li><li>Senam aerobik 15 menit (opsional)</li></ul><p class='note'>Sebelum jogging, konsumsi pisang dan telur agar energi stabil.</p></article><article class='card'><div class='day'>Minggu</div><div class='title'>Full Body Ringan</div><ul><li>Pull-up - 3xmax</li><li>Dumbbell squat - 3x12</li><li>Dumbbell chest press - 3x10</li><li>Dumbbell row - 3x10</li><li>Push-up + plank finisher</li></ul><p class='note'>Gunakan beban lebih ringan dan fokus pada form.</p></article>",
+          "meal.title": "Jadwal Makan Harian",
+          "meal.table":
+            "<table><thead><tr><th>Waktu</th><th>Menu</th><th>Bahan utama</th><th>Kalori</th><th>Protein</th></tr></thead><tbody><tr><td><strong>06.00</strong></td><td>Telur orak-arik + tempe + sayur bening</td><td>3 telur, tempe 80g</td><td>~390</td><td>~37g</td></tr><tr><td><strong>09.00</strong></td><td>Snack pisang</td><td>1-2 buah</td><td>~180</td><td>~2g</td></tr><tr><td><strong>12.00</strong></td><td>Dada ayam + tahu + sayur bening</td><td>Ayam 150g, tahu 100g</td><td>~420</td><td>~55g</td></tr><tr><td><strong>15.00</strong></td><td>Susu UHT plain + pisang/ubi</td><td>200ml + 1 porsi</td><td>~260</td><td>~8g</td></tr><tr><td><strong>18.30</strong></td><td>Ikan + tempe + sayur tumis/bening</td><td>Ikan 150g, tempe 80g</td><td>~420</td><td>~43g</td></tr><tr><td><strong>20.00</strong></td><td>Opsional: susu UHT atau telur rebus</td><td>1 porsi</td><td>~120</td><td>~8-12g</td></tr><tr><td><strong>Total</strong></td><td>Menu harian lengkap</td><td>-</td><td><strong>~1,790</strong></td><td><strong>~145g</strong></td></tr></tbody></table>",
+          "shopping.title": "Daftar Belanja Seminggu",
+          "shopping.cards":
+            "<article class='card'><h3 class='shop-title'>Protein Hewani</h3><ul><li>Telur ayam 1kg - Rp 28-32rb</li><li>Dada ayam 500g - Rp 28-35rb</li><li>Ikan tongkol/cakalang 500g - Rp 20-30rb</li><li>Susu UHT plain 6 kotak - Rp 25-35rb</li></ul></article><article class='card'><h3 class='shop-title'>Protein Nabati & Karbo</h3><ul><li>Tempe 500g - Rp 10-15rb</li><li>Tahu 500g - Rp 8-12rb</li><li>Pisang 1 sisir - Rp 15-20rb</li><li>Ubi 500g - Rp 8-12rb</li><li>Jagung muda 3-4 buah - Rp 8-12rb</li></ul></article><article class='card'><h3 class='shop-title'>Sayuran & Bumbu</h3><ul><li>Bayam, wortel, kangkung - Rp 17-24rb</li><li>Buncis/kacang panjang - Rp 5-8rb</li><li>Bawang merah + putih - Rp 10-15rb</li><li>Minyak goreng kecil - Rp 10-14rb</li><li>Garam, gula, kemiri, kecap - Rp 10-15rb</li></ul></article>",
+          "shopping.totalLabel": "Total belanja seminggu",
+          "shopping.totalValue": "Rp 202.000 - 265.000",
+          "notes.title": "Catatan",
+          "notes.cards":
+            "<article class='card'><h3 class='note-title'>Makan sebelum olahraga</h3><p class='note'>Makan 1-2 jam sebelum latihan. Minimal pisang dan susu.</p></article><article class='card'><h3 class='note-title'>Hidrasi terukur</h3><p class='note'>Target 2-2.5 liter/hari dan tambah sekitar 500ml per sesi olahraga.</p></article><article class='card'><h3 class='note-title'>Tidur 7-8 jam</h3><p class='note'>Pemulihan otot terjadi saat tidur. Tidur buruk menghambat progres.</p></article><article class='card'><h3 class='note-title'>Progressive overload</h3><p class='note'>Setiap 1-2 minggu, naikkan beban atau repetisi secara bertahap.</p></article><article class='card'><h3 class='note-title'>Pilih snack tepat</h3><p class='note'>Ganti snack tinggi gula dengan pisang, ubi, jagung rebus, atau telur.</p></article><article class='card'><h3 class='note-title'>Pantau progres mingguan</h3><p class='note'>Timbang 1x/minggu di waktu yang sama, fokus pada tren bulanan.</p></article>",
+          "footer.note":
+            "Halaman ini sengaja dipisah dari index portfolio agar halaman utama tetap fokus pada karya produk dan engineering.",
+        },
+        zh: {
+          "meta.title": "健康计划 - Jehian Athaya",
+          "nav.back": "返回作品集",
+          "page.title": "每周精瘦训练计划",
+          "page.subtitle": "独立页面展示每周训练、饮食节奏、采购与恢复建议。",
+          "summary.cards":
+            "<article class='card'><div class='stat'>~1,950</div><div class='stat-l'>每日热量</div></article><article class='card'><div class='stat'>112-140g</div><div class='stat-l'>每日蛋白质</div></article><article class='card'><div class='stat'>4x</div><div class='stat-l'>每周力量训练</div></article><article class='card'><div class='stat'>3x</div><div class='stat-l'>每周有氧</div></article><article class='card'><div class='stat'>~5kg</div><div class='stat-l'>减脂目标</div></article>",
+          "workout.title": "每周训练安排",
+          "workout.cards":
+            "<article class='card'><div class='day'>周一</div><div class='title'>推日（胸/肩）</div><ul><li>哑铃卧推 - 4x12</li><li>哑铃推肩 - 3x12</li><li>哑铃侧平举 - 3x15</li><li>哑铃臂屈伸 - 3x12</li><li>俯卧撑 - 3x最大</li></ul><p class='note'>组间休息 60-90 秒，约 40 分钟。</p></article><article class='card'><div class='day'>周二</div><div class='title'>有氧 + 核心</div><ul><li>轻松慢跑 5K</li><li>有氧操 20 分钟</li><li>平板支撑 - 3x45 秒</li><li>卷腹 - 3x20</li></ul><p class='note'>心率建议控制在 120-140 bpm。</p></article><article class='card'><div class='day'>周三</div><div class='title'>拉日（背/二头）</div><ul><li>引体向上 - 4x最大</li><li>哑铃俯身划船 - 4x12</li><li>哑铃弯举 - 3x12</li><li>锤式弯举 - 3x12</li><li>悬垂 30 秒 - 3 组</li></ul><p class='note'>本日优先保证引体质量。</p></article><article class='card'><div class='day'>周四</div><div class='title'>主动恢复</div><ul><li>步行 20-30 分钟</li><li>拉伸 15 分钟</li><li>轻度有氧</li></ul><p class='note'>恢复决定长期稳定进步。</p></article><article class='card'><div class='day'>周五</div><div class='title'>腿日（腿/臀）</div><ul><li>高举杯深蹲 - 4x15</li><li>哑铃弓步 - 每腿 3x12</li><li>哑铃罗马尼亚硬拉 - 4x12</li><li>提踵 - 3x20</li><li>臀桥 - 3x15</li></ul><p class='note'>腿部训练有助于提升整体代谢。</p></article><article class='card'><div class='day'>周六</div><div class='title'>长距离有氧</div><ul><li>轻松慢跑 10K</li><li>有氧操 15 分钟（可选）</li></ul><p class='note'>跑前建议吃香蕉和鸡蛋补充能量。</p></article><article class='card'><div class='day'>周日</div><div class='title'>轻量全身</div><ul><li>引体向上 - 3x最大</li><li>哑铃深蹲 - 3x12</li><li>哑铃卧推 - 3x10</li><li>哑铃划船 - 3x10</li><li>俯卧撑 + 平板收尾</li></ul><p class='note'>降低重量，强调动作标准。</p></article>",
+          "meal.title": "每日饮食安排",
+          "meal.table":
+            "<table><thead><tr><th>时间</th><th>餐次</th><th>主要食材</th><th>热量</th><th>蛋白质</th></tr></thead><tbody><tr><td><strong>06.00</strong></td><td>炒蛋 + 天贝 + 清淡蔬菜</td><td>3 个鸡蛋，80g 天贝</td><td>~390</td><td>~37g</td></tr><tr><td><strong>09.00</strong></td><td>香蕉加餐</td><td>1-2 根</td><td>~180</td><td>~2g</td></tr><tr><td><strong>12.00</strong></td><td>鸡胸 + 豆腐 + 清淡蔬菜</td><td>150g 鸡胸，100g 豆腐</td><td>~420</td><td>~55g</td></tr><tr><td><strong>15.00</strong></td><td>常温奶 + 香蕉/红薯</td><td>200ml + 1 份</td><td>~260</td><td>~8g</td></tr><tr><td><strong>18.30</strong></td><td>鱼 + 天贝 + 炒/清蔬菜</td><td>150g 鱼，80g 天贝</td><td>~420</td><td>~43g</td></tr><tr><td><strong>20.00</strong></td><td>可选：牛奶或水煮蛋</td><td>1 份</td><td>~120</td><td>~8-12g</td></tr><tr><td><strong>总计</strong></td><td>完整日常菜单</td><td>-</td><td><strong>~1,790</strong></td><td><strong>~145g</strong></td></tr></tbody></table>",
+          "shopping.title": "每周采购清单",
+          "shopping.cards":
+            "<article class='card'><h3 class='shop-title'>动物蛋白</h3><ul><li>鸡蛋 1kg - Rp 28-32k</li><li>鸡胸肉 500g - Rp 28-35k</li><li>金枪鱼/鲭鱼 500g - Rp 20-30k</li><li>常温奶 6 盒 - Rp 25-35k</li></ul></article><article class='card'><h3 class='shop-title'>植物蛋白与碳水</h3><ul><li>天贝 500g - Rp 10-15k</li><li>豆腐 500g - Rp 8-12k</li><li>香蕉 1 把 - Rp 15-20k</li><li>红薯 500g - Rp 8-12k</li><li>嫩玉米 3-4 根 - Rp 8-12k</li></ul></article><article class='card'><h3 class='shop-title'>蔬菜与调味</h3><ul><li>菠菜、胡萝卜、空心菜 - Rp 17-24k</li><li>豆角类 - Rp 5-8k</li><li>红葱头 + 蒜 - Rp 10-15k</li><li>小瓶食用油 - Rp 10-14k</li><li>盐、糖、石栗、甜酱油 - Rp 10-15k</li></ul></article>",
+          "shopping.totalLabel": "每周总预算",
+          "shopping.totalValue": "Rp 202.000 - 265.000",
+          "notes.title": "注意事项",
+          "notes.cards":
+            "<article class='card'><h3 class='note-title'>训练前进食</h3><p class='note'>训练前 1-2 小时进食，至少补充香蕉和牛奶。</p></article><article class='card'><h3 class='note-title'>补水目标</h3><p class='note'>每日 2-2.5L，每次训练额外补约 500ml。</p></article><article class='card'><h3 class='note-title'>保证睡眠</h3><p class='note'>肌肉恢复主要在睡眠完成，睡眠不足会拖慢减脂。</p></article><article class='card'><h3 class='note-title'>渐进超负荷</h3><p class='note'>每 1-2 周逐步增加重量或次数。</p></article><article class='card'><h3 class='note-title'>优化加餐</h3><p class='note'>尽量用香蕉、红薯、玉米、水煮蛋替代高糖零食。</p></article><article class='card'><h3 class='note-title'>每周追踪</h3><p class='note'>固定时间每周称重一次，关注月度趋势。</p></article>",
+          "footer.note":
+            "此页面与作品集首页分离，以保持首页聚焦产品与工程能力。",
+        },
+        hi: {
+          "meta.title": "हेल्थ रूटीन - Jehian Athaya",
+          "nav.back": "पोर्टफोलियो पर वापस",
+          "page.title": "साप्ताहिक लीन बॉडी रूटीन",
+          "page.subtitle":
+            "ट्रेनिंग, मील रिदम, शॉपिंग और रिकवरी नोट्स के लिए अलग साप्ताहिक पेज।",
+          "summary.cards":
+            "<article class='card'><div class='stat'>~1,950</div><div class='stat-l'>कैलोरी/दिन</div></article><article class='card'><div class='stat'>112-140g</div><div class='stat-l'>प्रोटीन/दिन</div></article><article class='card'><div class='stat'>4x</div><div class='stat-l'>स्ट्रेंथ/सप्ताह</div></article><article class='card'><div class='stat'>3x</div><div class='stat-l'>कार्डियो/सप्ताह</div></article><article class='card'><div class='stat'>~5kg</div><div class='stat-l'>फैट-लॉस लक्ष्य</div></article>",
+          "workout.title": "साप्ताहिक वर्कआउट प्लान",
+          "workout.cards":
+            "<article class='card'><div class='day'>सोमवार</div><div class='title'>पुश डे (चेस्ट और शोल्डर)</div><ul><li>Dumbbell chest press - 4x12</li><li>Dumbbell shoulder press - 3x12</li><li>Dumbbell lateral raise - 3x15</li><li>Dumbbell tricep kickback - 3x12</li><li>Push-up - 3xmax</li></ul><p class='note'>सेट के बीच 60-90 सेकंड आराम, कुल समय लगभग 40 मिनट।</p></article><article class='card'><div class='day'>मंगलवार</div><div class='title'>कार्डियो + कोर</div><ul><li>5K हल्का जॉग</li><li>20 मिनट एरोबिक्स</li><li>Plank - 3x45 सेकंड</li><li>Crunch - 3x20</li></ul><p class='note'>हार्ट रेट 120-140 bpm के आसपास रखें।</p></article><article class='card'><div class='day'>बुधवार</div><div class='title'>पुल डे (बैक और बाइसेप)</div><ul><li>Pull-up - 4xmax</li><li>Dumbbell bent-over row - 4x12</li><li>Dumbbell bicep curl - 3x12</li><li>Dumbbell hammer curl - 3x12</li><li>Dead hang 30 सेकंड - 3 सेट</li></ul><p class='note'>आज pull-up क्वालिटी को प्राथमिकता दें।</p></article><article class='card'><div class='day'>गुरुवार</div><div class='title'>एक्टिव रिकवरी</div><ul><li>20-30 मिनट वॉक</li><li>15 मिनट स्ट्रेचिंग</li><li>हल्का एरोबिक्स</li></ul><p class='note'>रिकवरी लंबी अवधि की प्रगति के लिए जरूरी है।</p></article><article class='card'><div class='day'>शुक्रवार</div><div class='title'>लेग डे (लेग्स और ग्लूट्स)</div><ul><li>Goblet squat - 4x15</li><li>Dumbbell lunges - 3x12 प्रत्येक पैर</li><li>Dumbbell Romanian deadlift - 4x12</li><li>Calf raise - 3x20</li><li>Glute bridge - 3x15</li></ul><p class='note'>लेग डे कुल मेटाबॉलिज्म को बेहतर बनाता है।</p></article><article class='card'><div class='day'>शनिवार</div><div class='title'>लॉन्ग कार्डियो</div><ul><li>10K हल्का जॉग</li><li>15 मिनट एरोबिक्स (वैकल्पिक)</li></ul><p class='note'>जॉगिंग से पहले केला और अंडा लें ताकि ऊर्जा स्थिर रहे।</p></article><article class='card'><div class='day'>रविवार</div><div class='title'>लाइट फुल बॉडी</div><ul><li>Pull-up - 3xmax</li><li>Dumbbell squat - 3x12</li><li>Dumbbell chest press - 3x10</li><li>Dumbbell row - 3x10</li><li>Push-up + plank finisher</li></ul><p class='note'>हल्का लोड रखें और फॉर्म पर फोकस करें।</p></article>",
+          "meal.title": "दैनिक मील प्लान",
+          "meal.table":
+            "<table><thead><tr><th>समय</th><th>मेन्यू</th><th>मुख्य सामग्री</th><th>कैलोरी</th><th>प्रोटीन</th></tr></thead><tbody><tr><td><strong>06.00</strong></td><td>स्क्रैम्बल एग + टेम्पे + हल्की सब्जी</td><td>3 अंडे, 80g टेम्पे</td><td>~390</td><td>~37g</td></tr><tr><td><strong>09.00</strong></td><td>केला स्नैक</td><td>1-2 केले</td><td>~180</td><td>~2g</td></tr><tr><td><strong>12.00</strong></td><td>चिकन ब्रेस्ट + टोफू + सब्जी</td><td>150g चिकन, 100g टोफू</td><td>~420</td><td>~55g</td></tr><tr><td><strong>15.00</strong></td><td>UHT दूध + केला/शकरकंद</td><td>200ml + 1 पोर्शन</td><td>~260</td><td>~8g</td></tr><tr><td><strong>18.30</strong></td><td>मछली + टेम्पे + सब्जी</td><td>150g मछली, 80g टेम्पे</td><td>~420</td><td>~43g</td></tr><tr><td><strong>20.00</strong></td><td>वैकल्पिक: दूध या उबला अंडा</td><td>1 पोर्शन</td><td>~120</td><td>~8-12g</td></tr><tr><td><strong>कुल</strong></td><td>पूरा दैनिक मेन्यू</td><td>-</td><td><strong>~1,790</strong></td><td><strong>~145g</strong></td></tr></tbody></table>",
+          "shopping.title": "साप्ताहिक शॉपिंग लिस्ट",
+          "shopping.cards":
+            "<article class='card'><h3 class='shop-title'>एनिमल प्रोटीन</h3><ul><li>अंडे 1kg - Rp 28-32k</li><li>चिकन ब्रेस्ट 500g - Rp 28-35k</li><li>टूना/मैकेरल 500g - Rp 20-30k</li><li>UHT दूध 6 पैक - Rp 25-35k</li></ul></article><article class='card'><h3 class='shop-title'>प्लांट प्रोटीन और कार्ब</h3><ul><li>टेम्पे 500g - Rp 10-15k</li><li>टोफू 500g - Rp 8-12k</li><li>केला 1 गुच्छा - Rp 15-20k</li><li>शकरकंद 500g - Rp 8-12k</li><li>बेबी कॉर्न 3-4 पीस - Rp 8-12k</li></ul></article><article class='card'><h3 class='shop-title'>सब्जियां और मसाले</h3><ul><li>पालक, गाजर, कंगकुंग - Rp 17-24k</li><li>बीन्स - Rp 5-8k</li><li>प्याज + लहसुन - Rp 10-15k</li><li>कुकिंग ऑयल (छोटा) - Rp 10-14k</li><li>नमक, चीनी, कैंडलनट, स्वीट सोया - Rp 10-15k</li></ul></article>",
+          "shopping.totalLabel": "साप्ताहिक कुल खर्च",
+          "shopping.totalValue": "Rp 202.000 - 265.000",
+          "notes.title": "नोट्स",
+          "notes.cards":
+            "<article class='card'><h3 class='note-title'>वर्कआउट से पहले खाना</h3><p class='note'>ट्रेनिंग से 1-2 घंटे पहले खाना खाएं, कम से कम केला और दूध लें।</p></article><article class='card'><h3 class='note-title'>हाइड्रेशन</h3><p class='note'>2-2.5 लीटर/दिन और हर ट्रेनिंग सेशन पर ~500ml अतिरिक्त।</p></article><article class='card'><h3 class='note-title'>7-8 घंटे नींद</h3><p class='note'>रिकवरी नींद में होती है, नींद कम होने पर प्रगति धीमी होती है।</p></article><article class='card'><h3 class='note-title'>प्रोग्रेसिव ओवरलोड</h3><p class='note'>हर 1-2 सप्ताह में वजन या रेप्स धीरे-धीरे बढ़ाएं।</p></article><article class='card'><h3 class='note-title'>बेहतर स्नैक चुनें</h3><p class='note'>हाई-शुगर स्नैक्स की जगह केला, शकरकंद, कॉर्न या अंडा लें।</p></article><article class='card'><h3 class='note-title'>साप्ताहिक ट्रैकिंग</h3><p class='note'>सप्ताह में 1 बार एक ही समय पर वजन लें और मासिक ट्रेंड देखें।</p></article>",
+          "footer.note":
+            "मुख्य पोर्टफोलियो को प्रोडक्ट और इंजीनियरिंग फोकस में रखने के लिए यह पेज अलग रखा गया है।",
+        },
+        es: {
+          "meta.title": "Rutina de Salud - Jehian Athaya",
+          "nav.back": "Volver al Portafolio",
+          "page.title": "Rutina Semanal Lean Body",
+          "page.subtitle":
+            "Pagina dedicada para entrenamiento, ritmo de comidas, compras y notas de recuperacion.",
+          "summary.cards":
+            "<article class='card'><div class='stat'>~1,950</div><div class='stat-l'>Calorias/dia</div></article><article class='card'><div class='stat'>112-140g</div><div class='stat-l'>Proteina/dia</div></article><article class='card'><div class='stat'>4x</div><div class='stat-l'>Fuerza/semana</div></article><article class='card'><div class='stat'>3x</div><div class='stat-l'>Cardio/semana</div></article><article class='card'><div class='stat'>~5kg</div><div class='stat-l'>Objetivo de grasa</div></article>",
+          "workout.title": "Plan Semanal de Entrenamiento",
+          "workout.cards":
+            "<article class='card'><div class='day'>Lunes</div><div class='title'>Push Day (Pecho y Hombros)</div><ul><li>Dumbbell chest press - 4x12</li><li>Dumbbell shoulder press - 3x12</li><li>Dumbbell lateral raise - 3x15</li><li>Dumbbell tricep kickback - 3x12</li><li>Push-up - 3xmax</li></ul><p class='note'>Descansa 60-90 segundos entre series, total aprox. 40 minutos.</p></article><article class='card'><div class='day'>Martes</div><div class='title'>Cardio + Core</div><ul><li>Trote 5K a ritmo suave</li><li>Aerobicos 20 minutos</li><li>Plank - 3x45 seg</li><li>Crunch - 3x20</li></ul><p class='note'>Mantener frecuencia cardiaca alrededor de 120-140 bpm.</p></article><article class='card'><div class='day'>Miercoles</div><div class='title'>Pull Day (Espalda y Biceps)</div><ul><li>Pull-up - 4xmax</li><li>Dumbbell bent-over row - 4x12</li><li>Dumbbell bicep curl - 3x12</li><li>Dumbbell hammer curl - 3x12</li><li>Dead hang 30 seg - 3 series</li></ul><p class='note'>Prioriza la calidad de pull-up en este dia.</p></article><article class='card'><div class='day'>Jueves</div><div class='title'>Recuperacion Activa</div><ul><li>Caminata 20-30 minutos</li><li>Estiramiento 15 minutos</li><li>Aerobicos suaves</li></ul><p class='note'>La recuperacion es clave para progresar de forma estable.</p></article><article class='card'><div class='day'>Viernes</div><div class='title'>Leg Day (Piernas y Gluteos)</div><ul><li>Goblet squat - 4x15</li><li>Dumbbell lunges - 3x12 por pierna</li><li>Dumbbell Romanian deadlift - 4x12</li><li>Calf raise - 3x20</li><li>Glute bridge - 3x15</li></ul><p class='note'>El dia de piernas mejora el metabolismo total.</p></article><article class='card'><div class='day'>Sabado</div><div class='title'>Cardio Largo</div><ul><li>Trote 10K a ritmo suave</li><li>Aerobicos 15 minutos (opcional)</li></ul><p class='note'>Antes de correr, consumir banana y huevo para energia estable.</p></article><article class='card'><div class='day'>Domingo</div><div class='title'>Full Body Ligero</div><ul><li>Pull-up - 3xmax</li><li>Dumbbell squat - 3x12</li><li>Dumbbell chest press - 3x10</li><li>Dumbbell row - 3x10</li><li>Push-up + plank finisher</li></ul><p class='note'>Usa carga ligera y enfocate en la tecnica.</p></article>",
+          "meal.title": "Plan Diario de Comidas",
+          "meal.table":
+            "<table><thead><tr><th>Hora</th><th>Menu</th><th>Ingredientes</th><th>Calorias</th><th>Proteina</th></tr></thead><tbody><tr><td><strong>06.00</strong></td><td>Huevos revueltos + tempeh + verduras claras</td><td>3 huevos, 80g tempeh</td><td>~390</td><td>~37g</td></tr><tr><td><strong>09.00</strong></td><td>Snack de banana</td><td>1-2 bananas</td><td>~180</td><td>~2g</td></tr><tr><td><strong>12.00</strong></td><td>Pechuga de pollo + tofu + verduras</td><td>150g pollo, 100g tofu</td><td>~420</td><td>~55g</td></tr><tr><td><strong>15.00</strong></td><td>Leche UHT + banana/batata</td><td>200ml + 1 porcion</td><td>~260</td><td>~8g</td></tr><tr><td><strong>18.30</strong></td><td>Pescado + tempeh + verduras</td><td>150g pescado, 80g tempeh</td><td>~420</td><td>~43g</td></tr><tr><td><strong>20.00</strong></td><td>Opcional: leche UHT o huevo hervido</td><td>1 porcion</td><td>~120</td><td>~8-12g</td></tr><tr><td><strong>Total</strong></td><td>Menu diario completo</td><td>-</td><td><strong>~1,790</strong></td><td><strong>~145g</strong></td></tr></tbody></table>",
+          "shopping.title": "Lista Semanal de Compras",
+          "shopping.cards":
+            "<article class='card'><h3 class='shop-title'>Proteina Animal</h3><ul><li>Huevos 1kg - Rp 28-32k</li><li>Pechuga de pollo 500g - Rp 28-35k</li><li>Atun/caballa 500g - Rp 20-30k</li><li>Leche UHT 6 cajas - Rp 25-35k</li></ul></article><article class='card'><h3 class='shop-title'>Proteina Vegetal y Carbo</h3><ul><li>Tempeh 500g - Rp 10-15k</li><li>Tofu 500g - Rp 8-12k</li><li>Banana 1 racimo - Rp 15-20k</li><li>Batata 500g - Rp 8-12k</li><li>Maiz tierno 3-4 unidades - Rp 8-12k</li></ul></article><article class='card'><h3 class='shop-title'>Verduras y Condimentos</h3><ul><li>Espinaca, zanahoria, kangkung - Rp 17-24k</li><li>Ejotes - Rp 5-8k</li><li>Cebolla + ajo - Rp 10-15k</li><li>Aceite (pequeno) - Rp 10-14k</li><li>Sal, azucar, kemiri, salsa dulce - Rp 10-15k</li></ul></article>",
+          "shopping.totalLabel": "Total semanal de compras",
+          "shopping.totalValue": "Rp 202.000 - 265.000",
+          "notes.title": "Notas",
+          "notes.cards":
+            "<article class='card'><h3 class='note-title'>Comer antes de entrenar</h3><p class='note'>Comer 1-2 horas antes de entrenar, al menos banana y leche.</p></article><article class='card'><h3 class='note-title'>Hidratacion</h3><p class='note'>Objetivo 2-2.5 litros/dia y +500ml por sesion de entrenamiento.</p></article><article class='card'><h3 class='note-title'>Dormir 7-8 horas</h3><p class='note'>La recuperacion muscular ocurre durante el sueno.</p></article><article class='card'><h3 class='note-title'>Sobrecarga progresiva</h3><p class='note'>Cada 1-2 semanas, aumentar peso o repeticiones gradualmente.</p></article><article class='card'><h3 class='note-title'>Mejorar snacks</h3><p class='note'>Reemplazar snacks altos en azucar por banana, batata o huevo.</p></article><article class='card'><h3 class='note-title'>Seguimiento semanal</h3><p class='note'>Pesar 1 vez por semana al mismo horario y ver tendencia mensual.</p></article>",
+          "footer.note":
+            "Esta pagina se separa del index del portafolio para mantener el enfoque principal en trabajo de producto e ingenieria.",
+        },
+      }
+
+      function setLanguage(lang) {
+        const selected = translations[lang] ? lang : "en"
+        const table = translations[selected]
+        document.documentElement.lang = selected
+        document.title = table["meta.title"]
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n")
+          if (table[key]) el.textContent = table[key]
+        })
+
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-html")
+          if (table[key]) el.innerHTML = table[key]
+        })
+
+        const select = document.getElementById("langSelect")
+        if (select) select.value = selected
+        localStorage.setItem("preferred-language", selected)
+      }
+
+      const savedLanguage = localStorage.getItem("preferred-language")
+      const browserLanguage = (navigator.language || "").toLowerCase()
+      const defaultLanguage = savedLanguage
+        ? savedLanguage
+        : browserLanguage.startsWith("id")
+          ? "id"
+          : browserLanguage.startsWith("zh")
+            ? "zh"
+            : browserLanguage.startsWith("hi")
+              ? "hi"
+              : browserLanguage.startsWith("es")
+                ? "es"
+                : "en"
+
+      const select = document.getElementById("langSelect")
+      select.addEventListener("change", (e) => setLanguage(e.target.value))
+      setLanguage(defaultLanguage)
+    </script>
+  </body>
+</html>

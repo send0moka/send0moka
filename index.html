@@ -513,6 +513,187 @@
         font-weight: 400;
       }
 
+      /* HEALTH ROUTINE */
+      .health-summary {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1px;
+        background: var(--line);
+        margin-bottom: 2.5rem;
+      }
+      .health-stat {
+        background: var(--paper);
+        padding: 1rem;
+        text-align: center;
+      }
+      .health-stat-val {
+        font-family: var(--serif);
+        font-size: 1.4rem;
+        line-height: 1;
+      }
+      .health-stat-label {
+        margin-top: 0.35rem;
+        font-size: 9px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--ink4);
+      }
+      .health-block {
+        margin-top: 2.5rem;
+      }
+      .health-title {
+        font-family: var(--serif);
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+      }
+      .health-grid {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 1px;
+        background: var(--line);
+      }
+      .health-card {
+        background: var(--paper);
+        border: 1px solid transparent;
+        padding: 1rem;
+      }
+      .health-card-day {
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink4);
+      }
+      .health-card-name {
+        font-family: var(--serif);
+        font-size: 1.1rem;
+        margin-top: 0.35rem;
+        margin-bottom: 0.6rem;
+      }
+      .health-list {
+        list-style: none;
+      }
+      .health-list li {
+        position: relative;
+        padding-left: 0.85rem;
+        font-size: 11px;
+        line-height: 1.7;
+        color: var(--ink2);
+      }
+      .health-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.68em;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--ink3);
+      }
+      .health-note {
+        margin-top: 0.55rem;
+        font-size: 10px;
+        color: var(--ink4);
+      }
+      .health-table-wrap {
+        border: 1px solid var(--line);
+        overflow-x: auto;
+        background: var(--paper);
+      }
+      .health-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 780px;
+      }
+      .health-table th,
+      .health-table td {
+        border-bottom: 1px solid var(--line);
+        padding: 0.75rem;
+        vertical-align: top;
+        text-align: left;
+      }
+      .health-table th {
+        font-size: 9px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink3);
+      }
+      .health-table td {
+        font-size: 11px;
+        color: var(--ink2);
+        line-height: 1.75;
+      }
+      .health-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .health-table-strong {
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .health-shopping {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--line);
+      }
+      .health-shop-card {
+        background: var(--paper);
+        padding: 1rem;
+      }
+      .health-shop-title {
+        font-family: var(--serif);
+        font-size: 1.05rem;
+        margin-bottom: 0.75rem;
+      }
+      .health-shop-items {
+        list-style: none;
+      }
+      .health-shop-items li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.75rem;
+        font-size: 11px;
+        line-height: 1.6;
+        padding: 0.25rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .health-shop-items li:last-child {
+        border-bottom: none;
+      }
+      .health-budget {
+        margin-top: 0.85rem;
+        border: 1px solid var(--line);
+        padding: 0.75rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 11px;
+      }
+      .health-budget strong {
+        font-family: var(--serif);
+        font-size: 1.2rem;
+      }
+      .health-tips {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--line);
+      }
+      .health-tip {
+        background: var(--paper);
+        padding: 1rem;
+      }
+      .health-tip-title {
+        font-family: var(--serif);
+        font-size: 1.05rem;
+        margin-bottom: 0.5rem;
+      }
+      .health-tip-body {
+        font-size: 11px;
+        line-height: 1.75;
+        color: var(--ink2);
+      }
+
       /* SECTION */
       section {
         padding: 6rem 3rem;
@@ -991,6 +1172,39 @@
         color: var(--ink4);
       }
 
+      .scroll-top-btn {
+        position: fixed;
+        right: 1.25rem;
+        bottom: 1.25rem;
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--line);
+        background: color-mix(in srgb, var(--bg) 88%, #ffffff 12%);
+        color: var(--ink);
+        font-family: var(--mono);
+        font-size: 14px;
+        line-height: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(8px);
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease,
+          visibility 0.2s ease;
+        z-index: 50;
+      }
+      .scroll-top-btn.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .scroll-top-btn:hover {
+        transform: translateY(-2px);
+      }
+
       @keyframes up {
         from {
           opacity: 0;
@@ -1104,6 +1318,14 @@
         .contact-wrap {
           grid-template-columns: 1fr;
           gap: 3rem;
+        }
+        .health-summary {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .health-grid,
+        .health-shopping,
+        .health-tips {
+          grid-template-columns: 1fr;
         }
         footer {
           flex-direction: column;
@@ -1250,6 +1472,44 @@
           font-size: 0.9rem;
         }
 
+        /* HEALTH */
+        .health-summary {
+          margin-bottom: 1.75rem;
+        }
+        .health-stat {
+          padding: 0.85rem;
+        }
+        .health-stat-val {
+          font-size: 1.2rem;
+        }
+        .health-block {
+          margin-top: 1.75rem;
+        }
+        .health-title {
+          font-size: 1.2rem;
+          margin-bottom: 0.75rem;
+        }
+        .health-card {
+          padding: 0.85rem;
+        }
+        .health-card-name {
+          font-size: 1rem;
+        }
+        .health-list li,
+        .health-note,
+        .health-table td,
+        .health-shop-items li,
+        .health-budget,
+        .health-tip-body {
+          font-size: 10px;
+        }
+        .health-tip {
+          padding: 0.85rem;
+        }
+        .health-budget strong {
+          font-size: 1rem;
+        }
+
         /* EXPERIENCE */
         .exp-item {
           padding: 1.75rem 0;
@@ -1393,6 +1653,12 @@
           text-align: center;
           font-size: 9px;
         }
+        .scroll-top-btn {
+          right: 1rem;
+          bottom: 1rem;
+          width: 38px;
+          height: 38px;
+        }
       }
     </style>
   </head>
@@ -1400,7 +1666,9 @@
     <div id="cur"></div>
 
     <nav id="nav">
-      <span class="nav-logo" data-i18n="nav.logo">Jehian's Portfolio</span>
+      <a href="#" style="text-decoration: none">
+        <span class="nav-logo" data-i18n="nav.logo">Jehian's Portfolio</span>
+      </a>
       <ul class="nav-links">
         <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
         <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
@@ -2355,8 +2623,24 @@
           >Open to full-time · freelance · collaboration</span
         ></span
       >
+      <a
+        href="health-routine.html"
+        data-i18n="health.cta.button"
+        style="color: inherit; text-decoration: none"
+        >Open Health Page ↗</a
+      >
       <span data-i18n="footer.location">jehian.me · Purwokerto, Indonesia</span>
     </footer>
+
+    <button
+      id="scrollTopBtn"
+      class="scroll-top-btn"
+      type="button"
+      aria-label="Scroll to top"
+      title="Scroll to top"
+    >
+      ↑
+    </button>
 
     <script>
       const translations = {
@@ -2408,6 +2692,114 @@
           "about.factLangVal": "Indonesian · English",
           "about.factPubLabel": "Publication",
           "about.factPubVal": "JUTIF Journal · 2024",
+          "sec.health": "Healthy Weekly Routine",
+          "health.cta.title":
+            "Health routine<br /><em>as a separate page.</em>",
+          "health.cta.desc":
+            "I moved the complete weekly fitness and nutrition plan to a dedicated page so this portfolio stays focused on product and engineering work.",
+          "health.cta.button": "Open Health Page ↗",
+          "health.heading": "Weekly system<br /><em>for energy.</em>",
+          "health.intro":
+            "A practical weekly routine I use to stay productive: balanced workouts, simple meal rhythm, and realistic recovery habits.",
+          "health.factWorkoutLabel": "Workout Days",
+          "health.factWorkoutVal": "6 days + 1 recovery day",
+          "health.factMealLabel": "Meal Rhythm",
+          "health.factMealVal": "3 main meals + 2 snacks",
+          "health.factSleepLabel": "Sleep Target",
+          "health.factSleepVal": "7-8 hours/night",
+          "health.factBudgetLabel": "Weekly Grocery",
+          "health.factBudgetVal": "Rp 202k-265k",
+          "health.workout":
+            "<strong>Workout split:</strong><br />Mon: Push (chest, shoulders, triceps)<br />Tue: Pull (back, biceps)<br />Wed: Legs + core<br />Thu: Cardio + mobility<br />Fri: Upper body hypertrophy<br />Sat: Light full body / sport<br />Sun: Active recovery (walk, stretch)",
+          "health.meal":
+            "<strong>Daily meal flow:</strong><br />Breakfast: oats/eggs + fruit<br />Lunch: rice + lean protein + vegetables<br />Snack: yogurt, nuts, or banana<br />Dinner: lighter protein + vegetables<br />Hydration target: 2-3 liters/day",
+          "health.habits":
+            "<strong>Weekly habits:</strong><br />Progressive overload on training, prep ingredients once per week, track sleep consistency, and keep one low-intensity day to prevent burnout.",
+          "health.summary.calories": "Calories/day",
+          "health.summary.protein": "Protein/day",
+          "health.summary.weights": "Strength sessions/week",
+          "health.summary.cardio": "Cardio sessions/week",
+          "health.summary.fatloss": "Fat-loss target",
+          "health.block.workout": "Weekly Workout Plan",
+          "health.block.meal": "Daily Meal Plan",
+          "health.block.shopping": "Weekly Shopping List",
+          "health.block.notes": "Notes",
+          "health.day.mon": "Monday",
+          "health.day.tue": "Tuesday",
+          "health.day.wed": "Wednesday",
+          "health.day.thu": "Thursday",
+          "health.day.fri": "Friday",
+          "health.day.sat": "Saturday",
+          "health.day.sun": "Sunday",
+          "health.card.mon.title": "Push Day (Chest & Shoulders)",
+          "health.card.mon.list":
+            "<li>Dumbbell chest press - 4x12</li><li>Dumbbell shoulder press - 3x12</li><li>Dumbbell lateral raise - 3x15</li><li>Dumbbell tricep kickback - 3x12</li><li>Push-up - 3xmax</li>",
+          "health.card.mon.note":
+            "Rest 60-90 seconds between sets, around 40 minutes total.",
+          "health.card.tue.title": "Cardio + Core",
+          "health.card.tue.list":
+            "<li>Jogging 5K at an easy pace</li><li>20-minute aerobic session</li><li>Plank - 3x45 sec</li><li>Crunch - 3x20</li>",
+          "health.card.tue.note": "Keep heart rate around 120-140 bpm.",
+          "health.card.wed.title": "Pull Day (Back & Biceps)",
+          "health.card.wed.list":
+            "<li>Pull-up - 4xmax</li><li>Dumbbell bent-over row - 4x12</li><li>Dumbbell bicep curl - 3x12</li><li>Dumbbell hammer curl - 3x12</li><li>Dead hang 30 sec - 3 sets</li>",
+          "health.card.wed.note": "Prioritize pull-up performance today.",
+          "health.card.thu.title": "Active Recovery",
+          "health.card.thu.list":
+            "<li>20-30 minute walk</li><li>15-minute stretching</li><li>Light aerobics</li>",
+          "health.card.thu.note":
+            "Recovery is essential for muscle growth and consistency.",
+          "health.card.fri.title": "Leg Day (Legs & Glutes)",
+          "health.card.fri.list":
+            "<li>Goblet squat - 4x15</li><li>Dumbbell lunges - 3x12 each leg</li><li>Dumbbell Romanian deadlift - 4x12</li><li>Calf raise - 3x20</li><li>Glute bridge - 3x15</li>",
+          "health.card.fri.note": "Leg day boosts overall metabolism.",
+          "health.card.sat.title": "Long Cardio",
+          "health.card.sat.list":
+            "<li>Jogging 10K at an easy pace</li><li>15-minute aerobics (optional)</li>",
+          "health.card.sat.note":
+            "Before jogging, have banana and eggs for stable energy.",
+          "health.card.sun.title": "Light Full Body",
+          "health.card.sun.list":
+            "<li>Pull-up - 3xmax</li><li>Dumbbell squat - 3x12</li><li>Dumbbell chest press - 3x10</li><li>Dumbbell row - 3x10</li><li>Push-up + plank finisher</li>",
+          "health.card.sun.note": "Use lighter load and focus on form.",
+          "health.meal.th.time": "Time",
+          "health.meal.th.menu": "Menu",
+          "health.meal.th.ingredients": "Main ingredients",
+          "health.meal.th.calories": "Calories",
+          "health.meal.th.protein": "Protein",
+          "health.meal.rows":
+            '<tr><td class="health-table-strong">06.00</td><td>Scrambled eggs + tempeh + clear vegetables</td><td>3 eggs, 80g tempeh</td><td>~390</td><td>~37g</td></tr><tr><td class="health-table-strong">09.00</td><td>Banana snack</td><td>1-2 bananas</td><td>~180</td><td>~2g</td></tr><tr><td class="health-table-strong">12.00</td><td>Chicken breast + tofu + clear vegetables</td><td>150g chicken, 100g tofu</td><td>~420</td><td>~55g</td></tr><tr><td class="health-table-strong">15.00</td><td>Plain UHT milk + banana/sweet potato</td><td>200ml + 1 portion</td><td>~260</td><td>~8g</td></tr><tr><td class="health-table-strong">18.30</td><td>Fish + tempeh + sauteed/clear vegetables</td><td>150g fish, 80g tempeh</td><td>~420</td><td>~43g</td></tr><tr><td class="health-table-strong">20.00</td><td>Optional: UHT milk or boiled eggs</td><td>1 portion</td><td>~120</td><td>~8-12g</td></tr><tr><td class="health-table-strong">Total</td><td>Complete daily menu</td><td>-</td><td class="health-table-strong">~1,790</td><td class="health-table-strong">~145g</td></tr>',
+          "health.shop.animal.title": "Animal protein",
+          "health.shop.animal.list":
+            "<li><span>Chicken eggs 1kg</span><span>Rp 28-32k</span></li><li><span>Chicken breast fillet 500g</span><span>Rp 28-35k</span></li><li><span>Tuna/mackerel 500g</span><span>Rp 20-30k</span></li><li><span>Plain UHT milk 6 boxes</span><span>Rp 25-35k</span></li>",
+          "health.shop.plant.title": "Plant protein",
+          "health.shop.plant.list":
+            "<li><span>Tempeh 500g</span><span>Rp 10-15k</span></li><li><span>Tofu 500g</span><span>Rp 8-12k</span></li>",
+          "health.shop.carb.title": "Carbs & Fruit",
+          "health.shop.carb.list":
+            "<li><span>Bananas (1 bunch)</span><span>Rp 15-20k</span></li><li><span>Sweet potato 500g</span><span>Rp 8-12k</span></li><li><span>Baby corn 3-4 pieces</span><span>Rp 8-12k</span></li>",
+          "health.shop.veg.title": "Vegetables & Seasoning",
+          "health.shop.veg.list":
+            "<li><span>Spinach, carrot, water spinach</span><span>Rp 17-24k</span></li><li><span>Beans/long beans</span><span>Rp 5-8k</span></li><li><span>Shallot + garlic</span><span>Rp 10-15k</span></li><li><span>Small cooking oil</span><span>Rp 10-14k</span></li><li><span>Salt, sugar, candlenut, sweet soy sauce</span><span>Rp 10-15k</span></li>",
+          "health.shop.totalLabel": "Weekly shopping total",
+          "health.tip.eat.title": "Eat before training",
+          "health.tip.eat.body":
+            "Eat 1-2 hours before exercise. At minimum, have banana and milk so your body does not pull energy from muscle mass.",
+          "health.tip.hydration.title": "Hydration target",
+          "health.tip.hydration.body":
+            "Target 2-2.5 liters per day and add around 500ml for each training session.",
+          "health.tip.sleep.title": "Sleep 7-8 hours",
+          "health.tip.sleep.body":
+            "Muscle recovery happens during sleep. Poor sleep increases cortisol and slows fat-loss progress.",
+          "health.tip.overload.title": "Progressive overload",
+          "health.tip.overload.body":
+            "Every 1-2 weeks, increase load or reps so the body keeps receiving growth stimulus.",
+          "health.tip.snack.title": "Choose better snacks",
+          "health.tip.snack.body":
+            "Replace high-sugar snacks with banana, boiled sweet potato, corn, or boiled eggs to stay full longer.",
+          "health.tip.track.title": "Track weekly progress",
+          "health.tip.track.body":
+            "Weigh once a week at the same time to monitor monthly trends instead of daily fluctuations.",
           "exp.1.period": "Dec 2025 · 1 month",
           "exp.1.location": "Purwokerto, On-site",
           "exp.1.role": "Software Engineer Intern",
@@ -2555,6 +2947,116 @@
           "about.factLangVal": "Indonesia · Inggris",
           "about.factPubLabel": "Publikasi",
           "about.factPubVal": "Jurnal JUTIF · 2024",
+          "sec.health": "Rutinitas Sehat Mingguan",
+          "health.cta.title":
+            "Rutinitas sehat<br /><em>di halaman terpisah.</em>",
+          "health.cta.desc":
+            "Saya memindahkan jadwal fitness dan nutrisi lengkap ke halaman khusus agar portfolio ini tetap fokus pada karya produk dan engineering.",
+          "health.cta.button": "Buka Halaman Kesehatan ↗",
+          "health.heading": "Sistem mingguan<br /><em>untuk energi.</em>",
+          "health.intro":
+            "Rutinitas mingguan praktis yang saya pakai agar tetap produktif: latihan seimbang, pola makan sederhana, dan kebiasaan pemulihan yang realistis.",
+          "health.factWorkoutLabel": "Hari Latihan",
+          "health.factWorkoutVal": "6 hari + 1 hari pemulihan",
+          "health.factMealLabel": "Pola Makan",
+          "health.factMealVal": "3 makan utama + 2 camilan",
+          "health.factSleepLabel": "Target Tidur",
+          "health.factSleepVal": "7-8 jam/malam",
+          "health.factBudgetLabel": "Belanja Mingguan",
+          "health.factBudgetVal": "Rp 202rb-265rb",
+          "health.workout":
+            "<strong>Pembagian latihan:</strong><br />Senin: Push (dada, bahu, trisep)<br />Selasa: Pull (punggung, bisep)<br />Rabu: Kaki + core<br />Kamis: Kardio + mobilitas<br />Jumat: Upper body hypertrophy<br />Sabtu: Full body ringan / olahraga<br />Minggu: Active recovery (jalan, stretching)",
+          "health.meal":
+            "<strong>Alur makan harian:</strong><br />Sarapan: oat/telur + buah<br />Makan siang: nasi + protein rendah lemak + sayur<br />Camilan: yogurt, kacang, atau pisang<br />Makan malam: protein ringan + sayur<br />Target hidrasi: 2-3 liter/hari",
+          "health.habits":
+            "<strong>Kebiasaan mingguan:</strong><br />Progressive overload saat latihan, meal prep bahan seminggu sekali, pantau konsistensi tidur, dan sisakan satu hari intensitas rendah agar tidak burnout.",
+          "health.summary.calories": "Kalori/hari",
+          "health.summary.protein": "Protein/hari",
+          "health.summary.weights": "Latihan beban/minggu",
+          "health.summary.cardio": "Cardio/minggu",
+          "health.summary.fatloss": "Target turun lemak",
+          "health.block.workout": "Jadwal Olahraga Mingguan",
+          "health.block.meal": "Jadwal Makan Harian",
+          "health.block.shopping": "Daftar Belanja Seminggu",
+          "health.block.notes": "Catatan",
+          "health.day.mon": "Senin",
+          "health.day.tue": "Selasa",
+          "health.day.wed": "Rabu",
+          "health.day.thu": "Kamis",
+          "health.day.fri": "Jumat",
+          "health.day.sat": "Sabtu",
+          "health.day.sun": "Minggu",
+          "health.card.mon.title": "Push Day (Dada & Bahu)",
+          "health.card.mon.list":
+            "<li>Dumbbell chest press - 4x12</li><li>Dumbbell shoulder press - 3x12</li><li>Dumbbell lateral raise - 3x15</li><li>Dumbbell tricep kickback - 3x12</li><li>Push-up - 3xmax</li>",
+          "health.card.mon.note":
+            "Istirahat 60-90 detik antar set, durasi sekitar 40 menit.",
+          "health.card.tue.title": "Cardio + Core",
+          "health.card.tue.list":
+            "<li>Jogging 5K pace santai</li><li>Senam aerobik 20 menit</li><li>Plank - 3x45 detik</li><li>Crunch - 3x20</li>",
+          "health.card.tue.note": "Jaga heart rate di kisaran 120-140 bpm.",
+          "health.card.wed.title": "Pull Day (Punggung & Bisep)",
+          "health.card.wed.list":
+            "<li>Pull-up - 4xmax</li><li>Dumbbell bent-over row - 4x12</li><li>Dumbbell bicep curl - 3x12</li><li>Dumbbell hammer curl - 3x12</li><li>Dead hang 30 detik - 3 set</li>",
+          "health.card.wed.note": "Prioritas latihan hari ini adalah pull-up.",
+          "health.card.thu.title": "Istirahat Aktif",
+          "health.card.thu.list":
+            "<li>Jalan kaki 20-30 menit</li><li>Stretching 15 menit</li><li>Senam ringan</li>",
+          "health.card.thu.note":
+            "Recovery tetap penting untuk pertumbuhan otot.",
+          "health.card.fri.title": "Leg Day (Kaki & Bokong)",
+          "health.card.fri.list":
+            "<li>Goblet squat - 4x15</li><li>Dumbbell lunges - 3x12 per kaki</li><li>Dumbbell Romanian deadlift - 4x12</li><li>Calf raise - 3x20</li><li>Glute bridge - 3x15</li>",
+          "health.card.fri.note":
+            "Leg day membantu kenaikan metabolisme total.",
+          "health.card.sat.title": "Cardio Panjang",
+          "health.card.sat.list":
+            "<li>Jogging 10K pace santai</li><li>Senam aerobik 15 menit (opsional)</li>",
+          "health.card.sat.note":
+            "Sebelum jogging, konsumsi pisang dan telur agar energi stabil.",
+          "health.card.sun.title": "Full Body Ringan",
+          "health.card.sun.list":
+            "<li>Pull-up - 3xmax</li><li>Dumbbell squat - 3x12</li><li>Dumbbell chest press - 3x10</li><li>Dumbbell row - 3x10</li><li>Push-up + plank finisher</li>",
+          "health.card.sun.note":
+            "Gunakan beban lebih ringan, fokus pada form.",
+          "health.meal.th.time": "Waktu",
+          "health.meal.th.menu": "Menu",
+          "health.meal.th.ingredients": "Bahan Utama",
+          "health.meal.th.calories": "Kalori",
+          "health.meal.th.protein": "Protein",
+          "health.meal.rows":
+            '<tr><td class="health-table-strong">06.00</td><td>Telur orak-arik + tempe + sayur bening</td><td>3 telur, tempe 80g</td><td>~390</td><td>~37g</td></tr><tr><td class="health-table-strong">09.00</td><td>Snack pisang</td><td>1-2 buah</td><td>~180</td><td>~2g</td></tr><tr><td class="health-table-strong">12.00</td><td>Dada ayam + tahu + sayur bening</td><td>Ayam 150g, tahu 100g</td><td>~420</td><td>~55g</td></tr><tr><td class="health-table-strong">15.00</td><td>Susu UHT plain + pisang/ubi</td><td>200ml + 1 porsi</td><td>~260</td><td>~8g</td></tr><tr><td class="health-table-strong">18.30</td><td>Ikan + tempe + sayur tumis/bening</td><td>Ikan 150g, tempe 80g</td><td>~420</td><td>~43g</td></tr><tr><td class="health-table-strong">20.00</td><td>Opsional: susu UHT atau telur rebus</td><td>1 porsi</td><td>~120</td><td>~8-12g</td></tr><tr><td class="health-table-strong">Total</td><td>Menu harian lengkap</td><td>-</td><td class="health-table-strong">~1,790</td><td class="health-table-strong">~145g</td></tr>',
+          "health.shop.animal.title": "Protein Hewani",
+          "health.shop.animal.list":
+            "<li><span>Telur ayam 1kg</span><span>Rp 28-32rb</span></li><li><span>Dada ayam fillet 500g</span><span>Rp 28-35rb</span></li><li><span>Ikan tongkol/cakalang 500g</span><span>Rp 20-30rb</span></li><li><span>Susu UHT plain 6 kotak</span><span>Rp 25-35rb</span></li>",
+          "health.shop.plant.title": "Protein Nabati",
+          "health.shop.plant.list":
+            "<li><span>Tempe 500g</span><span>Rp 10-15rb</span></li><li><span>Tahu putih 500g</span><span>Rp 8-12rb</span></li>",
+          "health.shop.carb.title": "Karbo & Buah",
+          "health.shop.carb.list":
+            "<li><span>Pisang 1 sisir</span><span>Rp 15-20rb</span></li><li><span>Ubi jalar 500g</span><span>Rp 8-12rb</span></li><li><span>Jagung muda 3-4 buah</span><span>Rp 8-12rb</span></li>",
+          "health.shop.veg.title": "Sayuran & Bumbu",
+          "health.shop.veg.list":
+            "<li><span>Bayam, wortel, kangkung</span><span>Rp 17-24rb</span></li><li><span>Buncis/kacang panjang</span><span>Rp 5-8rb</span></li><li><span>Bawang merah + putih</span><span>Rp 10-15rb</span></li><li><span>Minyak goreng kecil</span><span>Rp 10-14rb</span></li><li><span>Garam, gula, kemiri, kecap</span><span>Rp 10-15rb</span></li>",
+          "health.shop.totalLabel": "Total belanja seminggu",
+          "health.tip.eat.title": "Makan sebelum olahraga",
+          "health.tip.eat.body":
+            "Konsumsi makanan 1-2 jam sebelum latihan. Minimal pisang dan susu agar energi stabil, supaya tubuh tidak mengambil massa otot.",
+          "health.tip.hydration.title": "Hidrasi terukur",
+          "health.tip.hydration.body":
+            "Target 2-2.5 liter per hari dan tambah sekitar 500ml setiap sesi olahraga.",
+          "health.tip.sleep.title": "Tidur 7-8 jam",
+          "health.tip.sleep.body":
+            "Pemulihan otot terjadi saat tidur. Kurang tidur meningkatkan kortisol dan membuat progress turun lemak jadi lambat.",
+          "health.tip.overload.title": "Progressive overload",
+          "health.tip.overload.body":
+            "Setiap 1-2 minggu, naikkan beban atau repetisi agar tubuh terus punya stimulus untuk berkembang.",
+          "health.tip.snack.title": "Pilih snack tepat",
+          "health.tip.snack.body":
+            "Ganti snack tinggi gula dengan pisang, ubi rebus, jagung rebus, atau telur rebus agar kenyang lebih lama.",
+          "health.tip.track.title": "Pantau progres mingguan",
+          "health.tip.track.body":
+            "Timbang berat badan satu kali per minggu di waktu yang sama untuk melihat tren bulanan, bukan fluktuasi harian.",
           "exp.1.period": "Des 2025 · 1 bulan",
           "exp.1.location": "Purwokerto, On-site",
           "exp.1.role": "Magang Software Engineer",
@@ -2701,6 +3203,20 @@
           "about.factLangVal": "印尼语 · 英语",
           "about.factPubLabel": "发表",
           "about.factPubVal": "JUTIF 期刊 · 2024",
+          "sec.health": "每周健康计划",
+          "health.cta.title": "健康计划<br /><em>独立页面展示。</em>",
+          "health.cta.desc":
+            "我已将完整的每周健身与饮食计划移至独立页面，让作品集继续聚焦于产品与工程能力。",
+          "health.cta.button": "打开健康页面 ↗",
+          "health.summary.calories": "每日热量",
+          "health.summary.protein": "每日蛋白质",
+          "health.summary.weights": "每周力量训练",
+          "health.summary.cardio": "每周有氧",
+          "health.summary.fatloss": "减脂目标",
+          "health.block.workout": "每周训练安排",
+          "health.block.meal": "每日饮食安排",
+          "health.block.shopping": "每周采购清单",
+          "health.block.notes": "注意事项",
           "exp.1.period": "2025 年 12 月 · 1 个月",
           "exp.1.location": "Purwokerto，线下",
           "exp.1.role": "软件工程实习生",
@@ -2848,6 +3364,20 @@
           "about.factLangVal": "इंडोनेशियन · इंग्लिश",
           "about.factPubLabel": "प्रकाशन",
           "about.factPubVal": "JUTIF जर्नल · 2024",
+          "sec.health": "साप्ताहिक हेल्थ रूटीन",
+          "health.cta.title": "हेल्थ रूटीन<br /><em>अलग पेज पर देखें।</em>",
+          "health.cta.desc":
+            "मैंने पूरा साप्ताहिक फिटनेस और न्यूट्रिशन प्लान अलग पेज पर रखा है, ताकि यह पोर्टफोलियो प्रोडक्ट और इंजीनियरिंग काम पर फोकस रहे।",
+          "health.cta.button": "हेल्थ पेज खोलें ↗",
+          "health.summary.calories": "कैलोरी/दिन",
+          "health.summary.protein": "प्रोटीन/दिन",
+          "health.summary.weights": "स्ट्रेंथ सेशन/सप्ताह",
+          "health.summary.cardio": "कार्डियो सेशन/सप्ताह",
+          "health.summary.fatloss": "फैट-लॉस लक्ष्य",
+          "health.block.workout": "साप्ताहिक वर्कआउट प्लान",
+          "health.block.meal": "दैनिक मील प्लान",
+          "health.block.shopping": "साप्ताहिक शॉपिंग लिस्ट",
+          "health.block.notes": "नोट्स",
           "exp.1.period": "दिसंबर 2025 · 1 महीना",
           "exp.1.location": "Purwokerto, ऑन-साइट",
           "exp.1.role": "सॉफ्टवेयर इंजीनियर इंटर्न",
@@ -2996,6 +3526,21 @@
           "about.factLangVal": "Indonesio · Ingles",
           "about.factPubLabel": "Publicacion",
           "about.factPubVal": "Revista JUTIF · 2024",
+          "sec.health": "Rutina Saludable Semanal",
+          "health.cta.title":
+            "Rutina de salud<br /><em>en una pagina separada.</em>",
+          "health.cta.desc":
+            "Movi el plan completo semanal de fitness y nutricion a una pagina dedicada para que este portfolio siga enfocado en producto e ingenieria.",
+          "health.cta.button": "Abrir pagina de salud ↗",
+          "health.summary.calories": "Calorias/dia",
+          "health.summary.protein": "Proteina/dia",
+          "health.summary.weights": "Sesiones de fuerza/semana",
+          "health.summary.cardio": "Sesiones de cardio/semana",
+          "health.summary.fatloss": "Objetivo de grasa",
+          "health.block.workout": "Plan semanal de entrenamiento",
+          "health.block.meal": "Plan diario de comidas",
+          "health.block.shopping": "Lista semanal de compras",
+          "health.block.notes": "Notas",
           "exp.1.period": "Dic 2025 · 1 mes",
           "exp.1.location": "Purwokerto, Presencial",
           "exp.1.role": "Practicante de Ingenieria de Software",
@@ -3239,9 +3784,23 @@
 
       // Scrolled nav
       const nav = document.getElementById("nav")
-      window.addEventListener("scroll", () =>
-        nav.classList.toggle("scrolled", window.scrollY > 40),
-      )
+      const scrollTopBtn = document.getElementById("scrollTopBtn")
+
+      function onWindowScroll() {
+        nav.classList.toggle("scrolled", window.scrollY > 40)
+        if (scrollTopBtn) {
+          scrollTopBtn.classList.toggle("show", window.scrollY > 220)
+        }
+      }
+
+      window.addEventListener("scroll", onWindowScroll)
+      onWindowScroll()
+
+      if (scrollTopBtn) {
+        scrollTopBtn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" })
+        })
+      }
 
       // Reveal on scroll - works with local file:// protocol
       const revealElements = document.querySelectorAll(".reveal")
