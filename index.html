@@ -54,6 +54,7 @@
         --serif: "Cormorant Garamond", Georgia, serif;
         --mono: "Azeret Mono", "Courier New", monospace;
         --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+        --nav-control-height: 32px;
       }
       html {
         scroll-behavior: smooth;
@@ -116,6 +117,42 @@
         list-style: none;
         align-items: center;
       }
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .lang-dropdown {
+        font-family: var(--mono);
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink3);
+        background: var(--paper);
+        border: 1px solid var(--line);
+        height: var(--nav-control-height);
+        padding: 0 2rem 0 0.7rem;
+        min-width: 90px;
+        cursor: none;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image:
+          linear-gradient(45deg, transparent 50%, var(--ink3) 50%),
+          linear-gradient(135deg, var(--ink3) 50%, transparent 50%);
+        background-position:
+          calc(100% - 14px) calc(50% - 1px),
+          calc(100% - 9px) calc(50% - 1px);
+        background-size:
+          5px 5px,
+          5px 5px;
+        background-repeat: no-repeat;
+      }
+      .lang-dropdown:focus {
+        outline: none;
+        border-color: var(--ink3);
+      }
       .nav-links a {
         font-size: 10px;
         font-weight: 300;
@@ -139,8 +176,11 @@
         text-decoration: none;
         transition: all 0.2s;
         cursor: none;
+        height: var(--nav-control-height);
+        display: inline-flex;
+        align-items: center;
       }
-      .nav-links .nav-talk:hover {
+      .nav-talk:hover {
         border-color: var(--ink);
         background: var(--ink);
         color: #fff;
@@ -990,6 +1030,9 @@
         .nav-links {
           gap: 1rem;
         }
+        .nav-controls {
+          gap: 0.75rem;
+        }
         .hero {
           grid-template-columns: 1fr;
           padding: 1.5rem;
@@ -1063,6 +1106,9 @@
 
       /* ── MOBILE (≤ 640px) ── */
       @media (max-width: 640px) {
+        :root {
+          --nav-control-height: 30px;
+        }
         /* cursor: disable on touch */
         #cur {
           display: none;
@@ -1081,6 +1127,14 @@
         }
         .nav-links {
           display: none;
+        }
+        .nav-controls {
+          margin-left: auto;
+        }
+        .lang-dropdown {
+          font-size: 8px;
+          min-width: 82px;
+          padding: 0 1.8rem 0 0.5rem;
         }
         .nav-talk {
           padding: 0.45rem 0.9rem;
@@ -1330,49 +1384,65 @@
     <div id="cur"></div>
 
     <nav id="nav">
-      <span class="nav-logo">Jehian's Portfolio</span>
+      <span class="nav-logo" data-i18n="nav.logo">Jehian's Portfolio</span>
       <ul class="nav-links">
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li>
-          <a
-            class="nav-talk"
-            href="https://cal.com/jehian/discuss"
-            target="_blank"
-            >Book a Talk ↗</a
-          >
-        </li>
+        <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
+      <div class="nav-controls">
+        <select
+          id="langSelect"
+          class="lang-dropdown"
+          aria-label="Language selector"
+        >
+          <option value="en">ENGLISH</option>
+          <option value="id">INDONESIA</option>
+          <option value="zh">CHINESE</option>
+        </select>
+        <a
+          class="nav-talk"
+          href="https://cal.com/jehian/discuss"
+          target="_blank"
+          data-i18n="nav.bookTalk"
+          >Book a Talk ↗</a
+        >
+      </div>
     </nav>
 
     <!-- HERO -->
     <section class="hero" id="hero">
       <div class="hero-left">
-        <p class="hero-eyebrow">Full-Stack Developer · Informatics 2026</p>
+        <p class="hero-eyebrow" data-i18n="hero.eyebrow">
+          Full-Stack Developer · Informatics 2026
+        </p>
         <h1 class="hero-name">
           <span class="it">Jehian</span><br />
           <span class="it">Athaya</span><br />
           <span class="bd">Tsani.</span>
         </h1>
-        <p class="hero-desc">
+        <p class="hero-desc" data-i18n="hero.desc">
           I build systems end-to-end from ML pipelines processing 48k+ records
           to production web apps with real users. Currently finishing my degree
           at Unsoed with a 3.88 GPA.
         </p>
         <div class="hero-cta">
-          <a href="#experience" class="btn">View Work</a>
+          <a href="#experience" class="btn" data-i18n="hero.viewWork"
+            >View Work</a
+          >
           <a
             href="https://docs.google.com/document/d/1CdE2xiqV28teXHy08GaSayN7YIlFA5JGMk0tZBppc6s/edit?usp=sharing"
             target="_blank"
             class="btn ghost"
+            data-i18n="hero.downloadCv"
             >Download CV ↓</a
           >
           <a
             href="https://cal.com/jehian/discuss"
             target="_blank"
             class="btn ghost"
+            data-i18n="hero.bookTalk"
             >Book a Talk ↗</a
           >
         </div>
@@ -1394,19 +1464,26 @@
         <div class="hero-stats">
           <div class="stat-item">
             <div class="stat-num">3.88</div>
-            <div class="stat-label">GPA · Universitas Jenderal Soedirman</div>
+            <div class="stat-label" data-i18n="hero.statGpa">
+              GPA · Universitas Jenderal Soedirman
+            </div>
           </div>
           <div class="stat-item">
             <div class="stat-num">5+</div>
-            <div class="stat-label">Years building web & ML systems</div>
+            <div class="stat-label" data-i18n="hero.statYears">
+              Years building web & ML systems
+            </div>
           </div>
           <div class="stat-item">
             <div class="stat-num">5,600</div>
-            <div class="stat-label">Total visits on BEM Unsoed platform</div>
+            <div class="stat-label" data-i18n="hero.statVisits">
+              Total visits on BEM Unsoed platform
+            </div>
           </div>
         </div>
         <div class="hero-status">
-          <span class="dot"></span> Available for opportunities
+          <span class="dot"></span>
+          <span data-i18n="hero.status">Available for opportunities</span>
         </div>
       </div>
       <div class="hero-bg-text">Dev.</div>
@@ -1414,7 +1491,7 @@
 
     <!-- ABOUT -->
     <section id="about">
-      <p class="sec-label reveal">About</p>
+      <p class="sec-label reveal" data-i18n="sec.about">About</p>
       <div class="about-wrap">
         <div class="reveal">
           <div class="about-photo-frame">
@@ -1422,25 +1499,25 @@
           </div>
         </div>
         <div class="reveal">
-          <h2 class="about-heading">
+          <h2 class="about-heading" data-i18n-html="about.heading">
             Engineering<br />with <em>intention.</em>
           </h2>
-          <p class="about-body">
-            I'm Jehian a final-year Informatics student at Universitas
-            Jenderal Soedirman with a deep interest in building things that
-            work, and work well. My path has taken me from designing hospital
-            kiosk systems on tight deadlines, to engineering ML pipelines for
+          <p class="about-body" data-i18n="about.body1">
+            I'm Jehian a final-year Informatics student at Universitas Jenderal
+            Soedirman with a deep interest in building things that work, and
+            work well. My path has taken me from designing hospital kiosk
+            systems on tight deadlines, to engineering ML pipelines for
             national-scale food security planning at the Ministry of
             Agriculture.
           </p>
-          <p class="about-body">
+          <p class="about-body" data-i18n="about.body2">
             What drives me isn't the stack it's the problem. I'm drawn to the
             intersection of data and interfaces: systems where clean
             architecture in the back translates to real clarity for people in
             the front. I care about documentation, about teaching others, and
             about the kind of code that doesn't break at 2am.
           </p>
-          <p class="about-body">
+          <p class="about-body" data-i18n="about.body3">
             Outside of work, I'm a workshop instructor, an open-source
             contributor, and someone who genuinely enjoys sitting with village
             elders in Banjarnegara to digitize historical manuscripts because
@@ -1448,20 +1525,36 @@
           </p>
           <div class="about-facts">
             <div class="about-fact">
-              <div class="about-fact-label">Based in</div>
-              <div class="about-fact-val">Purwokerto, Indonesia</div>
+              <div class="about-fact-label" data-i18n="about.factBasedLabel">
+                Based in
+              </div>
+              <div class="about-fact-val" data-i18n="about.factBasedVal">
+                Purwokerto, Indonesia
+              </div>
             </div>
             <div class="about-fact">
-              <div class="about-fact-label">Graduation</div>
-              <div class="about-fact-val">2026 · Unsoed</div>
+              <div class="about-fact-label" data-i18n="about.factGradLabel">
+                Graduation
+              </div>
+              <div class="about-fact-val" data-i18n="about.factGradVal">
+                2026 · Unsoed
+              </div>
             </div>
             <div class="about-fact">
-              <div class="about-fact-label">Languages</div>
-              <div class="about-fact-val">Indonesian · English</div>
+              <div class="about-fact-label" data-i18n="about.factLangLabel">
+                Languages
+              </div>
+              <div class="about-fact-val" data-i18n="about.factLangVal">
+                Indonesian · English
+              </div>
             </div>
             <div class="about-fact">
-              <div class="about-fact-label">Publication</div>
-              <div class="about-fact-val">JUTIF Journal · 2024</div>
+              <div class="about-fact-label" data-i18n="about.factPubLabel">
+                Publication
+              </div>
+              <div class="about-fact-val" data-i18n="about.factPubVal">
+                JUTIF Journal · 2024
+              </div>
             </div>
           </div>
         </div>
@@ -1470,21 +1563,27 @@
 
     <!-- EXPERIENCE -->
     <section id="experience">
-      <p class="sec-label reveal">Experience</p>
+      <p class="sec-label reveal" data-i18n="sec.experience">Experience</p>
 
       <div class="exp-item reveal">
         <div class="exp-meta">
-          <div class="exp-period">Dec 2025 · 1 month</div>
+          <div class="exp-period" data-i18n="exp.1.period">
+            Dec 2025 · 1 month
+          </div>
           <div class="exp-company">Bank Indonesia</div>
-          <div class="exp-location">Purwokerto, On-site</div>
+          <div class="exp-location" data-i18n="exp.1.location">
+            Purwokerto, On-site
+          </div>
         </div>
         <div class="exp-body">
-          <div class="exp-role">Software Engineer Intern</div>
-          <p class="exp-desc">
+          <div class="exp-role" data-i18n="exp.1.role">
+            Software Engineer Intern
+          </div>
+          <p class="exp-desc" data-i18n="exp.1.desc">
             Built a Chrome Extension automation tool for GNPIP food commodity
-            data entry reducing multi-day manual workflows to hours.
-            Engineered PITUTUR-Wicara, an AI chatbot powered by Gemini 1.5-flash
-            with custom knowledge base, replacing the legacy system. Built 2
+            data entry reducing multi-day manual workflows to hours. Engineered
+            PITUTUR-Wicara, an AI chatbot powered by Gemini 1.5-flash with
+            custom knowledge base, replacing the legacy system. Built 2
             operational dashboards for administrative decision-making within the
             UDSK unit.
           </p>
@@ -1499,13 +1598,19 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
-          <div class="exp-period">Aug–Nov 2025 · 4 months</div>
+          <div class="exp-period" data-i18n="exp.2.period">
+            Aug–Nov 2025 · 4 months
+          </div>
           <div class="exp-company">Kementerian Pertanian RI</div>
-          <div class="exp-location">South Jakarta, On-site</div>
+          <div class="exp-location" data-i18n="exp.2.location">
+            South Jakarta, On-site
+          </div>
         </div>
         <div class="exp-body">
-          <div class="exp-role">Machine Learning Engineer Intern</div>
-          <p class="exp-desc">
+          <div class="exp-role" data-i18n="exp.2.role">
+            Machine Learning Engineer Intern
+          </div>
+          <p class="exp-desc" data-i18n="exp.2.desc">
             Developed an LSTM Enhanced Ensemble system processing 31 years of
             historical data (48,696 records, 112 food commodities) to forecast
             daily calorie consumption achieving 3.72% MAPE, surpassing the 10%
@@ -1523,13 +1628,19 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
-          <div class="exp-period">May–Jul 2025 · 3 months</div>
+          <div class="exp-period" data-i18n="exp.3.period">
+            May–Jul 2025 · 3 months
+          </div>
           <div class="exp-company">Student English Forum Unsoed</div>
-          <div class="exp-location">Remote · Freelance</div>
+          <div class="exp-location" data-i18n="exp.3.location">
+            Remote · Freelance
+          </div>
         </div>
         <div class="exp-body">
-          <div class="exp-role">Freelance Web Developer</div>
-          <p class="exp-desc">
+          <div class="exp-role" data-i18n="exp.3.role">
+            Freelance Web Developer
+          </div>
+          <p class="exp-desc" data-i18n="exp.3.desc">
             Developed sefunsoed.site with Next.js and Supabase, integrated with
             Payload CMS for blog management and admin panel supporting 43 active
             users. Eliminated 100% of hosting costs via Vercel and Supabase free
@@ -1545,13 +1656,19 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
-          <div class="exp-period">Aug–Dec 2024 · 5 months</div>
+          <div class="exp-period" data-i18n="exp.4.period">
+            Aug–Dec 2024 · 5 months
+          </div>
           <div class="exp-company">Informatics Lab · Unsoed</div>
-          <div class="exp-location">Purbalingga, On-site</div>
+          <div class="exp-location" data-i18n="exp.4.location">
+            Purbalingga, On-site
+          </div>
         </div>
         <div class="exp-body">
-          <div class="exp-role">Coordinator Lab Assistant, Web Programming</div>
-          <p class="exp-desc">
+          <div class="exp-role" data-i18n="exp.4.role">
+            Coordinator Lab Assistant, Web Programming
+          </div>
+          <p class="exp-desc" data-i18n="exp.4.desc">
             Led 5 lab assistants, managing 6 weekly shifts of 20 students each.
             Guided development of 36 team-based web projects and mentored 60+
             students across frontend, backend, and UI/UX roles.
@@ -1565,16 +1682,22 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
-          <div class="exp-period">Jul – Aug 2024 · 2 months</div>
+          <div class="exp-period" data-i18n="exp.5.period">
+            Jul – Aug 2024 · 2 months
+          </div>
           <div class="exp-company">RSU St. Elisabeth Purwokerto</div>
-          <div class="exp-location">Purwokerto, On-site</div>
+          <div class="exp-location" data-i18n="exp.5.location">
+            Purwokerto, On-site
+          </div>
         </div>
         <div class="exp-body">
-          <div class="exp-role">Software Engineer Intern</div>
-          <p class="exp-desc">
-            Developed a self-service kiosk system from scratch in 1 month
-            system analysis, web interfaces, database, and APIs. Presented to
-            hospital staff and director, earning positive feedback.
+          <div class="exp-role" data-i18n="exp.5.role">
+            Software Engineer Intern
+          </div>
+          <p class="exp-desc" data-i18n="exp.5.desc">
+            Developed a self-service kiosk system from scratch in 1 month system
+            analysis, web interfaces, database, and APIs. Presented to hospital
+            staff and director, earning positive feedback.
           </p>
           <div class="exp-tags">
             <span class="tag">Next.js</span><span class="tag">Bun</span
@@ -1586,13 +1709,19 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
-          <div class="exp-period">Feb–Nov 2024 · 10 months</div>
+          <div class="exp-period" data-i18n="exp.6.period">
+            Feb–Nov 2024 · 10 months
+          </div>
           <div class="exp-company">BEM Unsoed</div>
-          <div class="exp-location">Purwokerto, On-site</div>
+          <div class="exp-location" data-i18n="exp.6.location">
+            Purwokerto, On-site
+          </div>
         </div>
         <div class="exp-body">
-          <div class="exp-role">Lead Director General of Data Analytics</div>
-          <p class="exp-desc">
+          <div class="exp-role" data-i18n="exp.6.role">
+            Lead Director General of Data Analytics
+          </div>
+          <p class="exp-desc" data-i18n="exp.6.desc">
             Led BEM Unsoed's central data platform reaching 700 monthly visitors
             (5,600 total). Developed survey forum features and updated UI theme
             on WordPress. Built documentation site for data analyst team
@@ -1609,7 +1738,7 @@
 
     <!-- PROJECTS -->
     <section id="projects">
-      <p class="sec-label reveal">Selected Projects</p>
+      <p class="sec-label reveal" data-i18n="sec.projects">Selected Projects</p>
       <div class="proj-grid">
         <div class="proj-item reveal">
           <div class="proj-img">
@@ -1620,8 +1749,8 @@
               <span class="proj-num">01</span
               ><span class="proj-year">2025</span>
             </div>
-            <div class="proj-name">PITUTUR-Wicara</div>
-            <p class="proj-desc">
+            <div class="proj-name" data-i18n="proj.1.name">PITUTUR-Wicara</div>
+            <p class="proj-desc" data-i18n="proj.1.desc">
               AI chatbot for Bank Indonesia Purwokerto. Gemini 1.5-flash, custom
               knowledge base, real-time admin dashboard.
             </p>
@@ -1639,8 +1768,10 @@
               <span class="proj-num">02</span
               ><span class="proj-year">2025</span>
             </div>
-            <div class="proj-name">LSTM Food Forecast</div>
-            <p class="proj-desc">
+            <div class="proj-name" data-i18n="proj.2.name">
+              LSTM Food Forecast
+            </div>
+            <p class="proj-desc" data-i18n="proj.2.desc">
               Ensemble ML system forecasting daily calorie consumption across
               112 food commodities. MAPE 3.72% — 75% better than conventional
               methods.
@@ -1659,8 +1790,10 @@
               <span class="proj-num">03</span
               ><span class="proj-year">2025</span>
             </div>
-            <div class="proj-name">SEF Unsoed Website</div>
-            <p class="proj-desc">
+            <div class="proj-name" data-i18n="proj.3.name">
+              SEF Unsoed Website
+            </div>
+            <p class="proj-desc" data-i18n="proj.3.desc">
               Company profile with CMS, auth, blog management, 43 active users.
               Zero hosting cost via Vercel + Supabase.
             </p>
@@ -1678,10 +1811,12 @@
               <span class="proj-num">04</span
               ><span class="proj-year">2024</span>
             </div>
-            <div class="proj-name">Hospital Kiosk System</div>
-            <p class="proj-desc">
-              Self-service kiosk for RSU St. Elisabeth full system analysis,
-              web interface, database, and APIs in 1 month.
+            <div class="proj-name" data-i18n="proj.4.name">
+              Hospital Kiosk System
+            </div>
+            <p class="proj-desc" data-i18n="proj.4.desc">
+              Self-service kiosk for RSU St. Elisabeth full system analysis, web
+              interface, database, and APIs in 1 month.
             </p>
             <div class="proj-tech">Next.js · Bun · Prisma · MySQL</div>
             <span class="proj-arrow">↗</span>
@@ -1697,8 +1832,8 @@
               <span class="proj-num">05</span
               ><span class="proj-year">2024</span>
             </div>
-            <div class="proj-name">Temulik</div>
-            <p class="proj-desc">
+            <div class="proj-name" data-i18n="proj.5.name">Temulik</div>
+            <p class="proj-desc" data-i18n="proj.5.desc">
               Geolocation mobile app to recover lost items via GPS and offline
               mapping. Finalist PKM Rektor Cup IV, Unsoed.
             </p>
@@ -1716,8 +1851,8 @@
               <span class="proj-num">06</span
               ><span class="proj-year">2025</span>
             </div>
-            <div class="proj-name">Nucifero</div>
-            <p class="proj-desc">
+            <div class="proj-name" data-i18n="proj.6.name">Nucifero</div>
+            <p class="proj-desc" data-i18n="proj.6.desc">
               Personalized bouquet ordering app with florist-side management,
               recommendation flow, and shipping/payment journey designed through
               user personas, empathy maps, and iterative prototyping.
@@ -1731,18 +1866,18 @@
 
     <!-- PUBLICATION -->
     <section>
-      <p class="sec-label reveal">Publication</p>
+      <p class="sec-label reveal" data-i18n="sec.publication">Publication</p>
       <div class="pub-item reveal">
         <div class="pub-year">2024</div>
         <div>
-          <div class="pub-title">
+          <div class="pub-title" data-i18n="pub.1.title">
             Comparative Analysis of BERT Models for Twitter Sentiment
             Classification using Text Mining on Streamlit
           </div>
-          <div class="pub-venue">
+          <div class="pub-venue" data-i18n="pub.1.venue">
             Jurnal Teknik Informatika (JUTIF) · Jun 12, 2024
           </div>
-          <p class="pub-abstract">
+          <p class="pub-abstract" data-i18n="pub.1.abstract">
             Fine-Tuned BERT achieved 91% accuracy and 0.91 F1-score on
             Indonesian Twitter sentiment data significantly outperforming the
             non-optimized baseline. Implemented as a Streamlit web application
@@ -1754,10 +1889,12 @@
 
     <!-- SKILLS -->
     <section>
-      <p class="sec-label reveal">Skills</p>
+      <p class="sec-label reveal" data-i18n="sec.skills">Skills</p>
       <div class="skills-section reveal">
         <div class="skills-col">
-          <div class="skill-cat">Backend & Infrastructure</div>
+          <div class="skill-cat" data-i18n="skills.backend">
+            Backend & Infrastructure
+          </div>
           <div class="skill-entry">
             <span class="skill-name">Python</span>
             <div class="skill-bar">
@@ -1819,7 +1956,9 @@
             </div>
           </div>
           <br />
-          <div class="skill-cat" style="margin-top: 1rem">Machine Learning</div>
+          <div class="skill-cat" style="margin-top: 1rem" data-i18n="skills.ml">
+            Machine Learning
+          </div>
           <div class="skill-entry">
             <span class="skill-name">LSTM / Time Series</span>
             <div class="skill-bar">
@@ -1862,7 +2001,7 @@
           </div>
         </div>
         <div class="skills-col">
-          <div class="skill-cat">Frontend</div>
+          <div class="skill-cat" data-i18n="skills.frontend">Frontend</div>
           <div class="skill-entry">
             <span class="skill-name">Next.js / React</span>
             <div class="skill-bar">
@@ -1914,7 +2053,13 @@
             </div>
           </div>
           <br />
-          <div class="skill-cat" style="margin-top: 1rem">Mobile & Other</div>
+          <div
+            class="skill-cat"
+            style="margin-top: 1rem"
+            data-i18n="skills.mobile"
+          >
+            Mobile & Other
+          </div>
           <div class="skill-entry">
             <span class="skill-name">Flutter</span>
             <div class="skill-bar">
@@ -1961,14 +2106,16 @@
 
     <!-- EDUCATION -->
     <section>
-      <p class="sec-label reveal">Education</p>
+      <p class="sec-label reveal" data-i18n="sec.education">Education</p>
       <div class="edu-grid">
         <div class="edu-item reveal">
           <div class="edu-period">2022 – 2026</div>
           <div class="edu-school">Universitas Jenderal Soedirman</div>
-          <div class="edu-degree">Bachelor of Informatics</div>
-          <div class="edu-gpa">GPA 3.88 / 4.00</div>
-          <p class="edu-courses">
+          <div class="edu-degree" data-i18n="edu.1.degree">
+            Bachelor of Informatics
+          </div>
+          <div class="edu-gpa" data-i18n="edu.1.gpa">GPA 3.88 / 4.00</div>
+          <p class="edu-courses" data-i18n="edu.1.courses">
             Data Mining · Machine Learning · AI · Web Programming · Mobile
             Programming · Computer Networks · IT Infrastructure · Information
             Security · Project Management · Software Engineering
@@ -1977,9 +2124,13 @@
         <div class="edu-item reveal">
           <div class="edu-period">2019 – 2022</div>
           <div class="edu-school">SMK Negeri 1 Purwokerto</div>
-          <div class="edu-degree">Vocational High School of Software Engineering</div>
-          <div class="edu-gpa">KKNI Level II Certified · TOEIC Certified</div>
-          <p class="edu-courses">
+          <div class="edu-degree" data-i18n="edu.2.degree">
+            Vocational High School of Software Engineering
+          </div>
+          <div class="edu-gpa" data-i18n="edu.2.gpa">
+            KKNI Level II Certified · TOEIC Certified
+          </div>
+          <p class="edu-courses" data-i18n="edu.2.courses">
             Graduated with national software engineering competency
             certification. Proficient in Java, PHP, Flutter, Laravel, OOP, and
             database design.
@@ -1990,36 +2141,48 @@
 
     <!-- CERTIFICATIONS -->
     <section>
-      <p class="sec-label reveal">Certifications</p>
+      <p class="sec-label reveal" data-i18n="sec.certifications">
+        Certifications
+      </p>
       <div class="cert-grid reveal">
         <div class="cert-item">
           <div class="cert-issuer">AWS</div>
-          <div class="cert-name">Cloud Architecting</div>
+          <div class="cert-name" data-i18n="cert.1.name">
+            Cloud Architecting
+          </div>
           <div class="cert-year">Feb 2024</div>
         </div>
         <div class="cert-item">
           <div class="cert-issuer">AWS</div>
-          <div class="cert-name">Cloud Foundations</div>
+          <div class="cert-name" data-i18n="cert.2.name">Cloud Foundations</div>
           <div class="cert-year">Feb 2024</div>
         </div>
         <div class="cert-item">
           <div class="cert-issuer">Digital Talent Scholarship</div>
-          <div class="cert-name">Cloud Talent Scouting Academy</div>
+          <div class="cert-name" data-i18n="cert.3.name">
+            Cloud Talent Scouting Academy
+          </div>
           <div class="cert-year">Mar 2024</div>
         </div>
         <div class="cert-item">
           <div class="cert-issuer">Dicoding</div>
-          <div class="cert-name">Machine Learning for Beginners</div>
+          <div class="cert-name" data-i18n="cert.4.name">
+            Machine Learning for Beginners
+          </div>
           <div class="cert-year">Dec 2023</div>
         </div>
         <div class="cert-item">
           <div class="cert-issuer">Dicoding</div>
-          <div class="cert-name">Data Visualization</div>
+          <div class="cert-name" data-i18n="cert.5.name">
+            Data Visualization
+          </div>
           <div class="cert-year">Dec 2023</div>
         </div>
         <div class="cert-item">
           <div class="cert-issuer">BNSP</div>
-          <div class="cert-name">KKNI Level II Software Engineering</div>
+          <div class="cert-name" data-i18n="cert.6.name">
+            KKNI Level II Software Engineering
+          </div>
           <div class="cert-year">May 2022</div>
         </div>
         <div class="cert-item">
@@ -2029,7 +2192,9 @@
         </div>
         <div class="cert-item">
           <div class="cert-issuer">MEXT / ETS</div>
-          <div class="cert-name">JLPT · TOEIC Certified</div>
+          <div class="cert-name" data-i18n="cert.8.name">
+            JLPT · TOEIC Certified
+          </div>
           <div class="cert-year">2021 – 2022</div>
         </div>
       </div>
@@ -2037,13 +2202,17 @@
 
     <!-- VOLUNTEERING -->
     <section>
-      <p class="sec-label reveal">Volunteering & Teaching</p>
+      <p class="sec-label reveal" data-i18n="sec.volunteering">
+        Volunteering & Teaching
+      </p>
       <div class="vol-grid">
         <div class="vol-item reveal">
           <div class="vol-org">KKN Unsoed Desa Petir</div>
-          <div class="vol-role">Village Governance & Digital</div>
+          <div class="vol-role" data-i18n="vol.1.role">
+            Village Governance & Digital
+          </div>
           <div class="vol-period">Jan – Feb 2025</div>
-          <p class="vol-desc">
+          <p class="vol-desc" data-i18n="vol.1.desc">
             Led development of petir-banjarnegara.desa.id via OpenSID.
             Coordinated with Kominfo for hosting. Created digital Babad Desa
             through elder interviews, web articles, and YouTube documentation.
@@ -2051,9 +2220,11 @@
         </div>
         <div class="vol-item reveal">
           <div class="vol-org">Soedirman Digital School</div>
-          <div class="vol-role">Website of Creative Media</div>
+          <div class="vol-role" data-i18n="vol.2.role">
+            Website of Creative Media
+          </div>
           <div class="vol-period">May – Dec 2024</div>
-          <p class="vol-desc">
+          <p class="vol-desc" data-i18n="vol.2.desc">
             Migrated registration website from WordPress to Next.js. Set up
             Moodle LMS. Wrote comprehensive documentation for future
             maintainers.
@@ -2061,18 +2232,22 @@
         </div>
         <div class="vol-item reveal">
           <div class="vol-org">LPM Sketsa Unsoed</div>
-          <div class="vol-role">Instructor Web Programming</div>
+          <div class="vol-role" data-i18n="vol.3.role">
+            Instructor Web Programming
+          </div>
           <div class="vol-period">Nov 2024</div>
-          <p class="vol-desc">
+          <p class="vol-desc" data-i18n="vol.3.desc">
             Delivered web training for 12 members covering HTML, CSS,
             JavaScript, PHP, WordPress, Elementor, and cPanel management.
           </p>
         </div>
         <div class="vol-item reveal">
           <div class="vol-org">HMIF Unsoed</div>
-          <div class="vol-role">Instructor Web & UI/UX</div>
+          <div class="vol-role" data-i18n="vol.4.role">
+            Instructor Web & UI/UX
+          </div>
           <div class="vol-period">Sep 2023 & Nov 2024</div>
-          <p class="vol-desc">
+          <p class="vol-desc" data-i18n="vol.4.desc">
             Taught web programming to ~60 students. Conducted "Slicing Figma to
             HTML CSS" workshop for 30 participants with highly positive
             feedback.
@@ -2083,13 +2258,13 @@
 
     <!-- CONTACT -->
     <section id="contact">
-      <p class="sec-label reveal">Contact</p>
+      <p class="sec-label reveal" data-i18n="sec.contact">Contact</p>
       <div class="contact-wrap">
         <div class="reveal">
-          <h2 class="contact-heading">
+          <h2 class="contact-heading" data-i18n-html="contact.heading">
             Let's build<br /><em>something</em><br />together.
           </h2>
-          <p class="contact-sub">
+          <p class="contact-sub" data-i18n="contact.sub">
             Open to full-time roles, freelance projects, and interesting
             collaborations. Response within 24 hours.
           </p>
@@ -2098,55 +2273,583 @@
               href="https://drive.google.com/YOUR_CV_LINK_HERE"
               target="_blank"
               class="btn"
+              data-i18n="contact.downloadCv"
               >Download CV ↓</a
             >
             <a
               href="https://cal.com/jehian/discuss"
               target="_blank"
               class="btn ghost"
+              data-i18n="contact.bookTalk"
               >Book a Talk ↗</a
             >
           </div>
         </div>
         <div class="contact-links reveal">
           <a class="contact-link" href="mailto:jehianathayata@gmail.com"
-            >Email <span>jehianathayata@gmail.com →</span></a
+            ><span data-i18n="contact.email">Email</span>
+            <span>jehianathayata@gmail.com →</span></a
           >
           <a
             class="contact-link"
             href="https://github.com/send0moka"
             target="_blank"
-            >GitHub <span>send0moka →</span></a
+            ><span data-i18n="contact.github">GitHub</span>
+            <span>send0moka →</span></a
           >
           <a
             class="contact-link"
             href="https://linkedin.com/in/jehian-athaya"
             target="_blank"
-            >LinkedIn <span>Jehian Athaya →</span></a
+            ><span data-i18n="contact.linkedin">LinkedIn</span>
+            <span>Jehian Athaya →</span></a
           >
           <a class="contact-link" href="https://sefunsoed.site" target="_blank"
-            >Live Project <span>sefunsoed.site →</span></a
+            ><span data-i18n="contact.liveProject">Live Project</span>
+            <span>sefunsoed.site →</span></a
           >
           <a
             class="contact-link"
             href="https://cal.com/jehian/discuss"
             target="_blank"
-            >Book a Talk <span>cal.com/jehian/discuss →</span></a
+            ><span data-i18n="contact.bookTalkShort">Book a Talk</span>
+            <span>cal.com/jehian/discuss →</span></a
           >
         </div>
       </div>
     </section>
 
     <footer>
-      <span>© 2026 Jehian Athaya Tsani Az Zuhry</span>
+      <span data-i18n="footer.copy">© 2026 Jehian Athaya Tsani Az Zuhry</span>
       <span
-        ><span class="dot"></span> Open to full-time · freelance ·
-        collaboration</span
+        ><span class="dot"></span>
+        <span data-i18n="footer.openTo"
+          >Open to full-time · freelance · collaboration</span
+        ></span
       >
-      <span>jehian.me · Purwokerto, Indonesia</span>
+      <span data-i18n="footer.location">jehian.me · Purwokerto, Indonesia</span>
     </footer>
 
     <script>
+      const translations = {
+        en: {
+          "meta.title": "Jehian Athaya Tsani Az Zuhry - Full-Stack Developer",
+          "meta.description":
+            "Jehian Athaya Tsani Az Zuhry - Full-Stack Developer & ML Engineer based in Purwokerto, Indonesia. Building systems end-to-end, from LSTM pipelines to production web apps.",
+          "meta.ogTitle": "Jehian Athaya Tsani Az Zuhry - Full-Stack Developer",
+          "meta.ogDescription":
+            "Building systems end-to-end - ML pipelines, production web apps, and everything in between.",
+          "meta.twitterTitle": "Jehian Athaya - Full-Stack Developer",
+          "nav.logo": "Jehian's Portfolio",
+          "nav.experience": "Experience",
+          "nav.projects": "Projects",
+          "nav.about": "About",
+          "nav.contact": "Contact",
+          "nav.bookTalk": "Book a Talk ↗",
+          "hero.eyebrow": "Full-Stack Developer · Informatics 2026",
+          "hero.desc":
+            "I build systems end-to-end from ML pipelines processing 48k+ records to production web apps with real users. Currently finishing my degree at Unsoed with a 3.88 GPA.",
+          "hero.viewWork": "View Work",
+          "hero.downloadCv": "Download CV ↓",
+          "hero.bookTalk": "Book a Talk ↗",
+          "hero.statGpa": "GPA · Universitas Jenderal Soedirman",
+          "hero.statYears": "Years building web & ML systems",
+          "hero.statVisits": "Total visits on BEM Unsoed platform",
+          "hero.status": "Available for opportunities",
+          "sec.about": "About",
+          "sec.experience": "Experience",
+          "sec.projects": "Selected Projects",
+          "sec.publication": "Publication",
+          "sec.skills": "Skills",
+          "sec.education": "Education",
+          "sec.certifications": "Certifications",
+          "sec.volunteering": "Volunteering & Teaching",
+          "sec.contact": "Contact",
+          "about.heading": "Engineering<br />with <em>intention.</em>",
+          "about.body1":
+            "I'm Jehian a final-year Informatics student at Universitas Jenderal Soedirman with a deep interest in building things that work, and work well. My path has taken me from designing hospital kiosk systems on tight deadlines, to engineering ML pipelines for national-scale food security planning at the Ministry of Agriculture.",
+          "about.body2":
+            "What drives me isn't the stack it's the problem. I'm drawn to the intersection of data and interfaces: systems where clean architecture in the back translates to real clarity for people in the front. I care about documentation, about teaching others, and about the kind of code that doesn't break at 2am.",
+          "about.body3":
+            "Outside of work, I'm a workshop instructor, an open-source contributor, and someone who genuinely enjoys sitting with village elders in Banjarnegara to digitize historical manuscripts because technology is only interesting when it has a human story behind it.",
+          "about.factBasedLabel": "Based in",
+          "about.factBasedVal": "Purwokerto, Indonesia",
+          "about.factGradLabel": "Graduation",
+          "about.factGradVal": "2026 · Unsoed",
+          "about.factLangLabel": "Languages",
+          "about.factLangVal": "Indonesian · English",
+          "about.factPubLabel": "Publication",
+          "about.factPubVal": "JUTIF Journal · 2024",
+          "exp.1.period": "Dec 2025 · 1 month",
+          "exp.1.location": "Purwokerto, On-site",
+          "exp.1.role": "Software Engineer Intern",
+          "exp.1.desc":
+            "Built a Chrome Extension automation tool for GNPIP food commodity data entry reducing multi-day manual workflows to hours. Engineered PITUTUR-Wicara, an AI chatbot powered by Gemini 1.5-flash with custom knowledge base, replacing the legacy system. Built 2 operational dashboards for administrative decision-making within the UDSK unit.",
+          "exp.2.period": "Aug-Nov 2025 · 4 months",
+          "exp.2.location": "South Jakarta, On-site",
+          "exp.2.role": "Machine Learning Engineer Intern",
+          "exp.2.desc":
+            "Developed an LSTM Enhanced Ensemble system processing 31 years of historical data (48,696 records, 112 food commodities) to forecast daily calorie consumption achieving 3.72% MAPE, surpassing the 10% target by 75% error reduction. Deployed via FastAPI + Laravel + Docker microservices architecture for Indonesia's food security planning serving 280M+ population.",
+          "exp.3.period": "May-Jul 2025 · 3 months",
+          "exp.3.location": "Remote · Freelance",
+          "exp.3.role": "Freelance Web Developer",
+          "exp.3.desc":
+            "Developed sefunsoed.site with Next.js and Supabase, integrated with Payload CMS for blog management and admin panel supporting 43 active users. Eliminated 100% of hosting costs via Vercel and Supabase free tiers.",
+          "exp.4.period": "Aug-Dec 2024 · 5 months",
+          "exp.4.location": "Purbalingga, On-site",
+          "exp.4.role": "Coordinator Lab Assistant, Web Programming",
+          "exp.4.desc":
+            "Led 5 lab assistants, managing 6 weekly shifts of 20 students each. Guided development of 36 team-based web projects and mentored 60+ students across frontend, backend, and UI/UX roles.",
+          "exp.5.period": "Jul-Aug 2024 · 2 months",
+          "exp.5.location": "Purwokerto, On-site",
+          "exp.5.role": "Software Engineer Intern",
+          "exp.5.desc":
+            "Developed a self-service kiosk system from scratch in 1 month system analysis, web interfaces, database, and APIs. Presented to hospital staff and director, earning positive feedback.",
+          "exp.6.period": "Feb-Nov 2024 · 10 months",
+          "exp.6.location": "Purwokerto, On-site",
+          "exp.6.role": "Lead Director General of Data Analytics",
+          "exp.6.desc":
+            "Led BEM Unsoed's central data platform reaching 700 monthly visitors (5,600 total). Developed survey forum features and updated UI theme on WordPress. Built documentation site for data analyst team efficiency.",
+          "proj.1.name": "PITUTUR-Wicara",
+          "proj.1.desc":
+            "AI chatbot for Bank Indonesia Purwokerto. Gemini 1.5-flash, custom knowledge base, real-time admin dashboard.",
+          "proj.2.name": "LSTM Food Forecast",
+          "proj.2.desc":
+            "Ensemble ML system forecasting daily calorie consumption across 112 food commodities. MAPE 3.72% - 75% better than conventional methods.",
+          "proj.3.name": "SEF Unsoed Website",
+          "proj.3.desc":
+            "Company profile with CMS, auth, blog management, 43 active users. Zero hosting cost via Vercel + Supabase.",
+          "proj.4.name": "Hospital Kiosk System",
+          "proj.4.desc":
+            "Self-service kiosk for RSU St. Elisabeth full system analysis, web interface, database, and APIs in 1 month.",
+          "proj.5.name": "Temulik",
+          "proj.5.desc":
+            "Geolocation mobile app to recover lost items via GPS and offline mapping. Finalist PKM Rektor Cup IV, Unsoed.",
+          "proj.6.name": "Nucifero",
+          "proj.6.desc":
+            "Personalized bouquet ordering app with florist-side management, recommendation flow, and shipping/payment journey designed through user personas, empathy maps, and iterative prototyping.",
+          "pub.1.title":
+            "Comparative Analysis of BERT Models for Twitter Sentiment Classification using Text Mining on Streamlit",
+          "pub.1.venue": "Jurnal Teknik Informatika (JUTIF) · Jun 12, 2024",
+          "pub.1.abstract":
+            "Fine-Tuned BERT achieved 91% accuracy and 0.91 F1-score on Indonesian Twitter sentiment data significantly outperforming the non-optimized baseline. Implemented as a Streamlit web application using IndoBERT-base-p1 with the CRISP-DM methodology.",
+          "skills.backend": "Backend & Infrastructure",
+          "skills.ml": "Machine Learning",
+          "skills.frontend": "Frontend",
+          "skills.mobile": "Mobile & Other",
+          "edu.1.degree": "Bachelor of Informatics",
+          "edu.1.gpa": "GPA 3.88 / 4.00",
+          "edu.1.courses":
+            "Data Mining · Machine Learning · AI · Web Programming · Mobile Programming · Computer Networks · IT Infrastructure · Information Security · Project Management · Software Engineering",
+          "edu.2.degree": "Vocational High School of Software Engineering",
+          "edu.2.gpa": "KKNI Level II Certified · TOEIC Certified",
+          "edu.2.courses":
+            "Graduated with national software engineering competency certification. Proficient in Java, PHP, Flutter, Laravel, OOP, and database design.",
+          "cert.1.name": "Cloud Architecting",
+          "cert.2.name": "Cloud Foundations",
+          "cert.3.name": "Cloud Talent Scouting Academy",
+          "cert.4.name": "Machine Learning for Beginners",
+          "cert.5.name": "Data Visualization",
+          "cert.6.name": "KKNI Level II Software Engineering",
+          "cert.8.name": "JLPT · TOEIC Certified",
+          "vol.1.role": "Village Governance & Digital",
+          "vol.1.desc":
+            "Led development of petir-banjarnegara.desa.id via OpenSID. Coordinated with Kominfo for hosting. Created digital Babad Desa through elder interviews, web articles, and YouTube documentation.",
+          "vol.2.role": "Website of Creative Media",
+          "vol.2.desc":
+            "Migrated registration website from WordPress to Next.js. Set up Moodle LMS. Wrote comprehensive documentation for future maintainers.",
+          "vol.3.role": "Instructor Web Programming",
+          "vol.3.desc":
+            "Delivered web training for 12 members covering HTML, CSS, JavaScript, PHP, WordPress, Elementor, and cPanel management.",
+          "vol.4.role": "Instructor Web & UI/UX",
+          "vol.4.desc":
+            'Taught web programming to ~60 students. Conducted "Slicing Figma to HTML CSS" workshop for 30 participants with highly positive feedback.',
+          "contact.heading":
+            "Let's build<br /><em>something</em><br />together.",
+          "contact.sub":
+            "Open to full-time roles, freelance projects, and interesting collaborations. Response within 24 hours.",
+          "contact.downloadCv": "Download CV ↓",
+          "contact.bookTalk": "Book a Talk ↗",
+          "contact.email": "Email",
+          "contact.github": "GitHub",
+          "contact.linkedin": "LinkedIn",
+          "contact.liveProject": "Live Project",
+          "contact.bookTalkShort": "Book a Talk",
+          "footer.copy": "© 2026 Jehian Athaya Tsani Az Zuhry",
+          "footer.openTo": "Open to full-time · freelance · collaboration",
+          "footer.location": "jehian.me · Purwokerto, Indonesia",
+        },
+        id: {
+          "meta.title": "Jehian Athaya Tsani Az Zuhry - Full-Stack Developer",
+          "meta.description":
+            "Jehian Athaya Tsani Az Zuhry - Full-Stack Developer & ML Engineer berbasis di Purwokerto, Indonesia. Membangun sistem end-to-end, dari pipeline LSTM hingga web app production.",
+          "meta.ogTitle": "Jehian Athaya Tsani Az Zuhry - Full-Stack Developer",
+          "meta.ogDescription":
+            "Membangun sistem end-to-end - pipeline ML, web app production, dan semua yang ada di antaranya.",
+          "meta.twitterTitle": "Jehian Athaya - Full-Stack Developer",
+          "nav.logo": "Portofolio Jehian",
+          "nav.experience": "Pengalaman",
+          "nav.projects": "Proyek",
+          "nav.about": "Tentang",
+          "nav.contact": "Kontak",
+          "nav.bookTalk": "Jadwalkan Diskusi ↗",
+          "hero.eyebrow": "Full-Stack Developer · Informatika 2026",
+          "hero.desc":
+            "Saya membangun sistem end-to-end dari pipeline ML yang memproses 48 ribu+ data hingga web app production dengan pengguna nyata. Saat ini saya menyelesaikan studi di Unsoed dengan IPK 3.88.",
+          "hero.viewWork": "Lihat Karya",
+          "hero.downloadCv": "Unduh CV ↓",
+          "hero.bookTalk": "Jadwalkan Diskusi ↗",
+          "hero.statGpa": "IPK · Universitas Jenderal Soedirman",
+          "hero.statYears": "Tahun membangun sistem web & ML",
+          "hero.statVisits": "Total kunjungan platform BEM Unsoed",
+          "hero.status": "Terbuka untuk peluang",
+          "sec.about": "Tentang",
+          "sec.experience": "Pengalaman",
+          "sec.projects": "Proyek Pilihan",
+          "sec.publication": "Publikasi",
+          "sec.skills": "Keahlian",
+          "sec.education": "Pendidikan",
+          "sec.certifications": "Sertifikasi",
+          "sec.volunteering": "Kerelawanan & Pengajaran",
+          "sec.contact": "Kontak",
+          "about.heading": "Merekayasa<br />dengan <em>niat.</em>",
+          "about.body1":
+            "Saya Jehian, mahasiswa tingkat akhir Informatika di Universitas Jenderal Soedirman dengan minat besar membangun sesuatu yang berjalan, dan berjalan dengan baik. Perjalanan saya dimulai dari merancang sistem kios rumah sakit dengan tenggat ketat hingga merekayasa pipeline ML untuk perencanaan ketahanan pangan skala nasional di Kementerian Pertanian.",
+          "about.body2":
+            "Yang mendorong saya bukan sekadar stack, melainkan masalahnya. Saya tertarik pada pertemuan data dan antarmuka: sistem yang arsitekturnya rapi di belakang namun memberi kejelasan nyata bagi pengguna di depan. Saya peduli dokumentasi, senang mengajar, dan menyukai kode yang tidak rusak jam 2 pagi.",
+          "about.body3":
+            "Di luar pekerjaan, saya adalah instruktur workshop, kontributor open-source, dan seseorang yang menikmati berdiskusi dengan para sesepuh desa di Banjarnegara untuk mendigitalisasi manuskrip sejarah karena teknologi hanya menarik ketika memiliki cerita manusia di baliknya.",
+          "about.factBasedLabel": "Berdomisili",
+          "about.factBasedVal": "Purwokerto, Indonesia",
+          "about.factGradLabel": "Lulus",
+          "about.factGradVal": "2026 · Unsoed",
+          "about.factLangLabel": "Bahasa",
+          "about.factLangVal": "Indonesia · Inggris",
+          "about.factPubLabel": "Publikasi",
+          "about.factPubVal": "Jurnal JUTIF · 2024",
+          "exp.1.period": "Des 2025 · 1 bulan",
+          "exp.1.location": "Purwokerto, On-site",
+          "exp.1.role": "Magang Software Engineer",
+          "exp.1.desc":
+            "Membangun tool otomasi Chrome Extension untuk input data komoditas pangan GNPIP sehingga alur kerja manual beberapa hari berkurang menjadi hitungan jam. Merekayasa PITUTUR-Wicara, chatbot AI berbasis Gemini 1.5-flash dengan knowledge base kustom sebagai pengganti sistem lama. Membangun 2 dashboard operasional untuk pengambilan keputusan administratif di unit UDSK.",
+          "exp.2.period": "Agu-Nov 2025 · 4 bulan",
+          "exp.2.location": "Jakarta Selatan, On-site",
+          "exp.2.role": "Magang Machine Learning Engineer",
+          "exp.2.desc":
+            "Mengembangkan sistem LSTM Enhanced Ensemble yang memproses 31 tahun data historis (48.696 record, 112 komoditas pangan) untuk memprediksi konsumsi kalori harian dengan MAPE 3,72%, melampaui target 10% dengan reduksi error 75%. Dideploy melalui arsitektur microservices FastAPI + Laravel + Docker untuk perencanaan ketahanan pangan Indonesia bagi 280 juta+ penduduk.",
+          "exp.3.period": "Mei-Jul 2025 · 3 bulan",
+          "exp.3.location": "Remote · Freelance",
+          "exp.3.role": "Web Developer Freelance",
+          "exp.3.desc":
+            "Mengembangkan sefunsoed.site dengan Next.js dan Supabase, terintegrasi dengan Payload CMS untuk manajemen blog dan admin panel yang mendukung 43 pengguna aktif. Menghilangkan 100% biaya hosting melalui tier gratis Vercel dan Supabase.",
+          "exp.4.period": "Agu-Des 2024 · 5 bulan",
+          "exp.4.location": "Purbalingga, On-site",
+          "exp.4.role": "Koordinator Asisten Lab, Pemrograman Web",
+          "exp.4.desc":
+            "Memimpin 5 asisten lab dengan pengelolaan 6 shift mingguan berisi masing-masing 20 mahasiswa. Membimbing pengembangan 36 proyek web berbasis tim dan mengampu 60+ mahasiswa di peran frontend, backend, dan UI/UX.",
+          "exp.5.period": "Jul-Agu 2024 · 2 bulan",
+          "exp.5.location": "Purwokerto, On-site",
+          "exp.5.role": "Magang Software Engineer",
+          "exp.5.desc":
+            "Mengembangkan sistem kiosk self-service dari nol dalam 1 bulan mencakup analisis sistem, antarmuka web, database, dan API. Mempresentasikan hasil ke staf dan direktur rumah sakit dengan umpan balik positif.",
+          "exp.6.period": "Feb-Nov 2024 · 10 bulan",
+          "exp.6.location": "Purwokerto, On-site",
+          "exp.6.role": "Ketua Direktur Jenderal Data Analytics",
+          "exp.6.desc":
+            "Memimpin platform data pusat BEM Unsoed hingga mencapai 700 pengunjung bulanan (5.600 total). Mengembangkan fitur forum survei dan memperbarui tema UI di WordPress. Membangun situs dokumentasi untuk meningkatkan efisiensi tim data analyst.",
+          "proj.1.name": "PITUTUR-Wicara",
+          "proj.1.desc":
+            "Chatbot AI untuk Bank Indonesia Purwokerto. Gemini 1.5-flash, knowledge base kustom, dan dashboard admin real-time.",
+          "proj.2.name": "Prediksi Pangan LSTM",
+          "proj.2.desc":
+            "Sistem ML ensemble untuk memprediksi konsumsi kalori harian pada 112 komoditas pangan. MAPE 3,72% - 75% lebih baik dari metode konvensional.",
+          "proj.3.name": "Website SEF Unsoed",
+          "proj.3.desc":
+            "Company profile dengan CMS, autentikasi, manajemen blog, dan 43 pengguna aktif. Biaya hosting nol melalui Vercel + Supabase.",
+          "proj.4.name": "Sistem Kiosk Rumah Sakit",
+          "proj.4.desc":
+            "Kiosk self-service untuk RSU St. Elisabeth dengan analisis sistem lengkap, antarmuka web, database, dan API dalam 1 bulan.",
+          "proj.5.name": "Temulik",
+          "proj.5.desc":
+            "Aplikasi mobile geolokasi untuk menemukan barang hilang melalui GPS dan pemetaan offline. Finalis PKM Rektor Cup IV Unsoed.",
+          "proj.6.name": "Nucifero",
+          "proj.6.desc":
+            "Aplikasi pemesanan buket personal dengan manajemen sisi florist, alur rekomendasi, serta perjalanan pengiriman/pembayaran yang dirancang melalui persona pengguna, empathy map, dan prototipe iteratif.",
+          "pub.1.title":
+            "Analisis Komparatif Model BERT untuk Klasifikasi Sentimen Twitter menggunakan Text Mining pada Streamlit",
+          "pub.1.venue": "Jurnal Teknik Informatika (JUTIF) · 12 Jun 2024",
+          "pub.1.abstract":
+            "Fine-Tuned BERT mencapai akurasi 91% dan F1-score 0,91 pada data sentimen Twitter berbahasa Indonesia, jauh melampaui baseline non-optimasi. Diimplementasikan sebagai aplikasi web Streamlit menggunakan IndoBERT-base-p1 dengan metodologi CRISP-DM.",
+          "skills.backend": "Backend & Infrastruktur",
+          "skills.ml": "Machine Learning",
+          "skills.frontend": "Frontend",
+          "skills.mobile": "Mobile & Lainnya",
+          "edu.1.degree": "Sarjana Informatika",
+          "edu.1.gpa": "IPK 3,88 / 4,00",
+          "edu.1.courses":
+            "Data Mining · Machine Learning · AI · Pemrograman Web · Pemrograman Mobile · Jaringan Komputer · Infrastruktur TI · Keamanan Informasi · Manajemen Proyek · Rekayasa Perangkat Lunak",
+          "edu.2.degree": "SMK Rekayasa Perangkat Lunak",
+          "edu.2.gpa": "Sertifikasi KKNI Level II · Sertifikasi TOEIC",
+          "edu.2.courses":
+            "Lulus dengan sertifikasi kompetensi nasional rekayasa perangkat lunak. Menguasai Java, PHP, Flutter, Laravel, OOP, dan perancangan basis data.",
+          "cert.1.name": "Arsitektur Cloud",
+          "cert.2.name": "Fondasi Cloud",
+          "cert.3.name": "Cloud Talent Scouting Academy",
+          "cert.4.name": "Machine Learning untuk Pemula",
+          "cert.5.name": "Visualisasi Data",
+          "cert.6.name": "KKNI Level II Rekayasa Perangkat Lunak",
+          "cert.8.name": "Sertifikasi JLPT · TOEIC",
+          "vol.1.role": "Tata Kelola Desa & Digital",
+          "vol.1.desc":
+            "Memimpin pengembangan petir-banjarnegara.desa.id melalui OpenSID. Berkoordinasi dengan Kominfo untuk hosting. Menyusun Babad Desa digital melalui wawancara sesepuh, artikel web, dan dokumentasi YouTube.",
+          "vol.2.role": "Website of Creative Media",
+          "vol.2.desc":
+            "Memigrasikan website pendaftaran dari WordPress ke Next.js. Menyiapkan LMS Moodle. Menulis dokumentasi komprehensif untuk pengelola berikutnya.",
+          "vol.3.role": "Instruktur Pemrograman Web",
+          "vol.3.desc":
+            "Menyampaikan pelatihan web untuk 12 anggota meliputi HTML, CSS, JavaScript, PHP, WordPress, Elementor, dan pengelolaan cPanel.",
+          "vol.4.role": "Instruktur Web & UI/UX",
+          "vol.4.desc":
+            'Mengajar pemrograman web kepada sekitar 60 mahasiswa. Menyelenggarakan workshop "Slicing Figma ke HTML CSS" untuk 30 peserta dengan respons sangat positif.',
+          "contact.heading": "Mari bangun<br /><em>sesuatu</em><br />bersama.",
+          "contact.sub":
+            "Terbuka untuk posisi full-time, proyek freelance, dan kolaborasi menarik. Balasan dalam 24 jam.",
+          "contact.downloadCv": "Unduh CV ↓",
+          "contact.bookTalk": "Jadwalkan Diskusi ↗",
+          "contact.email": "Email",
+          "contact.github": "GitHub",
+          "contact.linkedin": "LinkedIn",
+          "contact.liveProject": "Proyek Live",
+          "contact.bookTalkShort": "Jadwalkan Diskusi",
+          "footer.copy": "© 2026 Jehian Athaya Tsani Az Zuhry",
+          "footer.openTo": "Terbuka untuk full-time · freelance · kolaborasi",
+          "footer.location": "jehian.me · Purwokerto, Indonesia",
+        },
+        zh: {
+          "meta.title": "Jehian Athaya Tsani Az Zuhry - 全栈开发者",
+          "meta.description":
+            "Jehian Athaya Tsani Az Zuhry - 来自印度尼西亚 Purwokerto 的全栈开发者与机器学习工程师。专注端到端系统开发，从 LSTM 流水线到生产级 Web 应用。",
+          "meta.ogTitle": "Jehian Athaya Tsani Az Zuhry - 全栈开发者",
+          "meta.ogDescription":
+            "端到端构建系统：机器学习流水线、生产级 Web 应用，以及两者之间的一切。",
+          "meta.twitterTitle": "Jehian Athaya - 全栈开发者",
+          "nav.logo": "Jehian 作品集",
+          "nav.experience": "经历",
+          "nav.projects": "项目",
+          "nav.about": "关于",
+          "nav.contact": "联系",
+          "nav.bookTalk": "预约交流 ↗",
+          "hero.eyebrow": "全栈开发者 · 信息学 2026",
+          "hero.desc":
+            "我专注于端到端系统开发，从处理 4.8 万+ 数据记录的机器学习流水线，到面向真实用户的生产级 Web 应用。目前我在 Unsoed 完成本科学位，GPA 为 3.88。",
+          "hero.viewWork": "查看作品",
+          "hero.downloadCv": "下载简历 ↓",
+          "hero.bookTalk": "预约交流 ↗",
+          "hero.statGpa": "GPA · 苏迪尔曼将军大学",
+          "hero.statYears": "Web 与机器学习系统开发年限",
+          "hero.statVisits": "BEM Unsoed 平台总访问量",
+          "hero.status": "开放合作机会",
+          "sec.about": "关于",
+          "sec.experience": "经历",
+          "sec.projects": "精选项目",
+          "sec.publication": "发表",
+          "sec.skills": "技能",
+          "sec.education": "教育",
+          "sec.certifications": "证书",
+          "sec.volunteering": "志愿与教学",
+          "sec.contact": "联系",
+          "about.heading": "以<br /> <em>目标</em>进行工程实践。",
+          "about.body1":
+            "我是 Jehian，苏迪尔曼将军大学信息学专业的应届毕业生。我热衷于构建真正可用且稳定的系统。我的经历从在紧迫周期内设计医院自助终端系统，到为农业部国家级粮食安全规划搭建机器学习流水线。",
+          "about.body2":
+            "驱动我的不是技术栈本身，而是问题本身。我关注数据与界面的交汇点：后端架构清晰，前端体验也同样清晰。我重视文档、乐于教学，也重视在凌晨两点依然可靠的代码质量。",
+          "about.body3":
+            "工作之外，我是工作坊讲师、开源贡献者，也常与 Banjarnegara 村中的长者交流并数字化历史手稿。对我而言，技术有人的故事才真正有意义。",
+          "about.factBasedLabel": "所在地",
+          "about.factBasedVal": "Purwokerto，印度尼西亚",
+          "about.factGradLabel": "毕业",
+          "about.factGradVal": "2026 · Unsoed",
+          "about.factLangLabel": "语言",
+          "about.factLangVal": "印尼语 · 英语",
+          "about.factPubLabel": "发表",
+          "about.factPubVal": "JUTIF 期刊 · 2024",
+          "exp.1.period": "2025 年 12 月 · 1 个月",
+          "exp.1.location": "Purwokerto，线下",
+          "exp.1.role": "软件工程实习生",
+          "exp.1.desc":
+            "为 GNPIP 粮食商品录入构建 Chrome 扩展自动化工具，将原本多日的人工流程压缩到数小时。研发基于 Gemini 1.5-flash 且带自定义知识库的 AI 聊天机器人 PITUTUR-Wicara，替代旧系统。并为 UDSK 单位构建了 2 个运营决策仪表盘。",
+          "exp.2.period": "2025 年 8 月-11 月 · 4 个月",
+          "exp.2.location": "南雅加达，线下",
+          "exp.2.role": "机器学习工程实习生",
+          "exp.2.desc":
+            "开发 LSTM 增强集成系统，处理 31 年历史数据（48,696 条记录、112 种粮食商品）进行日均热量摄入预测，MAPE 达到 3.72%，相较 10% 目标将误差降低 75%。通过 FastAPI + Laravel + Docker 微服务架构部署，用于印度尼西亚 2.8 亿+ 人口的粮食安全规划。",
+          "exp.3.period": "2025 年 5 月-7 月 · 3 个月",
+          "exp.3.location": "远程 · 自由职业",
+          "exp.3.role": "自由职业 Web 开发者",
+          "exp.3.desc":
+            "使用 Next.js 与 Supabase 开发 sefunsoed.site，并集成 Payload CMS 进行博客管理与后台管理，支持 43 名活跃用户。通过 Vercel 与 Supabase 免费层实现 100% 零托管成本。",
+          "exp.4.period": "2024 年 8 月-12 月 · 5 个月",
+          "exp.4.location": "Purbalingga，线下",
+          "exp.4.role": "网页编程实验室助教协调员",
+          "exp.4.desc":
+            "带领 5 名实验室助教，管理每周 6 个班次、每班 20 名学生。指导 36 个团队 Web 项目开发，并在前端、后端与 UI/UX 方向辅导 60+ 名学生。",
+          "exp.5.period": "2024 年 7 月-8 月 · 2 个月",
+          "exp.5.location": "Purwokerto，线下",
+          "exp.5.role": "软件工程实习生",
+          "exp.5.desc":
+            "在 1 个月内从零开发医院自助终端系统，覆盖系统分析、Web 界面、数据库与 API，并向医院员工和院方领导汇报，获得积极反馈。",
+          "exp.6.period": "2024 年 2 月-11 月 · 10 个月",
+          "exp.6.location": "Purwokerto，线下",
+          "exp.6.role": "数据分析总监负责人",
+          "exp.6.desc":
+            "主导 BEM Unsoed 核心数据平台，达到每月 700 次访问（累计 5,600 次）。开发问卷论坛功能并更新 WordPress 界面主题，同时建设数据分析团队文档站点以提升协作效率。",
+          "proj.1.name": "PITUTUR-Wicara",
+          "proj.1.desc":
+            "面向 Bank Indonesia Purwokerto 的 AI 聊天机器人。采用 Gemini 1.5-flash、自定义知识库与实时管理仪表盘。",
+          "proj.2.name": "LSTM 粮食预测",
+          "proj.2.desc":
+            "面向 112 种粮食商品的日均热量摄入集成预测系统。MAPE 3.72%，较传统方法提升 75%。",
+          "proj.3.name": "SEF Unsoed 网站",
+          "proj.3.desc":
+            "含 CMS、鉴权与博客管理的组织官网，43 名活跃用户。通过 Vercel + Supabase 实现零托管成本。",
+          "proj.4.name": "医院自助终端系统",
+          "proj.4.desc":
+            "为 RSU St. Elisabeth 打造的自助终端项目，在 1 个月内完成系统分析、Web 界面、数据库与 API。",
+          "proj.5.name": "Temulik",
+          "proj.5.desc":
+            "用于寻回遗失物品的地理定位移动应用，支持 GPS 与离线地图。入围 Unsoed PKM Rektor Cup IV。",
+          "proj.6.name": "Nucifero",
+          "proj.6.desc":
+            "个性化花束订购应用，覆盖花店端管理、推荐流程与配送/支付旅程，基于用户画像、同理心地图与迭代原型设计。",
+          "pub.1.title":
+            "基于 Streamlit 文本挖掘的 Twitter 情感分类 BERT 模型对比分析",
+          "pub.1.venue":
+            "Jurnal Teknik Informatika (JUTIF) · 2024 年 6 月 12 日",
+          "pub.1.abstract":
+            "微调后的 BERT 在印尼语 Twitter 情感数据上达到 91% 准确率与 0.91 F1 分数，显著优于未优化基线模型。系统以 IndoBERT-base-p1 与 CRISP-DM 方法实现为 Streamlit Web 应用。",
+          "skills.backend": "后端与基础设施",
+          "skills.ml": "机器学习",
+          "skills.frontend": "前端",
+          "skills.mobile": "移动端与其他",
+          "edu.1.degree": "信息学学士",
+          "edu.1.gpa": "GPA 3.88 / 4.00",
+          "edu.1.courses":
+            "数据挖掘 · 机器学习 · 人工智能 · Web 编程 · 移动开发 · 计算机网络 · IT 基础设施 · 信息安全 · 项目管理 · 软件工程",
+          "edu.2.degree": "软件工程职业高中",
+          "edu.2.gpa": "KKNI 二级认证 · TOEIC 认证",
+          "edu.2.courses":
+            "以国家软件工程能力认证毕业。熟悉 Java、PHP、Flutter、Laravel、面向对象编程与数据库设计。",
+          "cert.1.name": "云架构",
+          "cert.2.name": "云基础",
+          "cert.3.name": "云人才选拔学院",
+          "cert.4.name": "机器学习入门",
+          "cert.5.name": "数据可视化",
+          "cert.6.name": "KKNI 二级软件工程",
+          "cert.8.name": "JLPT · TOEIC 认证",
+          "vol.1.role": "村务治理与数字化",
+          "vol.1.desc":
+            "主导通过 OpenSID 开发 petir-banjarnegara.desa.id；与通信与信息部门协调托管；通过采访长者、发布网页文章与 YouTube 内容完成村史数字化。",
+          "vol.2.role": "创意媒体网站负责人",
+          "vol.2.desc":
+            "将报名网站从 WordPress 迁移至 Next.js，搭建 Moodle LMS，并编写完善维护文档供后续团队使用。",
+          "vol.3.role": "Web 编程讲师",
+          "vol.3.desc":
+            "为 12 名成员开展 Web 培训，内容涵盖 HTML、CSS、JavaScript、PHP、WordPress、Elementor 与 cPanel 管理。",
+          "vol.4.role": "Web 与 UI/UX 讲师",
+          "vol.4.desc":
+            "为约 60 名学生教授 Web 编程，并举办面向 30 名参与者的“Figma 切版到 HTML/CSS”工作坊，反馈积极。",
+          "contact.heading": "一起打造<br /><em>有价值的</em><br />作品。",
+          "contact.sub":
+            "可参与全职岗位、自由职业项目与有趣合作。通常 24 小时内回复。",
+          "contact.downloadCv": "下载简历 ↓",
+          "contact.bookTalk": "预约交流 ↗",
+          "contact.email": "邮箱",
+          "contact.github": "GitHub",
+          "contact.linkedin": "领英",
+          "contact.liveProject": "线上项目",
+          "contact.bookTalkShort": "预约交流",
+          "footer.copy": "© 2026 Jehian Athaya Tsani Az Zuhry",
+          "footer.openTo": "开放全职 · 自由职业 · 合作机会",
+          "footer.location": "jehian.me · Purwokerto，印度尼西亚",
+        },
+      }
+
+      function setLanguage(lang) {
+        const selected = translations[lang] ? lang : "en"
+        const table = {
+          ...translations.en,
+          ...translations[selected],
+        }
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n")
+          if (table[key]) el.textContent = table[key]
+        })
+
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-html")
+          if (table[key]) el.innerHTML = table[key]
+        })
+
+        const langSelect = document.getElementById("langSelect")
+        if (langSelect) {
+          langSelect.value = selected
+        }
+
+        if (table["meta.title"]) {
+          document.title = table["meta.title"]
+        }
+
+        const descriptionMeta = document.querySelector(
+          'meta[name="description"]',
+        )
+        if (descriptionMeta && table["meta.description"]) {
+          descriptionMeta.setAttribute("content", table["meta.description"])
+        }
+
+        const ogTitleMeta = document.querySelector('meta[property="og:title"]')
+        if (ogTitleMeta && table["meta.ogTitle"]) {
+          ogTitleMeta.setAttribute("content", table["meta.ogTitle"])
+        }
+
+        const ogDescMeta = document.querySelector(
+          'meta[property="og:description"]',
+        )
+        if (ogDescMeta && table["meta.ogDescription"]) {
+          ogDescMeta.setAttribute("content", table["meta.ogDescription"])
+        }
+
+        const twitterTitleMeta = document.querySelector(
+          'meta[name="twitter:title"]',
+        )
+        if (twitterTitleMeta && table["meta.twitterTitle"]) {
+          twitterTitleMeta.setAttribute("content", table["meta.twitterTitle"])
+        }
+
+        document.documentElement.lang =
+          selected === "id" ? "id" : selected === "zh" ? "zh-CN" : "en"
+        localStorage.setItem("preferred-language", selected)
+      }
+
+      const savedLanguage = localStorage.getItem("preferred-language")
+      const browserLanguage = (navigator.language || "").toLowerCase()
+      const defaultLanguage = savedLanguage
+        ? savedLanguage
+        : browserLanguage.startsWith("id")
+          ? "id"
+          : browserLanguage.startsWith("zh")
+            ? "zh"
+            : "en"
+
+      const langSelect = document.getElementById("langSelect")
+      if (langSelect) {
+        langSelect.addEventListener("change", (e) => {
+          setLanguage(e.target.value)
+        })
+      }
+
+      setLanguage(defaultLanguage)
+
       // Custom cursor
       const cur = document.getElementById("cur")
       if (cur) {
