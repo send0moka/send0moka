@@ -1141,12 +1141,20 @@
         }
         .lang-dropdown {
           font-size: 8px;
-          min-width: 82px;
-          padding: 0 2rem 0 0.5rem;
+          min-width: 56px;
+          padding: 0 1.5rem 0 0.45rem;
         }
         .nav-talk {
-          padding: 0.45rem 0.9rem;
-          font-size: 9px;
+          width: var(--nav-control-height);
+          padding: 0;
+          justify-content: center;
+          font-size: 0;
+          line-height: 0;
+        }
+        .nav-talk::before {
+          content: "↗";
+          font-size: 12px;
+          line-height: 1;
         }
 
         /* HERO */
@@ -1406,11 +1414,19 @@
             class="lang-dropdown"
             aria-label="Language selector"
           >
-            <option value="en">ENGLISH</option>
-            <option value="id">INDONESIA</option>
-            <option value="es">ESPANOL</option>
-            <option value="zh">CHINESE</option>
-            <option value="hi">HINDI</option>
+            <option value="en" data-full="English" data-short="en">
+              English
+            </option>
+            <option value="id" data-full="Indonesia" data-short="id">
+              Indonesia
+            </option>
+            <option value="es" data-full="Espanol" data-short="es">
+              Espanol
+            </option>
+            <option value="zh" data-full="Chinese" data-short="zh">
+              Chinese
+            </option>
+            <option value="hi" data-full="Hindi" data-short="hi">Hindi</option>
           </select>
         </div>
         <a
@@ -3162,13 +3178,45 @@
                 : "en"
 
       const langSelect = document.getElementById("langSelect")
-      if (langSelect) {
-        langSelect.addEventListener("change", (e) => {
-          setLanguage(e.target.value)
+      const mobileLangMedia = window.matchMedia("(max-width: 640px)")
+
+      function setLangOptionLabels(useShortLabel) {
+        if (!langSelect) return
+        const options = Array.from(langSelect.options)
+        options.forEach((opt) => {
+          const full = opt.getAttribute("data-full") || opt.textContent
+          const short = opt.getAttribute("data-short") || opt.value
+          opt.textContent = useShortLabel ? short : full
         })
       }
 
+      function syncLangOptionLabels() {
+        setLangOptionLabels(mobileLangMedia.matches)
+      }
+
+      if (langSelect) {
+        langSelect.addEventListener("mousedown", () => {
+          if (mobileLangMedia.matches) setLangOptionLabels(false)
+        })
+        langSelect.addEventListener("touchstart", () => {
+          if (mobileLangMedia.matches) setLangOptionLabels(false)
+        })
+        langSelect.addEventListener("focus", () => {
+          if (mobileLangMedia.matches) setLangOptionLabels(false)
+        })
+        langSelect.addEventListener("blur", () => {
+          if (mobileLangMedia.matches) setLangOptionLabels(true)
+        })
+        langSelect.addEventListener("change", (e) => {
+          setLanguage(e.target.value)
+          if (mobileLangMedia.matches) setLangOptionLabels(true)
+        })
+      }
+
+      mobileLangMedia.addEventListener("change", syncLangOptionLabels)
+
       setLanguage(defaultLanguage)
+      syncLangOptionLabels()
 
       // Custom cursor
       const cur = document.getElementById("cur")
