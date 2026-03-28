@@ -39,10 +39,98 @@
         background: var(--paper);
         color: var(--ink);
       }
+      body.locked {
+        overflow: hidden;
+      }
       .wrap {
         max-width: 980px;
         margin: 0 auto;
         padding: 1.25rem 1.5rem 3rem;
+      }
+      .protected-content {
+        visibility: hidden;
+        pointer-events: none;
+        user-select: none;
+      }
+      .protected-content.unlocked {
+        visibility: visible;
+        pointer-events: auto;
+        user-select: auto;
+      }
+      .pin-gate {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        display: grid;
+        place-items: center;
+        background: color-mix(in srgb, var(--paper) 92%, #000000 8%);
+        padding: 1.25rem;
+      }
+      .pin-gate.hidden {
+        display: none;
+      }
+      .pin-panel {
+        width: min(440px, 100%);
+        border: 1px solid var(--line);
+        background: var(--paper);
+        padding: 1.2rem;
+      }
+      .pin-label {
+        font-size: 9px;
+        color: var(--ink4);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 0.45rem;
+      }
+      .pin-title {
+        font-family: var(--serif);
+        font-size: 1.6rem;
+        font-weight: 400;
+        margin-bottom: 0.45rem;
+      }
+      .pin-desc {
+        font-size: 11px;
+        line-height: 1.75;
+        color: var(--ink3);
+        margin-bottom: 0.95rem;
+      }
+      .pin-form {
+        display: grid;
+        gap: 0.6rem;
+      }
+      .pin-input {
+        width: 100%;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        padding: 0.68rem 0.7rem;
+      }
+      .pin-input:focus {
+        outline: none;
+        border-color: var(--ink3);
+      }
+      .pin-submit {
+        border: 1px solid var(--ink3);
+        background: var(--paper);
+        color: var(--ink3);
+        font-family: var(--mono);
+        font-size: 9px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 0.62rem 0.7rem;
+      }
+      .pin-submit:hover {
+        border-color: var(--ink);
+        color: var(--ink);
+      }
+      .pin-error {
+        min-height: 1rem;
+        color: #b0504a;
+        font-size: 10px;
+        line-height: 1.5;
       }
       .top {
         display: flex;
@@ -158,7 +246,39 @@
     </style>
   </head>
   <body>
-    <main class="wrap">
+    <div id="pinGate" class="pin-gate">
+      <div class="pin-panel">
+        <p class="pin-label" data-i18n="pin.label">Private Access</p>
+        <h2 class="pin-title" data-i18n="pin.title">Enter PIN</h2>
+        <p class="pin-desc" data-i18n="pin.desc">
+          This page is protected. Enter the correct PIN to continue.
+        </p>
+        <form id="pinForm" class="pin-form" autocomplete="off">
+          <input
+            id="pinInput"
+            class="pin-input"
+            type="password"
+            inputmode="numeric"
+            maxlength="6"
+            data-i18n-placeholder="pin.placeholder"
+            placeholder="6-digit PIN"
+            aria-label="PIN"
+            required
+          />
+          <button
+            id="pinSubmit"
+            class="pin-submit"
+            type="submit"
+            data-i18n="pin.button"
+          >
+            Unlock Notes
+          </button>
+          <p id="pinError" class="pin-error" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <main id="protectedContent" class="wrap protected-content">
       <div class="top">
         <div class="top-left">
           <a class="chip" href="index.html" data-i18n="nav.back"
@@ -230,6 +350,13 @@
       const translations = {
         en: {
           "meta.title": "Love Notes - Jehian Athaya",
+          "pin.label": "Private Access",
+          "pin.title": "Enter PIN",
+          "pin.desc":
+            "This page is protected. Enter the correct PIN to continue.",
+          "pin.placeholder": "6-digit PIN",
+          "pin.button": "Unlock Notes",
+          "pin.error": "Wrong PIN. Access denied.",
           "nav.back": "Back to Portfolio",
           "nav.health": "Health Routine",
           "nav.til": "T.I.L",
@@ -243,6 +370,13 @@
         },
         id: {
           "meta.title": "Catatan Kekasih - Jehian Athaya",
+          "pin.label": "Akses Pribadi",
+          "pin.title": "Masukkan PIN",
+          "pin.desc":
+            "Halaman ini dilindungi. Masukkan PIN yang benar untuk melanjutkan.",
+          "pin.placeholder": "PIN 6 digit",
+          "pin.button": "Buka Catatan",
+          "pin.error": "PIN salah. Akses ditolak.",
           "nav.back": "Kembali ke Portfolio",
           "nav.health": "Rutinitas Kesehatan",
           "nav.til": "T.I.L",
@@ -256,6 +390,12 @@
         },
         zh: {
           "meta.title": "爱情笔记 - Jehian Athaya",
+          "pin.label": "私密访问",
+          "pin.title": "输入 PIN",
+          "pin.desc": "此页面已受保护。请输入正确的 PIN 后继续。",
+          "pin.placeholder": "6 位 PIN",
+          "pin.button": "解锁笔记",
+          "pin.error": "PIN 错误。禁止访问。",
           "nav.back": "返回作品集",
           "nav.health": "健康计划",
           "nav.til": "T.I.L",
@@ -269,6 +409,12 @@
         },
         hi: {
           "meta.title": "प्रेम नोट्स - Jehian Athaya",
+          "pin.label": "निजी पहुंच",
+          "pin.title": "PIN दर्ज करें",
+          "pin.desc": "यह पेज सुरक्षित है। आगे बढ़ने के लिए सही PIN दर्ज करें।",
+          "pin.placeholder": "6-अंकों का PIN",
+          "pin.button": "नोट्स खोलें",
+          "pin.error": "PIN गलत है। एक्सेस अस्वीकृत।",
           "nav.back": "पोर्टफोलियो पर वापस",
           "nav.health": "हेल्थ रूटीन",
           "nav.til": "T.I.L",
@@ -282,6 +428,13 @@
         },
         es: {
           "meta.title": "Notas de Amor - Jehian Athaya",
+          "pin.label": "Acceso Privado",
+          "pin.title": "Ingresar PIN",
+          "pin.desc":
+            "Esta pagina esta protegida. Ingresa el PIN correcto para continuar.",
+          "pin.placeholder": "PIN de 6 digitos",
+          "pin.button": "Desbloquear Notas",
+          "pin.error": "PIN incorrecto. Acceso denegado.",
           "nav.back": "Volver al Portafolio",
           "nav.health": "Rutina de Salud",
           "nav.til": "T.I.L",
@@ -296,7 +449,13 @@
       }
 
       const THEME_STORAGE_KEY = "preferred-theme"
+      const REQUIRED_PIN = "111025"
       const themeToggle = document.getElementById("themeToggle")
+      const pinGate = document.getElementById("pinGate")
+      const pinForm = document.getElementById("pinForm")
+      const pinInput = document.getElementById("pinInput")
+      const pinError = document.getElementById("pinError")
+      const protectedContent = document.getElementById("protectedContent")
 
       function updateThemeToggleState(theme) {
         if (!themeToggle) return
@@ -351,6 +510,11 @@
           if (table[key]) el.innerHTML = table[key]
         })
 
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-placeholder")
+          if (table[key]) el.setAttribute("placeholder", table[key])
+        })
+
         const select = document.getElementById("langSelect")
         if (select) select.value = selected
         localStorage.setItem("preferred-language", selected)
@@ -373,6 +537,39 @@
       const select = document.getElementById("langSelect")
       select.addEventListener("change", (e) => setLanguage(e.target.value))
       setLanguage(defaultLanguage)
+
+      function unlockContent() {
+        if (pinGate) pinGate.classList.add("hidden")
+        if (protectedContent) protectedContent.classList.add("unlocked")
+        document.body.classList.remove("locked")
+      }
+
+      document.body.classList.add("locked")
+
+      if (pinForm && pinInput && pinError) {
+        pinInput.focus()
+        pinForm.addEventListener("submit", (e) => {
+          e.preventDefault()
+          const value = pinInput.value.trim()
+
+          if (value === REQUIRED_PIN) {
+            pinError.textContent = ""
+            unlockContent()
+            return
+          }
+
+          const selected = translations[
+            localStorage.getItem("preferred-language")
+          ]
+            ? localStorage.getItem("preferred-language")
+            : "en"
+          const table = translations[selected]
+          pinError.textContent =
+            table["pin.error"] || translations.en["pin.error"]
+          pinInput.value = ""
+          pinInput.focus()
+        })
+      }
     </script>
   </body>
 </html>
