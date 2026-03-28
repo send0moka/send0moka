@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Love Notes - Jehian Athaya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Azeret+Mono:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #111110;
+        --ink2: #3a3a38;
+        --ink3: #888882;
+        --ink4: #bdbdb7;
+        --paper: #f5f4ef;
+        --line: rgba(0, 0, 0, 0.1);
+        --serif: "Cormorant Garamond", Georgia, serif;
+        --mono: "Azeret Mono", "Courier New", monospace;
+      }
+      html[data-theme="dark"] {
+        --ink: #f1f0ea;
+        --ink2: #d3d0c7;
+        --ink3: #a9a59b;
+        --ink4: #7e786f;
+        --paper: #141413;
+        --line: rgba(255, 255, 255, 0.12);
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: var(--mono);
+        background: var(--paper);
+        color: var(--ink);
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 1.25rem 1.5rem 3rem;
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+      }
+      .top-left,
+      .top-right {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        flex-wrap: wrap;
+      }
+      .chip,
+      .lang,
+      .theme-toggle {
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink3);
+        text-decoration: none;
+        font-family: var(--mono);
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.45rem 0.62rem;
+      }
+      .chip:hover,
+      .theme-toggle:hover {
+        border-color: var(--ink);
+        color: var(--ink);
+      }
+      .theme-toggle {
+        width: 31px;
+        height: 31px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .theme-toggle-icon {
+        width: 14px;
+        height: 14px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .theme-toggle .icon-sun {
+        display: none;
+      }
+      html[data-theme="dark"] .theme-toggle .icon-sun {
+        display: block;
+      }
+      html[data-theme="dark"] .theme-toggle .icon-moon {
+        display: none;
+      }
+      h1 {
+        font-family: var(--serif);
+        font-size: clamp(2.1rem, 4.5vw, 3.6rem);
+        font-weight: 300;
+        line-height: 0.96;
+      }
+      .sub {
+        margin-top: 0.8rem;
+        color: var(--ink3);
+        font-size: 11px;
+        line-height: 1.9;
+      }
+      .letters {
+        margin-top: 2rem;
+        display: grid;
+        gap: 1rem;
+      }
+      .letter {
+        border: 1px solid var(--line);
+        padding: 1rem;
+        background: color-mix(in srgb, var(--paper) 95%, #ffffff 5%);
+      }
+      .letter-date {
+        font-size: 9px;
+        color: var(--ink4);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 0.45rem;
+      }
+      .letter-title {
+        font-family: var(--serif);
+        font-size: 1.18rem;
+        margin-bottom: 0.45rem;
+      }
+      .letter-body {
+        font-size: 11px;
+        line-height: 1.9;
+        color: var(--ink2);
+      }
+      .foot {
+        margin-top: 1.8rem;
+        border-top: 1px solid var(--line);
+        padding-top: 0.9rem;
+        color: var(--ink4);
+        font-size: 10px;
+      }
+      @media (max-width: 760px) {
+        .top {
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="top">
+        <div class="top-left">
+          <a class="chip" href="index.html" data-i18n="nav.back"
+            >Back to Portfolio</a
+          >
+          <a class="chip" href="health-routine.html" data-i18n="nav.health"
+            >Health Routine</a
+          >
+          <a class="chip" href="today-i-learned.html" data-i18n="nav.til"
+            >T.I.L</a
+          >
+        </div>
+        <div class="top-right">
+          <button
+            id="themeToggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+            aria-pressed="false"
+            title="Switch to dark theme"
+          >
+            <svg
+              class="theme-toggle-icon icon-moon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 1 0 9.8 9.8z" />
+            </svg>
+            <svg
+              class="theme-toggle-icon icon-sun"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="M4.93 4.93l1.41 1.41" />
+              <path d="M17.66 17.66l1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="M4.93 19.07l1.41-1.41" />
+              <path d="M17.66 6.34l1.41-1.41" />
+            </svg>
+          </button>
+          <select id="langSelect" class="lang" aria-label="Language selector">
+            <option value="en">English</option>
+            <option value="id">Indonesia</option>
+            <option value="zh">中文</option>
+            <option value="hi">हिंदी</option>
+            <option value="es">Español</option>
+          </select>
+        </div>
+      </div>
+
+      <h1 data-i18n="page.title">Love Notes</h1>
+      <p class="sub" data-i18n="page.subtitle">
+        A quiet page for gentle notes, gratitude, and small reminders that love
+        is built from simple daily actions.
+      </p>
+
+      <section class="letters" data-i18n-html="letters.items"></section>
+
+      <p class="foot" data-i18n="footer.note">
+        This page is private in spirit: simple, sincere, and intentionally warm.
+      </p>
+    </main>
+
+    <script>
+      const translations = {
+        en: {
+          "meta.title": "Love Notes - Jehian Athaya",
+          "nav.back": "Back to Portfolio",
+          "nav.health": "Health Routine",
+          "nav.til": "T.I.L",
+          "page.title": "Love Notes",
+          "page.subtitle":
+            "A quiet page for gentle notes, gratitude, and small reminders that love is built from simple daily actions.",
+          "letters.items":
+            "<article class='letter'><p class='letter-date'>Morning Note</p><h3 class='letter-title'>Thank you for your calm energy</h3><p class='letter-body'>When my days get noisy, your voice helps everything slow down. Thank you for reminding me to breathe, rest, and return to what matters.</p></article><article class='letter'><p class='letter-date'>Small Promise</p><h3 class='letter-title'>I will keep showing up</h3><p class='letter-body'>Not only in big moments, but also in ordinary ones: checking in, listening carefully, and choosing kindness even when we are both tired.</p></article><article class='letter'><p class='letter-date'>Future Wish</p><h3 class='letter-title'>Build a gentle life together</h3><p class='letter-body'>A home with warm tea, clean light, and long conversations at night. A life where we can both grow without losing softness.</p></article>",
+          "footer.note":
+            "This page is private in spirit: simple, sincere, and intentionally warm.",
+        },
+        id: {
+          "meta.title": "Catatan Kekasih - Jehian Athaya",
+          "nav.back": "Kembali ke Portfolio",
+          "nav.health": "Rutinitas Kesehatan",
+          "nav.til": "T.I.L",
+          "page.title": "Catatan Kekasih",
+          "page.subtitle":
+            "Halaman kecil untuk catatan lembut, rasa syukur, dan pengingat bahwa cinta dibangun dari tindakan sederhana setiap hari.",
+          "letters.items":
+            "<article class='letter'><p class='letter-date'>Catatan Pagi</p><h3 class='letter-title'>Terima kasih untuk energi tenangmu</h3><p class='letter-body'>Saat hariku berisik, suaramu membantu semuanya melambat. Terima kasih sudah mengingatkanku untuk bernapas, istirahat, dan kembali ke hal yang penting.</p></article><article class='letter'><p class='letter-date'>Janji Kecil</p><h3 class='letter-title'>Aku akan tetap hadir</h3><p class='letter-body'>Bukan hanya di momen besar, tapi juga di momen biasa: menyapa, mendengar dengan utuh, dan memilih lembut bahkan saat kita sama-sama lelah.</p></article><article class='letter'><p class='letter-date'>Doa Masa Depan</p><h3 class='letter-title'>Membangun hidup yang hangat bersama</h3><p class='letter-body'>Rumah dengan teh hangat, cahaya pagi, dan obrolan panjang di malam hari. Hidup yang membuat kita bertumbuh tanpa kehilangan kelembutan.</p></article>",
+          "footer.note":
+            "Halaman ini sifatnya personal: sederhana, tulus, dan sengaja dibuat hangat.",
+        },
+        zh: {
+          "meta.title": "爱情笔记 - Jehian Athaya",
+          "nav.back": "返回作品集",
+          "nav.health": "健康计划",
+          "nav.til": "T.I.L",
+          "page.title": "爱情笔记",
+          "page.subtitle":
+            "一个安静的页面，用来写下温柔的感谢与提醒：爱是由每天的小行动慢慢建立起来的。",
+          "letters.items":
+            "<article class='letter'><p class='letter-date'>清晨便签</p><h3 class='letter-title'>谢谢你带来的平静能量</h3><p class='letter-body'>当我的日子变得嘈杂时，你的声音总能让我慢下来。谢谢你提醒我呼吸、休息，并回到真正重要的事情上。</p></article><article class='letter'><p class='letter-date'>小小承诺</p><h3 class='letter-title'>我会一直在场</h3><p class='letter-body'>不只是重大时刻，也在日常里：主动问候、认真倾听、在我们都疲惫时依然选择温柔。</p></article><article class='letter'><p class='letter-date'>未来愿望</p><h3 class='letter-title'>一起建立温暖的生活</h3><p class='letter-body'>有热茶、有晨光、也有深夜长谈的家。一个让我们共同成长，同时不失柔软的生活。</p></article>",
+          "footer.note":
+            "这个页面在气质上是私密的：简单、真诚，也刻意保留温度。",
+        },
+        hi: {
+          "meta.title": "प्रेम नोट्स - Jehian Athaya",
+          "nav.back": "पोर्टफोलियो पर वापस",
+          "nav.health": "हेल्थ रूटीन",
+          "nav.til": "T.I.L",
+          "page.title": "प्रेम नोट्स",
+          "page.subtitle":
+            "एक शांत पेज जहां कोमल नोट्स, कृतज्ञता, और छोटे याद दिलाने वाले वाक्य लिखे हैं कि प्यार रोज़मर्रा के सरल कामों से बनता है।",
+          "letters.items":
+            "<article class='letter'><p class='letter-date'>सुबह का नोट</p><h3 class='letter-title'>तुम्हारी शांत ऊर्जा के लिए धन्यवाद</h3><p class='letter-body'>जब दिन बहुत शोर भरे हो जाते हैं, तुम्हारी आवाज़ सब कुछ धीमा कर देती है। धन्यवाद कि तुम मुझे सांस लेना, आराम करना और जरूरी बातों पर लौटना याद दिलाती हो।</p></article><article class='letter'><p class='letter-date'>छोटा वादा</p><h3 class='letter-title'>मैं हमेशा मौजूद रहूंगा</h3><p class='letter-body'>सिर्फ बड़े मौकों पर नहीं, रोज़मर्रा में भी: हाल पूछना, ध्यान से सुनना, और थकान में भी कोमलता चुनना।</p></article><article class='letter'><p class='letter-date'>भविष्य की इच्छा</p><h3 class='letter-title'>मिलकर एक सुकूनभरी ज़िंदगी बनाना</h3><p class='letter-body'>एक घर जिसमें गरम चाय हो, साफ सुबह की रोशनी हो, और रात की लंबी बातें हों। ऐसी जिंदगी जिसमें हम दोनों बढ़ें, बिना कोमलता खोए।</p></article>",
+          "footer.note":
+            "यह पेज भावना में निजी है: सरल, सच्चा और जानबूझकर गर्मजोशी से भरा।",
+        },
+        es: {
+          "meta.title": "Notas de Amor - Jehian Athaya",
+          "nav.back": "Volver al Portafolio",
+          "nav.health": "Rutina de Salud",
+          "nav.til": "T.I.L",
+          "page.title": "Notas de Amor",
+          "page.subtitle":
+            "Una pagina tranquila para notas suaves, gratitud y pequenos recordatorios de que el amor se construye con acciones simples cada dia.",
+          "letters.items":
+            "<article class='letter'><p class='letter-date'>Nota de la manana</p><h3 class='letter-title'>Gracias por tu energia tranquila</h3><p class='letter-body'>Cuando mis dias se vuelven ruidosos, tu voz hace que todo vaya mas lento. Gracias por recordarme respirar, descansar y volver a lo que realmente importa.</p></article><article class='letter'><p class='letter-date'>Pequena promesa</p><h3 class='letter-title'>Seguire estando presente</h3><p class='letter-body'>No solo en los grandes momentos, tambien en los cotidianos: preguntar como estas, escuchar con atencion y elegir la ternura incluso cuando ambos estamos cansados.</p></article><article class='letter'><p class='letter-date'>Deseo futuro</p><h3 class='letter-title'>Construir una vida amable juntos</h3><p class='letter-body'>Un hogar con te caliente, luz suave y conversaciones largas por la noche. Una vida donde ambos podamos crecer sin perder la sensibilidad.</p></article>",
+          "footer.note":
+            "Esta pagina es privada en su esencia: simple, sincera y deliberadamente calida.",
+        },
+      }
+
+      const THEME_STORAGE_KEY = "preferred-theme"
+      const themeToggle = document.getElementById("themeToggle")
+
+      function updateThemeToggleState(theme) {
+        if (!themeToggle) return
+        const isDark = theme === "dark"
+        const nextTitle = isDark
+          ? "Switch to light theme"
+          : "Switch to dark theme"
+        themeToggle.setAttribute("aria-pressed", String(isDark))
+        themeToggle.setAttribute("aria-label", nextTitle)
+        themeToggle.title = nextTitle
+      }
+
+      function setTheme(theme) {
+        const selected = theme === "dark" ? "dark" : "light"
+        document.documentElement.setAttribute("data-theme", selected)
+        localStorage.setItem(THEME_STORAGE_KEY, selected)
+        updateThemeToggleState(selected)
+      }
+
+      function getDefaultTheme() {
+        const savedTheme = localStorage.getItem(THEME_STORAGE_KEY)
+        if (savedTheme === "dark" || savedTheme === "light") return savedTheme
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+      }
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const currentTheme =
+            document.documentElement.getAttribute("data-theme") === "dark"
+              ? "dark"
+              : "light"
+          setTheme(currentTheme === "dark" ? "light" : "dark")
+        })
+      }
+      setTheme(getDefaultTheme())
+
+      function setLanguage(lang) {
+        const selected = translations[lang] ? lang : "en"
+        const table = translations[selected]
+        document.documentElement.lang = selected
+        document.title = table["meta.title"]
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n")
+          if (table[key]) el.textContent = table[key]
+        })
+
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-html")
+          if (table[key]) el.innerHTML = table[key]
+        })
+
+        const select = document.getElementById("langSelect")
+        if (select) select.value = selected
+        localStorage.setItem("preferred-language", selected)
+      }
+
+      const savedLanguage = localStorage.getItem("preferred-language")
+      const browserLanguage = (navigator.language || "").toLowerCase()
+      const defaultLanguage = savedLanguage
+        ? savedLanguage
+        : browserLanguage.startsWith("id")
+          ? "id"
+          : browserLanguage.startsWith("zh")
+            ? "zh"
+            : browserLanguage.startsWith("hi")
+              ? "hi"
+              : browserLanguage.startsWith("es")
+                ? "es"
+                : "en"
+
+      const select = document.getElementById("langSelect")
+      select.addEventListener("change", (e) => setLanguage(e.target.value))
+      setLanguage(defaultLanguage)
+    </script>
+  </body>
+</html>

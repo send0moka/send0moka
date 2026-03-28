@@ -255,6 +255,25 @@
         color: var(--ink4);
         font-size: 10px;
       }
+      .next-links {
+        margin-top: 0.75rem;
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+      .next-link {
+        text-decoration: none;
+        color: var(--ink3);
+        border: 1px solid var(--line);
+        padding: 0.45rem 0.65rem;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .next-link:hover {
+        border-color: var(--ink);
+        color: var(--ink);
+      }
       @media (max-width: 1100px) {
         .workout-grid {
           grid-template-columns: 1fr;
@@ -358,6 +377,14 @@
         This page is intentionally separate from the portfolio index to keep the
         main portfolio focused on product and engineering work.
       </p>
+      <div class="next-links">
+        <a class="next-link" href="today-i-learned.html" data-i18n="nav.til"
+          >Open T.I.L Page ↗</a
+        >
+        <a class="next-link" href="catatan-kekasih.html" data-i18n="nav.love"
+          >Open Love Notes ↗</a
+        >
+      </div>
     </main>
 
     <script>
@@ -365,6 +392,8 @@
         en: {
           "meta.title": "Health Routine - Jehian Athaya",
           "nav.back": "Back to Portfolio",
+          "nav.til": "Open T.I.L Page ↗",
+          "nav.love": "Open Love Notes ↗",
           "page.title": "Weekly Lean Body Routine",
           "page.subtitle":
             "Dedicated weekly schedule for training, meal rhythm, shopping, and recovery notes.",
@@ -390,6 +419,8 @@
         id: {
           "meta.title": "Rutinitas Kesehatan - Jehian Athaya",
           "nav.back": "Kembali ke Portfolio",
+          "nav.til": "Buka Halaman T.I.L ↗",
+          "nav.love": "Buka Catatan Kekasih ↗",
           "page.title": "Rutinitas Lean Body Mingguan",
           "page.subtitle":
             "Jadwal khusus mingguan untuk latihan, pola makan, belanja, dan catatan pemulihan.",
@@ -415,6 +446,8 @@
         zh: {
           "meta.title": "健康计划 - Jehian Athaya",
           "nav.back": "返回作品集",
+          "nav.til": "打开 T.I.L 页面 ↗",
+          "nav.love": "打开爱情笔记页面 ↗",
           "page.title": "每周精瘦训练计划",
           "page.subtitle": "独立页面展示每周训练、饮食节奏、采购与恢复建议。",
           "summary.cards":
@@ -439,6 +472,8 @@
         hi: {
           "meta.title": "हेल्थ रूटीन - Jehian Athaya",
           "nav.back": "पोर्टफोलियो पर वापस",
+          "nav.til": "T.I.L पेज खोलें ↗",
+          "nav.love": "कैटाटन केकासिह पेज खोलें ↗",
           "page.title": "साप्ताहिक लीन बॉडी रूटीन",
           "page.subtitle":
             "ट्रेनिंग, मील रिदम, शॉपिंग और रिकवरी नोट्स के लिए अलग साप्ताहिक पेज।",
@@ -464,6 +499,8 @@
         es: {
           "meta.title": "Rutina de Salud - Jehian Athaya",
           "nav.back": "Volver al Portafolio",
+          "nav.til": "Abrir pagina T.I.L ↗",
+          "nav.love": "Abrir pagina de notas de amor ↗",
           "page.title": "Rutina Semanal Lean Body",
           "page.subtitle":
             "Pagina dedicada para entrenamiento, ritmo de comidas, compras y notas de recuperacion.",

@@ -1224,14 +1224,45 @@
       footer {
         padding: 2rem 3rem;
         border-top: 1px solid var(--line);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display: grid;
+        gap: 0.9rem;
         font-size: 10px;
         font-weight: 200;
         letter-spacing: 0.15em;
         text-transform: uppercase;
         color: var(--ink4);
+      }
+      .footer-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .footer-availability {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+      }
+      .footer-link {
+        color: inherit;
+        text-decoration: none;
+        border: 1px solid var(--line);
+        padding: 0.45rem 0.7rem;
+        transition:
+          color 0.2s,
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .footer-link:hover {
+        color: var(--ink3);
+        border-color: var(--ink3);
+        transform: translateY(-1px);
       }
 
       .scroll-top-btn {
@@ -1713,10 +1744,14 @@
         /* FOOTER */
         footer {
           padding: 1.5rem 1.25rem;
-          flex-direction: column;
-          gap: 0.5rem;
-          text-align: center;
+          gap: 0.8rem;
           font-size: 9px;
+        }
+        .footer-meta {
+          justify-content: flex-start;
+        }
+        .footer-links {
+          gap: 0.45rem;
         }
         .scroll-top-btn {
           right: 1rem;
@@ -2712,20 +2747,38 @@
     </section>
 
     <footer>
-      <span data-i18n="footer.copy">© 2026 Jehian Athaya Tsani Az Zuhry</span>
-      <span
-        ><span class="dot"></span>
+      <div class="footer-meta">
+        <span data-i18n="footer.copy">© 2026 Jehian Athaya Tsani Az Zuhry</span>
+        <span data-i18n="footer.location"
+          >jehian.me · Purwokerto, Indonesia</span
+        >
+      </div>
+      <div class="footer-availability">
+        <span class="dot"></span>
         <span data-i18n="footer.openTo"
           >Open to full-time · freelance · collaboration</span
-        ></span
-      >
-      <a
-        href="health-routine.html"
-        data-i18n="health.cta.button"
-        style="color: inherit; text-decoration: none"
-        >Open Health Page ↗</a
-      >
-      <span data-i18n="footer.location">jehian.me · Purwokerto, Indonesia</span>
+        >
+      </div>
+      <div class="footer-links">
+        <a
+          href="health-routine.html"
+          class="footer-link"
+          data-i18n="health.cta.button"
+          >Open Health Page ↗</a
+        >
+        <a
+          href="today-i-learned.html"
+          class="footer-link"
+          data-i18n="til.cta.button"
+          >Open T.I.L Page ↗</a
+        >
+        <a
+          href="catatan-kekasih.html"
+          class="footer-link"
+          data-i18n="love.cta.button"
+          >Open Love Notes ↗</a
+        >
+      </div>
     </footer>
 
     <button
@@ -2794,6 +2847,8 @@
           "health.cta.desc":
             "I moved the complete weekly fitness and nutrition plan to a dedicated page so this portfolio stays focused on product and engineering work.",
           "health.cta.button": "Open Health Page ↗",
+          "til.cta.button": "Open T.I.L Page ↗",
+          "love.cta.button": "Open Love Notes ↗",
           "health.heading": "Weekly system<br /><em>for energy.</em>",
           "health.intro":
             "A practical weekly routine I use to stay productive: balanced workouts, simple meal rhythm, and realistic recovery habits.",
@@ -3049,6 +3104,8 @@
           "health.cta.desc":
             "Saya memindahkan jadwal fitness dan nutrisi lengkap ke halaman khusus agar portfolio ini tetap fokus pada karya produk dan engineering.",
           "health.cta.button": "Buka Halaman Kesehatan ↗",
+          "til.cta.button": "Buka Halaman T.I.L ↗",
+          "love.cta.button": "Buka Catatan Kekasih ↗",
           "health.heading": "Sistem mingguan<br /><em>untuk energi.</em>",
           "health.intro":
             "Rutinitas mingguan praktis yang saya pakai agar tetap produktif: latihan seimbang, pola makan sederhana, dan kebiasaan pemulihan yang realistis.",
@@ -3296,7 +3353,7 @@
           "about.factGradLabel": "毕业",
           "about.factGradVal": "2026 · Unsoed",
           "about.factLangLabel": "语言",
-          "about.factLangVal": "印尼语 · 英语",
+          "about.factLangVal": "印尼语  · 英语",
           "about.factPubLabel": "发表",
           "about.factPubVal": "JUTIF 期刊 · 2024",
           "sec.health": "每周健康计划",
@@ -3304,6 +3361,8 @@
           "health.cta.desc":
             "我已将完整的每周健身与饮食计划移至独立页面，让作品集继续聚焦于产品与工程能力。",
           "health.cta.button": "打开健康页面 ↗",
+          "til.cta.button": "打开 T.I.L 页面 ↗",
+          "love.cta.button": "打开爱情笔记页面 ↗",
           "health.summary.calories": "每日热量",
           "health.summary.protein": "每日蛋白质",
           "health.summary.weights": "每周力量训练",
@@ -3465,6 +3524,8 @@
           "health.cta.desc":
             "मैंने पूरा साप्ताहिक फिटनेस और न्यूट्रिशन प्लान अलग पेज पर रखा है, ताकि यह पोर्टफोलियो प्रोडक्ट और इंजीनियरिंग काम पर फोकस रहे।",
           "health.cta.button": "हेल्थ पेज खोलें ↗",
+          "til.cta.button": "T.I.L पेज खोलें ↗",
+          "love.cta.button": "प्रेम नोट्स पेज खोलें ↗",
           "health.summary.calories": "कैलोरी/दिन",
           "health.summary.protein": "प्रोटीन/दिन",
           "health.summary.weights": "स्ट्रेंथ सेशन/सप्ताह",
@@ -3628,6 +3689,8 @@
           "health.cta.desc":
             "Movi el plan completo semanal de fitness y nutricion a una pagina dedicada para que este portfolio siga enfocado en producto e ingenieria.",
           "health.cta.button": "Abrir pagina de salud ↗",
+          "til.cta.button": "Abrir pagina T.I.L ↗",
+          "love.cta.button": "Abrir pagina de notas de amor ↗",
           "health.summary.calories": "Calorias/dia",
           "health.summary.protein": "Proteina/dia",
           "health.summary.weights": "Sesiones de fuerza/semana",

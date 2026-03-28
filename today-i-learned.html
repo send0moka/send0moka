@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Today I Learned - Jehian Athaya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Azeret+Mono:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #111110;
+        --ink2: #3a3a38;
+        --ink3: #888882;
+        --ink4: #bdbdb7;
+        --paper: #f5f4ef;
+        --line: rgba(0, 0, 0, 0.1);
+        --serif: "Cormorant Garamond", Georgia, serif;
+        --mono: "Azeret Mono", "Courier New", monospace;
+      }
+      html[data-theme="dark"] {
+        --ink: #f1f0ea;
+        --ink2: #d3d0c7;
+        --ink3: #a9a59b;
+        --ink4: #7e786f;
+        --paper: #141413;
+        --line: rgba(255, 255, 255, 0.12);
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: var(--mono);
+        background: var(--paper);
+        color: var(--ink);
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 1.25rem 1.5rem 3rem;
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 1rem;
+        margin-bottom: 1.8rem;
+      }
+      .top-left,
+      .top-right {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        flex-wrap: wrap;
+      }
+      .chip,
+      .lang,
+      .theme-toggle {
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink3);
+        text-decoration: none;
+        font-family: var(--mono);
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.45rem 0.62rem;
+      }
+      .chip:hover,
+      .theme-toggle:hover {
+        border-color: var(--ink);
+        color: var(--ink);
+      }
+      .theme-toggle {
+        width: 31px;
+        height: 31px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .theme-toggle-icon {
+        width: 14px;
+        height: 14px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .theme-toggle .icon-sun {
+        display: none;
+      }
+      html[data-theme="dark"] .theme-toggle .icon-sun {
+        display: block;
+      }
+      html[data-theme="dark"] .theme-toggle .icon-moon {
+        display: none;
+      }
+      h1 {
+        font-family: var(--serif);
+        font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+        font-weight: 300;
+        line-height: 0.95;
+      }
+      .sub {
+        margin-top: 0.8rem;
+        color: var(--ink3);
+        font-size: 11px;
+        line-height: 1.8;
+        max-width: 760px;
+      }
+      .section {
+        margin-top: 2rem;
+      }
+      .section-title {
+        font-family: var(--serif);
+        font-size: 1.45rem;
+        font-weight: 400;
+        margin-bottom: 0.85rem;
+      }
+      .til-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        background: var(--line);
+      }
+      .card {
+        background: var(--paper);
+        padding: 1rem;
+      }
+      .date {
+        font-size: 9px;
+        color: var(--ink4);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .title {
+        margin-top: 0.35rem;
+        font-family: var(--serif);
+        font-size: 1.1rem;
+      }
+      .body {
+        margin-top: 0.55rem;
+        color: var(--ink2);
+        font-size: 11px;
+        line-height: 1.75;
+      }
+      .takeaway {
+        margin-top: 0.65rem;
+        border-top: 1px solid var(--line);
+        padding-top: 0.55rem;
+        color: var(--ink3);
+        font-size: 10px;
+      }
+      .foot {
+        margin-top: 1.8rem;
+        border-top: 1px solid var(--line);
+        padding-top: 0.9rem;
+        color: var(--ink4);
+        font-size: 10px;
+      }
+      @media (max-width: 980px) {
+        .til-grid {
+          grid-template-columns: 1fr;
+        }
+        .top {
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="top">
+        <div class="top-left">
+          <a class="chip" href="index.html" data-i18n="nav.back"
+            >Back to Portfolio</a
+          >
+          <a class="chip" href="health-routine.html" data-i18n="nav.health"
+            >Health Routine</a
+          >
+          <a class="chip" href="catatan-kekasih.html" data-i18n="nav.love"
+            >Love Notes</a
+          >
+        </div>
+        <div class="top-right">
+          <button
+            id="themeToggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+            aria-pressed="false"
+            title="Switch to dark theme"
+          >
+            <svg
+              class="theme-toggle-icon icon-moon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 1 0 9.8 9.8z" />
+            </svg>
+            <svg
+              class="theme-toggle-icon icon-sun"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="M4.93 4.93l1.41 1.41" />
+              <path d="M17.66 17.66l1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="M4.93 19.07l1.41-1.41" />
+              <path d="M17.66 6.34l1.41-1.41" />
+            </svg>
+          </button>
+          <select id="langSelect" class="lang" aria-label="Language selector">
+            <option value="en">English</option>
+            <option value="id">Indonesia</option>
+            <option value="zh">中文</option>
+            <option value="hi">हिंदी</option>
+            <option value="es">Español</option>
+          </select>
+        </div>
+      </div>
+
+      <h1 data-i18n="page.title">T.I.L Journal</h1>
+      <p class="sub" data-i18n="page.subtitle">
+        A lightweight log of what I learned today: practical notes from building
+        products, shipping features, and debugging real systems.
+      </p>
+
+      <section class="section">
+        <h2 class="section-title" data-i18n="section.recent">Recent Notes</h2>
+        <div class="til-grid" data-i18n-html="til.cards"></div>
+      </section>
+
+      <p class="foot" data-i18n="footer.note">
+        Small lessons compounded daily become architecture decisions tomorrow.
+      </p>
+    </main>
+
+    <script>
+      const translations = {
+        en: {
+          "meta.title": "Today I Learned - Jehian Athaya",
+          "nav.back": "Back to Portfolio",
+          "nav.health": "Health Routine",
+          "nav.love": "Love Notes",
+          "page.title": "T.I.L Journal",
+          "page.subtitle":
+            "A lightweight log of what I learned today: practical notes from building products, shipping features, and debugging real systems.",
+          "section.recent": "Recent Notes",
+          "til.cards":
+            "<article class='card'><div class='date'>Mar 27, 2026</div><h3 class='title'>Theme State Must Be Global</h3><p class='body'>I learned that theme behavior becomes fragile when each page manages it differently. The robust approach is a single localStorage key and the same attribute strategy in every page.</p><p class='takeaway'>Takeaway: use one source of truth for shared UI state.</p></article><article class='card'><div class='date'>Mar 26, 2026</div><h3 class='title'>Small Accessibility Details Matter</h3><p class='body'>Switch buttons still need accurate aria-label and aria-pressed values. Even for an icon-only control, semantic updates are crucial for screen readers and keyboard users.</p><p class='takeaway'>Takeaway: visual simplicity should not remove semantic clarity.</p></article><article class='card'><div class='date'>Mar 25, 2026</div><h3 class='title'>Readable Structure Beats Clever CSS</h3><p class='body'>A clean variable system and predictable layout classes made it faster to extend new pages without visual drift. Reuse is easier when naming stays obvious.</p><p class='takeaway'>Takeaway: maintainability starts from naming decisions.</p></article>",
+          "footer.note":
+            "Small lessons compounded daily become architecture decisions tomorrow.",
+        },
+        id: {
+          "meta.title": "Today I Learned - Jehian Athaya",
+          "nav.back": "Kembali ke Portfolio",
+          "nav.health": "Rutinitas Kesehatan",
+          "nav.love": "Catatan Kekasih",
+          "page.title": "Jurnal T.I.L",
+          "page.subtitle":
+            "Catatan ringan tentang hal yang saya pelajari hari ini: temuan praktis saat membangun produk, mengirim fitur, dan debugging sistem nyata.",
+          "section.recent": "Catatan Terbaru",
+          "til.cards":
+            "<article class='card'><div class='date'>27 Mar 2026</div><h3 class='title'>State Theme Harus Global</h3><p class='body'>Saya belajar bahwa perilaku theme akan rapuh kalau tiap halaman mengelola cara yang berbeda. Pendekatan stabil adalah satu key localStorage dan strategi atribut yang sama di semua halaman.</p><p class='takeaway'>Intinya: gunakan satu sumber kebenaran untuk state UI bersama.</p></article><article class='card'><div class='date'>26 Mar 2026</div><h3 class='title'>Detail Aksesibilitas Itu Penting</h3><p class='body'>Tombol switch tetap perlu aria-label dan aria-pressed yang akurat. Meskipun kontrol hanya icon, update semantik tetap penting untuk screen reader dan pengguna keyboard.</p><p class='takeaway'>Intinya: kesederhanaan visual jangan menghilangkan kejelasan semantik.</p></article><article class='card'><div class='date'>25 Mar 2026</div><h3 class='title'>Struktur Rapi Lebih Penting dari CSS Ribet</h3><p class='body'>Sistem variabel yang bersih dan class layout yang konsisten membuat penambahan halaman baru jauh lebih cepat tanpa style yang melenceng. Reuse jadi mudah saat penamaannya jelas.</p><p class='takeaway'>Intinya: maintainability dimulai dari keputusan penamaan.</p></article>",
+          "footer.note":
+            "Pelajaran kecil yang konsisten setiap hari bisa jadi keputusan arsitektur besar esok hari.",
+        },
+        zh: {
+          "meta.title": "今日所学 - Jehian Athaya",
+          "nav.back": "返回作品集",
+          "nav.health": "健康计划",
+          "nav.love": "爱情笔记",
+          "page.title": "T.I.L 学习日志",
+          "page.subtitle":
+            "记录我今天学到的实用经验：来自产品开发、功能上线与真实系统调试的一线总结。",
+          "section.recent": "最新笔记",
+          "til.cards":
+            "<article class='card'><div class='date'>2026年3月27日</div><h3 class='title'>主题状态必须全局统一</h3><p class='body'>我意识到，如果每个页面都用不同方式管理主题，体验会变得脆弱。更稳妥的做法是用同一个 localStorage key，并在所有页面采用一致的属性策略。</p><p class='takeaway'>结论：共享 UI 状态必须有唯一数据源。</p></article><article class='card'><div class='date'>2026年3月26日</div><h3 class='title'>微小无障碍细节很关键</h3><p class='body'>即使是纯图标切换按钮，也必须正确更新 aria-label 和 aria-pressed。对屏幕阅读器和键盘用户来说，这些语义信息非常重要。</p><p class='takeaway'>结论：视觉简洁不能牺牲语义清晰。</p></article><article class='card'><div class='date'>2026年3月25日</div><h3 class='title'>清晰结构胜过炫技 CSS</h3><p class='body'>统一的变量体系和可预测的布局类，让新页面扩展更快，也更不容易出现视觉偏差。命名清晰，复用自然发生。</p><p class='takeaway'>结论：可维护性从命名开始。</p></article>",
+          "footer.note": "每天积累的小经验，最终会变成明天的架构决策。",
+        },
+        hi: {
+          "meta.title": "आज मैंने सीखा - Jehian Athaya",
+          "nav.back": "पोर्टफोलियो पर वापस",
+          "nav.health": "हेल्थ रूटीन",
+          "nav.love": "प्रेम नोट्स",
+          "page.title": "T.I.L जर्नल",
+          "page.subtitle":
+            "आज सीखी हुई बातों का छोटा लॉग: प्रोडक्ट बनाते समय, फीचर शिप करते समय, और वास्तविक सिस्टम डिबग करते समय मिले व्यावहारिक सबक।",
+          "section.recent": "हाल की नोट्स",
+          "til.cards":
+            "<article class='card'><div class='date'>27 मार्च 2026</div><h3 class='title'>थीम स्टेट ग्लोबल होना चाहिए</h3><p class='body'>मैंने सीखा कि अगर हर पेज थीम को अलग तरीके से मैनेज करे तो अनुभव अस्थिर हो जाता है। बेहतर तरीका है एक ही localStorage key और सभी पेजों में एक जैसा attribute pattern रखना।</p><p class='takeaway'>सीख: साझा UI state के लिए एक ही source of truth रखें।</p></article><article class='card'><div class='date'>26 मार्च 2026</div><h3 class='title'>छोटी accessibility डिटेल्स जरूरी हैं</h3><p class='body'>Icon-only switch होने पर भी aria-label और aria-pressed सही होने चाहिए। Screen reader और keyboard users के लिए यह semantic clarity बहुत मायने रखती है।</p><p class='takeaway'>सीख: visual simplicity से semantic clarity कम नहीं होनी चाहिए।</p></article><article class='card'><div class='date'>25 मार्च 2026</div><h3 class='title'>साफ संरचना, जटिल CSS से बेहतर</h3><p class='body'>सुसंगत variables और predictable layout classes ने नए पेज बनाना तेज किया और visual drift रोका। नामकरण स्पष्ट हो तो reuse आसान हो जाता है।</p><p class='takeaway'>सीख: maintainability की शुरुआत naming से होती है।</p></article>",
+          "footer.note":
+            "रोज की छोटी सीखें ही कल की बड़ी आर्किटेक्चर फैसलों में बदलती हैं।",
+        },
+        es: {
+          "meta.title": "Hoy Aprendi - Jehian Athaya",
+          "nav.back": "Volver al Portafolio",
+          "nav.health": "Rutina de Salud",
+          "nav.love": "Notas de Amor",
+          "page.title": "Diario T.I.L",
+          "page.subtitle":
+            "Un registro ligero de lo que aprendi hoy: notas practicas al construir productos, publicar funciones y depurar sistemas reales.",
+          "section.recent": "Notas Recientes",
+          "til.cards":
+            "<article class='card'><div class='date'>27 Mar 2026</div><h3 class='title'>El estado del tema debe ser global</h3><p class='body'>Aprendi que el comportamiento del tema se vuelve fragil cuando cada pagina lo gestiona distinto. La forma solida es usar una sola key en localStorage y la misma estrategia de atributos en todas las paginas.</p><p class='takeaway'>Conclusión: usa una unica fuente de verdad para estado UI compartido.</p></article><article class='card'><div class='date'>26 Mar 2026</div><h3 class='title'>Los detalles de accesibilidad importan</h3><p class='body'>Incluso un boton solo con icono necesita aria-label y aria-pressed correctos. Estas actualizaciones semanticas son clave para lectores de pantalla y usuarios de teclado.</p><p class='takeaway'>Conclusión: simplicidad visual no debe eliminar claridad semantica.</p></article><article class='card'><div class='date'>25 Mar 2026</div><h3 class='title'>Estructura legible vence CSS ingenioso</h3><p class='body'>Un sistema limpio de variables y clases predecibles acelera la creacion de nuevas paginas sin deriva visual. La reutilizacion es mas facil cuando el nombre de las cosas es claro.</p><p class='takeaway'>Conclusión: la mantenibilidad comienza en el naming.</p></article>",
+          "footer.note":
+            "Las pequenas lecciones diarias se convierten en decisiones de arquitectura manana.",
+        },
+      }
+
+      const THEME_STORAGE_KEY = "preferred-theme"
+      const themeToggle = document.getElementById("themeToggle")
+
+      function updateThemeToggleState(theme) {
+        if (!themeToggle) return
+        const isDark = theme === "dark"
+        const nextTitle = isDark
+          ? "Switch to light theme"
+          : "Switch to dark theme"
+        themeToggle.setAttribute("aria-pressed", String(isDark))
+        themeToggle.setAttribute("aria-label", nextTitle)
+        themeToggle.title = nextTitle
+      }
+
+      function setTheme(theme) {
+        const selected = theme === "dark" ? "dark" : "light"
+        document.documentElement.setAttribute("data-theme", selected)
+        localStorage.setItem(THEME_STORAGE_KEY, selected)
+        updateThemeToggleState(selected)
+      }
+
+      function getDefaultTheme() {
+        const savedTheme = localStorage.getItem(THEME_STORAGE_KEY)
+        if (savedTheme === "dark" || savedTheme === "light") return savedTheme
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+      }
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const currentTheme =
+            document.documentElement.getAttribute("data-theme") === "dark"
+              ? "dark"
+              : "light"
+          setTheme(currentTheme === "dark" ? "light" : "dark")
+        })
+      }
+      setTheme(getDefaultTheme())
+
+      function setLanguage(lang) {
+        const selected = translations[lang] ? lang : "en"
+        const table = translations[selected]
+        document.documentElement.lang = selected
+        document.title = table["meta.title"]
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n")
+          if (table[key]) el.textContent = table[key]
+        })
+
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-html")
+          if (table[key]) el.innerHTML = table[key]
+        })
+
+        const select = document.getElementById("langSelect")
+        if (select) select.value = selected
+        localStorage.setItem("preferred-language", selected)
+      }
+
+      const savedLanguage = localStorage.getItem("preferred-language")
+      const browserLanguage = (navigator.language || "").toLowerCase()
+      const defaultLanguage = savedLanguage
+        ? savedLanguage
+        : browserLanguage.startsWith("id")
+          ? "id"
+          : browserLanguage.startsWith("zh")
+            ? "zh"
+            : browserLanguage.startsWith("hi")
+              ? "hi"
+              : browserLanguage.startsWith("es")
+                ? "es"
+                : "en"
+
+      const select = document.getElementById("langSelect")
+      select.addEventListener("change", (e) => setLanguage(e.target.value))
+      setLanguage(defaultLanguage)
+    </script>
+  </body>
+</html>
