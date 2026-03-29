@@ -454,9 +454,12 @@
         window.location.protocol === "file:" ||
         window.location.hostname === "localhost" ||
         window.location.hostname === "127.0.0.1"
+      const isNonWwwJehian = window.location.hostname === "jehian.me"
       const API_BASE_URL = isLocalTestingContext
         ? "http://localhost:3000"
-        : `${window.location.protocol}//${window.location.host}`
+        : isNonWwwJehian
+          ? "https://www.jehian.me"
+          : `${window.location.protocol}//${window.location.host}`
       const themeToggle = document.getElementById("themeToggle")
       const pinGate = document.getElementById("pinGate")
       const pinForm = document.getElementById("pinForm")
