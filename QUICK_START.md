@@ -102,7 +102,10 @@ git push -u origin main
 3. Select repository
 4. Configure Environment Variable:
    - Key: `JWT_SECRET`
-   - Value: Buat random string (minimal 32 char). Bisa generate di: https://1password.com/password-generator/
+
+- Value: Gunakan secret Anda di Vercel Dashboard (minimal 32 karakter)
+- Primary domain API: `https://jehian.me`
+- Fallback domain API: `https://send0moka.vercel.app`
 
 5. Click "Deploy"
 
@@ -114,19 +117,27 @@ Setelah Vercel deploy sukses:
 2. Edit `catatan-kekasih.html`, cari line ini:
 
 ```javascript
-const API_BASE_URL =
-  window.location.hostname === "localhost"
-    ? "http://localhost:3000"
-    : `${window.location.protocol}//${window.location.host}`
+const isLocalTestingContext =
+  window.location.protocol === "file:" ||
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+
+const API_BASE_URL = isLocalTestingContext
+  ? "http://localhost:3000"
+  : `${window.location.protocol}//${window.location.host}`
 ```
 
 Ganti menjadi:
 
 ```javascript
-const API_BASE_URL =
-  window.location.hostname === "localhost"
-    ? "http://localhost:3000"
-    : "https://love-notes-backend.vercel.app" // Ganti dengan URL Vercel kamu
+const isLocalTestingContext =
+  window.location.protocol === "file:" ||
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+
+const API_BASE_URL = isLocalTestingContext
+  ? "http://localhost:3000"
+  : "https://jehian.me" // Domain utama Anda
 ```
 
 3. Upload HTML ke hosting (GitHub Pages, Netlify, atau tempat lain)
@@ -151,7 +162,7 @@ Di `api/auth.js`, cari:
 
 ```javascript
 const PIN_HASH =
-  "6fe8ff7e770f50f872dd3d8fda5f4dce26056f96f7f8f72373dc53e97217386f"
+  "d2b83f5e1e65f8e3790dc0056549ba831c4c526e11ca58085925020a53006b65"
 ```
 
 Ganti dengan:
