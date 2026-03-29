@@ -449,13 +449,44 @@
       }
 
       const THEME_STORAGE_KEY = "preferred-theme"
-      const REQUIRED_PIN = "111025"
+      const AUTH_TOKEN_KEY = "love-notes-token"
+      const isLocalTestingContext =
+        window.location.protocol === "file:" ||
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
+      const API_BASE_URL = isLocalTestingContext
+        ? "http://localhost:3000"
+        : `${window.location.protocol}//${window.location.host}`
       const themeToggle = document.getElementById("themeToggle")
       const pinGate = document.getElementById("pinGate")
       const pinForm = document.getElementById("pinForm")
       const pinInput = document.getElementById("pinInput")
       const pinError = document.getElementById("pinError")
       const protectedContent = document.getElementById("protectedContent")
+
+      // Check if user already has valid token
+      async function checkExistingAuth() {
+        const token = localStorage.getItem(AUTH_TOKEN_KEY)
+        if (token) {
+          try {
+            const response = await fetch(`${API_BASE_URL}/api/notes`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            })
+            if (response.ok) {
+              const data = await response.json()
+              displayNotes(data.notes)
+              return true
+            } else {
+              localStorage.removeItem(AUTH_TOKEN_KEY)
+            }
+          } catch (error) {
+            console.error("Token validation error:", error)
+          }
+        }
+        return false
+      }
 
       function updateThemeToggleState(theme) {
         if (!themeToggle) return
@@ -544,32 +575,101 @@
         document.body.classList.remove("locked")
       }
 
+      function displayNotes(notesData) {
+        const selected = localStorage.getItem("preferred-language") || "en"
+        const notes = notesData[selected] || notesData["en"] || []
+        const lettersSection = document.querySelector(".letters")
+
+        if (lettersSection) {
+          lettersSection.innerHTML = notes
+            .map(
+              (note) => `
+            <article class='letter'>
+              <p class='letter-date'>${note.date}</p>
+              <h3 class='letter-title'>${note.title}</h3>
+              <p class='letter-body'>${note.body}</p>
+            </article>
+          `,
+            )
+            .join("")
+        }
+      }
+
       document.body.classList.add("locked")
 
-      if (pinForm && pinInput && pinError) {
-        pinInput.focus()
-        pinForm.addEventListener("submit", (e) => {
-          e.preventDefault()
-          const value = pinInput.value.trim()
-
-          if (value === REQUIRED_PIN) {
-            pinError.textContent = ""
-            unlockContent()
-            return
-          }
-
-          const selected = translations[
-            localStorage.getItem("preferred-language")
-          ]
-            ? localStorage.getItem("preferred-language")
-            : "en"
-          const table = translations[selected]
-          pinError.textContent =
-            table["pin.error"] || translations.en["pin.error"]
-          pinInput.value = ""
+      // Initialize - check for existing token first
+      checkExistingAuth().then((hasToken) => {
+        if (!hasToken && pinForm && pinInput && pinError) {
           pinInput.focus()
-        })
-      }
+          pinForm.addEventListener("submit", async (e) => {
+            e.preventDefault()
+            const pin = pinInput.value.trim()
+
+            if (!pin) {
+              const lang = localStorage.getItem("preferred-language") || "en"
+              pinError.textContent =
+                translations[lang]?.["pin.error"] ||
+                translations.en["pin.error"]
+              return
+            }
+
+            // Disable form while submitting
+            pinInput.disabled = true
+            document.getElementById("pinSubmit").disabled = true
+            pinError.textContent = "Validating..."
+
+            try {
+              const response = await fetch(`${API_BASE_URL}/api/auth`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ pin: pin }),
+              })
+
+              const data = await response.json()
+
+              if (response.ok && data.token) {
+                // Store token
+                localStorage.setItem(AUTH_TOKEN_KEY, data.token)
+                pinError.textContent = ""
+
+                // Get notes with token
+                const notesResponse = await fetch(`${API_BASE_URL}/api/notes`, {
+                  headers: {
+                    Authorization: `Bearer ${data.token}`,
+                  },
+                })
+
+                if (notesResponse.ok) {
+                  const notesData = await notesResponse.json()
+                  displayNotes(notesData.notes)
+                  unlockContent()
+                } else {
+                  const lang =
+                    localStorage.getItem("preferred-language") || "en"
+                  pinError.textContent = "Error loading notes"
+                }
+              } else {
+                const lang = localStorage.getItem("preferred-language") || "en"
+                const table = translations[lang] || translations.en
+                pinError.textContent = data.error || table["pin.error"]
+                pinInput.value = ""
+                pinInput.focus()
+              }
+            } catch (error) {
+              console.error("Auth error:", error)
+              const lang = localStorage.getItem("preferred-language") || "en"
+              pinError.textContent = "Connection error. Try again."
+              pinInput.value = ""
+              pinInput.focus()
+            } finally {
+              pinInput.disabled = false
+              document.getElementById("pinSubmit").disabled = false
+            }
+          })
+        }
+      })
     </script>
   </body>
 </html>

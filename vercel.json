@@ -1,0 +1,15 @@
+{
+  "buildCommand": "npm install",
+  "outputDirectory": ".",
+  "framework": "vanilla",
+  "functions": {
+    "api/auth.js": {
+      "memory": 128,
+      "maxDuration": 10
+    },
+    "api/notes.js": {
+      "memory": 128,
+      "maxDuration": 10
+    }
+  }
+}
