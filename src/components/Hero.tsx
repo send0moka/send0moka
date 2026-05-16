@@ -34,16 +34,16 @@ const Hero = () => {
 
   return (
     <section className="min-height-[calc(100vh-80px)] flex items-center px-8 py-20 bg-transparent overflow-hidden">
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
         {/* Left Column: Content */}
         <div className="flex flex-col space-y-8">
           <div className="flex flex-col space-y-4">
             <div className="flex items-center gap-3 text-4xl font-normal tracking-tight text-zinc-700">
               <span>hi!</span>
-              <span className="animate-bounce inline-block">🤘</span>
+              <span className="animate-geleng inline-block origin-bottom">🤘</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] text-zinc-900 whitespace-nowrap">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-zinc-900 lg:whitespace-nowrap">
               I&apos;m <span className="text-[#059669]">Jehian</span> Athaya,
             </h1>
             

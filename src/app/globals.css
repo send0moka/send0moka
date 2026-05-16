@@ -10,6 +10,15 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-plus-jakarta-sans);
   --font-mono: var(--font-plus-jakarta-sans);
+  --animate-geleng: geleng 2.5s ease-in-out infinite;
+
+  @keyframes geleng {
+    0%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(-15deg); }
+    40% { transform: rotate(10deg); }
+    60% { transform: rotate(-10deg); }
+    80% { transform: rotate(5deg); }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
