@@ -28,12 +28,17 @@
   }
 }
 
+@utility grid-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0H0V30' stroke='%23e2e8f0' stroke-width='1' stroke-dasharray='3.75%203.75'/%3E%3C/svg%3E");
+  background-size: 30px 30px;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
 html,
 body {
   background-color: #f1f5f9;
-  background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0H0V30' stroke='%23e5ebf2' stroke-width='1' stroke-dasharray='3.75%203.75'/%3E%3C/svg%3E");
-  background-size: 30px 30px;
-  background-repeat: repeat;
+  @apply grid-pattern;
   color: var(--foreground);
   font-family: var(--font-sans);
   min-height: 100%;
