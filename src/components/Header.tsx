@@ -8,11 +8,11 @@ const Header = () => {
       {/* Left Section: Logo + Nav */}
       <div className="flex items-center gap-10">
         <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-6 h-6 text-white bg-[#10b981] rounded-sm font-bold text-[13px] leading-none">
+          <div className="flex items-center justify-center w-6 h-6 text-white bg-[#059669] rounded-sm font-bold text-[13px] leading-none">
             <span className="ml-[1px] -translate-y-[1.5px]">/</span>
           </div>
           <Link href="/" className="text-lg font-bold tracking-tight text-zinc-900 flex items-center">
-            jehian<span className="text-[#10b981]">.me</span>
+            jehian<span className="text-[#059669]">.me</span>
           </Link>
         </div>
 
@@ -22,7 +22,7 @@ const Header = () => {
             <Link
               key={item}
               href={`/${item}`}
-              className="text-sm font-semibold capitalize text-[#10b981] hover:opacity-80 transition-opacity"
+              className="text-sm font-semibold capitalize text-[#059669] hover:opacity-80 transition-opacity"
             >
               {item}
             </Link>
@@ -37,7 +37,7 @@ const Header = () => {
             href="https://github.com/send0moka"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zinc-900 hover:text-[#10b981] transition-colors"
+            className="text-zinc-900 hover:text-zinc-600 transition-colors"
           >
             <svg
               width="22"
@@ -52,7 +52,7 @@ const Header = () => {
             href="https://threads.com/jehianth"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zinc-900 hover:text-[#10b981] transition-colors"
+            className="text-zinc-900 hover:text-zinc-600 transition-colors"
           >
             {/* Official Threads Logo - Adjusted size to match GitHub visually */}
             <svg
@@ -69,7 +69,7 @@ const Header = () => {
         <div className="h-4 w-[1px] bg-zinc-300 mx-1" />
 
         <button className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-zinc-700 bg-white/50 backdrop-blur-sm border border-zinc-200 rounded-lg hover:bg-white transition-colors group">
-          <LayoutGrid size={16} className="text-zinc-500 group-hover:text-[#10b981]" />
+          <LayoutGrid size={16} className="text-zinc-500 group-hover:text-zinc-900" />
           <span>Quick Access</span>
           <kbd className="flex items-center justify-center w-5 h-5 ml-1 text-[10px] font-bold text-zinc-400 bg-zinc-100 border border-zinc-300 rounded shadow-inner">
             Q
