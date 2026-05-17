@@ -1,58 +1,151 @@
-.page {
-  display: flex;
+.hero {
+  position: relative;
   min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  background-color: #050505;
+  width: 100vw;
+  background-color: #0c0808; /* Slightly darker */
   color: #ffffff;
-  font-family: var(--font-plus-jakarta), sans-serif;
   overflow: hidden;
+  font-family: var(--font-plus-jakarta), sans-serif;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1.5rem;
-  z-index: 10;
+.glow {
+  position: absolute;
+  top: -30%;
+  left: 10%;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, rgba(255, 30, 30, 0.95) 0%, rgba(200, 10, 10, 0) 65%);
+  filter: blur(80px); /* Kurangi blur agar bentuk liquid lebih jelas */
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; /* Bentuk tidak beraturan */
+  opacity: 1;
 }
 
-.title {
-  font-size: 4rem;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  margin: 0;
-  background: linear-gradient(135deg, #fff 0%, #a3a3a3 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.content {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  width: 100%;
 }
 
-.subtitle {
-  font-size: 1.25rem;
-  color: #888;
-  margin: 0;
+.topLeft {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  max-width: 250px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+  font-weight: 500;
+}
+
+.topLeft .italic {
+  font-family: var(--font-playfair), serif;
+  font-style: italic;
   font-weight: 400;
+  color: #ffffff;
+}
+
+.centerName {
+  position: absolute;
+  top: 50%;
+  right: 50px; /* Sejajar dengan padding kanan bottomNav */
+  transform: translateY(-50%);
+  display: flex;
+  align-items: baseline;
+  gap: 6rem; /* Spasi yang lebih lebar antar kata */
+  white-space: nowrap;
+  perspective: 1000px;
+}
+
+.firstName {
+  font-size: clamp(4rem, 11vw, 11rem);
+  font-weight: 400;
+  letter-spacing: -0.06em; /* Kurang dempet -> lebih dempet */
+}
+
+.lastName {
+  font-family: var(--font-playfair), serif;
+  font-style: italic;
+  font-size: clamp(4.5rem, 12vw, 12.5rem);
+  font-weight: 400;
+  letter-spacing: -0.05em; /* Kurang dempet -> lebih dempet */
+  padding-right: 0.05em; /* Prevent clipping for italic */
+}
+
+.bottomNav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.95rem; /* Ukuran lebih besar */
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-.box {
-  margin-top: 3rem;
-  width: 120px;
-  height: 120px;
-  border-radius: 24px;
-  background: linear-gradient(135deg, #FF0080 0%, #7928CA 100%);
+.navLeft, .navCenter, .navRight {
   display: flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 20px 40px rgba(121, 40, 202, 0.4);
+  gap: 2.5rem;
 }
 
-.boxText {
-  color: white;
-  font-weight: bold;
-  font-size: 1.1rem;
-  letter-spacing: 0.05em;
+.navCenter {
+  gap: 1rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
+
+.navCenter span {
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 400;
+}
+
+.navCenter a, .navRight a {
+  transition: opacity 0.3s ease;
+}
+
+.navCenter a:hover, .navRight a:hover {
+  opacity: 0.5;
+}
+
+@media (max-width: 1024px) {
+  .centerName {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    left: 50%;
+  }
+  
+  .firstName {
+    font-size: clamp(4rem, 15vw, 8rem);
+  }
+  
+  .lastName {
+    font-size: clamp(4.5rem, 16vw, 9rem);
+  }
+  
+  .navCenter {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .topLeft {
+    top: 30px;
+    left: 30px;
+  }
+  
+  .bottomNav {
+    padding: 1.5rem 30px;
+    font-size: 0.8rem;
+  }
+}
+
