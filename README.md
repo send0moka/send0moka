@@ -12,7 +12,7 @@ My sweet spot is where design meets code, I love diving deep into frontend craft
 - 🌐 **Personal Website**: Always iterating at [jehian.me](https://jehian.me).
 
 ### Featured Projects
-- [**Morphus**](https://github.com/send0moka/morphus): A Figma plugin for importing HTML directly into Figma, bridging the gap between code and design.
+- [**Morphus**](https://github.com/send0moka/morphus): A Figma plugin for importing HTML and PDF files directly into Figma, bridging the gap between code and design.
 - [**SSAS**](https://github.com/dzakwanIrfan/ssas): Web marketing site for Selasar Sunaryo Art Space.
 - **ROMANS**: Custom Shopify website for a new health & lifestyle protein cookie brand launching DTC in the UK. Premium, minimal brand identity built to be the sole sales channel at launch.
 
